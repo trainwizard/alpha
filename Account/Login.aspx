@@ -43,13 +43,13 @@
                 </fieldset>
                 <p class="submitButton">
                     <asp:Button ID="btnLogin" runat="server" CommandName="Login" Text="Log In" 
-                        ValidationGroup="LoginUserValidationGroup"/>
+                        ValidationGroup="LoginUserValidationGroup" onclick="btnLogin_Click"/>
                 </p>
             </div>
         </LayoutTemplate>
     </asp:Login>
 <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
     ConnectionString="<%$ ConnectionStrings:SQLAlpha %>" 
-    SelectCommand="SELECT * FROM [User]">
+    SelectCommand="">
 </asp:SqlDataSource>
 </asp:Content>
