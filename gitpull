@@ -1,0 +1,3 @@
+#!/bin/sh
+cd alpha
+git pull https://github.com/trainwizard/alpha

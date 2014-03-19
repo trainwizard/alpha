@@ -1,0 +1,5 @@
+#!/bin/sh
+cd alpha
+git add *
+git commit -m "Name"
+git push https://github.com/trainwizard/alpha
