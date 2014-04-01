@@ -14,15 +14,15 @@ Public Class Login
         Using connection As New SqlConnection(connectionString)
             Dim account As String = txtusername.Text
             Dim mypassword As String = txtpassword.Text
-            Dim ResponseNum As Integer
+
             connection.Open()
             Dim cmd As SqlCommand = New SqlCommand("UserLogin", connection)
             cmd.CommandType = CommandType.StoredProcedure
             cmd.Parameters.Add(New SqlParameter("@username", account))
             cmd.Parameters.Add(New SqlParameter("@password", mypassword))
-            ResponseNum = cmd.ExecuteNonQuery()
-            Debug.Print(ResponseNum)
-            If ResponseNum = 1 Then
+            'add reader
+
+            If reader.HasRows() Then
                 Response.Redirect("https://google.com")
             Else
                 Response.Redirect("https://yahoo.com")
