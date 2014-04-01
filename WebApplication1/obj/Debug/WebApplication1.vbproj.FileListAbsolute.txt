@@ -1,0 +1,10 @@
+x:\.windows_settings\Documents\Visual Studio 2010\Projects\WebApplication1\WebApplication1\bin\WebApplication1.dll
+x:\.windows_settings\Documents\Visual Studio 2010\Projects\WebApplication1\WebApplication1\bin\WebApplication1.pdb
+x:\.windows_settings\Documents\Visual Studio 2010\Projects\WebApplication1\WebApplication1\bin\WebApplication1.xml
+x:\.windows_settings\Documents\Visual Studio 2010\Projects\WebApplication1\WebApplication1\obj\Debug\ResolveAssemblyReference.cache
+x:\.windows_settings\Documents\Visual Studio 2010\Projects\WebApplication1\WebApplication1\obj\Debug\WebApplication1.Resources.resources
+x:\.windows_settings\Documents\Visual Studio 2010\Projects\WebApplication1\WebApplication1\obj\Debug\GenerateResource.read.1.tlog
+x:\.windows_settings\Documents\Visual Studio 2010\Projects\WebApplication1\WebApplication1\obj\Debug\GenerateResource.write.1.tlog
+x:\.windows_settings\Documents\Visual Studio 2010\Projects\WebApplication1\WebApplication1\obj\Debug\WebApplication1.dll
+x:\.windows_settings\Documents\Visual Studio 2010\Projects\WebApplication1\WebApplication1\obj\Debug\WebApplication1.xml
+x:\.windows_settings\Documents\Visual Studio 2010\Projects\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb
