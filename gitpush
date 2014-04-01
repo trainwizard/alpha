@@ -1,5 +1,5 @@
 #!/bin/sh
 cd alpha
 git add *
-git commit -m "Name"
+git commit -m "Aaron Cocke"
 git push https://github.com/trainwizard/alpha
