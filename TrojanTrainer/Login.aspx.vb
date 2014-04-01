@@ -14,14 +14,16 @@ Public Class Login
         Using connection As New SqlConnection(connectionString)
             Dim account As String = txtusername.Text
             Dim mypassword As String = txtpassword.Text
-
             connection.Open()
             Dim cmd As SqlCommand = New SqlCommand("UserLogin", connection)
+            Dim reader As SqlDataReader
             cmd.CommandType = CommandType.StoredProcedure
             cmd.Parameters.Add(New SqlParameter("@username", account))
             cmd.Parameters.Add(New SqlParameter("@password", mypassword))
+            reader = cmd.ExecuteReader()
+            'add reader
 
-            If reader.HasRows() Then 'Sam note: I think the reason this is broken is bcuz "reader" isnt declared anywhere so it defaults to the else (you probs realized this already)
+            If reader.HasRows() Then
                 Response.Redirect("https://google.com")
             Else
                 Response.Redirect("https://yahoo.com")
