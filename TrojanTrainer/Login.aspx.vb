@@ -20,9 +20,8 @@ Public Class Login
             cmd.CommandType = CommandType.StoredProcedure
             cmd.Parameters.Add(New SqlParameter("@username", account))
             cmd.Parameters.Add(New SqlParameter("@password", mypassword))
-            'add reader
 
-            If reader.HasRows() Then
+            If reader.HasRows() Then 'Sam note: I think the reason this is broken is bcuz "reader" isnt declared anywhere so it defaults to the else (you probs realized this already)
                 Response.Redirect("https://google.com")
             Else
                 Response.Redirect("https://yahoo.com")
