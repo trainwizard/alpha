@@ -32,11 +32,22 @@ Public Class Login
                 sessionUpdate.Parameters.Add(New SqlParameter("@usernameActive", account))
                 sessionUpdate.Parameters.Add(New SqlParameter("@passwordActive", mypassword))
                 sessionUpdate.ExecuteNonQuery()
+
+                'starts user session and check for checked checkbox
+                Session("username") = account
+                Debug.Print(Session("username"))
+                If ckbloggedin.Checked = True Then
+                    Session.Timeout() = 20160
+                    Debug.Print(Session.Timeout())
+                End If
+                'redirect to home page
                 Response.Redirect("https://google.com")
             Else
-                Response.Redirect("https://yahoo.com")
+
+                Response.Redirect("login.aspx")
             End If
         End Using
 
     End Sub
+
 End Class

@@ -20,6 +20,9 @@
     <asp:TextBox ID="txtpassword" TextMode="password" runat="server" ></asp:TextBox>
     <br />
     <br />
+    <asp:CheckBox ID="ckbloggedin" runat="server" Text="Keep me logged in." />
+    <br />
+    <br />
     <asp:Button ID="btnlogin" runat="server" EnableTheming="True" Text="Login" />
     <br />
     <br />
