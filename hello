@@ -1,5 +1,0 @@
-#!/bin/sh
-cd public_html/alpha
-git add *
-git commit -m "sbolds"
-git push https://github.com/trainwizard/alpha
