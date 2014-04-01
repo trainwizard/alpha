@@ -12,18 +12,26 @@ Public Class Login
 
     Protected Sub btnlogin_Click(sender As Object, e As EventArgs) Handles btnlogin.Click
         Using connection As New SqlConnection(connectionString)
+            'retrieves text from textboxes
             Dim account As String = txtusername.Text
             Dim mypassword As String = txtpassword.Text
             connection.Open()
             Dim cmd As SqlCommand = New SqlCommand("UserLogin", connection)
             Dim reader As SqlDataReader
+            'calls stored procedure to check user existance
             cmd.CommandType = CommandType.StoredProcedure
             cmd.Parameters.Add(New SqlParameter("@username", account))
             cmd.Parameters.Add(New SqlParameter("@password", mypassword))
             reader = cmd.ExecuteReader()
-            'add reader
 
             If reader.HasRows() Then
+                reader.Close()
+                'uses stored procedure called sessoinUpdate to set Active to be equal to 1
+                Dim sessionUpdate As SqlCommand = New SqlCommand("UserActive", connection)
+                sessionUpdate.CommandType = CommandType.StoredProcedure
+                sessionUpdate.Parameters.Add(New SqlParameter("@usernameActive", account))
+                sessionUpdate.Parameters.Add(New SqlParameter("@passwordActive", mypassword))
+                sessionUpdate.ExecuteNonQuery()
                 Response.Redirect("https://google.com")
             Else
                 Response.Redirect("https://yahoo.com")

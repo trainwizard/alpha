@@ -17,7 +17,7 @@
     <br />
     <br />
     Password:<br />
-    <asp:TextBox ID="txtpassword" runat="server"></asp:TextBox>
+    <asp:TextBox ID="txtpassword" TextMode="password" runat="server" ></asp:TextBox>
     <br />
     <br />
     <asp:Button ID="btnlogin" runat="server" EnableTheming="True" Text="Login" />
