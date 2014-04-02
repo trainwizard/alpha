@@ -9,7 +9,7 @@ Partial Class LoginHome
         'Greeting name is set to be the username
         crnuser.Text = Session("username")
         'Sends non-user back to homepage if they are trying to URL hack
-        If Session("username") = False Then
+        If Session("username") Is Nothing Then
             Response.Redirect("Login.aspx")
         End If
     End Sub
