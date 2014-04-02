@@ -1,6 +1,9 @@
 ﻿<%@ Master Language="VB" CodeFile="main.master.vb" Inherits="main" %>
 
-<%--<%@ Page Language="VB" MasterPageFile="~/Master1.master" ... %>--%>
+<%--Sams Notes:--%>
+<%--<%@ Page Language="VB" MasterPageFile="~/main.master" ... %>--%>
+<%--<%@ Page Title="" Language="VB" MasterPageFile="~/Master1.master" AutoEventWireup="false" CodeFile="Default.aspx.vb" Inherits="_Default" %>--%>
+<%--http://www.cssreset.com/creating-fixed-headers-with-css/--%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -9,21 +12,22 @@
     <title></title>
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
+    <link href="style.css" rel="stylesheet">
 </head>
 <body>
-    <form id="form1" runat="server">
-        <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal">
-            <Items>
-                <asp:MenuItem NavigateUrl="~/LoginHome.aspx" Text="Home" Value="Home">
-                </asp:MenuItem>
-                <asp:MenuItem Text="Logout" Value="Logout"></asp:MenuItem>
-            </Items>
-        </asp:Menu>
-        <div>
-            <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">        
+        <div class="header">
+            <p>Trojan Trainer</p>
+            <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal">            
+                <Items>
+                    <asp:MenuItem NavigateUrl="~/LoginHome.aspx" Text="Home" Value="Home"></asp:MenuItem>
+                    <asp:MenuItem Text="Logout" Value="Logout"></asp:MenuItem>
+                </Items>
+            </asp:Menu>
+        </div>
+        <div class="content">
+            <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>
 
-    </form>
 </body>
 </html>
