@@ -26,19 +26,11 @@
     <br />
     <br />
     <asp:Button ID="btnlogin" runat="server" EnableTheming="True" Text="Login" />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
+
 
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
         ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
         SelectCommand="SELECT * FROM [User]"></asp:SqlDataSource>
-
-    <br />
-
 </asp:Content>
 
 
