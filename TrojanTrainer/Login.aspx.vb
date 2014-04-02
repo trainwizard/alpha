@@ -26,7 +26,7 @@ Public Class Login
 
             If reader.HasRows() Then
                 reader.Close()
-                'uses stored procedure called sessoinUpdate to set Active to be equal to 1
+                'uses stored procedure called UserActive to set Active to be equal to 1
                 Dim sessionUpdate As SqlCommand = New SqlCommand("UserActive", connection)
                 sessionUpdate.CommandType = CommandType.StoredProcedure
                 sessionUpdate.Parameters.Add(New SqlParameter("@usernameActive", account))
@@ -41,10 +41,9 @@ Public Class Login
                     Debug.Print(Session.Timeout())
                 End If
                 'redirect to home page
-                Response.Redirect("https://google.com")
+                Response.Redirect("LoginHome.aspx")
             Else
-
-                Response.Redirect("login.aspx")
+                msginvalidlogin.Visible = True
             End If
         End Using
 

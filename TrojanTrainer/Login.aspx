@@ -10,7 +10,13 @@
     <form id="form1" runat="server">
     <div>
     
-        Login Here<br />
+        <br />
+        <asp:Label ID="msginvalidlogin" runat="server" ForeColor="Red" 
+            Text="Incorrect login, please try again." Visible="False"></asp:Label>
+        <br />
+        <br />
+    
+        Login Here:<br />
         <br />
         Username:</div>
     <asp:TextBox ID="txtusername" runat="server"></asp:TextBox>
