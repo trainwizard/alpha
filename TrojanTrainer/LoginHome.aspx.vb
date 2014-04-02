@@ -25,7 +25,7 @@ Partial Class LoginHome
             logoutSession.ExecuteNonQuery()
             'deletes session and redirects to login page
             Session.Clear()
-            Response.Redirect("Login.aspx")
+            Response.Redirect("Logout.aspx")
         End Using
     End Sub
 End Class
