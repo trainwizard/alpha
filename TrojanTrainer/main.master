@@ -15,6 +15,7 @@
     <link href="style.css" rel="stylesheet">
 </head>
 <body>
+<form runat="server">
         <div class="header">
             <p>Trojan Trainer</p>
             <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal">            
@@ -28,6 +29,6 @@
             <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>
-
+</form>
 </body>
 </html>
