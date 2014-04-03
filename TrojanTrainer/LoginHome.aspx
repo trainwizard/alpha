@@ -2,13 +2,7 @@
 
 <asp:Content ID="LoginHomePage" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <div>
-    
-        <asp:Label ID="crnuser" runat="server" Text="Label"></asp:Label>
-        <br />
-        <br />
-        <asp:Button ID="Button1" runat="server" Text="Logout" />
-    
-    </div>
+    <p>
+    Welcome to Trojan Trainer.</p>
 
 </asp:Content>
