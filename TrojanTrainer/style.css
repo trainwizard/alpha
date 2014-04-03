@@ -1,25 +1,69 @@
-﻿body{
+﻿/*
+body{
     margin:10px;
     background: grey;
 }
+
 .header-cont {
     width:100%;
     position:fixed;
     top:0px;
 }
-.header {
-    height:90px;
+
+#logo {
     background:purple;
     border:1px solid black;
-    width:960px;
+    width: 200px;
+    height: 50px;
     margin:0px auto;
+    text-align: center;
+    vertical-align: middle;
     
 }
+*/
+/*
+Trying to get the the design closer and closer to the picture
+*/
+
+
+.header {
+    width:175px;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    background:purple;
+    position: absolute;
+}
+
+
+#Menu1 {
+   position: absolute;
+   top: 150px;
+   left: 55px;
+   
+   
+}
+
 .content {
-    width:960px;
+    width:85%;
     background: #F0F0F0;
     border: 1px solid #CCC;
     height: 600px;
-    margin: 70px auto;
+    left: 180px;
+    top: 100px;
+    padding: 20px auto;
+    position: relative;
 }
+
+.logout 
+{
+    right: 20%;
+    float: right;
+    top: 1px;
+    width: 300px;
+    height: 100px;
+    background: gray;
+    
+}
+
 

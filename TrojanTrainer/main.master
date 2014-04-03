@@ -17,17 +17,24 @@
 <body>
 <form runat="server">
         <div class="header">
-            <p>Trojan Trainer</p>
-            <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal">            
+            <p id="Logo">Trojan Trainer</p>
+            <asp:Menu ID="Menu1" runat="server" Orientation="Vertical" 
+                StaticSubMenuIndent="16px">            
                 <Items>
                     <asp:MenuItem NavigateUrl="~/LoginHome.aspx" Text="Home" Value="Home"></asp:MenuItem>
                     <asp:MenuItem Text="Logout" Value="Logout"></asp:MenuItem>
                 </Items>
             </asp:Menu>
         </div>
+        <div class="rightside">
+        
+        <div class="logout">
+        </div>
+
         <div class="content">
             <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
+        </div>
         </div>
 </form>
 </body>
