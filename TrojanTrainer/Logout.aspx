@@ -1,13 +1,8 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="Logout.aspx.vb" Inherits="Logout" %>
+﻿<%@ Page Language="VB" MasterPageFile="~/main.master" AutoEventWireup="false" CodeFile="Logout.aspx.vb" Inherits="Logout" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
+<asp:Content ID="LogoutPage" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
     <div align="center">
     
         You have successfully logged out!<br />
@@ -15,6 +10,5 @@
         <asp:Button ID="btnloginpage" runat="server" Text="Login" />
     
     </div>
-    </form>
-</body>
-</html>
+
+</asp:Content>
