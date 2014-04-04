@@ -15,19 +15,16 @@
 <form runat="server">
         <div class="header">
             <p id="Logo">Trojan Trainer</p>
-            <asp:Menu ID="Menu1" runat="server" Orientation="Vertical" 
-                StaticSubMenuIndent="16px">            
-                <Items>
-                    <asp:MenuItem NavigateUrl="~/LoginHome.aspx" Text="Home" Value="Home"></asp:MenuItem>
-                    <asp:MenuItem Text="Logout" Value="Logout"></asp:MenuItem>
-                </Items>
-            </asp:Menu>
+            <asp:Button ID="btnMyHome" runat="server" Text="My Home" CssClass="fancyButton"/><br />
+            <asp:Button ID="btnWorkouts" runat="server" Text="Workouts" CssClass="fancyButton"/><br />
+            <asp:Button ID="btnRoster" runat="server" Text="Roster" CssClass="fancyButton"/><br />
+            <asp:Button ID="btnViewData" runat="server" Text="View Data" CssClass="fancyButton"/><br />
         </div>
 
       
         <div class="logout">
-            <asp:Label ID="CurrentUserTxt" runat="server" Text="Username Placeholder"></asp:Label>
-            <asp:Button ID="logoutButton" runat="server" Text="Logout"/>
+            <asp:Label ID="CurrentUserTxt" runat="server" Text="Username Placeholder"></asp:Label><br />
+            <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="fancyButton"/>            
         </div>
 
         <div class="content">

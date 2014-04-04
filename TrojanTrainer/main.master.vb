@@ -13,7 +13,7 @@ Partial Class main
             'Response.Redirect("Oops.aspx")
 
             CurrentUserTxt.Text = ""
-            logoutButton.Visible = False
+            btnLogout.Visible = False
         Else
             'Greeting name is set to be the username
             CurrentUserTxt.Text = Session("username")
@@ -26,7 +26,7 @@ Partial Class main
 
 
 
-    Protected Sub logoutButton_Click(sender As Object, e As System.EventArgs) Handles logoutButton.Click
+    Protected Sub btnLogout_Click(sender As Object, e As System.EventArgs) Handles btnLogout.Click
         'Executes stored procedure named userinactive
         Using connection As New SqlConnection(connectionString)
             Dim account As String = Session("username")
@@ -42,5 +42,8 @@ Partial Class main
     End Sub
 
 
+    Protected Sub btnLogout_Click1(sender As Object, e As System.EventArgs) Handles btnLogout.Click
+
+    End Sub
 End Class
 
