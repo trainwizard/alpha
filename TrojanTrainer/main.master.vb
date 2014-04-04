@@ -17,6 +17,7 @@ Partial Class main
         Else
             'Greeting name is set to be the username
             CurrentUserTxt.Text = Session("username")
+            btnLogout.Visible = True
         End If
 
 

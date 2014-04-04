@@ -26,19 +26,26 @@ Partial Class SystemsAdminAddAccount
                 msgvalidusername.Visible = True
 
             Else
-                'else user is added and information saved
-                reader.Close()
-                Dim createUser As SqlCommand = New SqlCommand("CreateAccount", connection)
-                createUser.CommandType = CommandType.StoredProcedure
-                createUser.Parameters.Add(New SqlParameter("@username", NewUsername.Text))
-                createUser.Parameters.Add(New SqlParameter("@password", NewPassword.Text))
-                createUser.Parameters.Add(New SqlParameter("@firstname", NewFirstName.Text))
-                createUser.Parameters.Add(New SqlParameter("@lastname", NewLastName.Text))
-                createUser.Parameters.Add(New SqlParameter("@roleid", RoleDropDown.SelectedValue))
-                createUser.ExecuteNonQuery()
-                msgvalidusername.Text = "User has been added."
-                msgvalidusername.ForeColor = Drawing.Color.DarkGreen
-                msgvalidusername.Visible = True
+                If NewFirstName.Text = "" Or NewLastName.Text = "" Or NewPassword.Text = "" Or NewUsername.Text = "" Then
+                    msgvalidusername.Text = "Please complete all fields."
+                    msgvalidusername.ForeColor = Drawing.Color.Red
+                    msgvalidusername.Visible = True
+                Else
+                    'else user is added and information saved
+                    reader.Close()
+                    Dim createUser As SqlCommand = New SqlCommand("CreateAccount", connection)
+                    createUser.CommandType = CommandType.StoredProcedure
+                    createUser.Parameters.Add(New SqlParameter("@username", NewUsername.Text))
+                    createUser.Parameters.Add(New SqlParameter("@password", NewPassword.Text))
+                    createUser.Parameters.Add(New SqlParameter("@firstname", NewFirstName.Text))
+                    createUser.Parameters.Add(New SqlParameter("@lastname", NewLastName.Text))
+                    createUser.Parameters.Add(New SqlParameter("@roleid", RoleDropDown.SelectedValue))
+                    createUser.ExecuteNonQuery()
+                    msgvalidusername.Text = "User has been added."
+                    msgvalidusername.ForeColor = Drawing.Color.DarkGreen
+                    msgvalidusername.Visible = True
+                End If
+                
             End If
         End Using
 
