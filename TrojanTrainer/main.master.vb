@@ -1,5 +1,7 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Data
+Imports System.Diagnostics
+
 
 Partial Class main
     Inherits System.Web.UI.MasterPage
@@ -11,9 +13,17 @@ Partial Class main
         If Session("username") Is Nothing Then
             'Sends non-user back to homepage if they are trying to URL hack
             'Response.Redirect("Oops.aspx")
-
-            CurrentUserTxt.Text = ""
-            btnLogout.Visible = False
+            Dim url As String = Request.RawUrl
+            Debug.Print(url)
+            If url = "/TrojanTrainer/Login.aspx" Or url = "/TrojanTrainer/Oops.aspx" Or url = "/TrojanTrainer/Logout.aspx" Then
+                CurrentUserTxt.Text = ""
+                btnLogout.Visible = False
+            Else
+                Response.Redirect("Oops.aspx")
+                CurrentUserTxt.Text = ""
+                btnLogout.Visible = False
+            End If
+            
         Else
             'Greeting name is set to be the username
             CurrentUserTxt.Text = Session("username")
