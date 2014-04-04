@@ -46,7 +46,7 @@ Partial Class main
     End Sub
 
     Protected Sub btnAccounts_Click(sender As Object, e As System.EventArgs) Handles btnAccounts.Click
-        Response.Redirect("Accounts.aspx")
+        Response.Redirect("SystemsAdminAddAccount.aspx")
     End Sub
 
     Protected Sub btnWorkouts_Click(sender As Object, e As System.EventArgs) Handles btnWorkouts.Click
@@ -66,7 +66,7 @@ Partial Class main
     End Sub
 
     Protected Sub btnSports_Click(sender As Object, e As System.EventArgs) Handles btnSports.Click
-        Response.Redirect("Sports.aspx")
+        Response.Redirect("SystemsAdminCreateSport.aspx")
     End Sub
 End Class
 
