@@ -1,13 +1,8 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="SystemsAdminAddAccount.aspx.vb" Inherits="SystemsAdminAddAccount" %>
+﻿<%@ Page Language="VB" MasterPageFile="~/main.master" AutoEventWireup="false" CodeFile="SystemsAdminAddAccount.aspx.vb" Inherits="SystemsAdminAddAccount" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
+<asp:Content ID="SystemsAdminAddAccountPage" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
     <div>
     
         Create New User.<br />
@@ -58,6 +53,5 @@
         <br />
     
     </div>
-    </form>
-</body>
-</html>
+
+</asp:Content>
