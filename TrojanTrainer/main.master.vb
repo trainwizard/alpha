@@ -41,9 +41,32 @@ Partial Class main
         End Using
     End Sub
 
+    Protected Sub btnMyHome_Click(sender As Object, e As System.EventArgs) Handles btnMyHome.Click
+        Response.Redirect("LoginHome.aspx")
+    End Sub
 
-    Protected Sub btnLogout_Click1(sender As Object, e As System.EventArgs) Handles btnLogout.Click
+    Protected Sub btnAccounts_Click(sender As Object, e As System.EventArgs) Handles btnAccounts.Click
+        Response.Redirect("Accounts.aspx")
+    End Sub
 
+    Protected Sub btnWorkouts_Click(sender As Object, e As System.EventArgs) Handles btnWorkouts.Click
+        Response.Redirect("Workouts.aspx")
+    End Sub
+
+    Protected Sub btnRoster_Click(sender As Object, e As System.EventArgs) Handles btnRoster.Click
+        Response.Redirect("Roster.aspx")
+    End Sub
+
+    Protected Sub btnViewData_Click(sender As Object, e As System.EventArgs) Handles btnViewData.Click
+        Response.Redirect("ViewData.aspx")
+    End Sub
+
+    Protected Sub btnInjury_Click(sender As Object, e As System.EventArgs) Handles btnInjury.Click
+        Response.Redirect("Injury.aspx")
+    End Sub
+
+    Protected Sub btnSports_Click(sender As Object, e As System.EventArgs) Handles btnSports.Click
+        Response.Redirect("Sports.aspx")
     End Sub
 End Class
 
