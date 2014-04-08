@@ -26,6 +26,7 @@ Public Class Login
 
             If reader.HasRows() Then
                 reader.Close()
+                reader = Nothing
                 'uses stored procedure called UserActive to set Active to be equal to 1
                 Dim sessionUpdate As SqlCommand = New SqlCommand("UserActive", connection)
                 sessionUpdate.CommandType = CommandType.StoredProcedure
@@ -40,11 +41,36 @@ Public Class Login
                     Session.Timeout() = 20160
                     Debug.Print(Session.Timeout())
                 End If
-                'redirect to home page
-                Response.Redirect("LoginHome.aspx")
+
+                'find user role
+                Dim findRole As SqlCommand = New SqlCommand("GetUserRole", connection)
+                findRole.CommandType = CommandType.StoredProcedure
+                findRole.Parameters.Add(New SqlParameter("@User_ID", account))
+                Dim reader2 As SqlDataReader = findRole.ExecuteReader()
+                Dim values As New ArrayList()
+                While reader2.Read()
+                    Dim role As New String(Str(reader2("Role_ID")))
+                    values.Add(role)
+                End While
+
+                'Debug.Print(values.Item(0))
+                'redirect to correct home page
+                If values.Item(0) = 5 Then
+                    Response.Redirect("LoginHome.aspx")
+                ElseIf values.Item(0) = 4 Then
+                    Response.Redirect("AthleteHome.aspx")
+                ElseIf values.Item(0) = 3 Then
+                    Response.Redirect("AthleticTrainerHome.aspx")
+                ElseIf values.Item(0) = 2 Then
+                    Response.Redirect("CoachHome.aspx")
+                ElseIf values.Item(0) = 1 Then
+                    Response.Redirect("LoginHome.aspx")
+                End If
+
             Else
                 msginvalidlogin.Visible = True
             End If
+            connection.Close()
         End Using
 
     End Sub

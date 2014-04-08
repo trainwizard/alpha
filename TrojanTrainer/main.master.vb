@@ -28,9 +28,21 @@ Partial Class main
             'Greeting name is set to be the username
             CurrentUserTxt.Text = Session("username")
             btnLogout.Visible = True
+            Using connection As New SqlConnection(connectionString)
+                connection.Open()
+                'find user role
+                Dim findRole As SqlCommand = New SqlCommand("GetUserRole", connection)
+                findRole.CommandType = CommandType.StoredProcedure
+                findRole.Parameters.Add(New SqlParameter("@User_ID", Session("username")))
+                Dim reader2 As SqlDataReader = findRole.ExecuteReader()
+                Dim values As New ArrayList()
+                While reader2.Read()
+                    Dim role As New String(Str(reader2("Role_ID")))
+                    values.Add(role)
+                End While
+                Dim UserRoleNum As String = values.Item(0)
+            End Using
         End If
-
-
 
 
     End Sub
