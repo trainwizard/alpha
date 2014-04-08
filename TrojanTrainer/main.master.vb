@@ -47,7 +47,8 @@ Partial Class main
 
                 ElseIf UserRoleNum = 4 Then
                     'athlete
-
+                    btnAccounts.Visible = False
+                    btnSports.Visible = False
                 ElseIf UserRoleNum = 3 Then
                     'athletic trainer
 
