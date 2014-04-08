@@ -15,13 +15,13 @@
 <form runat="server">
         <div class="header">
             <p id="Logo">Trojan Trainer</p>
-            <asp:Button ID="btnMyHome" runat="server" Text="My Home" CssClass="fancyButton"/><br />
-            <asp:Button ID="btnAccounts" runat="server" Text="Accounts" CssClass="fancyButton"/><br />
-            <asp:Button ID="btnWorkouts" runat="server" Text="Workouts" CssClass="fancyButton"/><br />
-            <asp:Button ID="btnRoster" runat="server" Text="Roster" CssClass="fancyButton"/><br />
-            <asp:Button ID="btnViewData" runat="server" Text="View Data" CssClass="fancyButton"/><br />
-            <asp:Button ID="btnInjury" runat="server" Text="Injury" CssClass="fancyButton"/><br />
-            <asp:Button ID="btnSports" runat="server" Text="Sports" CssClass="fancyButton"/><br />
+            <asp:Button ID="btnMyHome" runat="server" Text="My Home" CssClass="fancyButton"/>
+            <asp:Button ID="btnAccounts" runat="server" Text="Accounts" CssClass="fancyButton"/>
+            <asp:Button ID="btnWorkouts" runat="server" Text="Workouts" CssClass="fancyButton"/>
+            <asp:Button ID="btnRoster" runat="server" Text="Roster" CssClass="fancyButton"/>
+            <asp:Button ID="btnViewData" runat="server" Text="View Data" CssClass="fancyButton"/>
+            <asp:Button ID="btnInjury" runat="server" Text="Injury" CssClass="fancyButton"/>
+            <asp:Button ID="btnSports" runat="server" Text="Sports" CssClass="fancyButton"/>
             <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="fancyButton"/>            
         </div>
 
