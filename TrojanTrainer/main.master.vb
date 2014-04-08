@@ -41,6 +41,23 @@ Partial Class main
                     values.Add(role)
                 End While
                 Dim UserRoleNum As String = values.Item(0)
+                'Removes buttons based on the user
+                If UserRoleNum = 5 Then
+                    'any user
+
+                ElseIf UserRoleNum = 4 Then
+                    'athlete
+
+                ElseIf UserRoleNum = 3 Then
+                    'athletic trainer
+
+                ElseIf UserRoleNum = 2 Then
+                    'coach
+
+                ElseIf UserRoleNum = 1 Then
+                    'systems admin
+
+                End If
             End Using
         End If
 
