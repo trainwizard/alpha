@@ -10,11 +10,11 @@ Partial Class main
 
 
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
+        'No current user
         If Session("username") Is Nothing Then
             'Sends non-user back to homepage if they are trying to URL hack
             'Response.Redirect("Oops.aspx")
             Dim url As String = Request.RawUrl
-            Debug.Print(url)
             If url = "/TrojanTrainer/Login.aspx" Or url = "/TrojanTrainer/Oops.aspx" Or url = "/TrojanTrainer/Logout.aspx" Then
                 CurrentUserTxt.Text = ""
                 btnLogout.Visible = False
@@ -23,43 +23,56 @@ Partial Class main
                 CurrentUserTxt.Text = ""
                 btnLogout.Visible = False
             End If
-            
+            'Makes buttons not visible is user is not logged in
+            btnAccounts.Visible = False
+            btnRoster.Visible = False
+            btnInjury.Visible = False
+            btnSports.Visible = False
+            btnMyHome.Visible = False
+            btnWorkouts.Visible = False
+            btnViewData.Visible = False
+            'valid current user
         Else
             'Greeting name is set to be the username
-            CurrentUserTxt.Text = Session("username")
+            CurrentUserTxt.Text = "Welcome, " + Session("username") + "."
             btnLogout.Visible = True
-            Using connection As New SqlConnection(connectionString)
-                connection.Open()
-                'find user role
-                Dim findRole As SqlCommand = New SqlCommand("GetUserRole", connection)
-                findRole.CommandType = CommandType.StoredProcedure
-                findRole.Parameters.Add(New SqlParameter("@User_ID", Session("username")))
-                Dim reader2 As SqlDataReader = findRole.ExecuteReader()
-                Dim values As New ArrayList()
-                While reader2.Read()
-                    Dim role As New String(Str(reader2("Role_ID")))
-                    values.Add(role)
-                End While
-                Dim UserRoleNum As String = values.Item(0)
-                'Removes buttons based on the user
-                If UserRoleNum = 5 Then
-                    'any user
 
-                ElseIf UserRoleNum = 4 Then
-                    'athlete
-                    btnAccounts.Visible = False
-                    btnSports.Visible = False
-                ElseIf UserRoleNum = 3 Then
-                    'athletic trainer
+            'Removes buttons based on the user
+            Debug.Print(Session.Item("Role"))
+            If Session.Item("Role") = 5 Then
+                'any user
+                'accounts
+                'workouts
+                'roster
+                'view data
+                'injury
+                'sports
+                'add removal here
 
-                ElseIf UserRoleNum = 2 Then
-                    'coach
+            ElseIf Session.Item("Role") = 4 Then
+                'athlete
+                btnAccounts.Visible = False
+                btnRoster.Visible = False
+                btnInjury.Visible = False
+                btnSports.Visible = False
 
-                ElseIf UserRoleNum = 1 Then
-                    'systems admin
+            ElseIf Session.Item("Role") = 3 Then
+                'athletic trainer
+                btnAccounts.Visible = False
+                btnViewData.Visible = False
+                btnSports.Visible = False
 
-                End If
-            End Using
+            ElseIf Session.Item("Role") = 2 Then
+                'coach
+                btnAccounts.Visible = False
+                btnSports.Text = "Teams"
+
+            ElseIf Session.Item("Role") = 1 Then
+                'systems admin
+                btnViewData.Visible = False
+
+            End If
+
         End If
 
 

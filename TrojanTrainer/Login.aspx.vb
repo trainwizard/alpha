@@ -2,13 +2,15 @@
 Imports System.Data.SqlClient
 Imports System.Diagnostics
 
+
+
 Public Class Login
     Inherits System.Web.UI.Page
     Dim connectionString As String = "Data Source=SIMON;Initial Catalog=AlphaSYS39414;Persist Security Info=True;User ID=sbolds;Password=ttpfrzeh"
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-
     End Sub
+
 
     Protected Sub btnlogin_Click(sender As Object, e As EventArgs) Handles btnlogin.Click
         Using connection As New SqlConnection(connectionString)
@@ -52,21 +54,21 @@ Public Class Login
                     Dim role As New String(Str(reader2("Role_ID")))
                     values.Add(role)
                 End While
+                'CREATES SESSION ROLE
+                Session.Item("Role") = Str(values.Item(0))
 
-                'Debug.Print(values.Item(0))
                 'redirect to correct home page
-                If values.Item(0) = 5 Then
+                If Session.Item("Role") = 5 Then
                     Response.Redirect("LoginHome.aspx")
-                ElseIf values.Item(0) = 4 Then
+                ElseIf Session.Item("Role") = 4 Then
                     Response.Redirect("AthleteHome.aspx")
-                ElseIf values.Item(0) = 3 Then
+                ElseIf Session.Item("Role") = 3 Then
                     Response.Redirect("AthleticTrainerHome.aspx")
-                ElseIf values.Item(0) = 2 Then
+                ElseIf Session.Item("Role") = 2 Then
                     Response.Redirect("CoachHome.aspx")
-                ElseIf values.Item(0) = 1 Then
+                ElseIf Session.Item("Role") = 1 Then
                     Response.Redirect("LoginHome.aspx")
                 End If
-
             Else
                 msginvalidlogin.Visible = True
             End If
@@ -75,4 +77,9 @@ Public Class Login
 
     End Sub
 
+
+
+
 End Class
+
+

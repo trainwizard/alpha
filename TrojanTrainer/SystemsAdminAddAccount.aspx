@@ -7,35 +7,44 @@
     
         Create New User.<br />
         <br />
-        Username:
+        Username:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="NewUsername" runat="server"></asp:TextBox>
 &nbsp;
-        <%--<asp:RequiredFieldValidator ID="usernamevalidator" runat="server" 
-            ControlToValidate="NewUsername" ErrorMessage="Username Required"></asp:RequiredFieldValidator>--%>
+        <%-- <asp:RequiredFieldValidator ID="lastnamevalidator" runat="server" 
+            ControlToValidate="NewLastName" ErrorMessage="Last Name Required"></asp:RequiredFieldValidator>--%>
         <br />
         <br />
-        Password:
-        <asp:TextBox ID="NewPassword" runat="server"></asp:TextBox>
+        Password:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:TextBox ID="NewPassword" TextMode="password" runat="server"></asp:TextBox>
 &nbsp;
         <%--<asp:RequiredFieldValidator ID="passwordvalidator" runat="server" 
             ControlToValidate="NewPassword" ErrorMessage="Password Required"></asp:RequiredFieldValidator>--%>
         <br />
         <br />
-        First Name:
+        Confirm
+        Password:&nbsp;
+        <asp:TextBox ID="NewPassword2" TextMode="password" runat="server"></asp:TextBox>
+&nbsp;
+        <%--<asp:RequiredFieldValidator ID="passwordvalidator" runat="server" 
+            ControlToValidate="NewPassword" ErrorMessage="Password Required"></asp:RequiredFieldValidator>--%>
+        <br />
+        <br />
+        First Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
         <asp:TextBox ID="NewFirstName" runat="server"></asp:TextBox>
 &nbsp;
        <%-- <asp:RequiredFieldValidator ID="firstnamevalidator" runat="server" 
             ControlToValidate="NewFirstName" ErrorMessage="First Name Required"></asp:RequiredFieldValidator>--%>
         <br />
         <br />
-        Last Name:
+        Last Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="NewLastName" runat="server"></asp:TextBox>
 &nbsp;
        <%-- <asp:RequiredFieldValidator ID="lastnamevalidator" runat="server" 
             ControlToValidate="NewLastName" ErrorMessage="Last Name Required"></asp:RequiredFieldValidator>--%>
         <br />
         <br />
-        Role:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        Role:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        &nbsp;
         <asp:DropDownList ID="RoleDropDown" runat="server">
             <asp:ListItem Value="5">Any User</asp:ListItem>
             <asp:ListItem Selected="True" Value="4">Athlete</asp:ListItem>

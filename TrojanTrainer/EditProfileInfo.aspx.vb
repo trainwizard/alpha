@@ -1,6 +1,7 @@
 ﻿
 Partial Class EditProfileInfo
     Inherits System.Web.UI.Page
+    Dim connectionString As String = "Data Source=SIMON;Initial Catalog=AlphaSYS39414;Persist Security Info=True;User ID=sbolds;Password=ttpfrzeh"
 
     Protected Sub btnSubmitPassword_Click(sender As Object, e As System.EventArgs) Handles btnSubmitPassword.Click
         Using connection As New SqlConnection(connectionString)

@@ -6,7 +6,9 @@ Partial Class SystemsAdminAddAccount
     Dim connectionString As String = "Data Source=SIMON;Initial Catalog=AlphaSYS39414;Persist Security Info=True;User ID=sbolds;Password=ttpfrzeh"
 
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
-
+        If Session.Item("Role") > 1 Then
+            Response.Redirect("Permissions.aspx")
+        End If
     End Sub
 
     Protected Sub btncreateuser_Click(sender As Object, e As System.EventArgs) Handles btncreateuser.Click
@@ -26,8 +28,12 @@ Partial Class SystemsAdminAddAccount
                 msgvalidusername.Visible = True
 
             Else
-                If NewFirstName.Text = "" Or NewLastName.Text = "" Or NewPassword.Text = "" Or NewUsername.Text = "" Then
+                If NewFirstName.Text = "" Or NewLastName.Text = "" Or NewPassword.Text = "" Or NewUsername.Text = "" Or NewPassword2.Text = "" Then
                     msgvalidusername.Text = "Please complete all fields."
+                    msgvalidusername.ForeColor = Drawing.Color.Red
+                    msgvalidusername.Visible = True
+                ElseIf NewPassword.Text IsNot NewPassword2.Text Then
+                    msgvalidusername.Text = "Passwords do not match."
                     msgvalidusername.ForeColor = Drawing.Color.Red
                     msgvalidusername.Visible = True
                 Else
@@ -37,13 +43,12 @@ Partial Class SystemsAdminAddAccount
                     createUser.CommandType = CommandType.StoredProcedure
                     createUser.Parameters.Add(New SqlParameter("@username", NewUsername.Text))
                     createUser.Parameters.Add(New SqlParameter("@password", NewPassword.Text))
+
                     createUser.Parameters.Add(New SqlParameter("@firstname", NewFirstName.Text))
                     createUser.Parameters.Add(New SqlParameter("@lastname", NewLastName.Text))
                     createUser.Parameters.Add(New SqlParameter("@roleid", RoleDropDown.SelectedValue))
                     createUser.ExecuteNonQuery()
-                    msgvalidusername.Text = "User has been added."
-                    msgvalidusername.ForeColor = Drawing.Color.DarkGreen
-                    msgvalidusername.Visible = True
+                    Response.Redirect("SystemsAdminAddAccount.aspx")
                 End If
                 
             End If
