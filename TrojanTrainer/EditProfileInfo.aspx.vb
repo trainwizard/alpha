@@ -1,4 +1,7 @@
-﻿
+﻿Imports System.Data
+Imports System.Data.SqlClient
+Imports System.Diagnostics
+
 Partial Class EditProfileInfo
     Inherits System.Web.UI.Page
     Dim connectionString As String = "Data Source=SIMON;Initial Catalog=AlphaSYS39414;Persist Security Info=True;User ID=sbolds;Password=ttpfrzeh"
@@ -13,7 +16,7 @@ Partial Class EditProfileInfo
             Dim reader As SqlDataReader
 
             cmd.CommandType = CommandType.StoredProcedure
-            cmd.Parameters.Add(New SqlParameter("@newPassword"))
+            'cmd.Parameters.Add(New SqlParameter("@newPassword"))
 
             reader = cmd.ExecuteReader()
 
