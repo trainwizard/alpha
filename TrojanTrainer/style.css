@@ -11,8 +11,7 @@
 
 
 
-.content {
-    
+.content {    
     background: #F0F0F0;
     border: 1px solid #CCC;
     height: 600px;
@@ -21,7 +20,6 @@
     top: 100px;
     padding: 20px auto;
     position: relative;
-
 }
 
 .logout{
@@ -30,15 +28,18 @@
     top: 1px;
     width: 200px;
     height: 90px;
-    background: #F0F0F0;
-    
+    background: #F0F0F0;    
 }
 
 
-
+/*objects go below HERE*/
 #Logo{font-weight:bold;color:#000000;font-size:24px;text-align:left;font-family:helvetica, sans-serif; text-align: center;}
+#imgProfilePicture{align: center;}
 
 
+
+
+/*buttons go below here */
 .fancyButton {
 	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
