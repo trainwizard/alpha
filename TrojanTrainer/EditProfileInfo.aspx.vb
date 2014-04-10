@@ -10,13 +10,13 @@ Partial Class EditProfileInfo
         Using connection As New SqlConnection(connectionString)
             'retrieves text from textboxes
             Dim newPassword As String = txtNewPassword.Text
-
+            'finds the user whose logged in
+            Dim User_ID As String = Session("username")
             connection.Open()
             Dim cmd As SqlCommand = New SqlCommand("ChangePassword", connection)
             Dim reader As SqlDataReader
-
             cmd.CommandType = CommandType.StoredProcedure
-            'cmd.Parameters.Add(New SqlParameter("@newPassword"))
+            cmd.Parameters.Add(New SqlParameter("@User_ID", "@newPassword"))
 
             reader = cmd.ExecuteReader()
 
