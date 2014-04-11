@@ -1,4 +1,17 @@
-﻿
+﻿/*
+#bg {
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+	
+
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -10;
+}
+*/
+
+
 .header {
     width:175px;
     height: 700px;
@@ -7,6 +20,7 @@
     background:#512D44;
     position: absolute;
     text-align: center;
+
 }
 
 
@@ -32,7 +46,7 @@
 
 
 /*objects go below HERE*/
-#Logo{font-weight:bold;color:#000000;font-size:24px;text-align:left;font-family:helvetica, sans-serif; text-align: center;}
+#Logo{font-weight:bold;color:white;font-size:24px;text-align:left;font-family:helvetica, sans-serif; text-align: center;}
 #imgProfilePicture{align: center;}
 
 
