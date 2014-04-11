@@ -57,15 +57,15 @@
         <br />
         <br />
         <asp:Button ID="btncreateuser" runat="server" Text="Create User" />
-        <br />
-        <br />
+        &nbsp;&nbsp;&nbsp;
         <asp:Label ID="msgvalidusername" runat="server" ForeColor="Red" Text="default" 
             Visible="False"></asp:Label>
         <br />
         <br />
         <asp:GridView ID="GridView1" runat="server" AllowSorting="True" 
             AutoGenerateColumns="False" DataKeyNames="User_ID" 
-            DataSourceID="SqlDataSource1">
+            DataSourceID="SqlDataSource1" AllowPaging="True" Height="113px" 
+            Width="264px">
             <Columns>
                 <asp:BoundField DataField="First_Name" HeaderText="First Name" 
                     SortExpression="First_Name" />

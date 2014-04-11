@@ -14,7 +14,7 @@
         <br />
         <asp:GridView ID="GridView2" runat="server" AllowSorting="True" 
             AutoGenerateColumns="False" DataKeyNames="Sport_ID" 
-            DataSourceID="SqlDataSource1">
+            DataSourceID="SqlDataSource1" AllowPaging="True">
             <Columns>
                 <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
             </Columns>
@@ -23,9 +23,6 @@
             ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
             SelectCommand="SELECT [Sport_ID], [Name], [Active] FROM [Sport] WHERE Active = 1">
         </asp:SqlDataSource>
-        <br />
-        <br />
-        <br />
         <br />
         Select a Sport:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:DropDownList ID="ddlSportID" runat="server" DataSourceID="SqlDataSource1" 
@@ -42,7 +39,7 @@
         <br />
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
             DataKeyNames="Team_ID,Sport_ID1" DataSourceID="SqlDataSource2" 
-            AllowSorting="True">
+            AllowSorting="True" AllowPaging="True">
             <Columns>
                 <asp:BoundField DataField="Name" HeaderText="Team" SortExpression="Name" />
                 <asp:BoundField DataField="Name1" HeaderText="Sport" SortExpression="Name1" />
