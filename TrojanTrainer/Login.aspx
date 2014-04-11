@@ -3,6 +3,7 @@
 
 <asp:Content ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+<%--  <img src="images/backgroundSRS.png" id="bg" alt="">--%>
 
     <div>
     
@@ -31,6 +32,7 @@
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
         ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
         SelectCommand="SELECT * FROM [User]"></asp:SqlDataSource>
+
 </asp:Content>
 
 
