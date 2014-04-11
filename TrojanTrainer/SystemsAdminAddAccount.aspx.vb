@@ -18,7 +18,6 @@ Partial Class SystemsAdminAddAccount
     End Sub
 
     Private Sub ShowPasswordButton_CheckedChanged(sender As Object, e As EventArgs) Handles ShowPasswordButton.CheckedChanged
-        Debug.Print("dumb")
         If ShowPasswordButton.Checked Then
             NewPassword.TextMode = TextBoxMode.SingleLine
         Else
