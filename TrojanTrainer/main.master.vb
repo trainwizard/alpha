@@ -136,7 +136,6 @@ Partial Class main
     End Sub
 
     Protected Sub btnWorkouts_Click(sender As Object, e As System.EventArgs) Handles btnWorkouts.Click
-        Response.Redirect("Workouts.aspx")
         If Session.Item("Role") = 5 Then
             'any user
 
@@ -146,37 +145,34 @@ Partial Class main
 
         ElseIf Session.Item("Role") = 3 Then
             'athletic trainer
-
+            Response.Redirect("Workouts.aspx")
 
         ElseIf Session.Item("Role") = 2 Then
             'coach
-
+            Response.Redirect("Workouts.aspx")
 
         ElseIf Session.Item("Role") = 1 Then
             'systems admin
+            Response.Redirect("Workouts.aspx")
 
         End If
     End Sub
 
     Protected Sub btnRoster_Click(sender As Object, e As System.EventArgs) Handles btnRoster.Click
         Response.Redirect("Roster.aspx")
-        If Session.Item("Role") = 5 Then
-            'any user
-
-        ElseIf Session.Item("Role") = 4 Then
-            'athlete
-
-
-        ElseIf Session.Item("Role") = 3 Then
+        'any user - hidden
+        'athlete - hidden
+        If Session.Item("Role") = 3 Then
             'athletic trainer
-
+            Response.Redirect("Roster.aspx")
 
         ElseIf Session.Item("Role") = 2 Then
             'coach
-
+            Response.Redirect("Roster.aspx")
 
         ElseIf Session.Item("Role") = 1 Then
             'systems admin
+            Response.Redirect("Roster.aspx")
 
         End If
     End Sub
@@ -246,7 +242,7 @@ Partial Class main
 
         ElseIf Session.Item("Role") = 1 Then
             'systems admin
-
+            Response.Redirect("SystemsAdminCreateSport.aspx")
         End If
     End Sub
 End Class

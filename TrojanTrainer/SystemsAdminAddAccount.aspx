@@ -20,7 +20,8 @@
         <%-- <asp:RequiredFieldValidator ID="lastnamevalidator" runat="server" 
             ControlToValidate="NewLastName" ErrorMessage="Last Name Required"></asp:RequiredFieldValidator>--%>
         &nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:CheckBox ID="ShowPasswordButton" runat="server" Text="Show Password" />
+        <asp:CheckBox ID="ShowPasswordButton" runat="server" AutoPostBack="True" 
+            Text="Show Password" />
         <br />
         <br />
         First Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
