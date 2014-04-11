@@ -3,7 +3,7 @@
 
 <asp:Content ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-<%--  <img src="images/backgroundSRS.png" id="bg" alt="">--%>
+    <%--  <img src="images/backgroundSRS.png" id="bg" alt="">--%>
 
     <div>
     
