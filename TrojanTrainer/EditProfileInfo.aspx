@@ -15,9 +15,19 @@
         &nbsp;</p>
     <p>
         
-        <asp:Label ID="lblDialogChangePassword" runat="server" Text="Change your password:"></asp:Label><br />
-        <asp:TextBox ID="txtNewPassword" runat="server"></asp:TextBox><br />    
+        <asp:Label ID="lblDialogChangePassword" runat="server" Text="Change your password:"></asp:Label><br /><br /> 
+        <asp:Label ID="Label1" runat="server" Text="New Password."></asp:Label>
+        <asp:TextBox ID="txtNewPassword" TextMode="password" runat="server"></asp:TextBox>
+        <asp:Label ID="lblAngryPassword" runat="server" Visible="False"></asp:Label><br /> <br /> 
+        <asp:Label ID="Label2" runat="server" Text="Confirm Password:"></asp:Label>  
+        <asp:TextBox ID="txtConfirmPassword" TextMode="password" runat="server"></asp:TextBox>
+        <br /> <br /> 
         <asp:Button ID="btnSubmitPassword" runat="server" Text="Change Password" />
+    </p>
+    <p>
+        
+        <asp:Label ID="lblPasswordSuc" runat="server" 
+            Text="Password Successfully Changed!" Visible="False"></asp:Label>
     </p>
 </asp:Content>
 
