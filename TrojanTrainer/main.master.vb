@@ -245,5 +245,9 @@ Partial Class main
             Response.Redirect("SystemsAdminCreateSport.aspx")
         End If
     End Sub
+
+    Protected Sub ImageButton1_Click(sender As Object, e As System.Web.UI.ImageClickEventArgs) Handles ImageButton1.Click
+        Response.Redirect("EditProfileInfo.aspx")
+    End Sub
 End Class
 
