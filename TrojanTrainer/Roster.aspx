@@ -11,7 +11,9 @@
     <p>
     
         <asp:DropDownList ID="ddlSports" runat="server" AutoPostBack="True"
-            DataSourceID="SqlDataSource1" DataTextField="Name" DataValueField="Sport_ID">
+            DataSourceID="SqlDataSource1" DataTextField="Name" 
+            DataValueField="Sport_ID" Height="21px">
+            <asp:ListItem Selected="True">Choose a Sport</asp:ListItem>
         </asp:DropDownList>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
             ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
@@ -26,14 +28,15 @@
     
         <asp:DropDownList ID="ddlTeams" runat="server" 
             DataSourceID="SqlDataSource2" Enabled="False" DataTextField="Name" 
-            DataValueField="Team_ID">
+            DataValueField="Team_ID" AutoPostBack="True">
+            <asp:ListItem Selected="True">Choose a Team</asp:ListItem>
         </asp:DropDownList>
     
         <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
             ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
             SelectCommand="GetSportTeams" SelectCommandType="StoredProcedure">
             <SelectParameters>
-                <asp:ControlParameter ControlID="ddlSports" DefaultValue="" Name="Sport_ID" 
+                <asp:ControlParameter ControlID="ddlSports" DefaultValue="-----" Name="Sport_ID" 
                     PropertyName="SelectedValue" Type="Int32" />
             </SelectParameters>
         </asp:SqlDataSource>
@@ -41,13 +44,14 @@
     </p>
     <p>
     
-        or
+       <%-- or
         <asp:Button ID="btnShowAll" runat="server" Text="Show All" />
-    
+    --%>
+        <asp:Button ID="btnSubmit" runat="server" Text="Get Roster" />
     </p>
     <p>
     
-        <asp:GridView ID="gvSportRoster" runat="server" AutoGenerateColumns="False" 
+<%--        <asp:GridView ID="gvSportRoster" runat="server" AutoGenerateColumns="False" 
             DataSourceID="SqlDataSource3" AllowSorting="True" Enabled="False">
             <Columns>
                 <asp:BoundField DataField="First_Name" HeaderText="First_Name" 
@@ -56,31 +60,30 @@
                     SortExpression="Last_Name" />
                 <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
             </Columns>
-        </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
+        </asp:GridView>--%>
+<%--        <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
             ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
             SelectCommand="GetSportRoster" SelectCommandType="StoredProcedure">
             <SelectParameters>
                 <asp:ControlParameter ControlID="ddlSports" Name="Sport_ID" 
                     PropertyName="SelectedValue" Type="String" />
             </SelectParameters>
-        </asp:SqlDataSource>
-        <asp:GridView ID="gvTeamRoster" runat="server" AutoGenerateColumns="False" 
-            DataSourceID="SqlDataSource4" Enabled="False">
+        </asp:SqlDataSource>--%>
+        <asp:GridView ID="gvRoster" runat="server" AutoGenerateColumns="False" 
+            DataSourceID="SqlDataSource4" Enabled="False" AllowPaging="True" 
+            AllowSorting="True">
             <Columns>
-                <asp:BoundField DataField="First_Name" HeaderText="First_Name" 
+                <asp:BoundField DataField="First_Name" HeaderText="First Name" 
                     SortExpression="First_Name" />
-                <asp:BoundField DataField="Last_Name" HeaderText="Last_Name" 
+                <asp:BoundField DataField="Last_Name" HeaderText="Last Name" 
                     SortExpression="Last_Name" />
-                <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
+                <asp:BoundField DataField="Name" HeaderText="Team" SortExpression="Name" />
             </Columns>
         </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSource4" runat="server" 
             ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
             SelectCommand="GetTeamRosterNew" SelectCommandType="StoredProcedure">
             <SelectParameters>
-                <asp:ControlParameter ControlID="ddlSports" Name="Sport_ID" 
-                    PropertyName="SelectedValue" Type="String" />
                 <asp:ControlParameter ControlID="ddlTeams" Name="Team_ID" 
                     PropertyName="SelectedValue" Type="String" />
             </SelectParameters>
