@@ -41,7 +41,6 @@ Public Class Login
                 Debug.Print(Session("username"))
                 If ckbloggedin.Checked = True Then
                     Session.Timeout() = 20160
-                    Debug.Print(Session.Timeout())
                 End If
 
                 'find user role

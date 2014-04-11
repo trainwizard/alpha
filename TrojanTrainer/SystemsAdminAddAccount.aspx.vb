@@ -1,5 +1,9 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Data
+Imports System.Char
+Imports System.Diagnostics
+
+
 
 Partial Class SystemsAdminAddAccount
     Inherits System.Web.UI.Page
@@ -9,7 +13,19 @@ Partial Class SystemsAdminAddAccount
         If Session.Item("Role") > 1 Then
             Response.Redirect("Permissions.aspx")
         End If
+        'Makes password text hidden by default
+        NewPassword.TextMode = TextBoxMode.Password
     End Sub
+
+    Private Sub ShowPasswordButton_CheckedChanged(sender As Object, e As EventArgs) Handles ShowPasswordButton.CheckedChanged
+        Debug.Print("dumb")
+        If ShowPasswordButton.Checked Then
+            NewPassword.TextMode = TextBoxMode.SingleLine
+        Else
+            NewPassword.TextMode = TextBoxMode.Password
+        End If
+    End Sub
+
 
     Protected Sub btncreateuser_Click(sender As Object, e As System.EventArgs) Handles btncreateuser.Click
         Using connection As New SqlConnection(connectionString)
@@ -28,14 +44,14 @@ Partial Class SystemsAdminAddAccount
                 msgvalidusername.Visible = True
 
             Else
-                If NewFirstName.Text = "" Or NewLastName.Text = "" Or NewPassword.Text = "" Or NewUsername.Text = "" Or NewPassword2.Text = "" Then
+                If NewFirstName.Text = "" Or NewLastName.Text = "" Or NewPassword.Text = "" Or NewUsername.Text = "" Or NewEmail.Text = "" Then
                     msgvalidusername.Text = "Please complete all fields."
                     msgvalidusername.ForeColor = Drawing.Color.Red
                     msgvalidusername.Visible = True
-                ElseIf NewPassword.Text IsNot NewPassword2.Text Then
-                    msgvalidusername.Text = "Passwords do not match."
-                    msgvalidusername.ForeColor = Drawing.Color.Red
-                    msgvalidusername.Visible = True
+                    'ElseIf NewPassword.Text IsNot NewPassword2.Text Then
+                    'msgvalidusername.Text = "Passwords do not match."
+                    'msgvalidusername.ForeColor = Drawing.Color.Red
+                    'msgvalidusername.Visible = True
                 Else
                     'else user is added and information saved
                     reader.Close()
@@ -46,13 +62,18 @@ Partial Class SystemsAdminAddAccount
 
                     createUser.Parameters.Add(New SqlParameter("@firstname", NewFirstName.Text))
                     createUser.Parameters.Add(New SqlParameter("@lastname", NewLastName.Text))
+                    createUser.Parameters.Add(New SqlParameter("@email", NewEmail.Text))
                     createUser.Parameters.Add(New SqlParameter("@roleid", RoleDropDown.SelectedValue))
                     createUser.ExecuteNonQuery()
                     Response.Redirect("SystemsAdminAddAccount.aspx")
                 End If
-                
+
             End If
         End Using
 
     End Sub
+
+
+
+    
 End Class

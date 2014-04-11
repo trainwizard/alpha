@@ -95,32 +95,159 @@ Partial Class main
         End Using
     End Sub
 
+
+
+    'Home button click
     Protected Sub btnMyHome_Click(sender As Object, e As System.EventArgs) Handles btnMyHome.Click
         Response.Redirect("LoginHome.aspx")
+        If Session.Item("Role") = 5 Then
+            'any user
+            Response.Redirect("LoginHome.aspx")
+        ElseIf Session.Item("Role") = 4 Then
+            'athlete
+            Response.Redirect("AthleteHome.aspx")
+
+        ElseIf Session.Item("Role") = 3 Then
+            'athletic trainer
+            Response.Redirect("AthleticTrainerHome.aspx")
+
+        ElseIf Session.Item("Role") = 2 Then
+            'coach
+            Response.Redirect("CoachHome.aspx")
+
+        ElseIf Session.Item("Role") = 1 Then
+            'systems admin
+            Response.Redirect("LoginHome.aspx")
+        End If
     End Sub
 
+
+
+
+    'Accounts button click
     Protected Sub btnAccounts_Click(sender As Object, e As System.EventArgs) Handles btnAccounts.Click
-        Response.Redirect("SystemsAdminAddAccount.aspx")
+        'any user - hidden
+        'athlete  - hidden
+        'coach - hidden
+        If Session.Item("Role") = 1 Then
+            'systems admin
+            Response.Redirect("SystemsAdminAddAccount.aspx")
+        End If
     End Sub
 
     Protected Sub btnWorkouts_Click(sender As Object, e As System.EventArgs) Handles btnWorkouts.Click
         Response.Redirect("Workouts.aspx")
+        If Session.Item("Role") = 5 Then
+            'any user
+
+        ElseIf Session.Item("Role") = 4 Then
+            'athlete
+
+
+        ElseIf Session.Item("Role") = 3 Then
+            'athletic trainer
+
+
+        ElseIf Session.Item("Role") = 2 Then
+            'coach
+
+
+        ElseIf Session.Item("Role") = 1 Then
+            'systems admin
+
+        End If
     End Sub
 
     Protected Sub btnRoster_Click(sender As Object, e As System.EventArgs) Handles btnRoster.Click
         Response.Redirect("Roster.aspx")
+        If Session.Item("Role") = 5 Then
+            'any user
+
+        ElseIf Session.Item("Role") = 4 Then
+            'athlete
+
+
+        ElseIf Session.Item("Role") = 3 Then
+            'athletic trainer
+
+
+        ElseIf Session.Item("Role") = 2 Then
+            'coach
+
+
+        ElseIf Session.Item("Role") = 1 Then
+            'systems admin
+
+        End If
     End Sub
 
     Protected Sub btnViewData_Click(sender As Object, e As System.EventArgs) Handles btnViewData.Click
         Response.Redirect("ViewData.aspx")
+        If Session.Item("Role") = 5 Then
+            'any user
+
+        ElseIf Session.Item("Role") = 4 Then
+            'athlete
+
+
+        ElseIf Session.Item("Role") = 3 Then
+            'athletic trainer
+
+
+        ElseIf Session.Item("Role") = 2 Then
+            'coach
+
+
+        ElseIf Session.Item("Role") = 1 Then
+            'systems admin
+
+        End If
     End Sub
 
     Protected Sub btnInjury_Click(sender As Object, e As System.EventArgs) Handles btnInjury.Click
         Response.Redirect("Injury.aspx")
+        If Session.Item("Role") = 5 Then
+            'any user
+
+        ElseIf Session.Item("Role") = 4 Then
+            'athlete
+
+
+        ElseIf Session.Item("Role") = 3 Then
+            'athletic trainer
+
+
+        ElseIf Session.Item("Role") = 2 Then
+            'coach
+
+
+        ElseIf Session.Item("Role") = 1 Then
+            'systems admin
+
+        End If
     End Sub
 
     Protected Sub btnSports_Click(sender As Object, e As System.EventArgs) Handles btnSports.Click
         Response.Redirect("SystemsAdminCreateSport.aspx")
+        If Session.Item("Role") = 5 Then
+            'any user
+
+        ElseIf Session.Item("Role") = 4 Then
+            'athlete
+
+
+        ElseIf Session.Item("Role") = 3 Then
+            'athletic trainer
+
+
+        ElseIf Session.Item("Role") = 2 Then
+            'coach
+
+
+        ElseIf Session.Item("Role") = 1 Then
+            'systems admin
+
+        End If
     End Sub
 End Class
 

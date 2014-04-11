@@ -11,22 +11,16 @@
         <asp:TextBox ID="NewUsername" runat="server"></asp:TextBox>
 &nbsp;
         <%-- <asp:RequiredFieldValidator ID="lastnamevalidator" runat="server" 
-            ControlToValidate="NewLastName" ErrorMessage="Last Name Required"></asp:RequiredFieldValidator>--%>
+            ControlToValidate="NewLastName" ErrorMessage="Last Name Required"></asp:RequiredFieldValidator>--%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <br />
         <br />
         Password:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="NewPassword" TextMode="password" runat="server"></asp:TextBox>
+        <asp:TextBox ID="NewPassword"  runat="server"></asp:TextBox>
 &nbsp;
-        <%--<asp:RequiredFieldValidator ID="passwordvalidator" runat="server" 
-            ControlToValidate="NewPassword" ErrorMessage="Password Required"></asp:RequiredFieldValidator>--%>
-        <br />
-        <br />
-        Confirm
-        Password:&nbsp;
-        <asp:TextBox ID="NewPassword2" TextMode="password" runat="server"></asp:TextBox>
-&nbsp;
-        <%--<asp:RequiredFieldValidator ID="passwordvalidator" runat="server" 
-            ControlToValidate="NewPassword" ErrorMessage="Password Required"></asp:RequiredFieldValidator>--%>
+        <%-- <asp:RequiredFieldValidator ID="lastnamevalidator" runat="server" 
+            ControlToValidate="NewLastName" ErrorMessage="Last Name Required"></asp:RequiredFieldValidator>--%>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:CheckBox ID="ShowPasswordButton" runat="server" Text="Show Password" />
         <br />
         <br />
         First Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
@@ -38,6 +32,13 @@
         <br />
         Last Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="NewLastName" runat="server"></asp:TextBox>
+&nbsp;
+       <%-- <asp:RequiredFieldValidator ID="lastnamevalidator" runat="server" 
+            ControlToValidate="NewLastName" ErrorMessage="Last Name Required"></asp:RequiredFieldValidator>--%>
+        <br />
+        <br />
+        Email Address:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:TextBox ID="NewEmail" runat="server"></asp:TextBox>
 &nbsp;
        <%-- <asp:RequiredFieldValidator ID="lastnamevalidator" runat="server" 
             ControlToValidate="NewLastName" ErrorMessage="Last Name Required"></asp:RequiredFieldValidator>--%>
