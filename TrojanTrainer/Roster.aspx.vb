@@ -17,18 +17,19 @@ Partial Class Roster
     End Sub
 
     Protected Sub ddlSports_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles ddlSports.SelectedIndexChanged
-
-        'ddlTeams.Items.Insert(0, New ListItem("All", -1))
-
+        gvRoster.Visible = False
+        'ddlTeams.Items.Insert(0, New ListItem("All", -1
     End Sub
 
     Protected Sub ddlTeams_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles ddlTeams.SelectedIndexChanged
+        gvRoster.Visible = False
         'btnSubmit.Visible = True
     End Sub
 
     Protected Sub btnSubmit_Click(sender As Object, e As System.EventArgs) Handles btnSubmit.Click
         '    'gvRoster.EnableViewState = True
         gvRoster.Visible = True
+        gvRoster.DataBind()
     End Sub
 
 

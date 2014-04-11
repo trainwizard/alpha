@@ -73,11 +73,11 @@
             DataSourceID="SqlDataSource4" Enabled="False" AllowPaging="True" 
             AllowSorting="True">
             <Columns>
-                <asp:BoundField DataField="First_Name" HeaderText="First Name" 
+                <asp:BoundField DataField="First_Name" HeaderText="First_Name" 
                     SortExpression="First_Name" />
-                <asp:BoundField DataField="Last_Name" HeaderText="Last Name" 
+                <asp:BoundField DataField="Last_Name" HeaderText="Last_Name" 
                     SortExpression="Last_Name" />
-                <asp:BoundField DataField="Name" HeaderText="Team" SortExpression="Name" />
+                <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
             </Columns>
         </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSource4" runat="server" 
