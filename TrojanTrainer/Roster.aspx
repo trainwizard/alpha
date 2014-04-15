@@ -79,21 +79,20 @@
             DataSourceID="SqlDataSource4" Enabled="False" AllowPaging="True" 
             AllowSorting="True">
             <Columns>
-                <asp:BoundField DataField="First_Name" HeaderText="First_Name" 
+                <asp:BoundField DataField="First_Name" HeaderText="First Name" 
                     SortExpression="First_Name" />
-                <asp:BoundField DataField="Last_Name" HeaderText="Last_Name" 
+                <asp:BoundField DataField="Last_Name" HeaderText="Last Name" 
                     SortExpression="Last_Name" />
-                <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
             </Columns>
         </asp:GridView>
         <asp:GridView ID="DataOutputSport" runat="server" AutoGenerateColumns="False" 
-            DataSourceID="SqlDataSource5">
+            DataSourceID="SqlDataSource5" AllowPaging="True" AllowSorting="True">
             <Columns>
-                <asp:BoundField DataField="First_Name" HeaderText="First_Name" 
+                <asp:BoundField DataField="First_Name" HeaderText="First Name" 
                     SortExpression="First_Name" />
-                <asp:BoundField DataField="Last_Name" HeaderText="Last_Name" 
+                <asp:BoundField DataField="Last_Name" HeaderText="Last Name" 
                     SortExpression="Last_Name" />
-                <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
+                <asp:BoundField DataField="Name" HeaderText="Team Name" SortExpression="Name" />
             </Columns>
         </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSource4" runat="server" 
