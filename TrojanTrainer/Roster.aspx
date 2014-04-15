@@ -15,9 +15,19 @@
             DataValueField="Sport_ID" Height="21px">
             <asp:ListItem Selected="True">Choose a Sport</asp:ListItem>
         </asp:DropDownList>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
             ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
             SelectCommand="SELECT [Name], [Sport_ID] FROM [Sport] WHERE Active = 1">
+        </asp:SqlDataSource>
+    
+        <asp:SqlDataSource ID="SqlDataSource5" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
+            SelectCommand="GetSportRoster" SelectCommandType="StoredProcedure">
+            <SelectParameters>
+                <asp:ControlParameter ControlID="ddlSports" Name="Sport_ID" 
+                    PropertyName="SelectedValue" Type="String" />
+            </SelectParameters>
         </asp:SqlDataSource>
     
     </p>
@@ -32,6 +42,9 @@
             <asp:ListItem Selected="True">Choose a Team</asp:ListItem>
         </asp:DropDownList>
     
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Button ID="btnSubmit" runat="server" Text="Get Team Members" />
+    
         <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
             ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
             SelectCommand="GetSportTeams" SelectCommandType="StoredProcedure">
@@ -41,13 +54,6 @@
             </SelectParameters>
         </asp:SqlDataSource>
     
-    </p>
-    <p>
-    
-       <%-- or
-        <asp:Button ID="btnShowAll" runat="server" Text="Show All" />
-    --%>
-        <asp:Button ID="btnSubmit" runat="server" Text="Get Roster" />
     </p>
     <p>
     
@@ -72,6 +78,16 @@
         <asp:GridView ID="gvRoster" runat="server" AutoGenerateColumns="False" 
             DataSourceID="SqlDataSource4" Enabled="False" AllowPaging="True" 
             AllowSorting="True">
+            <Columns>
+                <asp:BoundField DataField="First_Name" HeaderText="First_Name" 
+                    SortExpression="First_Name" />
+                <asp:BoundField DataField="Last_Name" HeaderText="Last_Name" 
+                    SortExpression="Last_Name" />
+                <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
+            </Columns>
+        </asp:GridView>
+        <asp:GridView ID="DataOutputSport" runat="server" AutoGenerateColumns="False" 
+            DataSourceID="SqlDataSource5">
             <Columns>
                 <asp:BoundField DataField="First_Name" HeaderText="First_Name" 
                     SortExpression="First_Name" />

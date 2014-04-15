@@ -17,6 +17,7 @@ Partial Class Roster
     End Sub
 
     Protected Sub ddlSports_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles ddlSports.SelectedIndexChanged
+        DataOutputSport.Visible = True
         gvRoster.Visible = False
         'ddlTeams.Items.Insert(0, New ListItem("All", -1
     End Sub
@@ -29,6 +30,7 @@ Partial Class Roster
     Protected Sub btnSubmit_Click(sender As Object, e As System.EventArgs) Handles btnSubmit.Click
         '    'gvRoster.EnableViewState = True
         gvRoster.Visible = True
+        DataOutputSport.Visible = False
         gvRoster.DataBind()
     End Sub
 
