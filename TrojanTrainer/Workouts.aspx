@@ -4,90 +4,36 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <p>
-        Current Workout Information<asp:ListView ID="ListView1" runat="server" 
-            DataSourceID="GetSports" EnablePersistedSelection="True">
-            <AlternatingItemTemplate>
-                <tr style="">
-                    <td>
-                        <asp:Label ID="NameLabel" runat="server" Text='<%# Eval("Name") %>' />
-                    </td>
-                </tr>
-            </AlternatingItemTemplate>
-            <EditItemTemplate>
-                <tr style="">
-                    <td>
-                        <asp:Button ID="UpdateButton" runat="server" CommandName="Update" 
-                            Text="Update" />
-                        <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" 
-                            Text="Cancel" />
-                    </td>
-                    <td>
-                        <asp:TextBox ID="NameTextBox" runat="server" Text='<%# Bind("Name") %>' />
-                    </td>
-                </tr>
-            </EditItemTemplate>
-            <EmptyDataTemplate>
-                <table runat="server" style="">
-                    <tr>
-                        <td>
-                            No data was returned.</td>
-                    </tr>
-                </table>
-            </EmptyDataTemplate>
-            <InsertItemTemplate>
-                <tr style="">
-                    <td>
-                        <asp:Button ID="InsertButton" runat="server" CommandName="Insert" 
-                            Text="Insert" />
-                        <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" 
-                            Text="Clear" />
-                    </td>
-                    <td>
-                        <asp:TextBox ID="NameTextBox" runat="server" Text='<%# Bind("Name") %>' />
-                    </td>
-                </tr>
-            </InsertItemTemplate>
-            <ItemTemplate>
-                <tr style="">
-                    <td>
-                        <asp:Label ID="NameLabel" runat="server" Text='<%# Eval("Name") %>' />
-                    </td>
-                </tr>
-            </ItemTemplate>
-            <LayoutTemplate>
-                <table runat="server">
-                    <tr runat="server">
-                        <td runat="server">
-                            <table ID="itemPlaceholderContainer" runat="server" border="0" style="">
-                                <tr runat="server" style="">
-                                    <th runat="server">
-                                        Name</th>
-                                </tr>
-                                <tr ID="itemPlaceholder" runat="server">
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                    <tr runat="server">
-                        <td runat="server" style="">
-                        </td>
-                    </tr>
-                </table>
-            </LayoutTemplate>
-            <SelectedItemTemplate>
-                <tr style="">
-                    <td>
-                        <asp:Label ID="NameLabel" runat="server" Text='<%# Eval("Name") %>' />
-                    </td>
-                </tr>
-            </SelectedItemTemplate>
-        </asp:ListView>
-        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+        Current Workout Information:</p>
+    <p>
+        &nbsp;</p>
+    <p>
+        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" 
+            AllowSorting="True" AutoGenerateColumns="False" DataSourceID="SqlDataSource1">
+            <Columns>
+                <asp:CommandField ShowSelectButton="True" />
+                <asp:BoundField DataField="Workout_Name" HeaderText="Workout_Name" 
+                    SortExpression="Workout_Name" />
+                <asp:BoundField DataField="Team_ID" HeaderText="Team_ID" 
+                    SortExpression="Team_ID" />
+                <asp:BoundField DataField="Cycle_ID" HeaderText="Cycle_ID" 
+                    SortExpression="Cycle_ID" />
+                <asp:BoundField DataField="Pre_Training_Notes" HeaderText="Pre_Training_Notes" 
+                    SortExpression="Pre_Training_Notes" />
+                <asp:BoundField DataField="Post_Training_Notes" 
+                    HeaderText="Post_Training_Notes" SortExpression="Post_Training_Notes" />
+                <asp:BoundField DataField="Create_Date" HeaderText="Create_Date" 
+                    SortExpression="Create_Date" />
+                <asp:BoundField DataField="Assign_Date" HeaderText="Assign_Date" 
+                    SortExpression="Assign_Date" />
+            </Columns>
+        </asp:GridView>
     </p>
     <p>
-        <asp:SqlDataSource ID="GetSports" runat="server" 
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
             ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
-            SelectCommand="SELECT [Name] FROM [Sport]"></asp:SqlDataSource>
+            SelectCommand="SELECT [Workout_Name], [Team_ID], [Cycle_ID], [Pre_Training_Notes], [Post_Training_Notes], [Create_Date], [Assign_Date] FROM [Workout]">
+        </asp:SqlDataSource>
     </p>
 </asp:Content>
 
