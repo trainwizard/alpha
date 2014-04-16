@@ -76,7 +76,7 @@
             </SelectParameters>
         </asp:SqlDataSource>--%>
         <asp:GridView ID="gvRoster" runat="server" AutoGenerateColumns="False" 
-            DataSourceID="SqlDataSource4" Enabled="False" AllowPaging="True" 
+            DataSourceID="SqlDataSource4" AllowPaging="True" 
             AllowSorting="True">
             <Columns>
                 <asp:BoundField DataField="First_Name" HeaderText="First Name" 
