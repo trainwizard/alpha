@@ -1,6 +1,6 @@
 ﻿<%@ Master Language="VB" CodeFile="main.master.vb" Inherits="main" %>
 
-<%--Sams Notes:--%><%--<%@ Page Language="VB" MasterPageFile="~/main.master" ... %>--%><%--<%@ Page Title="" Language="VB" MasterPageFile="~/Master1.master" AutoEventWireup="false" CodeFile="Default.aspx.vb" Inherits="_Default" %>--%><%--http://www.cssreset.com/creating-fixed-headers-with-css/--%>
+<%--Sams Notes: make sure implement the topbar toggle http://webdesign.tutsplus.com/articles/how-to-customize-the-foundation-4-top-bar--webdesign-14675 --%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -9,35 +9,50 @@
     <title></title>
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
-    <link href="style.css" rel="stylesheet"/>
+    <link href="foundation/css/foundation.css" rel="stylesheet" type="text/css" />
+    <script src="js/vendor/modernizr.js"></script>
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script>
+        $(document).foundation();
+    </script>
+
 </head>
 <body>
 <form runat="server">
-        <div class="header">
-            <p id="Logo">Trojan Trainer</p>
-            <asp:Button ID="btnMyHome" runat="server" Text="My Home" CssClass="fancyButton"/>
-            <asp:Button ID="btnAccounts" runat="server" Text="Accounts" CssClass="fancyButton"/>
-            <asp:Button ID="btnWorkouts" runat="server" Text="Workouts" CssClass="fancyButton"/>
-            <asp:Button ID="btnRoster" runat="server" Text="Roster" CssClass="fancyButton"/>
-            <asp:Button ID="btnViewData" runat="server" Text="View Data" CssClass="fancyButton"/>
-            <asp:Button ID="btnInjury" runat="server" Text="Injury" CssClass="fancyButton"/>
-            <asp:Button ID="btnSports" runat="server" Text="Sports" CssClass="fancyButton"/>
-            <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="fancyButton"/>            
-        </div>
-
-      
-        <div class="logout">
-            <asp:Label ID="CurrentUserTxt" runat="server" Text="Username Placeholder"></asp:Label>
-            <br />
-            <asp:ImageButton ID="ImageButton1" runat="server" Height="44px" 
-                ImageUrl="~/images/blank_user_picture.jpg" Width="42px" />
-        </div>
-
-        <div class="content">
+    <div class="large-12 columns">
+        <nav class="top-bar">
+            <ul class="title-area">
+                <li class="name">
+                  <div class="logout">
+                    <asp:Label ID="CurrentUserTxt" runat="server" Text="Username Placeholder"></asp:Label>
+                    <asp:ImageButton ID="ImageButton1" runat="server" Height="44px" 
+                        ImageUrl="~foundation/img/blank_user_picture.jpg" Width="42px" />
+                  </div>  
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="large-2 columns">
+            <div class="header">
+                <p id="Logo">Trojan Trainer</p>
+                <asp:Button ID="btnMyHome" runat="server" Text="My Home" CssClass="radius button"/>
+                <asp:Button ID="btnAccounts" runat="server" Text="Accounts" CssClass="radius button"/>
+                <asp:Button ID="btnWorkouts" runat="server" Text="Workouts" CssClass="radius button"/>
+                <asp:Button ID="btnRoster" runat="server" Text="Roster" CssClass="radius button"/>
+                <asp:Button ID="btnViewData" runat="server" Text="View Data" CssClass="radius button"/>
+                <asp:Button ID="btnInjury" runat="server" Text="Injury" CssClass="radius button"/>
+                <asp:Button ID="btnSports" runat="server" Text="Sports" CssClass="radius button"/>
+                <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="radius button"/>
+         
+            </div>
+    </div>
+    <div class="large-10 columns">
+        <div class="mySpecialContent">
             <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
-
         </div>
+    </div>
 </form>
 </body>
 </html>
