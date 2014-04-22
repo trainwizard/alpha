@@ -94,7 +94,7 @@
         <asp:TextBox ID="txtNotes" runat="server" MaxLength="100" TextMode="MultiLine"></asp:TextBox>
     </p>
     <p>
-        <asp:Button ID="SubmitNutrition" runat="server" 
+        <asp:Button ID="Submit_Nutrition" runat="server" 
             Text="Submit Nutrition Information" Width="219px" />
     </p>
 </asp:Content>
