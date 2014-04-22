@@ -15,7 +15,7 @@ Partial Class main
             'Sends non-user back to homepage if they are trying to URL hack
             'Response.Redirect("Oops.aspx")
             Dim url As String = Request.RawUrl
-            If url = "/TrojanTrainer/Login.aspx" Or url = "/TrojanTrainer/Oops.aspx" Or url = "/TrojanTrainer/Logout.aspx" Then
+            If url = "/TrojanTrainer/Login.aspx" Or url = "/TrojanTrainer/Oops.aspx" Or url = "/TrojanTrainer/Logout.aspx" Or url = "/TrojanTrainer/Welcome.aspx" Then
                 CurrentUserTxt.Text = ""
                 btnLogout.Visible = False
             Else
