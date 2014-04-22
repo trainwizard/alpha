@@ -11,7 +11,7 @@ Partial Class _Default
             connection.Open()
             Dim getTM_ID As SqlCommand = New SqlCommand("GetTM_ID", connection)
             getTM_ID.CommandType = CommandType.StoredProcedure
-            getTM_ID.Parameters.Add(New SqlParameter("@current_user", user)
+            getTM_ID.Parameters.Add(New SqlParameter("@current_user", Session.)
 
         End Using
     End Sub
