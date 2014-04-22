@@ -48,7 +48,6 @@
     <div class="large-10 columns">
         <div class="mySpecialContent">
             <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
-                <asp:Button ID="Button1" runat="server" Text="Button" />
             </asp:ContentPlaceHolder>
         </div>
     </div>
