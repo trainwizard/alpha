@@ -6,11 +6,14 @@ Partial Class _Default
     Dim connectionString As String = "Data Source=SIMON;Initial Catalog=AlphaSYS39414;Persist Security Info=True;User ID=sbolds;Password=ttpfrzeh"
 
     Protected Sub Submit_Sleep_Click(sender As Object, e As System.EventArgs) Handles Submit_Sleep.Click
-        'Using connection As New SqlConnection(connectionString)
 
-        'End Using
-        'Dim myDate As Date =
-        'testLabel.Text = SleepCalender.SelectedDate
+        Using connection As New SqlConnection(connectionString)
+            connection.Open()
+            Dim getTM_ID As SqlCommand = New SqlCommand("GetTM_ID", connection)
+            getTM_ID.CommandType = CommandType.StoredProcedure
+            getTM_ID.Parameters.Add(New SqlParameter("@current_user", user)
+
+        End Using
     End Sub
 
     Protected Sub SubmitNutrition_Click(sender As Object, e As System.EventArgs) Handles SubmitNutrition.Click
