@@ -10,11 +10,11 @@ Partial Class _Default
 
         'End Using
         'Dim myDate As Date =
-        testLabel.Text = SleepCalender.SelectedDate
+        'testLabel.Text = SleepCalender.SelectedDate
     End Sub
 
     Protected Sub SubmitNutrition_Click(sender As Object, e As System.EventArgs) Handles SubmitNutrition.Click
         Dim Calories As Integer = Convert.ToInt32(txtCalories.Text)
-        testLabel2.Text = CStr(Calories)
+        'testLabel2.Text = CStr(Calories)
     End Sub
 End Class

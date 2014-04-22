@@ -11,20 +11,20 @@
         <asp:GridView ID="GridView1" runat="server" AllowPaging="True" 
             AllowSorting="True" AutoGenerateColumns="False" DataSourceID="SqlDataSource1">
             <Columns>
-                <asp:BoundField DataField="Workout_Name" HeaderText="Workout_Name" 
+                <asp:BoundField DataField="Workout_Name" HeaderText="Workout Name" 
                     SortExpression="Workout_Name" />
                 <asp:BoundField DataField="Name" HeaderText="Cycle" 
                     SortExpression="Name" />
                 <asp:BoundField DataField="Name1" HeaderText="Team" 
                     SortExpression="Name1" />
-                <asp:BoundField DataField="Pre_Training_Notes" HeaderText="Pre_Training_Notes" 
+                <asp:BoundField DataField="Pre_Training_Notes" HeaderText="Pre Training Notes" 
                     SortExpression="Pre_Training_Notes" />
-                <asp:BoundField DataField="Post_Training_Notes" HeaderText="Post_Training_Notes" 
+                <asp:BoundField DataField="Post_Training_Notes" HeaderText="Post Training Notes" 
                     SortExpression="Post_Training_Notes" />
-                <asp:BoundField DataField="Create_Date" HeaderText="Create_Date" 
+                <asp:BoundField DataField="Create_Date" HeaderText="Create Date" 
                     SortExpression="Create_Date" />
                 <asp:BoundField DataField="Assign_Date" 
-                    HeaderText="Assign_Date" SortExpression="Assign_Date" />
+                    HeaderText="Assign Date" SortExpression="Assign_Date" />
             </Columns>
         </asp:GridView>
     </p>
