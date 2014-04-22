@@ -26,8 +26,6 @@
                 <li class="name">
                   <div class="logout">
                     <asp:Label ID="CurrentUserTxt" runat="server" Text="Username Placeholder"></asp:Label>
-                    <asp:ImageButton ID="ImageButton1" runat="server" Height="44px" 
-                        ImageUrl="~foundation/img/blank_user_picture.jpg" Width="42px" />
                   </div>  
                 </li>
             </ul>

@@ -43,8 +43,8 @@
     border: 1px solid #CCC;
     height: 600px;
     width: 800PX;
-    left: 182px;
-    top: 7px;
+    left: 194px;
+    top: -693px;
     position: relative;   
     
 }
@@ -1304,7 +1304,7 @@ meta.foundation-mq-topbar {
   height: 45px;
   line-height: 45px;
   position: relative;
-  background: #333333;
+  background: #512D44 !important; /*changes the topbar to taylor purple*/
   margin-bottom: 0; }
   .top-bar ul {
     margin-bottom: 0;
