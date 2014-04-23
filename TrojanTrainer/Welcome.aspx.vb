@@ -2,10 +2,14 @@
 Imports System.Data.SqlClient
 Imports System.Diagnostics
 
-
 Partial Class Welcome
     Inherits System.Web.UI.Page
     Dim connectionString As String = "Data Source=SIMON;Initial Catalog=AlphaSYS39414;Persist Security Info=True;User ID=sbolds;Password=ttpfrzeh"
+
+    Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
+
+    End Sub
+
 
     Protected Sub btnlogin_Click(sender As Object, e As System.EventArgs) Handles btnlogin.Click
         Using connection As New SqlConnection(connectionString)
@@ -70,7 +74,8 @@ Partial Class Welcome
         End Using
     End Sub
 
-    Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
+    
 
-    End Sub
+
+
 End Class
