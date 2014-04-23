@@ -43,8 +43,8 @@
     border: 1px solid #CCC;
     height: 600px;
     width: 800PX;
-    left: 194px;
-    top: -693px;
+    left: 182px;
+    top: 7px;
     position: relative;   
     
 }
@@ -1304,7 +1304,7 @@ meta.foundation-mq-topbar {
   height: 45px;
   line-height: 45px;
   position: relative;
-  background: #512D44 !important; /*changes the topbar to taylor purple*/
+  background: #333333;
   margin-bottom: 0; }
   .top-bar ul {
     margin-bottom: 0;
@@ -2634,7 +2634,7 @@ p,
 blockquote,
 th,
 td {
-  margin: 5 0 0 0;
+  margin: 0;
   padding: 0; }
 
 /* Default Link Styles */
@@ -4195,6 +4195,10 @@ textarea {
   color: rgba(0, 0, 0, 0.75);
   display: block;
   font-size: 0.875rem;
+  margin: 0 0 1rem 0;
+  padding: 0.5rem;
+  height: 2.3125rem;
+  width: 100%;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -4306,9 +4310,7 @@ input[type="file"],
 input[type="checkbox"],
 input[type="radio"],
 select {
-  margin-left: 108px;
-    margin-bottom: 0px;
-}
+  margin: 0 0 1rem 0; }
 
 input[type="checkbox"] + label,
 input[type="radio"] + label {
