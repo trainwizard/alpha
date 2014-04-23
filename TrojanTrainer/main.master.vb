@@ -34,6 +34,7 @@ Partial Class main
             'valid current user
         Else
             'Greeting name is set to be the username
+            'CurrentUserTxt.ForeColor = Drawing.Color.White
             CurrentUserTxt.Text = "Welcome, " + Session("username") + "."
             btnLogout.Visible = True
 

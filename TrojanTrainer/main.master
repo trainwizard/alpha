@@ -1,6 +1,8 @@
 ﻿<%@ Master Language="VB" CodeFile="main.master.vb" Inherits="main" %>
 
-<%--Sams Notes: make sure implement the topbar toggle http://webdesign.tutsplus.com/articles/how-to-customize-the-foundation-4-top-bar--webdesign-14675 --%>
+<%--Sams Notes: make sure implement the topbar toggle 
+http://webdesign.tutsplus.com/articles/how-to-customize-the-foundation-4-top-bar--webdesign-14675 
+http://foundation.zurb.com/docs/v/3.2.5/index.php--%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -15,6 +17,7 @@
     <script src="js/foundation.min.js"></script>
     <script>
         $(document).foundation();
+        $(document).foundationTopBar();
     </script>
 
 </head>
@@ -24,33 +27,35 @@
         <nav class="top-bar">
             <ul class="title-area">
                 <li class="name">
-                  <div class="logout">
+                  <div class="doodsName">
                     <asp:Label ID="CurrentUserTxt" runat="server" Text="Username Placeholder"></asp:Label>
-                    <asp:ImageButton ID="ImageButton1" runat="server" Height="44px" 
-                        ImageUrl="~foundation/img/blank_user_picture.jpg" Width="42px" />
                   </div>  
                 </li>
             </ul>
         </nav>
     </div>
-    <div class="large-2 columns">
-            <div class="header">
-                <p id="Logo">Trojan Trainer</p>
-                <asp:Button ID="btnMyHome" runat="server" Text="My Home" CssClass="radius button"/>
-                <asp:Button ID="btnAccounts" runat="server" Text="Accounts" CssClass="radius button"/>
-                <asp:Button ID="btnWorkouts" runat="server" Text="Workouts" CssClass="radius button"/>
-                <asp:Button ID="btnRoster" runat="server" Text="Roster" CssClass="radius button"/>
-                <asp:Button ID="btnViewData" runat="server" Text="View Data" CssClass="radius button"/>
-                <asp:Button ID="btnInjury" runat="server" Text="Injury" CssClass="radius button"/>
-                <asp:Button ID="btnSports" runat="server" Text="Sports" CssClass="radius button"/>
-                <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="radius button"/>
+    <div>
+        <div class="large-2 columns">
+
+                <div class="header">
+                    <p id="Logo">Trojan Trainer</p>
+                    <asp:Button ID="btnMyHome" runat="server" Text="My Home" CssClass="radius button"/>
+                    <asp:Button ID="btnAccounts" runat="server" Text="Accounts" CssClass="radius button"/>
+                    <asp:Button ID="btnWorkouts" runat="server" Text="Workouts" CssClass="radius button"/>
+                    <asp:Button ID="btnRoster" runat="server" Text="Roster" CssClass="radius button"/>
+                    <asp:Button ID="btnViewData" runat="server" Text="View Data" CssClass="radius button"/>
+                    <asp:Button ID="btnInjury" runat="server" Text="Injury" CssClass="radius button"/>
+                    <asp:Button ID="btnSports" runat="server" Text="Sports" CssClass="radius button"/>
+                    <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="radius button"/>
          
+                </div>
+        </div>
+        <div class="large-10 columns">
+            <div class="mySpecialContent">
+                <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
             </div>
-    </div>
-    <div class="large-10 columns">
-        <div class="mySpecialContent">
-            <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
+          
         </div>
     </div>
 </form>

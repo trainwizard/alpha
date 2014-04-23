@@ -1,7 +1,7 @@
 
 
 #Logo{font-weight:bold;color:white;font-size:24px;text-align:left;font-family:helvetica, sans-serif; text-align: center;}
-.header {
+.header  {
     width:175px;
     height: 700px;
     top: 0px;
@@ -10,6 +10,10 @@
     /*position: absolute;*/
     text-align: center;
 
+}
+
+.doodsName{
+	color: white;
 }
 /*
 .content {    
@@ -22,14 +26,7 @@
     position: relative;
 }
 
-.logout{
-    right: 20%;
-    float: right;
-    top: 1px;
-    width: 200px;
-    height: 90px;
-    background: #F0F0F0;    
-}
+
 
 
 #imgProfilePicture{align: center;}
@@ -41,12 +38,14 @@
 .mySpecialContent{
      background: #F0F0F0;
     border: 1px solid #CCC;
-    height: 600px;
-    width: 800PX;
-    left: 182px;
+    height: 80%;
+    margin: 7px;
+    padding: 5px;
+    width: 100%;
+!    left: 182px;
     top: 7px;
     position: relative;   
-    
+
 }
 /*FOUNDATION*/
 
@@ -1304,7 +1303,7 @@ meta.foundation-mq-topbar {
   height: 45px;
   line-height: 45px;
   position: relative;
-  background: #333333;
+  background: #512D44 !important; /*changes nav bar to taylor purple*/
   margin-bottom: 0; }
   .top-bar ul {
     margin-bottom: 0;
