@@ -38,7 +38,6 @@ Partial Class Welcome
 
                 'starts user session and check for checked checkbox
                 Session("username") = account
-                Debug.Print(Session("username"))
                 If ckbloggedin.Checked = True Then
                     Session.Timeout() = 20160
                 End If
@@ -58,23 +57,24 @@ Partial Class Welcome
                 reader2.Close()
                 reader2 = Nothing
                 'GRABS USER PICTURE
-                Dim cmdd As SqlCommand = New SqlCommand("GetUserImage", connection)
-                cmdd.CommandType = CommandType.StoredProcedure
-                cmdd.Parameters.Add(New SqlParameter("@User_ID", Session("username")))
-                Dim readerPicture As SqlDataReader = cmdd.ExecuteReader()
-                Dim valuesPicture As New ArrayList()
-                If readerPicture.HasRows Then
-                    Debug.Print("has rows")
-                    While readerPicture.Read()
-                        Dim PictureLocation As New String(Str(readerPicture("User_Photo_ID")))
-                        valuesPicture.Add(PictureLocation)
+
+                Dim getPicture As SqlCommand = New SqlCommand("GetUserImage", connection)
+                getPicture.CommandType = CommandType.StoredProcedure
+                getPicture.Parameters.Add(New SqlParameter("@User_ID", Session("username")))
+                Dim readerPic As SqlDataReader = getPicture.ExecuteReader()
+                Dim picLocation As New List(Of String)
+                If readerPic.HasRows() Then
+                    While readerPic.Read()
+                        Session.Item("UserPicture") = readerPic("User_Photo_ID")
+                        'picLocation.Add(readerPic("User_Photo_ID"))
                     End While
-                    Debug.Print(valuesPicture(0))
-                    Session.Item("UserPicture") = "~/UserImages/" + valuesPicture(0)
-                    Debug.Print(valuesPicture(0))
-                    connection.Close()
+                    'CREATES SESSION ROLE
+                    'Session.Item("UserPicture") = picLocation.Item("User_Photo_ID")
                     Debug.Print(Session.Item("UserPicture"))
                 End If
+                readerPic.Close()
+                readerPic = Nothing
+                connection.Close()
                 'redirect to correct home page
                 If Session.Item("Role") = 5 Then
                     Response.Redirect("LoginHome.aspx")
