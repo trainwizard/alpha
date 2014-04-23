@@ -58,24 +58,23 @@ Partial Class Welcome
                 reader2.Close()
                 reader2 = Nothing
                 'GRABS USER PICTURE
-                'Using connection2 As New SqlConnection(connectionString)
-                'connection2.Open()
-                'Dim cmdd As SqlCommand = New SqlCommand("GetUserImage", connection2)
-                'cmdd.CommandType = CommandType.StoredProcedure
-                'cmdd.Parameters.Add(New SqlParameter("@User_ID", Session("username")))
-
-                'Dim readerPicture As SqlDataReader = cmdd.ExecuteReader()
-                'Dim valuesPicture As New List(Of String)
-                'While readerPicture.Read()
-                'valuesPicture.Add(Str(readerPicture("User_Photo_ID")))
-                'End While
-                'CREATES SESSION ROLE
-                'Session.Item("UserPicture") = "~/UserImages/" + valuesPicture(0)
-                'Debug.Print(valuesPicture(0))
-                'connection2.Close()
-                'Debug.Print(Session.Item("UserPicture"))
-                'End Using
-
+                Dim cmdd As SqlCommand = New SqlCommand("GetUserImage", connection)
+                cmdd.CommandType = CommandType.StoredProcedure
+                cmdd.Parameters.Add(New SqlParameter("@User_ID", Session("username")))
+                Dim readerPicture As SqlDataReader = cmdd.ExecuteReader()
+                Dim valuesPicture As New ArrayList()
+                If readerPicture.HasRows Then
+                    Debug.Print("has rows")
+                    While readerPicture.Read()
+                        Dim PictureLocation As New String(Str(readerPicture("User_Photo_ID")))
+                        valuesPicture.Add(PictureLocation)
+                    End While
+                    Debug.Print(valuesPicture(0))
+                    Session.Item("UserPicture") = "~/UserImages/" + valuesPicture(0)
+                    Debug.Print(valuesPicture(0))
+                    connection.Close()
+                    Debug.Print(Session.Item("UserPicture"))
+                End If
                 'redirect to correct home page
                 If Session.Item("Role") = 5 Then
                     Response.Redirect("LoginHome.aspx")
