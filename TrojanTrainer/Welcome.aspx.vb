@@ -15,6 +15,7 @@ Partial Class Welcome
         Using connection As New SqlConnection(connectionString)
             'retrieves text from textboxes
             Dim account As String = txtusername.Text
+            account = account.ToLower()
             Dim mypassword As String = txtpassword.Text
             connection.Open()
             Dim cmd As SqlCommand = New SqlCommand("UserLogin", connection)
@@ -54,6 +55,26 @@ Partial Class Welcome
                 End While
                 'CREATES SESSION ROLE
                 Session.Item("Role") = Str(values.Item(0))
+                reader2.Close()
+                reader2 = Nothing
+                'GRABS USER PICTURE
+                'Using connection2 As New SqlConnection(connectionString)
+                'connection2.Open()
+                'Dim cmdd As SqlCommand = New SqlCommand("GetUserImage", connection2)
+                'cmdd.CommandType = CommandType.StoredProcedure
+                'cmdd.Parameters.Add(New SqlParameter("@User_ID", Session("username")))
+
+                'Dim readerPicture As SqlDataReader = cmdd.ExecuteReader()
+                'Dim valuesPicture As New List(Of String)
+                'While readerPicture.Read()
+                'valuesPicture.Add(Str(readerPicture("User_Photo_ID")))
+                'End While
+                'CREATES SESSION ROLE
+                'Session.Item("UserPicture") = "~/UserImages/" + valuesPicture(0)
+                'Debug.Print(valuesPicture(0))
+                'connection2.Close()
+                'Debug.Print(Session.Item("UserPicture"))
+                'End Using
 
                 'redirect to correct home page
                 If Session.Item("Role") = 5 Then

@@ -12,7 +12,15 @@
             ImageUrl="~/images/blank_user_picture.jpg" Width="244px" />
     </p>
     <p>
-        &nbsp;</p>
+        Change picture:</p>
+    <p>
+        <asp:FileUpload ID="PictureUpload" runat="server" />
+    </p>
+    <p>
+        
+        <asp:Button ID="ChangePictureButton" runat="server" Text="Change Picture" />
+        <asp:Label ID="PictureLabel" runat="server" Text="Label" Visible="False"></asp:Label>
+    </p>
     <p>
         
         <asp:Label ID="lblDialogChangePassword" runat="server" Text="Change your password:"></asp:Label><br /><br /> 
@@ -29,5 +37,11 @@
         <asp:Label ID="lblPasswordSuc" runat="server" 
             Text="Password Successfully Changed!" Visible="False"></asp:Label>
     </p>
+    <p>
+        
+        &nbsp;</p>
+    <p>
+        
+        &nbsp;</p>
 </asp:Content>
 
