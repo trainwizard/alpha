@@ -7,6 +7,9 @@
     </p>
     <p>
     
+        <asp:ImageButton ID="UserImage" runat="server" ImageUrl="none.jpg" 
+            Width="30px" />
+    
     </p>
     
 
