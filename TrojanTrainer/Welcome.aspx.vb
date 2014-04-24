@@ -70,7 +70,6 @@ Partial Class Welcome
                     End While
                     'CREATES SESSION ROLE
                     'Session.Item("UserPicture") = picLocation.Item("User_Photo_ID")
-                    Debug.Print(Session.Item("UserPicture"))
                 End If
                 readerPic.Close()
                 readerPic = Nothing

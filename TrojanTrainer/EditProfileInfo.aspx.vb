@@ -42,7 +42,6 @@ Partial Class EditProfileInfo
     End Sub
 
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
-        Debug.Print(Session.Item("UserPicture"))
         imgProfilePicture.ImageUrl = Session.Item("UserPicture")
     End Sub
 
@@ -77,9 +76,9 @@ Partial Class EditProfileInfo
                             cmdd.Parameters.Add(New SqlParameter("@User_ID", Session("username")))
                             cmdd.Parameters.Add(New SqlParameter("@user_photo_ID", dateTimeStampedFileName))
                             cmdd.ExecuteNonQuery()
-                            Session.Item("UserPicture") = dateTimeStampedFileName
+                            Session.Item("UserPicture") = "~/UserImages/" + dateTimeStampedFileName
                             connection2.Close()
-                            imgProfilePicture.ImageUrl = "~/UserImages/" + Session.Item("UserPicture")
+                            imgProfilePicture.ImageUrl = Session.Item("UserPicture")
                         End Using
                     Catch ex As Exception
                         PictureLabel.Visible = True
