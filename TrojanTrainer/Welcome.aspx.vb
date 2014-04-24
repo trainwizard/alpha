@@ -65,7 +65,7 @@ Partial Class Welcome
                 Dim picLocation As New List(Of String)
                 If readerPic.HasRows() Then
                     While readerPic.Read()
-                        Session.Item("UserPicture") = readerPic("User_Photo_ID")
+                        Session.Item("UserPicture") = "~/UserImages/" + readerPic("User_Photo_ID")
                         'picLocation.Add(readerPic("User_Photo_ID"))
                     End While
                     'CREATES SESSION ROLE

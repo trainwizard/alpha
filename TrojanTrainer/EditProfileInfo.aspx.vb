@@ -42,7 +42,8 @@ Partial Class EditProfileInfo
     End Sub
 
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
-        imgProfilePicture.ImageUrl = "~/UserImages/" + Session.Item("UserPicture")
+        Debug.Print(Session.Item("UserPicture"))
+        imgProfilePicture.ImageUrl = Session.Item("UserPicture")
     End Sub
 
     Protected Sub ChangePictureButton_Click(sender As Object, e As System.EventArgs) Handles ChangePictureButton.Click
