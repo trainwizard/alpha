@@ -1,11 +1,11 @@
-﻿<%--<%@ Page Title="" Language="VB" MasterPageFile="~/main.master" AutoEventWireup="false" CodeFile="Athlete_Sleep_Nutrition.aspx.vb" Inherits="_Default" %>
+﻿<%@ Page Title="" Language="VB" MasterPageFile="~/main.master" AutoEventWireup="false" CodeFile="Athlete_Sleep_Nutrition.aspx.vb" Inherits="Athlete_Sleep_Nutrition" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     
     <p>
-        <asp:Calendar ID="SleepCalender" runat="server" 
+        <asp:Calendar ID="Calender" runat="server" 
             SelectedDate="04/15/2014 20:39:23"></asp:Calendar>
     </p>
     <p>
@@ -78,8 +78,8 @@
         &nbsp;</p>
     <p>
         <asp:Button ID="Submit_Sleep" runat="server" Text="Submit Sleep Information" />
-        <asp:Label ID="Confirm" runat="server" ForeColor="#990000" 
-            Text="An error occurred. You sure screwed up something badly."></asp:Label>
+        <asp:Label ID="Error" runat="server" ForeColor="#990000" 
+            Text="An error occurred. You sure screwed up something badly." Visble="False"></asp:Label>
     </p>
     <h3>&nbsp;</h3>
     <h3>Nutrition</h3>
@@ -94,8 +94,7 @@
         <asp:TextBox ID="txtNotes" runat="server" MaxLength="100" TextMode="MultiLine"></asp:TextBox>
     </p>
     <p>
-        <asp:Button ID="Submit_Nutrition" runat="server" 
+        <asp:Button ID="SubmitNutrition" runat="server" 
             Text="Submit Nutrition Information" Width="219px" />
     </p>
 </asp:Content>
---%>
