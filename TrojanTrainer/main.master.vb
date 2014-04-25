@@ -202,10 +202,10 @@ Partial Class main
     End Sub
 
     Protected Sub btnInjury_Click(sender As Object, e As System.EventArgs) Handles btnInjury.Click
-        Response.Redirect("Injury.aspx")
+        Response.Redirect("SamTest.aspx")
         If Session.Item("Role") = 5 Then
             'any user
-
+            Response.Redirect("SamTest.aspx")
         ElseIf Session.Item("Role") = 4 Then
             'athlete
 
