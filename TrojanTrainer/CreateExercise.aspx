@@ -58,7 +58,7 @@
     <p>
         <asp:DetailsView ID="dvInsertExercise" runat="server" AutoGenerateRows="False" 
             DataKeyNames="Planned_Ex_ID" DataSourceID="SqlDataSource1" DefaultMode="Insert" 
-            Height="50px" Width="125px">
+            Height="50px" Width="643px">
             <Fields>
                 <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
                 <asp:BoundField DataField="Reps" HeaderText="Reps" SortExpression="Reps" />
