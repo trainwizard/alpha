@@ -78,7 +78,7 @@
         &nbsp;</p>
     <p>
         <asp:Button ID="Submit_Sleep" runat="server" Text="Submit Sleep Information" />
-        <asp:Label ID="Error" runat="server" ForeColor="#990000" 
+        <asp:Label ID="ErrorMsg" runat="server" ForeColor="#990000" 
             Text="An error occurred. You sure screwed up something badly." Visble="False"></asp:Label>
     </p>
     <h3>&nbsp;</h3>
