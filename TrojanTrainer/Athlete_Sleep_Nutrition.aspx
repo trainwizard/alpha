@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="VB" MasterPageFile="~/main.master" AutoEventWireup="false" CodeFile="Athlete_Sleep_Nutrition.aspx.vb" Inherits="Athlete_Sleep_Nutrition" %>
+﻿<%@ Page Title="" Language="VB" MasterPageFile="~/main.master" AutoEventWireup="true" CodeFile="Athlete_Sleep_Nutrition.aspx.vb" Inherits="Athlete_Sleep_Nutrition.aspx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
@@ -18,7 +18,8 @@
     </p>
     
     <p>
-        <asp:ListBox ID="StartHour" runat="server" Height="32px" Width="124px">
+        <asp:ListBox ID="StartHour" runat="server" Height="32px" Width="124px" 
+            AutoPostBack="True">
             <asp:ListItem Value="01">1</asp:ListItem>
             <asp:ListItem Value="02">2</asp:ListItem>
             <asp:ListItem Value="03">3</asp:ListItem>
