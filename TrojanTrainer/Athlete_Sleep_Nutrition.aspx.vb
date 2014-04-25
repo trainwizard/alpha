@@ -10,7 +10,6 @@ Partial Class Athlete_Sleep_Nutrition
 
 
     Protected Sub SubmitNutrition_Click(sender As Object, e As System.EventArgs) Handles SubmitNutrition.Click
-
         'Using connection As New SqlConnection(connectionString)
         '    'connection is established
         '    connection.Open()
@@ -40,4 +39,6 @@ Partial Class Athlete_Sleep_Nutrition
 
         'End Using
     End Sub
+
+
 End Class
