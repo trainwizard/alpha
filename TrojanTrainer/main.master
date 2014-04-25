@@ -3,7 +3,8 @@
 <%--Sams Notes: make sure implement the topbar toggle 
 http://webdesign.tutsplus.com/articles/how-to-customize-the-foundation-4-top-bar--webdesign-14675 
 http://foundation.zurb.com/docs/v/3.2.5/index.php
-http://foundation.zurb.com/docs/components/visibility.html--%>
+http://foundation.zurb.com/docs/components/visibility.html
+http://foundation.zurb.com/forum/posts/3077-move-divs-based-on-screen-size--%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -24,13 +25,14 @@ http://foundation.zurb.com/docs/components/visibility.html--%>
 
 </head>
 <body>
-<form id="Form1" runat="server">
+<form class="" id="Form1" runat="server">
     <div class="large-12 columns ">
         <nav class="top-bar">
             <ul class="title-area right">
                 <li class="name">
                   <div class="doodsName show-for-small-up">
                     <asp:Label ID="CurrentUserTxt" runat="server" Text="Username Placeholder"></asp:Label>
+                    <asp:ImageButton ID="UserImage" runat="server" ImageUrl="none.jpg" Width="30px" />
                   </div>  
                 </li>
             </ul>
@@ -52,9 +54,10 @@ http://foundation.zurb.com/docs/components/visibility.html--%>
          
                 </div>
         </div>
-        <div class="large-10 columns">
-            <div class="mySpecialContent">
+        <div class="large-10 columns left">
+            <div class="mySpecialContent left">
                 <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+                    
                 </asp:ContentPlaceHolder>
             </div>
           

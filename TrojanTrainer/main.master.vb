@@ -10,6 +10,8 @@ Partial Class main
 
 
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
+        'Gets user picture
+        UserImage.ImageUrl = Session.Item("UserPicture")
         'No current user
         If Session("username") Is Nothing Then
             'Sends non-user back to homepage if they are trying to URL hack
@@ -247,5 +249,8 @@ Partial Class main
         End If
     End Sub
 
+    Protected Sub UserImage_Click(sender As Object, e As System.Web.UI.ImageClickEventArgs) Handles UserImage.Click
+        Response.Redirect("EditProfileInfo.aspx")
+    End Sub
 End Class
 
