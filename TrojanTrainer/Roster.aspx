@@ -12,7 +12,7 @@
     
         <asp:DropDownList ID="ddlSports" runat="server" AutoPostBack="True"
             DataSourceID="SqlDataSource1" DataTextField="Name" 
-            DataValueField="Sport_ID" Height="21px">
+            DataValueField="Sport_ID" Height="32px">
             <asp:ListItem Selected="True">Choose a Sport</asp:ListItem>
         </asp:DropDownList>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

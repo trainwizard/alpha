@@ -37,6 +37,8 @@
     <p>
         <asp:Button ID="btnCreateWorkout" runat="server" Text="Create Workout" />
         <asp:Button ID="btnCreateExercise" runat="server" Text="Create Exercise" />
+        <asp:Button ID="btnAddExerciseToWorkout" runat="server" 
+            Text="Add Exercise to Workout" />
     </p>
 </asp:Content>
 

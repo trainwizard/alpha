@@ -18,6 +18,7 @@
     </p>
     
     <p>
+<<<<<<< HEAD
         <asp:ListBox ID="StartHour" runat="server" Height="32px" Width="124px" 
             AutoPostBack="True">
             <asp:ListItem Value="01">1</asp:ListItem>
@@ -33,14 +34,10 @@
             <asp:ListItem Value="11">11</asp:ListItem>
             <asp:ListItem>12</asp:ListItem>
         </asp:ListBox>
+=======
+>>>>>>> e896183b49cdaa49f63b1a50e64b320a569862ea
 &nbsp;&nbsp;
-        <asp:ListBox ID="StartMinute" runat="server" Height="32px" Width="124px">
-            <asp:ListItem>00</asp:ListItem>
-            <asp:ListItem>15</asp:ListItem>
-            <asp:ListItem>30</asp:ListItem>
-            <asp:ListItem>45</asp:ListItem>
-        </asp:ListBox>
-&nbsp;<asp:RadioButtonList ID="RB_Start" runat="server" Width="172px">
+        &nbsp;<asp:RadioButtonList ID="RB_Start" runat="server" Width="172px">
             <asp:ListItem>AM</asp:ListItem>
             <asp:ListItem>PM</asp:ListItem>
         </asp:RadioButtonList>
@@ -49,28 +46,7 @@
         <asp:Label ID="Sleep_Stop" runat="server" Text="Time I woke up:"></asp:Label>
     </p>
     <p>
-        <asp:ListBox ID="StopHour" runat="server" Height="32px" Width="120px">
-            <asp:ListItem Value="01">1 </asp:ListItem>
-            <asp:ListItem Value="02">2</asp:ListItem>
-            <asp:ListItem Value="03">3</asp:ListItem>
-            <asp:ListItem Value="04">4</asp:ListItem>
-            <asp:ListItem Value="05">5</asp:ListItem>
-            <asp:ListItem Value="06">6</asp:ListItem>
-            <asp:ListItem Value="07">7</asp:ListItem>
-            <asp:ListItem Value="08">8</asp:ListItem>
-            <asp:ListItem Value="09">9</asp:ListItem>
-            <asp:ListItem Value="10">10</asp:ListItem>
-            <asp:ListItem Value="11">11</asp:ListItem>
-            <asp:ListItem Value="12">12</asp:ListItem>
-        </asp:ListBox>
-        &nbsp;&nbsp;&nbsp;
-        <asp:ListBox ID="StopMinute" runat="server" Height="32px" Width="124px">
-            <asp:ListItem>00</asp:ListItem>
-            <asp:ListItem>15</asp:ListItem>
-            <asp:ListItem>30</asp:ListItem>
-            <asp:ListItem>45</asp:ListItem>
-        </asp:ListBox>
-    </p>
+        s</p>
     <asp:RadioButtonList ID="RB_Stop" runat="server" Width="172px">
         <asp:ListItem>AM</asp:ListItem>
         <asp:ListItem>PM</asp:ListItem>
@@ -79,7 +55,7 @@
         &nbsp;</p>
     <p>
         <asp:Button ID="Submit_Sleep" runat="server" Text="Submit Sleep Information" />
-        <asp:Label ID="Error" runat="server" ForeColor="#990000" 
+        <asp:Label ID="ErrorMsg" runat="server" ForeColor="#990000" 
             Text="An error occurred. You sure screwed up something badly." Visble="False"></asp:Label>
     </p>
     <h3>&nbsp;</h3>
