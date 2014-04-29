@@ -57,16 +57,14 @@
     </p>
     <p>
     
-<%--        <asp:GridView ID="gvSportRoster" runat="server" AutoGenerateColumns="False" 
-            DataSourceID="SqlDataSource3" AllowSorting="True" Enabled="False">
-            <Columns>
-                <asp:BoundField DataField="First_Name" HeaderText="First_Name" 
-                    SortExpression="First_Name" />
-                <asp:BoundField DataField="Last_Name" HeaderText="Last_Name" 
-                    SortExpression="Last_Name" />
-                <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
-            </Columns>
-        </asp:GridView>--%>
+<%--        <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
+            SelectCommand="GetSportRoster" SelectCommandType="StoredProcedure">
+            <SelectParameters>
+                <asp:ControlParameter ControlID="ddlSports" Name="Sport_ID" 
+                    PropertyName="SelectedValue" Type="String" />
+            </SelectParameters>
+        </asp:SqlDataSource>--%>
 <%--        <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
             ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
             SelectCommand="GetSportRoster" SelectCommandType="StoredProcedure">
@@ -103,6 +101,19 @@
                     PropertyName="SelectedValue" Type="String" />
             </SelectParameters>
         </asp:SqlDataSource>
+    </p>
+    <p>
+    
+        Add Member to the Team</p>
+    <p>
+    
+        <asp:DropDownList ID="ddlAddTeamMember" runat="server">
+        </asp:DropDownList>
+        <asp:SqlDataSource ID="SqlDataSource6" runat="server"></asp:SqlDataSource>
+    </p>
+    <p>
+    
+        <asp:Button ID="Button1" runat="server" Text="Add Team Member" />
     </p>
     
 
