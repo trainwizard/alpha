@@ -144,7 +144,7 @@ Partial Class main
 
         ElseIf Session.Item("Role") = 4 Then
             'athlete
-
+            Response.Redirect("AthleteSNW.aspx")
 
         ElseIf Session.Item("Role") = 3 Then
             'athletic trainer

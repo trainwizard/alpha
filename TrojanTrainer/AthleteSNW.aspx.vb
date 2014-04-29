@@ -114,18 +114,22 @@ Partial Class _Default
     End Sub
 
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
-        DateValidator.ForeColor = Drawing.Color.Black
-        SubmitInfo.Visible = False
-        SleepLabel.Visible = False
-        NutritionLabel.Visible = False
-        WeightLabel.Visible = False
-        BedTimeH.Visible = False
-        BedTimeM.Visible = False
-        AMPMButtons.Visible = False
-        NumHours.Visible = False
-        Calories.Visible = False
-        NutritionNote.Visible = False
-        PreWeight.Visible = False
+        If Session.Item("Role") <> 4 Then
+            Response.Redirect("Permissions.aspx")
+        Else
+            DateValidator.ForeColor = Drawing.Color.Black
+            SubmitInfo.Visible = False
+            SleepLabel.Visible = False
+            NutritionLabel.Visible = False
+            WeightLabel.Visible = False
+            BedTimeH.Visible = False
+            BedTimeM.Visible = False
+            AMPMButtons.Visible = False
+            NumHours.Visible = False
+            Calories.Visible = False
+            NutritionNote.Visible = False
+            PreWeight.Visible = False
+        End If
     End Sub
 
     Protected Sub SelectDate_SelectionChanged(sender As Object, e As System.EventArgs) Handles SelectDate.SelectionChanged
