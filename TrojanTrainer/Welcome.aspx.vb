@@ -73,11 +73,23 @@ Partial Class Welcome
                 End If
                 readerPic.Close()
                 readerPic = Nothing
-                connection.Close()
                 'redirect to correct home page
                 If Session.Item("Role") = 5 Then
                     Response.Redirect("LoginHome.aspx")
                 ElseIf Session.Item("Role") = 4 Then
+                    'adds an session item called tmid
+                    Dim getTMID As SqlCommand = New SqlCommand("GetTMID", connection)
+                    getTMID.CommandType = CommandType.StoredProcedure
+                    getTMID.Parameters.Add(New SqlParameter("@User_ID", Session("username")))
+                    Dim readerTMID As SqlDataReader = getTMID.ExecuteReader()
+                    If readerTMID.HasRows() Then
+                        While readerTMID.Read()
+                            Session.Item("TM_ID") = readerTMID("TM_ID")
+                        End While
+                    End If
+                    readerTMID.Close()
+                    readerTMID = Nothing
+                    Debug.Print(Session.Item("TM_ID"))
                     Response.Redirect("AthleteHome.aspx")
                 ElseIf Session.Item("Role") = 3 Then
                     Response.Redirect("AthleticTrainerHome.aspx")
