@@ -55,6 +55,7 @@
         <asp:ListItem>PM</asp:ListItem>
     </asp:RadioButtonList>
     <br />
+    <br />
     <asp:DropDownList ID="NumHours" runat="server">
         <asp:ListItem>1</asp:ListItem>
         <asp:ListItem>2</asp:ListItem>
@@ -74,7 +75,11 @@
     <br />
     <asp:Label ID="NutritionLabel" runat="server" Text="Nutrition"></asp:Label>
     <br />
-    <asp:TextBox ID="Calories" runat="server" MaxLength="4"></asp:TextBox>
+    <asp:CheckBoxList ID="Calories" runat="server">
+        <asp:ListItem>Breakfast</asp:ListItem>
+        <asp:ListItem>Lunch</asp:ListItem>
+        <asp:ListItem>Dinner</asp:ListItem>
+    </asp:CheckBoxList>
     <br />
     <asp:TextBox ID="NutritionNote" runat="server"></asp:TextBox>
     <br />

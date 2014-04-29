@@ -9,7 +9,24 @@ Partial Class _Default
 
     Protected Sub SubmitInfo_Click(sender As Object, e As System.EventArgs) Handles SubmitInfo.Click
 
-        If AMPMButtons.SelectedValue = "" Or Calories.Text = "" Or PreWeight.Text = "" Then
+        'gets checkbox information for meals
+        Dim breakfast As Integer = 0
+        Dim lunch As Integer = 0
+        Dim dinner As Integer = 0
+        For Each li As ListItem In Calories.Items
+            If li.Selected Then
+                Debug.Print(li.Value)
+                If li.Value = "Breakfast" Then
+                    breakfast = 1
+                ElseIf li.Value = "Lunch" Then
+                    lunch = 1
+                ElseIf li.Value = "Dinner" Then
+                    dinner = 1
+                End If
+            End If
+        Next
+
+        If AMPMButtons.SelectedValue = "" Or PreWeight.Text = "" Then
             DateValidator.Text = "Please Complete all fields."
             DateValidator.ForeColor = Drawing.Color.Red
             DateValidator.Visible = True
@@ -54,7 +71,6 @@ Partial Class _Default
             SleepLeng = NumHours.SelectedValue
             Debug.Print(SleepLeng)
             'adds nutrition info to a variable
-            Dim NutritionCal As Integer = Calories.Text
             Dim NutritionNotes As String = NutritionNote.Text
             'adds weight info into variable
             Dim CurWeight As Integer = PreWeight.Text
@@ -82,7 +98,9 @@ Partial Class _Default
                     inputSNW.Parameters.Add(New SqlParameter("@date", DateInput))
                     inputSNW.Parameters.Add(New SqlParameter("@bedtime", SleepTime))
                     inputSNW.Parameters.Add(New SqlParameter("@hours", SleepLeng))
-                    inputSNW.Parameters.Add(New SqlParameter("@calories", NutritionCal))
+                    inputSNW.Parameters.Add(New SqlParameter("@breakfast", breakfast))
+                    inputSNW.Parameters.Add(New SqlParameter("@lunch", lunch))
+                    inputSNW.Parameters.Add(New SqlParameter("@dinner", dinner))
                     inputSNW.Parameters.Add(New SqlParameter("@note", NutritionNotes))
                     inputSNW.Parameters.Add(New SqlParameter("@weight", CurWeight))
                     inputSNW.ExecuteNonQuery()
