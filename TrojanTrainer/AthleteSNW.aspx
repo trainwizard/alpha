@@ -22,8 +22,13 @@
     <asp:Label ID="DateValidator" runat="server" ForeColor="Black" 
         Text="Please select a Date."></asp:Label>
     <br />
+    <asp:Label ID="BedtimeOutput" runat="server" Text="Label" Visible="False"></asp:Label>
+    <asp:Label ID="HoursOutput" runat="server" Text="Label" Visible="False"></asp:Label>
+    <asp:Label ID="MealsOutput" runat="server" Text="Label" Visible="False"></asp:Label>
+    <asp:Label ID="NotesOutput" runat="server" Text="Label" Visible="False"></asp:Label>
+    <asp:Label ID="WeightOutput" runat="server" Text="Label" Visible="False"></asp:Label>
     <br />
-    <asp:Label ID="SleepLabel" runat="server" Text="Sleep"></asp:Label>
+    <asp:Label ID="SleepLabel" runat="server" Text="Bedtime:"></asp:Label>
     <br />
     <br />
     <asp:DropDownList ID="BedTimeH" runat="server">
@@ -55,6 +60,7 @@
         <asp:ListItem>PM</asp:ListItem>
     </asp:RadioButtonList>
     <br />
+    <asp:Label ID="HoursSleptLabel" runat="server" Text="Hours Slept:"></asp:Label>
     <br />
     <asp:DropDownList ID="NumHours" runat="server">
         <asp:ListItem>1</asp:ListItem>
@@ -73,20 +79,24 @@
     </asp:DropDownList>
     <br />
     <br />
-    <asp:Label ID="NutritionLabel" runat="server" Text="Nutrition"></asp:Label>
+    <asp:Label ID="NutritionLabel" runat="server" Text="Meals Eaten:"></asp:Label>
     <br />
     <asp:CheckBoxList ID="Calories" runat="server">
         <asp:ListItem>Breakfast</asp:ListItem>
         <asp:ListItem>Lunch</asp:ListItem>
         <asp:ListItem>Dinner</asp:ListItem>
     </asp:CheckBoxList>
+    <asp:Label ID="MealNoteLabel" runat="server" Text="Meal Notes:"></asp:Label>
     <br />
     <asp:TextBox ID="NutritionNote" runat="server"></asp:TextBox>
     <br />
-    <asp:Label ID="WeightLabel" runat="server" Text="Weight"></asp:Label>
+    <asp:Label ID="WeightLabel" runat="server" Text="Current Weight:"></asp:Label>
     <br />
     <asp:TextBox ID="PreWeight" runat="server"></asp:TextBox>
     <br />
     <asp:Button ID="SubmitInfo" runat="server" Text="Submit" />
+    <br />
+    <br />
+    <br />
 </asp:Content>
 

@@ -15,7 +15,6 @@ Partial Class _Default
         Dim dinner As Integer = 0
         For Each li As ListItem In Calories.Items
             If li.Selected Then
-                Debug.Print(li.Value)
                 If li.Value = "Breakfast" Then
                     breakfast = 1
                 ElseIf li.Value = "Lunch" Then
@@ -69,7 +68,6 @@ Partial Class _Default
             'adds hours to a variable
             Dim SleepLeng As Integer
             SleepLeng = NumHours.SelectedValue
-            Debug.Print(SleepLeng)
             'adds nutrition info to a variable
             Dim NutritionNotes As String = NutritionNote.Text
             'adds weight info into variable
@@ -88,7 +86,6 @@ Partial Class _Default
                 reader = cmd.ExecuteReader()
                 'If selected date is empty
                 If reader.HasRows() = False Then
-                    Debug.Print(DateInput)
                     reader.Close()
                     reader = Nothing
                     'uses stored procedure called UserActive to set Active to be equal to 1
@@ -118,12 +115,11 @@ Partial Class _Default
                     Calories.Visible = False
                     NutritionNote.Visible = False
                     PreWeight.Visible = False
-
+                    HoursSleptLabel.Visible = False
+                    MealNoteLabel.Visible = False
                 Else
                     'Error: date already completed
-                    'output previous data using stored procedure GetSNWInfo
-                    'Input -- TM_ID, date
-                    'Output -- Bedtime, Hours, Breakfast, Lunch, Dinner, Note, Weight
+
                 End If
 
             End Using
@@ -149,8 +145,9 @@ Partial Class _Default
             Calories.Visible = False
             NutritionNote.Visible = False
             PreWeight.Visible = False
+            HoursSleptLabel.Visible = False
+            MealNoteLabel.Visible = False
         End If
-        Debug.Print(Session.Item("UserPicture"))
     End Sub
 
     Protected Sub SelectDate_SelectionChanged(sender As Object, e As System.EventArgs) Handles SelectDate.SelectionChanged
@@ -163,13 +160,18 @@ Partial Class _Default
             Dim Dayreader As SqlDataReader
             'calls stored procedure to check user existance
             CheckDay.CommandType = CommandType.StoredProcedure
+            'Input -- TM_ID, date
             CheckDay.Parameters.Add(New SqlParameter("@TM_ID", Session.Item("TM_ID")))
             CheckDay.Parameters.Add(New SqlParameter("@Date", DateInput))
             Dayreader = CheckDay.ExecuteReader()
             'If selected date is empty
             If Dayreader.HasRows() Then
-                DateValidator.ForeColor = Drawing.Color.Red
-                DateValidator.Text = "Selected date has already been entered. Please Select another."
+
+                'Error: date already completed
+
+                DateValidator.ForeColor = Drawing.Color.Black
+                DateValidator.Text = "Selected date has already been entered." + "<br/><br/>" + "Here is your information: <br/>"
+
                 DateValidator.Visible = True
                 SubmitInfo.Visible = False
                 SleepLabel.Visible = False
@@ -182,8 +184,63 @@ Partial Class _Default
                 Calories.Visible = False
                 NutritionNote.Visible = False
                 PreWeight.Visible = False
+
+
+                'Output -- Bedtime, Hours, Breakfast, Lunch, Dinner, Note, Weight
+                Dim previousData As New ArrayList()
+                Do While Dayreader.Read()
+                    previousData.Add(Dayreader("bedtime"))
+                    previousData.Add(Dayreader("Hours"))
+                    previousData.Add(Dayreader("Breakfast"))
+                    previousData.Add(Dayreader("Lunch"))
+                    previousData.Add(Dayreader("Dinner"))
+                    previousData.Add(Dayreader("Note"))
+                    previousData.Add(Dayreader("Weight"))
+                Loop
+
+                For Each item As String In previousData
+                    Debug.Print(item)
+                Next
+
+                'Shows the results
+                BedtimeOutput.Text = "Bedtime: " + previousData(0)
+                BedtimeOutput.Visible = True
+                HoursOutput.Text = "<br/>Number of hours slept:" + Str(previousData(1))
+                HoursOutput.Visible = True
+                Dim Meals As String = ""
+                If previousData(2) + previousData(3) + previousData(4) > 0 Then
+                    If previousData(2) > 0 Then
+                        Meals = Meals + "Breakfast"
+                    End If
+                    'lunch
+                    If previousData(3) > 0 And Meals = "" Then
+                        Meals = Meals + "Lunch"
+                    ElseIf previousData(3) > 0 Then
+                        Meals = Meals + ", " + "Lunch"
+                    End If
+                    'dinner
+                    If previousData(4) > 0 And Meals = "" Then
+                        Meals = Meals + "Dinner"
+                    ElseIf previousData(4) > 0 Then
+                        Meals = Meals + ", " + "Dinner"
+                    End If
+                Else
+                    Meals = "none"
+                End If
+                MealsOutput.Text = "<br/>Meals eaten: " + Meals
+                MealsOutput.Visible = True
+                If previousData(5) = "" Then
+                    NotesOutput.Text = "<br/>Nutrition notes: " + "none"
+                Else
+                    NotesOutput.Text = "<br/>Nutrition notes: " + previousData(5)
+                End If
+                NotesOutput.Visible = True
+                WeightOutput.Text = "<br/>Weight: " + Str(previousData(6)) + " lbs."
+                WeightOutput.Visible = True
             Else
-                DateValidator.Visible = False
+                DateValidator.Text = "Please enter data for this day."
+                DateValidator.Visible = True
+
                 SubmitInfo.Visible = True
                 SleepLabel.Visible = True
                 NutritionLabel.Visible = True
@@ -195,7 +252,14 @@ Partial Class _Default
                 Calories.Visible = True
                 NutritionNote.Visible = True
                 PreWeight.Visible = True
-
+                HoursSleptLabel.Visible = True
+                MealNoteLabel.Visible = True
+                BedtimeOutput.Visible = False
+                HoursOutput.Visible = False
+                MealsOutput.Visible = False
+                NutritionLabel.Visible = False
+                NotesOutput.Visible = False
+                WeightOutput.Visible = False
             End If
 
         End Using
