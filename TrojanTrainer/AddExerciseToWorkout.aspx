@@ -22,8 +22,6 @@
         </asp:SqlDataSource>
     </p>
     <p>
-        &nbsp;</p>
-    <p>
         <asp:Button ID="btnGetExercises" runat="server" Text="Get Exercises" />
     </p>
     <p>
