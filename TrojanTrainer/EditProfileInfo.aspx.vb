@@ -114,4 +114,39 @@ Partial Class EditProfileInfo
 
         'End Using
     End Sub
+
+    Protected Sub btnSubmitEmail_Click(sender As Object, e As System.EventArgs) Handles btnSubmitEmail.Click
+        'compare value sets a variable so the while loop knows its ok to execute 
+        Dim compareValue As Boolean = True
+        If txtNewEmail.Text = "" Then
+            lblAngryEmail.Text = "Please enter a valid Email"
+            lblAngryEmail.ForeColor = Drawing.Color.Red
+            lblAngryEmail.Visible = True
+            compareValue = False
+            'ElseIf txtNewPassword.Text = "" Then
+            '    lblAngryPassword.Text = "Please Enter a Valid Password"
+            '    lblAngryPassword.ForeColor = Drawing.Color.Red
+            '    lblAngryPassword.Visible = True
+        End If
+        While compareValue = True
+            Using connection As New SqlConnection(connectionString)
+
+                'retrieves text from textboxes
+                Dim newEmail As String = txtNewEmail.Text
+                'finds the user whose logged in
+
+                connection.Open()
+                Dim cmd As SqlCommand = New SqlCommand("ChangeEmail", connection)
+                cmd.CommandType = CommandType.StoredProcedure
+                cmd.Parameters.Add(New SqlParameter("@User_ID", Session("username")))
+                cmd.Parameters.Add(New SqlParameter("@email", newEmail))
+                cmd.ExecuteNonQuery()
+                lblAngryEmail.Visible = False
+                lblChangeEmail.Visible = True
+                connection.Close()
+
+            End Using
+
+        End While
+    End Sub
 End Class

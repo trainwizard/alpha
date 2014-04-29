@@ -37,11 +37,24 @@
         <asp:Label ID="lblPasswordSuc" runat="server" 
             Text="Password Successfully Changed!" Visible="False"></asp:Label>
     </p>
+    <br />
+    <br />
+    <br />
     <p>
         
-        &nbsp;</p>
+        <asp:Label ID="lblChangeEmail" runat="server" Text="Change your Email:"></asp:Label><br /><br /> 
+        <asp:Label ID="lblNewEmail" runat="server" Text="New Email"></asp:Label>
+        <asp:TextBox ID="txtNewEmail" runat="server"></asp:TextBox>
+        <asp:Label ID="lblAngryEmail" runat="server" Visible="False"></asp:Label><br /><br /> 
+        <asp:Label ID="lblConfirmEmail" runat="server" Text="Confirm Email"></asp:Label>
+        <asp:TextBox ID="txtConfirmEmail" runat="server"></asp:TextBox>
+        <br /><br /> 
+        <asp:Button ID="btnSubmitEmail" runat="server" Text="Change Email" />
+    </p>
     <p>
         
-        &nbsp;</p>
+        <asp:Label ID="lblEmailChanged" runat="server" 
+            Text="Email Successfully Changed!" Visible="false"></asp:Label>
+    </p>
 </asp:Content>
 
