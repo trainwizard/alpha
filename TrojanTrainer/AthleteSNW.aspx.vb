@@ -121,7 +121,9 @@ Partial Class _Default
 
                 Else
                     'Error: date already completed
-                    Debug.Print("date already complete")
+                    'output previous data using stored procedure GetSNWInfo
+                    'Input -- TM_ID, date
+                    'Output -- Bedtime, Hours, Breakfast, Lunch, Dinner, Note, Weight
                 End If
 
             End Using
