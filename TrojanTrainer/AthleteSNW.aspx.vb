@@ -130,6 +130,7 @@ Partial Class _Default
             NutritionNote.Visible = False
             PreWeight.Visible = False
         End If
+        Debug.Print(Session.Item("UserPicture"))
     End Sub
 
     Protected Sub SelectDate_SelectionChanged(sender As Object, e As System.EventArgs) Handles SelectDate.SelectionChanged

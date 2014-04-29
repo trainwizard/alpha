@@ -12,7 +12,7 @@
             ImageUrl="~/images/blank_user_picture.jpg" Width="244px" />
     </p>
     <p>
-        Change picture:</p>
+        Change picture:&nbsp;&nbsp; (Must be .jpg)</p>
     <p>
         <asp:FileUpload ID="PictureUpload" runat="server" />
     </p>

@@ -71,6 +71,8 @@ Partial Class Welcome
                     'CREATES SESSION ROLE
                     'Session.Item("UserPicture") = picLocation.Item("User_Photo_ID")
                 End If
+                Debug.Print("Made it")
+                Debug.Print(Session.Item("UserPicture"))
                 readerPic.Close()
                 readerPic = Nothing
                 'redirect to correct home page
