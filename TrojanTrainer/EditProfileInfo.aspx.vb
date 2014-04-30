@@ -9,8 +9,8 @@ Partial Class EditProfileInfo
     Protected Sub btnSubmitPassword_Click(sender As Object, e As System.EventArgs) Handles btnSubmitPassword.Click
         'compare value sets a variable so the while loop knows its ok to execute 
         Dim compareValue As Boolean = True
-        If txtNewPassword.Text = "" Then
-            lblAngryPassword.Text = "Please enter a valid Password"
+        If txtNewPassword.Text = "" Or txtConfirmPassword.Text = "" Then
+            lblAngryPassword.Text = "Please enter a valid Password into both fields."
             lblAngryPassword.ForeColor = Drawing.Color.Red
             lblAngryPassword.Visible = True
             compareValue = False
@@ -18,10 +18,15 @@ Partial Class EditProfileInfo
             '    lblAngryPassword.Text = "Please Enter a Valid Password"
             '    lblAngryPassword.ForeColor = Drawing.Color.Red
             '    lblAngryPassword.Visible = True
+        ElseIf txtNewPassword.Text <> txtConfirmPassword.Text Then
+            lblAngryPassword.Text = "Your passwords do not match."
+            lblAngryPassword.ForeColor = Drawing.Color.Red
+            lblAngryPassword.Visible = True
+            compareValue = False
         End If
-        While compareValue = True
+        If compareValue = True Then
             Using connection As New SqlConnection(connectionString)
-
+                lblAngryPassword.Visible = False
                 'retrieves text from textboxes
                 Dim newPassword As String = txtNewPassword.Text
                 'finds the user whose logged in
@@ -34,11 +39,12 @@ Partial Class EditProfileInfo
                 cmd.ExecuteNonQuery()
                 lblAngryPassword.Visible = False
                 lblPasswordSuc.Visible = True
+                lblPasswordSuc.ForeColor = Drawing.Color.Green
                 connection.Close()
-               
+
             End Using
-            
-        End While
+
+        End If
     End Sub
 
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
@@ -91,46 +97,46 @@ Partial Class EditProfileInfo
             End If
         End If
 
-        
-
-
-
-
-        'Using connection2 As New SqlConnection(connectionString)
-        'connection2.Open()
-        'Dim cmdd As SqlCommand = New SqlCommand("GetUserImage", connection2)
-        'cmdd.CommandType = CommandType.StoredProcedure
-        'cmdd.Parameters.Add(New SqlParameter("@User_ID", Session("username")))
-        'Dim reader2 As SqlDataReader = cmdd.ExecuteReader()
-        'Dim values As New ArrayList()
-        'While reader2.Read()
-        'Dim role As New String(Str(reader2("User_Picture_Location")))
-        'values.Add(role)
-        'End While
-        'CREATES SESSION ROLE
-        'Session.Item("Role") = Str(values.Item(0))
-
-        'connection2.Close()
-
-        'End Using
     End Sub
 
     Protected Sub btnSubmitEmail_Click(sender As Object, e As System.EventArgs) Handles btnSubmitEmail.Click
         'compare value sets a variable so the while loop knows its ok to execute 
-        Dim compareValue As Boolean = True
-        If txtNewEmail.Text = "" Then
-            lblAngryEmail.Text = "Please enter a valid Email"
+        Dim compareEmailValue As Boolean = True
+        Dim email As String = txtNewEmail.Text
+        Debug.Print(email.Substring(email.Length - 4))
+        If txtNewEmail.Text = "" Or txtConfirmEmail.Text = "" Then
+            lblEmailSuc.Visible = False
+            lblAngryEmail.Text = "Please enter a valid Email into both fields."
             lblAngryEmail.ForeColor = Drawing.Color.Red
             lblAngryEmail.Visible = True
-            compareValue = False
+            compareEmailValue = False
             'ElseIf txtNewPassword.Text = "" Then
             '    lblAngryPassword.Text = "Please Enter a Valid Password"
             '    lblAngryPassword.ForeColor = Drawing.Color.Red
             '    lblAngryPassword.Visible = True
-        End If
-        While compareValue = True
-            Using connection As New SqlConnection(connectionString)
+        ElseIf txtNewEmail.Text <> txtConfirmEmail.Text Then
+            lblEmailSuc.Visible = False
+            lblAngryEmail.Text = "Your Emails do not match."
+            lblAngryEmail.ForeColor = Drawing.Color.Red
+            lblAngryEmail.Visible = True
+            compareEmailValue = False
 
+        ElseIf email.Substring(email.Length - 4) <> ".com" And email.Substring(email.Length - 4) <> ".net" And email.Substring(email.Length - 4) <> ".edu" And email.Substring(email.Length - 4) <> ".org" And email.Substring(email.Length - 4) <> ".gov" Then
+            lblEmailSuc.Visible = False
+            lblAngryEmail.Text = "Please enter a valid email."
+            lblAngryEmail.ForeColor = Drawing.Color.Red
+            lblAngryEmail.Visible = True
+            compareEmailValue = False
+        ElseIf Not email.Contains("@") Then
+            lblEmailSuc.Visible = False
+            lblAngryEmail.Text = "Please enter a valid email."
+            lblAngryEmail.ForeColor = Drawing.Color.Red
+            lblAngryEmail.Visible = True
+            compareEmailValue = False
+        End If
+        If compareEmailValue = True Then
+            Using connection As New SqlConnection(connectionString)
+                lblAngryEmail.Visible = False
                 'retrieves text from textboxes
                 Dim newEmail As String = txtNewEmail.Text
                 'finds the user whose logged in
@@ -142,11 +148,13 @@ Partial Class EditProfileInfo
                 cmd.Parameters.Add(New SqlParameter("@email", newEmail))
                 cmd.ExecuteNonQuery()
                 lblAngryEmail.Visible = False
-                lblChangeEmail.Visible = True
+                lblEmailSuc.Visible = True
+                lblEmailSuc.ForeColor = Drawing.Color.Green
                 connection.Close()
-
+                txtConfirmEmail.Text = ""
+                txtNewEmail.Text = ""
             End Using
 
-        End While
+        End If
     End Sub
 End Class
