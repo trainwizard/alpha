@@ -13,8 +13,10 @@
 }
 
 .doodsName{
-    !float: right !important;
+    float: 50%;
 	color: white;
+	!margin: 1px;
+	top: 50%;
 }
 /*
 .content {    
@@ -1301,7 +1303,7 @@ meta.foundation-mq-topbar {
 
 .top-bar {
   overflow: hidden;
-  height: 45px;
+  height: 50px;
   line-height: 45px;
   position: relative;
   background: #512D44 !important; /*changes nav bar to taylor purple*/

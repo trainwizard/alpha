@@ -15,10 +15,15 @@ http://foundation.zurb.com/forum/posts/3077-move-divs-based-on-screen-size--%>
     </asp:ContentPlaceHolder>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--enabled responsive mobile-->
     <link href="foundation/css/foundation.css" rel="stylesheet" type="text/css" />
+    <!--scripts for mobile menu-->
+    <script src="foundation/js/foundation/foundation.js" type="text/javascript"></script>
+    <script src="foundation/js/foundation/foundation.topbar.js" type="text/javascript"></script>
+    <script src="foundation/js/foundation/foundation.dropdown.js" type="text/javascript"></script>
+    <!--scripts for really cool stuff-->
     <script src="js/vendor/modernizr.js"></script>
     <script src="js/vendor/jquery.js"></script>
     <script src="js/foundation.min.js"></script>
-    <script>
+    <script> 
         $(document).foundation();
         $(document).foundationTopBar();
     </script>
@@ -26,18 +31,55 @@ http://foundation.zurb.com/forum/posts/3077-move-divs-based-on-screen-size--%>
 </head>
 <body>
 <form class="" id="Form1" runat="server">
-    <div class="large-12 columns ">
+<%--    <div class="large-12 columns ">
+
         <nav class="top-bar">
+            <ul class="title-area">
+                <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a>
+                </li>
+            </ul>
             <ul class="title-area right">
                 <li class="name">
-                  <div class="doodsName show-for-small-up">
-                    <asp:Label ID="CurrentUserTxt" runat="server" Text="Username Placeholder"></asp:Label>
-                    <asp:ImageButton ID="UserImage" runat="server" ImageUrl="none.jpg" Width="30px" />
-                  </div>  
+                    <div class="doodsName show-for-small-up">
+                        <asp:Label ID="CurrentUserTxt" runat="server" Text="Username Placeholder"></asp:Label>
+                        <asp:ImageButton ID="UserImage" runat="server" ImageUrl="none.jpg" Width="30px" />
+                    </div>  
                 </li>
             </ul>
         </nav>
-    </div>
+    </div>--%>
+
+<div class="large-12 columns ">
+	<nav class="top-bar" data-topbar>
+		<ul class="title-area">
+			<li>
+				<div class="doodsName show-for-small-up">
+					<asp:Label ID="CurrentUserTxt" runat="server" Text="Username Placeholder"></asp:Label>
+					<asp:ImageButton ID="UserImage" runat="server" ImageUrl="none.jpg" Width="30px" />
+				</div> 
+			</li>
+			<li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a>
+            
+            </li> <!--collaped menu-->
+		</ul>
+
+		<section class="top-bar-section">
+			<!-- Right Nav Section -->
+			<ul class="right">
+				<li>
+				</li>
+				<li class="has-dropdown">
+				</li>
+			</ul>
+
+			<!-- Left Nav Section -->
+			<ul class="left">
+				<li></li>
+			</ul>
+		</section>
+	</nav>
+</div>
+
     <div>
         <div class="large-2 columns show-for-large-up">
 
@@ -57,13 +99,11 @@ http://foundation.zurb.com/forum/posts/3077-move-divs-based-on-screen-size--%>
         <div class="large-10 columns left">
             <div class="mySpecialContent left">
                 <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
-                    
                 </asp:ContentPlaceHolder>
             </div>
-          
         </div>
     </div>
+
 </form>
 </body>
 </html>
-
