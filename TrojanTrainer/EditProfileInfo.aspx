@@ -28,16 +28,20 @@
         <asp:Label ID="Label2" runat="server" Text="Confirm Password:"></asp:Label>  
         <asp:TextBox ID="txtConfirmPassword" TextMode="password" runat="server"></asp:TextBox>
         
-        <asp:Label ID="lblPasswordSuc" runat="server" 
-            Text="Password Successfully Changed!" Visible="False"></asp:Label>
- 
-        <p>
  
         <asp:Button ID="btnSubmitPassword" runat="server" Text="Change Password" />
 
+
+        
+        <asp:Label ID="lblPasswordSuc" runat="server" 
+            Text="Password Successfully Changed!" Visible="False"></asp:Label>
+ 
+ 
         <br />
         <br />
-        <asp:Label ID="lblChangeEmail" runat="server" Text="Change your email:" Font-Bold="True"></asp:Label><br /> 
+        <asp:Label ID="lblChangeEmail" runat="server" Text="Change your email:" Font-Bold="True"></asp:Label>
+        <asp:Label ID="lblCurrentEmail" runat="server" Text="Current email:"></asp:Label>
+        <br /> 
         <asp:Label ID="Label4" runat="server" Text="New Email."></asp:Label>
         <asp:TextBox ID="txtNewEmail" runat="server"></asp:TextBox>
         <asp:Label ID="lblAngryEmail" runat="server" Visible="False"></asp:Label>
@@ -45,12 +49,13 @@
         <asp:Label ID="Label6" runat="server" Text="Confirm Email:"></asp:Label>  
         <asp:TextBox ID="txtConfirmEmail" runat="server"></asp:TextBox>
         
-        <asp:Label ID="lblEmailSuc" runat="server" 
-            Text="Email Successfully Changed!" Visible="False"></asp:Label>
- 
-        <p>
  
         <asp:Button ID="btnSubmitEmail" runat="server" Text="Change Email" />
 
-    <p/> 
+        
+        <asp:Label ID="lblEmailSuc" runat="server" 
+            Text="Email Successfully Changed!" Visible="False"></asp:Label>
+ 
+ 
+        <p/>
 </asp:Content>

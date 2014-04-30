@@ -49,6 +49,22 @@ Partial Class EditProfileInfo
 
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
         imgProfilePicture.ImageUrl = Session.Item("UserPicture")
+        Using connection As New SqlConnection(connectionString)
+            connection.Open()
+            Dim getEmail As SqlCommand = New SqlCommand("GetUserEmail", connection)
+            getEmail.CommandType = CommandType.StoredProcedure
+            getEmail.Parameters.Add(New SqlParameter("@User_ID", Session("username")))
+            Dim reader As SqlDataReader = getEmail.ExecuteReader()
+            Dim values As New ArrayList()
+            If reader.HasRows() Then
+                Do While reader.Read()
+                    values.Add(reader("email"))
+                Loop
+                lblCurrentEmail.Text = "<br />Current Email: " + values.Item(0)
+            End If
+            connection.Close()
+            imgProfilePicture.ImageUrl = Session.Item("UserPicture")
+        End Using
     End Sub
 
     Protected Sub ChangePictureButton_Click(sender As Object, e As System.EventArgs) Handles ChangePictureButton.Click
@@ -153,6 +169,7 @@ Partial Class EditProfileInfo
                 connection.Close()
                 txtConfirmEmail.Text = ""
                 txtNewEmail.Text = ""
+                lblCurrentEmail.Text = "<br />Current email: " + newEmail
             End Using
 
         End If
