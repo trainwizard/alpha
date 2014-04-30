@@ -1,0 +1,57 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title></title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--enabled responsive mobile-->
+    <link href="foundation/css/foundation.css" rel="stylesheet" type="text/css" />
+    <!--scripts for mobile menu-->
+    <script src="foundation/js/foundation/foundation.js" type="text/javascript"></script>
+    <script src="foundation/js/foundation/foundation.topbar.js" type="text/javascript"></script>
+    <script src="foundation/js/foundation/foundation.dropdown.js" type="text/javascript"></script>
+    <!--scripts for really cool stuff-->
+    <script src="js/vendor/modernizr.js"></script>
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script> 
+        $(document).foundation();
+        $(document).foundationTopBar();
+    </script>
+
+</head>
+  <div class="off-canvas-wrap">
+    <div class="inner-wrap">                
+
+      <nav class="tab-bar show-for-small">
+        <section class="left-small">
+          <a class="left-off-canvas-toggle menu-icon" ><span></span></a>
+         </section>
+
+        <section class="middle tab-bar-section">
+          <h1 class="title"><a href="/home"><img id="logoSmall" src="/images/main/header_logo_small.png" /></a></h1>
+        </section>
+      </nav>
+
+      <aside class="left-off-canvas-menu">
+        <ul class="off-canvas-list">
+          <li><label>Menu</label></li>
+          <li><a>link1</a></li>
+          <li><a>link2</a></li>
+          <li><a>link2</a></li>
+        </ul>
+      </aside>
+
+
+
+      <section class="main-section">
+
+        <!-- All of your website goes here -->
+        <!-- Including the navigation you want to show on medium-and-up-->
+
+      </section>
+
+      <a class="exit-off-canvas"></a>
+    </div><!--/innerWrapp-->
+  </div><!--/offCanvasWrap-->
+
+</html>
