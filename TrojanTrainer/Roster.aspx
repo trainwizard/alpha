@@ -107,13 +107,28 @@
         Add Member to the Team</p>
     <p>
     
-        <asp:DropDownList ID="ddlAddTeamMember" runat="server">
+        <asp:DropDownList ID="ddlAddTeamMember" runat="server" 
+            DataSourceID="SqlDataSource6" DataTextField="User_ID" DataValueField="User_ID">
         </asp:DropDownList>
-        <asp:SqlDataSource ID="SqlDataSource6" runat="server"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource6" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
+            SelectCommand="PullNonTeamMembers" SelectCommandType="StoredProcedure">
+            <SelectParameters>
+                <asp:ControlParameter ControlID="ddlTeams" Name="Team_ID" 
+                    PropertyName="SelectedValue" Type="Int32" />
+                <asp:ControlParameter ControlID="ddlSports" Name="Sport_ID" 
+                    PropertyName="SelectedValue" Type="Int32" />
+            </SelectParameters>
+        </asp:SqlDataSource>
     </p>
     <p>
     
-        <asp:Button ID="Button1" runat="server" Text="Add Team Member" />
+        <asp:Button ID="btnAddTeamMember" runat="server" Text="Add Team Member" />
+    </p>
+    <p>
+    
+        <asp:Label ID="lblConfirm" runat="server" ForeColor="#009933" 
+            Text="Team Member was added!" Visible="False"></asp:Label>
     </p>
     
 
