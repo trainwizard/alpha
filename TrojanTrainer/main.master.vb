@@ -27,18 +27,26 @@ Partial Class main
             End If
             'Makes buttons not visible is user is not logged in
             btnAccounts.Visible = False
+            btnAccountsOffCanvas.Visible = False
             btnRoster.Visible = False
+            btnRosterOffCanvas.Visible = False
             btnInjury.Visible = False
+            btnInjuryOffCanvas.Visible = False
             btnSports.Visible = False
+            btnSportsOffCanvas.Visible = False
             btnMyHome.Visible = False
+            btnMyHomeOffCanvas.Visible = False
             btnWorkouts.Visible = False
+            btnWorkoutsOffCanvas.Visible = False
             btnViewData.Visible = False
-            'valid current user
+            btnViewDataOffCanvas.Visible = False
+            'valid current user 
         Else
             'Greeting name is set to be the username
             'CurrentUserTxt.ForeColor = Drawing.Color.White
             CurrentUserTxt.Text = "Welcome, " + Session("username") + "."
             btnLogout.Visible = True
+            btnLogoutOffCanvas.Visible = True
 
             'Removes buttons based on the user
             Debug.Print(Session.Item("Role"))
@@ -58,22 +66,31 @@ Partial Class main
                 btnRoster.Visible = False
                 btnInjury.Visible = False
                 btnSports.Visible = False
+                btnAccountsOffCanvas.Visible = False
+                btnRosterOffCanvas.Visible = False
+                btnInjuryOffCanvas.Visible = False
+                btnSportsOffCanvas.Visible = False
 
             ElseIf Session.Item("Role") = 3 Then
                 'athletic trainer
                 btnAccounts.Visible = False
                 btnViewData.Visible = False
                 btnSports.Visible = False
+                btnAccountsOffCanvas.Visible = False
+                btnViewDataOffCanvas.Visible = False
+                btnSportsOffCanvas.Visible = False
 
             ElseIf Session.Item("Role") = 2 Then
                 'coach
                 btnAccounts.Visible = False
                 btnSports.Text = "Teams"
+                btnAccountsOffCanvas.Visible = False
+                btnSportsOffCanvas.Text = "Teams"
 
             ElseIf Session.Item("Role") = 1 Then
                 'systems admin
                 btnViewData.Visible = False
-
+                btnViewDataOffCanvas.Visible = False
             End If
 
         End If
@@ -251,6 +268,38 @@ Partial Class main
 
     Protected Sub UserImage_Click(sender As Object, e As System.Web.UI.ImageClickEventArgs) Handles UserImage.Click
         Response.Redirect("EditProfileInfo.aspx")
+    End Sub
+
+    Protected Sub btnMyHomeOffCanvas_Click(sender As Object, e As System.EventArgs) Handles btnMyHomeOffCanvas.Click
+        btnMyHome_Click(sender, e)
+    End Sub
+
+    Protected Sub btnAccountsOffCanvas_Click(sender As Object, e As System.EventArgs) Handles btnAccountsOffCanvas.Click
+        btnAccounts_Click(sender, e)
+    End Sub
+
+    Protected Sub btnWorkoutsOffCanvas_Click(sender As Object, e As System.EventArgs) Handles btnWorkoutsOffCanvas.Click
+        btnWorkouts_Click(sender, e)
+    End Sub
+
+    Protected Sub btnRosterOffCanvas_Click(sender As Object, e As System.EventArgs) Handles btnRosterOffCanvas.Click
+        btnRoster_Click(sender, e)
+    End Sub
+
+    Protected Sub btnViewDataOffCanvas_Click(sender As Object, e As System.EventArgs) Handles btnViewDataOffCanvas.Click
+        btnViewData_Click(sender, e)
+    End Sub
+
+    Protected Sub btnInjuryOffCanvas_Click(sender As Object, e As System.EventArgs) Handles btnInjuryOffCanvas.Click
+        btnInjury_Click(sender, e)
+    End Sub
+
+    Protected Sub btnSportsOffCanvas_Click(sender As Object, e As System.EventArgs) Handles btnSportsOffCanvas.Click
+        btnSports_Click(sender, e)
+    End Sub
+
+    Protected Sub btnLogoutOffCanvas_Click(sender As Object, e As System.EventArgs) Handles btnLogoutOffCanvas.Click
+        btnLogout_Click(sender, e)
     End Sub
 End Class
 

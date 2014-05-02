@@ -9,7 +9,7 @@
     background:#512D44;
     /*position: absolute;*/
     text-align: center;
-
+    padding-left: 0px !important;
 }
 
 .doodsName{
@@ -29,15 +29,21 @@
     position: relative;
 }
 
-
-
-
 #imgProfilePicture{align: center;}
 
 
-
-
 */
+
+
+.SamOffCanvas{
+    display: block;
+    padding: 0.66667rem;
+    color: rgba(255, 255, 255, 0.7);
+    border-bottom: 1px solid #262626;
+    transition: background 300ms ease; }
+.SamOffCanvas:hover {
+      background: #242424; }
+
 .mySpecialContent{
      background: #F0F0F0;
     border: 1px solid #CCC;
@@ -200,7 +206,7 @@ select {
 
 .column,
 .columns {
-  padding-left: 0.9375em;
+  !padding-left: 0.0em;
   padding-right: 0.9375em;
   width: 100%;
   float: left; }
@@ -329,7 +335,7 @@ select {
   .column,
   .columns {
     position: relative;
-    padding-left: 0.9375em;
+    padding-left: 0.0em;
     padding-right: 0.9375em;
     float: left; }
 
@@ -558,7 +564,7 @@ select {
   .column,
   .columns {
     position: relative;
-    padding-left: 0.9375em;
+    padding-left: 0.0em;
     padding-right: 0.9375em;
     float: left; }
 
@@ -907,7 +913,7 @@ select {
   .column,
   .columns {
     position: relative;
-    padding-left: 0.9375em;
+    padding-left: 0.0em;
     padding-right: 0.9375em;
     float: left; }
 
@@ -3624,7 +3630,7 @@ dialog[open] {
 .tab-bar-section {
   padding: 0 0.625rem;
   position: absolute;
-  text-align: center;
+  text-align: left;
   height: 2.8125rem;
   top: 0; }
   @media only screen and (min-width: 40.063em) {
@@ -3722,13 +3728,13 @@ ul.off-canvas-list {
     border-top: 1px solid #5e5e5e;
     border-bottom: none;
     margin: 0; }
-  ul.off-canvas-list li a {
+ul.off-canvas-list li a{
     display: block;
     padding: 0.66667rem;
     color: rgba(255, 255, 255, 0.7);
     border-bottom: 1px solid #262626;
     transition: background 300ms ease; }
-    ul.off-canvas-list li a:hover {
+    ul.off-canvas-list li a sam:hover {
       background: #242424; }
 
 .move-right > .inner-wrap {
