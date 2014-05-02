@@ -35,9 +35,9 @@ Partial Class Workouts
                     WorkoutsDict.Add("Workout_Name", CurrentWorkoutReader("Workout_Name"))
                     WorkoutsDict.Clear()
                 Loop
-                For Each item In WorkoutsDict
+                For Each pair In WorkoutsDict
                     ' Display Key and Value.
-                    'Debug.Print("{0}, {1}", Pair.key, Pair.value)
+                    Debug.Print("{0}, {1}", pair.Key, pair.Value)
                 Next
             End If
 
