@@ -6,6 +6,12 @@
     <p>
         Current Workouts:</p>
     <p>
+        &nbsp;</p>
+    <p>
+        <asp:PlaceHolder ID="WorkoutsPlaceholder" runat="server" Visible = "false" ></asp:PlaceHolder>
+    </p>
+    <p>
+
         <asp:GridView ID="GridView1" runat="server" AllowPaging="True" 
             AllowSorting="True" AutoGenerateColumns="False" DataSourceID="SqlDataSource1">
             <Columns>

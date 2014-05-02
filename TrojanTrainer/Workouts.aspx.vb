@@ -42,11 +42,20 @@ Partial Class Workouts
                     WorkoutsDict.Add("Team_ID", CurrentWorkoutReader("Team_ID"))
                     WorkoutsList.Add(WorkoutsDict)
                 Loop
-                For Each item In WorkoutsList
-                    ' Display Key and Value.
-                    For Each Pair In item
-                        Debug.Print("{0}, {1}", Pair.Key, Pair.Value)
+                For Each dictionaryy As Dictionary(Of String, String) In WorkoutsList
+                    For Each Pair In dictionaryy 
+                        If Pair.Key = "Workout_Name" Then
+
+                            Dim lbl1 As Label = New Label()
+                            lbl1.ForeColor = System.Drawing.Color.Black
+                            lbl1.ID = Pair.Value
+                            lbl1.CssClass = "Exercise"
+                            lbl1.Text = Pair.Value
+                            Me.Controls.Add(lbl1)
+
+                        End If
                     Next
+
                 Next
             End If
 
