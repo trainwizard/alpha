@@ -27,17 +27,26 @@ Partial Class Workouts
             CurrentWorkoutReader = CurrentWorkouts.ExecuteReader()
             'If selected date is empty
             If CurrentWorkoutReader.HasRows() Then
-                Dim WorkoutList As New ArrayList()
-                Dim WorkoutsDict As New Dictionary(Of String, String)
+                Dim WorkoutsList = New List(Of Dictionary(Of String, String))()
                 Do While CurrentWorkoutReader.Read()
                     'Debug.Print(CurrentWorkoutReader("Workout_Name"))
+                    Dim WorkoutsDict As New Dictionary(Of String, String)
                     WorkoutsDict.Add("Workout_ID", CurrentWorkoutReader("Workout_ID"))
                     WorkoutsDict.Add("Workout_Name", CurrentWorkoutReader("Workout_Name"))
-                    WorkoutsDict.Clear()
+                    WorkoutsDict.Add("Pre_Training_Notes", CurrentWorkoutReader("Pre_Training_Notes"))
+                    WorkoutsDict.Add("Post_Training_Notes", CurrentWorkoutReader("Post_Training_Notes"))
+                    WorkoutsDict.Add("Create_Date", CurrentWorkoutReader("Create_Date"))
+                    WorkoutsDict.Add("Assign_Date", CurrentWorkoutReader("Assign_Date"))
+                    WorkoutsDict.Add("Name", CurrentWorkoutReader("Name"))
+                    WorkoutsDict.Add("Cycle_ID", CurrentWorkoutReader("Cycle_ID"))
+                    WorkoutsDict.Add("Team_ID", CurrentWorkoutReader("Team_ID"))
+                    WorkoutsList.Add(WorkoutsDict)
                 Loop
-                For Each pair In WorkoutsDict
+                For Each item In WorkoutsList
                     ' Display Key and Value.
-                    Debug.Print("{0}, {1}", pair.Key, pair.Value)
+                    For Each Pair In item
+                        Debug.Print("{0}, {1}", Pair.Key, Pair.Value)
+                    Next
                 Next
             End If
 
