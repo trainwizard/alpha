@@ -6,8 +6,7 @@
     <p>
         Select Sport:</p>
     <p>
-        <asp:DropDownList ID="DropDownList1" runat="server" 
-            DataSourceID="SqlDataSource1">
+        <asp:DropDownList ID="DropDownList1" runat="server">
         </asp:DropDownList>
     </p>
     <p>

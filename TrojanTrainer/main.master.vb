@@ -86,8 +86,8 @@ Partial Class main
                 btnSports.Text = "Teams"
                 btnAccountsOffCanvas.Visible = False
                 btnSportsOffCanvas.Text = "Teams"
-                btnInjury.Text = "Sport Management"
-                btnInjuryOffCanvas.Text = "Sport Management"
+                btnInjury.Text = "Sport Mgt."
+                btnInjuryOffCanvas.Text = "Sport Mgt."
 
             ElseIf Session.Item("Role") = 1 Then
                 'systems admin
