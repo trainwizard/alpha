@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div _designerregion="0">
-        Active Exercises:<br />
+        Active Workouts:<br />
         <asp:ListBox ID="Exercise_Name_Listbox" runat="server" AutoPostBack="True" 
             DataSourceID="SqlDataSource2" DataTextField="Workout_Name" 
             DataValueField="Workout_ID">

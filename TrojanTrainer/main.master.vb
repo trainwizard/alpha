@@ -86,11 +86,15 @@ Partial Class main
                 btnSports.Text = "Teams"
                 btnAccountsOffCanvas.Visible = False
                 btnSportsOffCanvas.Text = "Teams"
+                btnInjury.Text = "Sport Management"
+                btnInjuryOffCanvas.Text = "Sport Management"
 
             ElseIf Session.Item("Role") = 1 Then
                 'systems admin
                 btnViewData.Visible = False
                 btnViewDataOffCanvas.Visible = False
+                btnInjury.Text = "Sport Management"
+                btnInjuryOffCanvas.Text = "Sport Management"
             End If
 
         End If
@@ -101,18 +105,9 @@ Partial Class main
 
 
     Protected Sub btnLogout_Click(sender As Object, e As System.EventArgs) Handles btnLogout.Click
-        'Executes stored procedure named userinactive
-        Using connection As New SqlConnection(connectionString)
-            Dim account As String = Session("username")
-            Dim logoutSession As SqlCommand = New SqlCommand("UserInactive", connection)
-            logoutSession.CommandType = CommandType.StoredProcedure
-            logoutSession.Parameters.Add(New SqlParameter("@username", account))
-            connection.Open()
-            logoutSession.ExecuteNonQuery()
-            'deletes session and redirects to login page
-            Session.Clear()
-            Response.Redirect("Logout.aspx")
-        End Using
+        'deletes session and redirects to login page
+        Session.Clear()
+        Response.Redirect("Logout.aspx")
     End Sub
 
 

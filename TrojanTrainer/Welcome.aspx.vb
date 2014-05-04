@@ -30,11 +30,11 @@ Partial Class Welcome
                 reader.Close()
                 reader = Nothing
                 'uses stored procedure called UserActive to set Active to be equal to 1
-                Dim sessionUpdate As SqlCommand = New SqlCommand("UserActive", connection)
-                sessionUpdate.CommandType = CommandType.StoredProcedure
-                sessionUpdate.Parameters.Add(New SqlParameter("@usernameActive", account))
-                sessionUpdate.Parameters.Add(New SqlParameter("@passwordActive", mypassword))
-                sessionUpdate.ExecuteNonQuery()
+                'Dim sessionUpdate As SqlCommand = New SqlCommand("UserActive", connection)
+                'sessionUpdate.CommandType = CommandType.StoredProcedure
+                'sessionUpdate.Parameters.Add(New SqlParameter("@usernameActive", account))
+                'sessionUpdate.Parameters.Add(New SqlParameter("@passwordActive", mypassword))
+                'sessionUpdate.ExecuteNonQuery()
 
                 'starts user session and check for checked checkbox
                 Session("username") = account
