@@ -67,17 +67,25 @@
             DataSourceID="SqlDataSource1" AllowPaging="True" Height="113px" 
             Width="264px">
             <Columns>
+                <asp:CommandField ShowDeleteButton="True" />
                 <asp:BoundField DataField="First_Name" HeaderText="First Name" 
                     SortExpression="First_Name" />
                 <asp:BoundField DataField="Last_Name" HeaderText="Last Name" 
                     SortExpression="Last_Name" />
-                <asp:BoundField DataField="User_ID" HeaderText="User ID" ReadOnly="True" 
+                <asp:BoundField DataField="User_ID" HeaderText="Username" ReadOnly="True" 
                     SortExpression="User_ID" />
             </Columns>
         </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
             ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
-            SelectCommand="SELECT [First_Name], [Last_Name], [User_ID] FROM [User]">
+            SelectCommand="SELECT [First_Name], [Last_Name], [User_ID] FROM [User]
+WHERE [User].Active = 1" DeleteCommand="UserInactive" 
+            DeleteCommandType="StoredProcedure">
+            <DeleteParameters>
+                <asp:Parameter Name="First_Name" Type="String" />
+                <asp:Parameter Name="Last_Name" Type="String" />
+                <asp:Parameter Name="username" Type="String" />
+            </DeleteParameters>
         </asp:SqlDataSource>
         <br />
     

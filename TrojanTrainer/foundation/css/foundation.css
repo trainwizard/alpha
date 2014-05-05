@@ -4021,7 +4021,9 @@ ul.off-canvas-list li a{
 table {
   background: white;
   margin-bottom: 1.25rem;
-  border: solid 1px #dddddd; }
+  border: solid 1px #dddddd;
+    margin-right: 7px;
+}
   table thead,
   table tfoot {
     background: whitesmoke; }
