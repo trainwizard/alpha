@@ -93,8 +93,8 @@ Partial Class main
                 'systems admin
                 btnViewData.Visible = False
                 btnViewDataOffCanvas.Visible = False
-                btnInjury.Text = "Sport Management"
-                btnInjuryOffCanvas.Text = "Sport Management"
+                btnInjury.Text = "Sport Mgt."
+                btnInjuryOffCanvas.Text = "Sport Mgt."
             End If
 
         End If

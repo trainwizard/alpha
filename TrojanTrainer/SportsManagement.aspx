@@ -1,21 +1,6 @@
 ﻿<%@ Page Title="" Language="VB" MasterPageFile="~/main.master" AutoEventWireup="false" CodeFile="SportsManagement.aspx.vb" Inherits="_Default" %>
 
-<script language="VB" runat="server">
 
-        Sub DayRender(source As Object, e As DayRenderEventArgs)
-
-            ' Change the background color of the days in the month
-            ' to yellow.
-            If Not e.Day.IsOtherMonth And Not e.Day.IsWeekend Then
-                e.Cell.BackColor = System.Drawing.Color.Yellow
-            End If 
-            ' Add custom text to cell in the Calendar control.
-            If e.Day.Date.Day = 18 Then
-                e.Cell.Controls.Add(New LiteralControl(ChrW(60) & "br" & ChrW(62) & "Holiday"))
-            End If 
-        End Sub 'DayRender 
-
-   </script>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
