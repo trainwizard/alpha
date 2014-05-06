@@ -5,6 +5,31 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    
+    <script language="VB" runat="server">
+
+        Sub DayRender(source As Object, e As DayRenderEventArgs)
+
+            ' Change the background color of the days in the month
+            ' to yellow.
+            If e.Day.Date < DateTime.Now Then
+                e.Day.IsSelectable = False
+                e.Cell.BackColor = Drawing.Color.Gray 
+            End If
+        End Sub 'DayRender 
+        
+        Sub DayRender2(source As Object, e As DayRenderEventArgs)
+
+            ' Change the background color of the days in the month
+            ' to yellow.
+            If e.Day.Date < DateTime.Now Then
+                e.Day.IsSelectable = False
+                e.Cell.BackColor = Drawing.Color.Gray
+            End If
+        End Sub 'DayRender 
+
+   </script>
+    
     <p>
         Select Sport:</p>
     <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" 
@@ -45,10 +70,10 @@
     Add New Cycle:<br />
     <br />
     <asp:Label ID="DateLabel" runat="server" Text="Start Date."></asp:Label>
-    <asp:Calendar ID="StartDateCal" runat="server"></asp:Calendar>
+    <asp:Calendar ID="StartDateCal" runat="server" OnDayRender="DayRender"></asp:Calendar>
     <br />
     <asp:Label ID="DateLabel0" runat="server" Text="Stop Date."></asp:Label>
-    <asp:Calendar ID="StopDateCal" runat="server"></asp:Calendar>
+    <asp:Calendar ID="StopDateCal" runat="server" OnDayRender="DayRender"></asp:Calendar>
     <br />
     Cycle Name:<br />
     <asp:TextBox ID="CycleName" runat="server"></asp:TextBox>
