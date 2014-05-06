@@ -52,14 +52,14 @@ http://foundation.zurb.com/forum/posts/3077-move-divs-based-on-screen-size--%>
 		<ul class="off-canvas-list">
 			<li><label>Trojan Trainer</label></li>
 			<li><a href="EditProfileInfo.aspx">My Home</a></li>
-                <asp:button id="btnMyHomeOffCanvas" runat="server" text="My Home"/><br />
-				<asp:button id="btnAccountsOffCanvas" runat="server" text="Accounts" cssclass="SamOffCanvas"/><br />
-				<asp:button id="btnWorkoutsOffCanvas" runat="server" text="Workouts" cssclass="SamOffCanvas"/><br />
-				<asp:button id="btnRosterOffCanvas" runat="server" text="Roster" cssclass="SamOffCanvas"/><br />
-				<asp:button id="btnViewDataOffCanvas" runat="server" text="View Data" cssclass="SamOffCanvas"/><br />
-				<asp:button id="btnInjuryOffCanvas" runat="server" text="Injury" cssclass="SamOffCanvas"/><br />
-				<asp:button id="btnSportsOffCanvas" runat="server" text="Sports" cssclass="SamOffCanvas"/><br />
-				<asp:button id="btnLogoutOffCanvas" runat="server" text="Logout" cssclass="SamOffCanvas"/>
+                <asp:button id="btnMyHomeOffCanvas" runat="server" text="My Home" CssClass="offCanvasButton"/>
+				<asp:button id="btnAccountsOffCanvas" runat="server" text="Accounts" cssclass="offCanvasButton"/>
+				<asp:button id="btnWorkoutsOffCanvas" runat="server" text="Workouts" cssclass="offCanvasButton"/>
+				<asp:button id="btnRosterOffCanvas" runat="server" text="Roster" cssclass="offCanvasButton"/>
+				<asp:button id="btnViewDataOffCanvas" runat="server" text="View Data" cssclass="offCanvasButton"/>
+				<asp:button id="btnInjuryOffCanvas" runat="server" text="Injury" cssclass="offCanvasButton"/>
+				<asp:button id="btnSportsOffCanvas" runat="server" text="Sports" cssclass="offCanvasButton"/>
+				<asp:button id="btnLogoutOffCanvas" runat="server" text="Logout" cssclass="offCanvasButton"/>
 		</ul>
 		</aside>
 		<%--<aside class="right-off-canvas-menu">
