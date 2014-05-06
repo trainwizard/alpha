@@ -52,5 +52,17 @@ FROM Team, Sport
 WHERE Team.Sport_ID = Sport.Sport_ID">
         </asp:SqlDataSource>
     </div>
-    
+    <br />
+    <br />
+    Make a Sport Inactive:<br />
+    <asp:DropDownList ID="ActiveSports" runat="server">
+    </asp:DropDownList>
+    <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
+        ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
+        SelectCommand="ActiveSports" SelectCommandType="StoredProcedure">
+    </asp:SqlDataSource>
+    <br />
+    <asp:Button ID="DeactivateSport" runat="server" Text="Deactivate Sport" />
+    <br />
+
 </asp:Content>

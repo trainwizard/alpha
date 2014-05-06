@@ -80,4 +80,15 @@ Partial Class SystemsAdminCreateSport
     End Sub
 
 
+    Protected Sub DeactivateSport_Click(sender As Object, e As System.EventArgs) Handles DeactivateSport.Click
+        Using connection As New SqlConnection(connectionString)
+            'connection is established
+            connection.Open()
+            Dim deactivateSport As SqlCommand = New SqlCommand("SportInactive", connection)
+            deactivateSport.CommandType = CommandType.StoredProcedure
+            deactivateSport.Parameters.Add(New SqlParameter("@Name", ActiveSports.SelectedValue))
+            deactivateSport.ExecuteNonQuery()
+            Response.Redirect("SystemsAdminCreateSport.aspx")
+        End Using
+    End Sub
 End Class

@@ -67,7 +67,6 @@
             DataSourceID="SqlDataSource1" AllowPaging="True" Height="113px" 
             Width="264px">
             <Columns>
-                <asp:CommandField ShowDeleteButton="True" />
                 <asp:BoundField DataField="First_Name" HeaderText="First Name" 
                     SortExpression="First_Name" />
                 <asp:BoundField DataField="Last_Name" HeaderText="Last Name" 
@@ -79,7 +78,7 @@
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
             ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
             SelectCommand="SELECT [First_Name], [Last_Name], [User_ID] FROM [User]
-WHERE [User].Active = 1" DeleteCommand="UserInactive" 
+                WHERE [User].Active = 1" DeleteCommand="UserInactive" 
             DeleteCommandType="StoredProcedure">
             <DeleteParameters>
                 <asp:Parameter Name="First_Name" Type="String" />
@@ -88,7 +87,20 @@ WHERE [User].Active = 1" DeleteCommand="UserInactive"
             </DeleteParameters>
         </asp:SqlDataSource>
         <br />
-    
+        Deactivate a User:<br />
+        <br />
+
     </div>
+   
+    <asp:DropDownList ID="ActiveUsers" runat="server" DataSourceID="SqlDataSource2" 
+        DataTextField="User_ID" DataValueField="User_ID">
+    </asp:DropDownList>
+    <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
+        ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
+        SelectCommand="ActiveUsers" SelectCommandType="StoredProcedure">
+    </asp:SqlDataSource>
+    <br />
+    <asp:Button ID="DeactivateUser" runat="server" Text="Deactivate User" />
+    <br />
 
 </asp:Content>
