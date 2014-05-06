@@ -73,4 +73,21 @@ Partial Class _Default
 
     End Sub
 
+    Protected Sub btnAddExercise_Click(sender As Object, e As System.EventArgs) Handles btnAddExercise.Click
+        Using connection As New SqlConnection("Data Source=SIMON;Initial Catalog=AlphaSYS39414;Persist Security Info=True;User ID=sbolds;Password=ttpfrzeh")
+            Dim AddExercise As New SqlCommand("Add_Exorcise_to_Workout", connection)
+            AddExercise.CommandType = CommandType.StoredProcedure
+            AddExercise.Parameters.AddWithValue("@Workout_ID", Exercise_Name_Listbox.SelectedValue)
+            AddExercise.Parameters.AddWithValue("@Planned_Ex_ID", ddlExercises.SelectedValue)
+            connection.Open()
+            Dim rowsAffected As Integer = AddExercise.ExecuteNonQuery()
+            Debug.Print(String.Format("Affected {0}row(s)", rowsAffected))
+        End Using
+        gvExercises.DataBind()
+
+    End Sub
+
+    Protected Sub btnCreate_Click(sender As Object, e As System.EventArgs) Handles btnCreate.Click
+        Response.Redirect("CreateWorkout.aspx")
+    End Sub
 End Class
