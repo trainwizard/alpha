@@ -55,7 +55,8 @@ WHERE Team.Sport_ID = Sport.Sport_ID">
     <br />
     <br />
     Make a Sport Inactive:<br />
-    <asp:DropDownList ID="ActiveSports" runat="server">
+    <asp:DropDownList ID="ActiveSports" runat="server" 
+        DataSourceID="SqlDataSource3" DataTextField="Name" DataValueField="Name">
     </asp:DropDownList>
     <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
         ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
