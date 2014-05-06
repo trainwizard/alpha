@@ -14,19 +14,19 @@
             ' to yellow.
             If e.Day.Date < DateTime.Now Then
                 e.Day.IsSelectable = False
-                e.Cell.BackColor = Drawing.Color.Gray 
+                e.Cell.BackColor = Drawing.Color.DimGray
+            ElseIf GlobalVariables.CalCount > 1 Then
+                If e.Day.Date <= GlobalVariables.StopDate Then
+                    If e.Day.Date >= GlobalVariables.StartDate Then
+                        e.Day.IsSelectable = False
+                        e.Cell.BackColor = Drawing.Color.LightGreen
+                    End If
+                End If
+                e.Day.IsSelectable = False 
             End If
+            
         End Sub 'DayRender 
         
-        Sub DayRender2(source As Object, e As DayRenderEventArgs)
-
-            ' Change the background color of the days in the month
-            ' to yellow.
-            If e.Day.Date < DateTime.Now Then
-                e.Day.IsSelectable = False
-                e.Cell.BackColor = Drawing.Color.Gray
-            End If
-        End Sub 'DayRender 
 
    </script>
     
@@ -64,20 +64,19 @@
         </SelectParameters>
     </asp:SqlDataSource>
     <br />
-    <br />
-    <br />
-    <br />
-    Add New Cycle:<br />
-    <br />
-    <asp:Label ID="DateLabel" runat="server" Text="Start Date."></asp:Label>
-    <asp:Calendar ID="StartDateCal" runat="server" OnDayRender="DayRender"></asp:Calendar>
-    <br />
-    <asp:Label ID="DateLabel0" runat="server" Text="Stop Date."></asp:Label>
-    <asp:Calendar ID="StopDateCal" runat="server" OnDayRender="DayRender"></asp:Calendar>
+    <strong>Add New Cycle:</strong><br />
     <br />
     Cycle Name:<br />
     <asp:TextBox ID="CycleName" runat="server"></asp:TextBox>
     <br />
+    <asp:Label ID="DateLabel" runat="server" 
+        Text="Please select a start date for the cycle." style="font-weight: 700"></asp:Label>
+    <br />
+    <asp:Calendar ID="StartDateCal" runat="server" OnDayRender="DayRender"></asp:Calendar>
+    <br />
+    <br />
+    <asp:Button ID="ClearCalBtn" runat="server" Text="Cancel" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <asp:Button ID="Button1" runat="server" Text="Add Cycle" />
     <br />
 </asp:Content>
