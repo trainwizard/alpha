@@ -7,7 +7,8 @@
     
         You have successfully logged out!<br />
         <br />
-        <asp:Button ID="btnloginpage" runat="server" Text="Login" />
+        <asp:Button ID="btnloginpage" runat="server" Text="Login" 
+            CssClass="button tiny" />
     
     </div>
 
