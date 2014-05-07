@@ -31,10 +31,11 @@
    </script>
     
     <p>
-        Select Sport:</p>
+        Current Sport:&nbsp;&nbsp;
     <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" 
         DataSourceID="SqlDataSource1" DataTextField="Name" DataValueField="Sport_ID">
     </asp:DropDownList>
+    </p>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
         ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
         SelectCommand="SELECT * FROM [Sport] WHERE ([Active] = @Active)">
