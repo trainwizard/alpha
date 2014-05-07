@@ -4,12 +4,28 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <p>
+        Current Sport:&nbsp;&nbsp;
+        <asp:DropDownList ID="Sportsddl" runat="server" AutoPostBack="True" 
+            DataSourceID="SqlDataSource3" DataTextField="Name" 
+            DataValueField="Sport_ID">
+        </asp:DropDownList>
+        </p>
+    <p>
+        <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
+            SelectCommand="SELECT * FROM [Sport] WHERE ([Active] = @Active)">
+            <SelectParameters>
+                <asp:Parameter DefaultValue="1" Name="Active" Type="Int32" />
+            </SelectParameters>
+        </asp:SqlDataSource>
+    </p>
+    <p>
         Create Workout or Exercise</p>
     <p>
         &nbsp;</p>
     <p>
-        <asp:Button ID="btnWorkout" runat="server" Text="Create Workout" />
-        <asp:Button ID="btnExercise" runat="server" Text="Create Exercise" />
+        <asp:Button ID="btnWorkout" runat="server" Text="Modify Workouts" />
+        <asp:Button ID="btnExercise" runat="server" Text="Modify Exercises" />
     </p>
     <p>
         <asp:Label ID="lblWorkouts" runat="server" Text="Current workouts:" 
@@ -20,29 +36,17 @@
             AllowSorting="True" AutoGenerateColumns="False" 
             DataSourceID="SqlDataSource1" DataKeyNames="Workout_ID" Visible="False">
             <Columns>
-                <asp:CommandField ButtonType="Button" ShowDeleteButton="True" 
-                    ShowEditButton="True" />
-                <asp:BoundField DataField="Workout_ID" HeaderText="Workout_ID" 
-                    SortExpression="Workout_ID" InsertVisible="False" ReadOnly="True" 
-                    Visible="False" />
-                <asp:BoundField DataField="Workout_Name" 
-                    HeaderText="Workout Name" SortExpression="Workout_Name" />
-                <asp:BoundField DataField="Pre_Training_Notes" HeaderText="Pre Training Notes" 
-                    SortExpression="Pre_Training_Notes" />
-                <asp:BoundField DataField="Post_Training_Notes" HeaderText="Post Training Notes" 
+                <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
+                <asp:BoundField DataField="Workout_Name" HeaderText="Name" 
+                    SortExpression="Workout_Name" />
+                <asp:BoundField DataField="Pre_Training_Notes" 
+                    HeaderText="Pre-training Notes" SortExpression="Pre_Training_Notes" />
+                <asp:BoundField DataField="Post_Training_Notes" HeaderText="Post-training Notes" 
                     SortExpression="Post_Training_Notes" />
                 <asp:BoundField DataField="Create_Date" HeaderText="Create Date" 
                     SortExpression="Create_Date" />
                 <asp:BoundField DataField="Assign_Date" HeaderText="Assign Date" 
                     SortExpression="Assign_Date" />
-                <asp:BoundField DataField="Name" HeaderText="Cycle" ReadOnly="True" 
-                    SortExpression="Name" />
-                <asp:BoundField DataField="Cycle_ID" HeaderText="Cycle ID" 
-                    SortExpression="Cycle_ID" />
-                <asp:BoundField DataField="Name1" HeaderText="Team" ReadOnly="True" 
-                    SortExpression="Name1" />
-                <asp:BoundField DataField="Team_ID" HeaderText="Team ID" 
-                    SortExpression="Team_ID" />
             </Columns>
         </asp:GridView>
     </p>
@@ -66,7 +70,12 @@
                 <asp:Parameter Name="Post_Training_Notes" Type="String" />
                 <asp:Parameter DbType="Date" Name="Create_Date" />
                 <asp:Parameter DbType="Date" Name="Assign_Date" />
+                <asp:Parameter Name="Sport_ID" Type="Int32" />
             </InsertParameters>
+            <SelectParameters>
+                <asp:ControlParameter ControlID="Sportsddl" Name="Sport_ID" 
+                    PropertyName="SelectedValue" Type="Int32" />
+            </SelectParameters>
             <UpdateParameters>
                 <asp:Parameter Name="Workout_ID" Type="Int32" />
                 <asp:Parameter Name="Workout_Name" Type="String" />
@@ -85,27 +94,28 @@
     </p>
     <p>
         <asp:DetailsView ID="dvInsertWorkout" runat="server" AutoGenerateRows="False" 
-            DataSourceID="SqlDataSource1" Height="50px" Width="501px" 
+            DataSourceID="SqlDataSource1" Height="209px" Width="501px" 
             DataKeyNames="Workout_ID" DefaultMode="Insert" Visible="False">
             <Fields>
                 <asp:BoundField DataField="Workout_ID" HeaderText="Workout_ID" 
-                    SortExpression="Workout_ID" InsertVisible="False" ReadOnly="True" 
-                    Visible="False" />
-                <asp:BoundField DataField="Workout_Name" HeaderText="Workout Name" 
+                    SortExpression="Workout_ID" InsertVisible="False" ReadOnly="True" />
+                <asp:BoundField DataField="Workout_Name" HeaderText="Workout_Name" 
                     SortExpression="Workout_Name" />
                 <asp:BoundField DataField="Pre_Training_Notes" 
-                    HeaderText="Pre Training Notes" SortExpression="Pre_Training_Notes" />
-                <asp:BoundField DataField="Post_Training_Notes" HeaderText="Post Training Notes" 
+                    HeaderText="Pre_Training_Notes" SortExpression="Pre_Training_Notes" />
+                <asp:BoundField DataField="Post_Training_Notes" HeaderText="Post_Training_Notes" 
                     SortExpression="Post_Training_Notes" />
-                <asp:BoundField DataField="Create_Date" HeaderText="Create Date" 
+                <asp:BoundField DataField="Create_Date" HeaderText="Create_Date" 
                     SortExpression="Create_Date" />
-                <asp:BoundField DataField="Assign_Date" HeaderText="Assign Date" 
+                <asp:BoundField DataField="Assign_Date" HeaderText="Assign_Date" 
                     SortExpression="Assign_Date" />
-                <asp:BoundField DataField="Cycle_ID" HeaderText="Cycle ID" 
+                <asp:BoundField DataField="Name" HeaderText="Name" 
+                    SortExpression="Name" />
+                <asp:BoundField DataField="Cycle_ID" HeaderText="Cycle_ID" 
                     SortExpression="Cycle_ID" />
-                <asp:BoundField DataField="Team_ID" HeaderText="Team ID" 
+                <asp:BoundField DataField="Name1" HeaderText="Name1" SortExpression="Name1" />
+                <asp:BoundField DataField="Team_ID" HeaderText="Team_ID" 
                     SortExpression="Team_ID" />
-                <asp:CommandField ButtonType="Button" ShowInsertButton="True" />
             </Fields>
         </asp:DetailsView>
     </p>
@@ -117,8 +127,7 @@
             AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Planned_Ex_ID" 
             DataSourceID="SqlDataSource2" Visible="False">
             <Columns>
-                <asp:CommandField ButtonType="Button" ShowDeleteButton="True" 
-                    ShowEditButton="True" />
+                <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
                 <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
                 <asp:BoundField DataField="Reps" HeaderText="Reps" SortExpression="Reps" />
                 <asp:BoundField DataField="Sets" HeaderText="Sets" SortExpression="Sets" />
@@ -128,17 +137,23 @@
                 <asp:BoundField DataField="Intensity" HeaderText="Intensity" 
                     SortExpression="Intensity" />
                 <asp:BoundField DataField="Note" HeaderText="Note" SortExpression="Note" />
-                <asp:BoundField DataField="Planned_Ex_ID" HeaderText="Planned_Ex_ID" 
-                    InsertVisible="False" ReadOnly="True" SortExpression="Planned_Ex_ID" />
             </Columns>
         </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
             ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
-            DeleteCommand="DELETE FROM [Planned_Exercise] WHERE [Planned_Ex_ID] = @Planned_Ex_ID" 
-            InsertCommand="INSERT INTO [Planned_Exercise] ([Name], [Reps], [Sets], [Weight], [Time], [Intensity], [Note]) VALUES (@Name, @Reps, @Sets, @Weight, @Time, @Intensity, @Note)" 
-            SelectCommand="SELECT [Name], [Reps], [Sets], [Weight], [Time], [Intensity], [Note], [Planned_Ex_ID] FROM [Planned_Exercise]" 
+            DeleteCommand="UPDATE [Planned_Exercise] 
+SET Active = 0
+WHERE [Planned_Ex_ID] = @Planned_Ex_ID" 
+            InsertCommand="INSERT INTO [Planned_Exercise] ([Name], [Reps], [Sets], [Weight], [Time], [Intensity], [Note], [Active]) VALUES (@Name, @Reps, @Sets, @Weight, @Time, @Intensity, @Note, 1)" 
+            SelectCommand="SELECT [Name], [Reps], [Sets], [Weight], [Time], [Intensity], [Note], [Planned_Exercise].Planned_Ex_ID
+FROM [Planned_Exercise]
+INNER JOIN Sport_Planned_Exercise 
+ON Planned_Exercise.Planned_Ex_ID = Sport_Planned_Exercise.Planned_Ex_ID 
+WHERE Sport_Planned_Exercise.Sport_ID = @Sport_ID" 
             
-        UpdateCommand="UPDATE [Planned_Exercise] SET [Name] = @Name, [Reps] = @Reps, [Sets] = @Sets, [Weight] = @Weight, [Time] = @Time, [Intensity] = @Intensity, [Note] = @Note WHERE [Planned_Ex_ID] = @Planned_Ex_ID">
+        UpdateCommand="UPDATE [Planned_Exercise] 
+SET [Name] = @Name, [Reps] = @Reps, [Sets] = @Sets, [Weight] = @Weight, [Time] = @Time, [Intensity] = @Intensity, [Note] = @Note 
+WHERE [Planned_Ex_ID] = @Planned_Ex_ID">
             <DeleteParameters>
                 <asp:Parameter Name="Planned_Ex_ID" Type="Int32" />
             </DeleteParameters>
@@ -151,6 +166,10 @@
                 <asp:Parameter Name="Intensity" Type="Double" />
                 <asp:Parameter Name="Note" Type="String" />
             </InsertParameters>
+            <SelectParameters>
+                <asp:ControlParameter ControlID="Sportsddl" Name="Sport_ID" 
+                    PropertyName="SelectedValue" />
+            </SelectParameters>
             <UpdateParameters>
                 <asp:Parameter Name="Name" Type="String" />
                 <asp:Parameter Name="Reps" Type="Int32" />
@@ -182,7 +201,6 @@
                 <asp:BoundField DataField="Note" HeaderText="Note" SortExpression="Note" />
                 <asp:BoundField DataField="Planned_Ex_ID" HeaderText="Planned_Ex_ID" 
                     InsertVisible="False" ReadOnly="True" SortExpression="Planned_Ex_ID" />
-                <asp:CommandField ButtonType="Button" ShowInsertButton="True" />
             </Fields>
         </asp:DetailsView>
     

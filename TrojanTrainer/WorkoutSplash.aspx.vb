@@ -113,4 +113,9 @@ Partial Class _Default
         ddlExercises.Visible = True
         btnAddExercise.Visible = True
     End Sub
+
+    Protected Sub gvExercises_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles gvExercises.SelectedIndexChanged
+        ddlExercises.DataBind()
+
+    End Sub
 End Class

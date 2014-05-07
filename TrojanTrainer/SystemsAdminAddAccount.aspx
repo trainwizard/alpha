@@ -68,23 +68,28 @@
             DataSourceID="SqlDataSource1" AllowPaging="True" Height="113px" 
             Width="264px">
             <Columns>
+                <asp:CommandField ShowDeleteButton="True" />
                 <asp:BoundField DataField="First_Name" HeaderText="First Name" 
                     SortExpression="First_Name" />
                 <asp:BoundField DataField="Last_Name" HeaderText="Last Name" 
                     SortExpression="Last_Name" />
-                <asp:BoundField DataField="User_ID" HeaderText="Username" ReadOnly="True" 
-                    SortExpression="User_ID" />
+                <asp:BoundField DataField="Description" HeaderText="Role" 
+                    SortExpression="Description" />
             </Columns>
         </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
             ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
-            SelectCommand="SELECT [First_Name], [Last_Name], [User_ID] FROM [User]
-                WHERE [User].Active = 1" DeleteCommand="UserInactive" 
-            DeleteCommandType="StoredProcedure">
+            SelectCommand="SELECT First_Name, Last_Name, [User].User_ID, Description
+FROM [User]
+INNER JOIN User_Role 
+ON User_Role.User_ID = [User].User_ID
+INNER JOIN [Role]
+ON [Role].Role_ID = User_Role.Role_ID
+WHERE [User].Active = 1" DeleteCommand="UPDATE [User]
+SET Active = '0'
+WHERE User_ID = @User_ID;">
             <DeleteParameters>
-                <asp:Parameter Name="First_Name" Type="String" />
-                <asp:Parameter Name="Last_Name" Type="String" />
-                <asp:Parameter Name="username" Type="String" />
+                <asp:Parameter Name="User_ID" />
             </DeleteParameters>
         </asp:SqlDataSource>
         <br />
