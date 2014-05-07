@@ -30,8 +30,8 @@ Partial Class main
             btnAccountsOffCanvas.Visible = False
             btnRoster.Visible = False
             btnRosterOffCanvas.Visible = False
-            btnInjury.Visible = False
-            btnInjuryOffCanvas.Visible = False
+            btnCycleMng.Visible = False
+            btnCycleMngOffCanvas.Visible = False
             btnSports.Visible = False
             btnSportsOffCanvas.Visible = False
             btnMyHome.Visible = False
@@ -64,11 +64,11 @@ Partial Class main
                 'athlete
                 btnAccounts.Visible = False
                 btnRoster.Visible = False
-                btnInjury.Visible = False
+                btnCycleMng.Visible = False
                 btnSports.Visible = False
                 btnAccountsOffCanvas.Visible = False
                 btnRosterOffCanvas.Visible = False
-                btnInjuryOffCanvas.Visible = False
+                btnCycleMngOffCanvas.Visible = False
                 btnSportsOffCanvas.Visible = False
 
             ElseIf Session.Item("Role") = 3 Then
@@ -86,15 +86,15 @@ Partial Class main
                 btnSports.Text = "Teams"
                 btnAccountsOffCanvas.Visible = False
                 btnSportsOffCanvas.Text = "Teams"
-                btnInjury.Text = "Cycle Mgt."
-                btnInjuryOffCanvas.Text = "Cycle Mgt."
+                btnCycleMng.Text = "Cycle Mgt."
+                btnCycleMngOffCanvas.Text = "Cycle Mgt."
 
             ElseIf Session.Item("Role") = 1 Then
                 'systems admin
                 btnViewData.Visible = False
                 btnViewDataOffCanvas.Visible = False
-                btnInjury.Text = "Cycle Mgt."
-                btnInjuryOffCanvas.Text = "Cycle Mgt."
+                btnCycleMng.Text = "Cycle Mgt."
+                btnCycleMngOffCanvas.Text = "Cycle Mgt."
             End If
 
         End If
@@ -215,27 +215,23 @@ Partial Class main
         End If
     End Sub
 
-    Protected Sub btnInjury_Click(sender As Object, e As System.EventArgs) Handles btnInjury.Click
-        Response.Redirect("SamTest.aspx")
-        If Session.Item("Role") = 5 Then
-            'any user
-            Response.Redirect("SamTest.aspx")
-        ElseIf Session.Item("Role") = 4 Then
-            'athlete
+    Protected Sub btnCycleMng_Click(sender As Object, e As System.EventArgs) Handles btnCycleMng.Click
+        Response.Redirect("SportsManagement.aspx")
+        'any user-hidden
+        'athlete-hidden
 
+            If Session.Item("Role") = 3 Then
+                'athletic trainer
+                Response.Redirect("SportsManagement.aspx")
 
-        ElseIf Session.Item("Role") = 3 Then
-            'athletic trainer
+            ElseIf Session.Item("Role") = 2 Then
+                'coach
+                Response.Redirect("SportsManagement.aspx")
 
-
-        ElseIf Session.Item("Role") = 2 Then
-            'coach
-
-
-        ElseIf Session.Item("Role") = 1 Then
-            'systems admin
-
-        End If
+            ElseIf Session.Item("Role") = 1 Then
+                'systems admin
+                Response.Redirect("SportsManagement.aspx")
+            End If
     End Sub
 
     Protected Sub btnSports_Click(sender As Object, e As System.EventArgs) Handles btnSports.Click
@@ -285,8 +281,8 @@ Partial Class main
         btnViewData_Click(sender, e)
     End Sub
 
-    Protected Sub btnInjuryOffCanvas_Click(sender As Object, e As System.EventArgs) Handles btnInjuryOffCanvas.Click
-        btnInjury_Click(sender, e)
+    Protected Sub btnCycleMngOffCanvas_Click(sender As Object, e As System.EventArgs) Handles btnCycleMngOffCanvas.Click
+        btnCycleMng_Click(sender, e)
     End Sub
 
     Protected Sub btnSportsOffCanvas_Click(sender As Object, e As System.EventArgs) Handles btnSportsOffCanvas.Click

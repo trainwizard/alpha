@@ -51,13 +51,13 @@ http://foundation.zurb.com/forum/posts/3077-move-divs-based-on-screen-size--%>
 		<aside class="left-off-canvas-menu">
 		<ul class="off-canvas-list">
 			<li><label>Trojan Trainer</label></li>
-			<li><a href="EditProfileInfo.aspx">My Home</a></li>
+			<%--<li><a href="EditProfileInfo.aspx">My Home</a></li>--%>
                 <asp:button id="btnMyHomeOffCanvas" runat="server" text="My Home" CssClass="offCanvasButton"/>
 				<asp:button id="btnAccountsOffCanvas" runat="server" text="Accounts" cssclass="offCanvasButton"/>
 				<asp:button id="btnWorkoutsOffCanvas" runat="server" text="Workouts" cssclass="offCanvasButton"/>
 				<asp:button id="btnRosterOffCanvas" runat="server" text="Roster" cssclass="offCanvasButton"/>
 				<asp:button id="btnViewDataOffCanvas" runat="server" text="View Data" cssclass="offCanvasButton"/>
-				<asp:button id="btnInjuryOffCanvas" runat="server" text="Injury" cssclass="offCanvasButton"/>
+				<asp:button id="btnCycleMngOffCanvas" runat="server" text="Injury" cssclass="offCanvasButton"/>
 				<asp:button id="btnSportsOffCanvas" runat="server" text="Sports" cssclass="offCanvasButton"/>
 				<asp:button id="btnLogoutOffCanvas" runat="server" text="Logout" cssclass="offCanvasButton"/>
 		</ul>
@@ -127,7 +127,7 @@ http://foundation.zurb.com/forum/posts/3077-move-divs-based-on-screen-size--%>
 				<asp:button id="btnWorkouts" runat="server" text="Workouts" cssclass="radius button"/>
 				<asp:button id="btnRoster" runat="server" text="Roster" cssclass="radius button"/>
 				<asp:button id="btnViewData" runat="server" text="View Data" cssclass="radius button"/>
-				<asp:button id="btnInjury" runat="server" text="Injury" cssclass="radius button"/>
+				<asp:button id="btnCycleMng" runat="server" text="Injury" cssclass="radius button"/>
 				<asp:button id="btnSports" runat="server" text="Sports" cssclass="radius button"/>
 				<asp:button id="btnLogout" runat="server" text="Logout" cssclass="radius button"/>
                 
