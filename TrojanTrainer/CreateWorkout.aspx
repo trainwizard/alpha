@@ -25,7 +25,7 @@
         &nbsp;</p>
     <p>
         <asp:Button ID="btnWorkout" runat="server" Text="Modify Workouts" />
-        <asp:Button ID="btnExercise" runat="server" Text="Modify Exercises" />
+        <asp:Button ID="btnExercise" runat="server" Text="Create Exercise" />
     </p>
     <p>
         <asp:Label ID="lblWorkouts" runat="server" Text="Current workouts:" 
@@ -107,15 +107,7 @@
                     SortExpression="Post_Training_Notes" />
                 <asp:BoundField DataField="Create_Date" HeaderText="Create_Date" 
                     SortExpression="Create_Date" />
-                <asp:BoundField DataField="Assign_Date" HeaderText="Assign_Date" 
-                    SortExpression="Assign_Date" />
-                <asp:BoundField DataField="Name" HeaderText="Name" 
-                    SortExpression="Name" />
-                <asp:BoundField DataField="Cycle_ID" HeaderText="Cycle_ID" 
-                    SortExpression="Cycle_ID" />
-                <asp:BoundField DataField="Name1" HeaderText="Name1" SortExpression="Name1" />
-                <asp:BoundField DataField="Team_ID" HeaderText="Team_ID" 
-                    SortExpression="Team_ID" />
+                <asp:CommandField ButtonType="Button" ShowInsertButton="True" />
             </Fields>
         </asp:DetailsView>
     </p>
@@ -201,6 +193,7 @@ WHERE [Planned_Ex_ID] = @Planned_Ex_ID">
                 <asp:BoundField DataField="Note" HeaderText="Note" SortExpression="Note" />
                 <asp:BoundField DataField="Planned_Ex_ID" HeaderText="Planned_Ex_ID" 
                     InsertVisible="False" ReadOnly="True" SortExpression="Planned_Ex_ID" />
+                <asp:CommandField ButtonType="Button" ShowInsertButton="True" />
             </Fields>
         </asp:DetailsView>
     
