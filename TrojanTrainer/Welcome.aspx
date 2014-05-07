@@ -10,7 +10,6 @@
   * {
     background: transparent !important;
     color: black !important;
-    /* Black prints faster: h5bp.com/s */
     box-shadow: none !important;
     text-shadow: none !important; }
 
@@ -100,12 +99,14 @@ table {
             margin-bottom: 0;
             padding: 0;
         }
+
+
     </style>
 </head>
-<body>
+<body background="foundation/img/backgroundSRS.png">
     <form id="form1" runat="server">
     <div>
-    
+        
     <div>
     
         <asp:Label ID="msginvalidlogin" runat="server" ForeColor="Red" 

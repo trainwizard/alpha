@@ -103,7 +103,7 @@ http://foundation.zurb.com/forum/posts/3077-move-divs-based-on-screen-size--%>
 		</ul>
 		<section class="top-bar-section">
 		<!-- Right Nav Section -->
-		<ul class="right">
+		<ul class="right">.
 			<li>
 			</li>
 			<li class="has-dropdown">
