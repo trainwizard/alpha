@@ -30,50 +30,19 @@
         <br />
         <br />
         Current Exercises:<br />
+        <br />
         <asp:GridView ID="gvExercises" runat="server" AllowPaging="True" 
-            AllowSorting="True" AutoGenerateColumns="False" 
-            DataKeyNames="Workout_ID,Workout_ID1,Planned_Ex_ID,Planned_Ex_ID1" 
+            AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Planned_Ex_ID" 
             DataSourceID="SqlDataSource1">
             <Columns>
-                <asp:CommandField ButtonType="Button" ShowDeleteButton="True" 
-                    ShowEditButton="True" />
-                <asp:BoundField DataField="Workout_ID" HeaderText="Workout_ID" 
-                    SortExpression="Workout_ID" InsertVisible="False" ReadOnly="True" 
-                    Visible="False" />
-                <asp:BoundField DataField="Workout_Name" HeaderText="Workout_Name" 
-                    SortExpression="Workout_Name" Visible="False" />
-                <asp:BoundField DataField="Team_ID" HeaderText="Team_ID" 
-                    SortExpression="Team_ID" Visible="False" />
-                <asp:BoundField DataField="Cycle_ID" HeaderText="Cycle_ID" 
-                    SortExpression="Cycle_ID" Visible="False" />
-                <asp:BoundField DataField="Pre_Training_Notes" HeaderText="Pre_Training_Notes" 
-                    SortExpression="Pre_Training_Notes" Visible="False" />
-                <asp:BoundField DataField="Post_Training_Notes" 
-                    HeaderText="Post_Training_Notes" SortExpression="Post_Training_Notes" 
-                    Visible="False" />
-                <asp:BoundField DataField="Create_Date" HeaderText="Create_Date" 
-                    SortExpression="Create_Date" Visible="False" />
-                <asp:BoundField DataField="Assign_Date" HeaderText="Assign_Date" 
-                    SortExpression="Assign_Date" Visible="False" />
-                <asp:BoundField DataField="Active" HeaderText="Active" SortExpression="Active" 
-                    Visible="False" />
-                <asp:BoundField DataField="Workout_ID1" HeaderText="Workout_ID1" 
-                    ReadOnly="True" SortExpression="Workout_ID1" Visible="False" />
-                <asp:BoundField DataField="Planned_Ex_ID" HeaderText="Planned_Ex_ID" 
-                    ReadOnly="True" SortExpression="Planned_Ex_ID" Visible="False" />
-                <asp:BoundField DataField="Actual_Ex_ID" HeaderText="Actual_Ex_ID" 
-                    SortExpression="Actual_Ex_ID" Visible="False" />
-                <asp:BoundField DataField="Planned_Ex_ID1" HeaderText="Planned_Ex_ID1" 
-                    InsertVisible="False" ReadOnly="True" SortExpression="Planned_Ex_ID1" 
-                    Visible="False" />
-                <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
+                <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
+                <asp:BoundField DataField="Name" HeaderText="Exercise Name" ReadOnly="True" 
+                    SortExpression="Name" />
                 <asp:BoundField DataField="Sets" HeaderText="Sets" SortExpression="Sets" />
-                <asp:BoundField DataField="Reps" HeaderText="Reps" 
-                    SortExpression="Reps" />
+                <asp:BoundField DataField="Reps" HeaderText="Reps" SortExpression="Reps" />
                 <asp:BoundField DataField="Weight" HeaderText="Weight" 
                     SortExpression="Weight" />
-                <asp:BoundField DataField="Time" HeaderText="Time" 
-                    SortExpression="Time" />
+                <asp:BoundField DataField="Time" HeaderText="Time" SortExpression="Time" />
                 <asp:BoundField DataField="Intensity" HeaderText="Intensity" 
                     SortExpression="Intensity" />
                 <asp:BoundField DataField="Note" HeaderText="Note" SortExpression="Note" />
@@ -82,11 +51,13 @@
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
             ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
             SelectCommand="GetExerciseInformation" SelectCommandType="StoredProcedure" 
-            DeleteCommand="DELETE FROM [Planned_Exercise] WHERE [Planned_Ex_ID] = @Planned_Ex_ID AND FROM [Workout_Template] WHERE [Planned_Ex_ID] = @Planned_Ex_ID" 
+            DeleteCommand="DELETE FROM Workout_Template 
+WHERE Planned_Ex_ID =  @Planned_Ex_ID " 
             InsertCommand="INSERT INTO [Planned_Exercise] ([Name], [Sets], [Reps], [Weight], [Time], [Intensity], [Note]) VALUES (@Name, @Sets, @Reps, @Weight, @Time, @Intensity, @Note)" 
+            
             UpdateCommand="UPDATE [Planned_Exercise] SET [Name] = @Name, [Sets] = @Sets, [Reps] = @Reps, [Weight] = @Weight, [Time] = @Time, [Intensity] = @Intensity, [Note] = @Note WHERE [Planned_Ex_ID] = @Planned_Ex_ID">
             <DeleteParameters>
-                <asp:Parameter Name="Planned_Ex_ID" Type="Int32" />
+                <asp:Parameter Name="Planned_Ex_ID" />
             </DeleteParameters>
             <InsertParameters>
                 <asp:Parameter Name="Name" Type="String" />

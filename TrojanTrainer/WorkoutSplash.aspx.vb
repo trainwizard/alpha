@@ -84,6 +84,8 @@ Partial Class _Default
             Debug.Print(String.Format("Affected {0}row(s)", rowsAffected))
         End Using
         gvExercises.DataBind()
+        ddlExercises.DataBind()
+
 
     End Sub
 
