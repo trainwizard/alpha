@@ -126,7 +126,7 @@ table {
     <asp:CheckBox ID="ckbloggedin" runat="server" Text="Keep me logged in." />
     <br />
     <br />
-    <asp:Button ID="btnlogin" runat="server" EnableTheming="True" Text="Login" />
+    <asp:Button ID="btnlogin" runat="server" EnableTheming="True" Text="Login" CssClass="button tiny"/>
 
 
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 

@@ -56,7 +56,8 @@
         </asp:DropDownList>
         <br />
         <br />
-        <asp:Button ID="btncreateuser" runat="server" Text="Create User" />
+        <asp:Button ID="btncreateuser" runat="server" Text="Create User" 
+            CssClass="button tiny" />
         &nbsp;&nbsp;&nbsp;
         <asp:Label ID="msgvalidusername" runat="server" ForeColor="Red" Text="default" 
             Visible="False"></asp:Label>
@@ -100,7 +101,7 @@
         SelectCommand="ActiveUsers" SelectCommandType="StoredProcedure">
     </asp:SqlDataSource>
     <br />
-    <asp:Button ID="DeactivateUser" runat="server" Text="Deactivate User" />
+    <asp:Button ID="DeactivateUser" runat="server" Text="Deactivate User" CssClass="button tiny"/>
     <br />
 
 </asp:Content>

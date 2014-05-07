@@ -160,15 +160,15 @@ Partial Class main
 
         ElseIf Session.Item("Role") = 3 Then
             'athletic trainer
-            Response.Redirect("Workouts.aspx")
+            Response.Redirect("WorkoutSplash.aspx")
 
         ElseIf Session.Item("Role") = 2 Then
             'coach
-            Response.Redirect("Workouts.aspx")
+            Response.Redirect("WorkoutSplash.aspx")
 
         ElseIf Session.Item("Role") = 1 Then
             'systems admin
-            Response.Redirect("Workouts.aspx")
+            Response.Redirect("WorkoutSplash.aspx")
 
         End If
     End Sub
