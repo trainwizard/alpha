@@ -16,50 +16,50 @@ Partial Class Workouts
 
 
 
-        Using connection As New SqlConnection(connectionString)
-            'retrieves text from textboxes
-            connection.Open()
-            Dim CurrentWorkouts As SqlCommand = New SqlCommand("ViewWorkout", connection)
-            Dim CurrentWorkoutReader As SqlDataReader
-            'calls stored procedure to check user existance
-            CurrentWorkouts.CommandType = CommandType.StoredProcedure
-            'Input -- TM_ID, date
-            CurrentWorkoutReader = CurrentWorkouts.ExecuteReader()
-            'If selected date is empty
-            If CurrentWorkoutReader.HasRows() Then
-                Dim WorkoutsList = New List(Of Dictionary(Of String, String))()
-                Do While CurrentWorkoutReader.Read()
-                    'Debug.Print(CurrentWorkoutReader("Workout_Name"))
-                    Dim WorkoutsDict As New Dictionary(Of String, String)
-                    WorkoutsDict.Add("Workout_ID", CurrentWorkoutReader("Workout_ID"))
-                    WorkoutsDict.Add("Workout_Name", CurrentWorkoutReader("Workout_Name"))
-                    WorkoutsDict.Add("Pre_Training_Notes", CurrentWorkoutReader("Pre_Training_Notes"))
-                    WorkoutsDict.Add("Post_Training_Notes", CurrentWorkoutReader("Post_Training_Notes"))
-                    WorkoutsDict.Add("Create_Date", CurrentWorkoutReader("Create_Date"))
-                    WorkoutsDict.Add("Assign_Date", CurrentWorkoutReader("Assign_Date"))
-                    WorkoutsDict.Add("Name", CurrentWorkoutReader("Name"))
-                    WorkoutsDict.Add("Cycle_ID", CurrentWorkoutReader("Cycle_ID"))
-                    WorkoutsDict.Add("Team_ID", CurrentWorkoutReader("Team_ID"))
-                    WorkoutsList.Add(WorkoutsDict)
-                Loop
-                For Each dictionaryy As Dictionary(Of String, String) In WorkoutsList
-                    For Each Pair In dictionaryy 
-                        If Pair.Key = "Workout_Name" Then
+        'Using connection As New SqlConnection(connectionString)
+        '    'retrieves text from textboxes
+        '    connection.Open()
+        '    Dim CurrentWorkouts As SqlCommand = New SqlCommand("ViewWorkout", connection)
+        '    Dim CurrentWorkoutReader As SqlDataReader
+        '    'calls stored procedure to check user existance
+        '    CurrentWorkouts.CommandType = CommandType.StoredProcedure
+        '    'Input -- TM_ID, date
+        '    CurrentWorkoutReader = CurrentWorkouts.ExecuteReader()
+        '    'If selected date is empty
+        '    If CurrentWorkoutReader.HasRows() Then
+        '        Dim WorkoutsList = New List(Of Dictionary(Of String, String))()
+        '        Do While CurrentWorkoutReader.Read()
+        '            'Debug.Print(CurrentWorkoutReader("Workout_Name"))
+        '            Dim WorkoutsDict As New Dictionary(Of String, String)
+        '            WorkoutsDict.Add("Workout_ID", CurrentWorkoutReader("Workout_ID"))
+        '            WorkoutsDict.Add("Workout_Name", CurrentWorkoutReader("Workout_Name"))
+        '            WorkoutsDict.Add("Pre_Training_Notes", CurrentWorkoutReader("Pre_Training_Notes"))
+        '            WorkoutsDict.Add("Post_Training_Notes", CurrentWorkoutReader("Post_Training_Notes"))
+        '            WorkoutsDict.Add("Create_Date", CurrentWorkoutReader("Create_Date"))
+        '            WorkoutsDict.Add("Assign_Date", CurrentWorkoutReader("Assign_Date"))
+        '            WorkoutsDict.Add("Name", CurrentWorkoutReader("Name"))
+        '            WorkoutsDict.Add("Cycle_ID", CurrentWorkoutReader("Cycle_ID"))
+        '            WorkoutsDict.Add("Team_ID", CurrentWorkoutReader("Team_ID"))
+        '            WorkoutsList.Add(WorkoutsDict)
+        '        Loop
+        '        For Each dictionaryy As Dictionary(Of String, String) In WorkoutsList
+        '            For Each Pair In dictionaryy 
+        '                If Pair.Key = "Workout_Name" Then
 
-                            Dim lbl1 As Label = New Label()
-                            lbl1.ForeColor = System.Drawing.Color.Black
-                            lbl1.ID = Pair.Value
-                            lbl1.CssClass = "Exercise"
-                            lbl1.Text = Pair.Value
-                            Me.Controls.Add(lbl1)
+        '                    Dim lbl1 As Label = New Label()
+        '                    lbl1.ForeColor = System.Drawing.Color.Black
+        '                    lbl1.ID = Pair.Value
+        '                    lbl1.CssClass = "Exercise"
+        '                    lbl1.Text = Pair.Value
+        '                    Me.Controls.Add(lbl1)
 
-                        End If
-                    Next
+        '                End If
+        '            Next
 
-                Next
-            End If
+        '        Next
+        '    End If
 
-            End Using 
+        '    End Using 
 
 
 

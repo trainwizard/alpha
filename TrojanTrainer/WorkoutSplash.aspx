@@ -4,16 +4,22 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div _designerregion="0">
+        Current Sport:&nbsp;&nbsp;
+        <asp:DropDownList ID="Sportsddl" runat="server" AutoPostBack="True" 
+            DataSourceID="SqlDataSource4" DataTextField="Name" DataValueField="Sport_ID">
+        </asp:DropDownList>
         <br />
         <br />
         Workout Home Page<br />
-        <br />
-        <br />
         <br />
         <asp:Button ID="btnCreate" runat="server" Text="Create Workout or Exercise" />
         <asp:Button ID="Button2" runat="server" Text="Button" />
         <asp:Button ID="Button3" runat="server" Text="Button" />
         <br />
+        <br />
+        <asp:SqlDataSource ID="SqlDataSource4" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
+            SelectCommand="SELECT * FROM [Sport]"></asp:SqlDataSource>
         <br />
         <br />
         Existing Workout Information<br />
@@ -26,17 +32,21 @@
         <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
             ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
             SelectCommand="ViewWorkout" SelectCommandType="StoredProcedure">
+            <SelectParameters>
+                <asp:ControlParameter ControlID="Sportsddl" Name="Sport_ID" 
+                    PropertyName="SelectedValue" Type="Int32" />
+            </SelectParameters>
         </asp:SqlDataSource>
         <br />
-        <br />
-        Current Exercises:<br />
+        <asp:Label ID="CurrentExercisesLbl" runat="server" Text="Current Exercises:" 
+            Visible="False"></asp:Label>
         <br />
         <asp:GridView ID="gvExercises" runat="server" AllowPaging="True" 
             AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Planned_Ex_ID" 
-            DataSourceID="SqlDataSource1">
+            DataSourceID="SqlDataSource1" Visible="False">
             <Columns>
                 <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
-                <asp:BoundField DataField="Name" HeaderText="Exercise Name" ReadOnly="True" 
+                <asp:BoundField DataField="Name" HeaderText="Exercise Name" 
                     SortExpression="Name" />
                 <asp:BoundField DataField="Sets" HeaderText="Sets" SortExpression="Sets" />
                 <asp:BoundField DataField="Reps" HeaderText="Reps" SortExpression="Reps" />
@@ -71,6 +81,8 @@ WHERE Planned_Ex_ID =  @Planned_Ex_ID "
             <SelectParameters>
                 <asp:ControlParameter ControlID="Exercise_Name_Listbox" Name="Workout_ID" 
                     PropertyName="SelectedValue" Type="Int32" />
+                <asp:ControlParameter ControlID="Sportsddl" Name="Sport_ID" 
+                    PropertyName="SelectedValue" Type="Int32" />
             </SelectParameters>
             <UpdateParameters>
                 <asp:Parameter Name="Name" Type="String" />
@@ -84,10 +96,12 @@ WHERE Planned_Ex_ID =  @Planned_Ex_ID "
             </UpdateParameters>
         </asp:SqlDataSource>
         <br />
-        Add Exercise:<br />
+        <asp:Label ID="AddExercisesLbl" runat="server" Text="Add Exercises:" 
+            Visible="False"></asp:Label>
+        <br />
         <asp:DropDownList ID="ddlExercises" runat="server" 
             DataSourceID="SqlDataSource3" DataTextField="Name" 
-            DataValueField="Planned_Ex_ID">
+            DataValueField="Planned_Ex_ID" Visible="False">
         </asp:DropDownList>
         <br />
         <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
@@ -96,9 +110,12 @@ WHERE Planned_Ex_ID =  @Planned_Ex_ID "
             <SelectParameters>
                 <asp:ControlParameter ControlID="Exercise_Name_Listbox" Name="Workout_ID" 
                     PropertyName="SelectedValue" Type="Int32" />
+                <asp:ControlParameter ControlID="Sportsddl" Name="Sport_ID" 
+                    PropertyName="SelectedValue" Type="Int32" />
             </SelectParameters>
         </asp:SqlDataSource>
-        <asp:Button ID="btnAddExercise" runat="server" Text="Add Exercise" />
+        <asp:Button ID="btnAddExercise" runat="server" Text="Add Exercise" 
+            Visible="False" />
     </div>
     <br />
     <br />

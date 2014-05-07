@@ -92,4 +92,25 @@ Partial Class _Default
     Protected Sub btnCreate_Click(sender As Object, e As System.EventArgs) Handles btnCreate.Click
         Response.Redirect("CreateWorkout.aspx")
     End Sub
+
+    Protected Sub Sportsddl_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles Sportsddl.SelectedIndexChanged
+        Exercise_Name_Listbox.DataBind()
+        gvExercises.DataBind()
+        ddlExercises.DataBind()
+        ddlExercises.ClearSelection()
+        CurrentExercisesLbl.Visible = False
+        gvExercises.Visible = False
+        AddExercisesLbl.Visible = False
+        ddlExercises.Visible = False
+        btnAddExercise.Visible = False
+
+    End Sub
+
+    Protected Sub Exercise_Name_Listbox_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles Exercise_Name_Listbox.SelectedIndexChanged
+        CurrentExercisesLbl.Visible = True
+        gvExercises.Visible = True
+        AddExercisesLbl.Visible = True
+        ddlExercises.Visible = True
+        btnAddExercise.Visible = True
+    End Sub
 End Class
