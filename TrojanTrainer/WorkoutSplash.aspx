@@ -10,7 +10,7 @@
         <br />
         <br />
         <br />
-        <asp:Button ID="btnCreate" runat="server" Text="Create" />
+        <asp:Button ID="btnCreate" runat="server" Text="Create Workout or Exercise" />
         <asp:Button ID="Button2" runat="server" Text="Button" />
         <asp:Button ID="Button3" runat="server" Text="Button" />
         <br />
