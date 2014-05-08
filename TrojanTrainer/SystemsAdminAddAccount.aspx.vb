@@ -72,16 +72,4 @@ Partial Class SystemsAdminAddAccount
 
     End Sub
 
-
-    Protected Sub DeactivateUser_Click(sender As Object, e As System.EventArgs) Handles DeactivateUser.Click
-        Using connection As New SqlConnection(connectionString)
-            'connection is established
-            connection.Open()
-            Dim deactivateUser As SqlCommand = New SqlCommand("UserInactive", connection)
-            deactivateUser.CommandType = CommandType.StoredProcedure
-            deactivateUser.Parameters.Add(New SqlParameter("@username", ActiveUsers.SelectedValue))
-            deactivateUser.ExecuteNonQuery()
-            Response.Redirect("SystemsAdminAddAccount.aspx")
-        End Using
-    End Sub
 End Class

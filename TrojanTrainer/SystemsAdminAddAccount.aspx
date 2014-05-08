@@ -45,15 +45,15 @@
             ControlToValidate="NewLastName" ErrorMessage="Last Name Required"></asp:RequiredFieldValidator>--%>
         <br />
         <br />
-        Role:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-        &nbsp;
-        <asp:DropDownList ID="RoleDropDown" runat="server">
+        Role:&nbsp;<asp:DropDownList ID="RoleDropDown" runat="server">
             <asp:ListItem Value="5">Any User</asp:ListItem>
             <asp:ListItem Selected="True" Value="4">Athlete</asp:ListItem>
             <asp:ListItem Value="3">Athletic Trainer</asp:ListItem>
             <asp:ListItem Value="2">Coach</asp:ListItem>
             <asp:ListItem Value="1">Systems Admin</asp:ListItem>
         </asp:DropDownList>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        &nbsp;
         <br />
         <br />
         <asp:Button ID="btncreateuser" runat="server" Text="Create User" 
@@ -92,15 +92,8 @@ WHERE User_ID = @User_ID;">
                 <asp:Parameter Name="User_ID" />
             </DeleteParameters>
         </asp:SqlDataSource>
-        <br />
-        Deactivate a User:<br />
-        <br />
 
     </div>
-   
-    <asp:DropDownList ID="ActiveUsers" runat="server" DataSourceID="SqlDataSource2" 
-        DataTextField="User_ID" DataValueField="User_ID">
-    </asp:DropDownList>
     <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
         ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
         SelectCommand="ActiveUsers" SelectCommandType="StoredProcedure">
