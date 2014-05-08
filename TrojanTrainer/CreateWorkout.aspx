@@ -35,24 +35,13 @@ WHERE [Active] = 1">
             AllowSorting="True" AutoGenerateColumns="False" 
             DataSourceID="SqlDataSource1" DataKeyNames="Workout_ID" Visible="False">
             <Columns>
-                <asp:BoundField DataField="Workout_ID" HeaderText="Workout_ID" 
-                    SortExpression="Workout_ID" InsertVisible="False" ReadOnly="True" />
-                <asp:BoundField DataField="Workout_Name" 
-                    HeaderText="Workout_Name" SortExpression="Workout_Name" />
-                <asp:BoundField DataField="Pre_Training_Notes" HeaderText="Pre_Training_Notes" 
-                    SortExpression="Pre_Training_Notes" />
-                <asp:BoundField DataField="Post_Training_Notes" HeaderText="Post_Training_Notes" 
+                <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
+                <asp:BoundField DataField="Workout_Name" HeaderText="Workout Name" 
+                    SortExpression="Workout_Name" />
+                <asp:BoundField DataField="Pre_Training_Notes" 
+                    HeaderText="Pre Training Notes" SortExpression="Pre_Training_Notes" />
+                <asp:BoundField DataField="Post_Training_Notes" HeaderText="Post Training Notes" 
                     SortExpression="Post_Training_Notes" />
-                <asp:BoundField DataField="Create_Date" HeaderText="Create_Date" 
-                    SortExpression="Create_Date" />
-                <asp:BoundField DataField="Assign_Date" HeaderText="Assign_Date" 
-                    SortExpression="Assign_Date" />
-                <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
-                <asp:BoundField DataField="Cycle_ID" HeaderText="Cycle_ID" 
-                    SortExpression="Cycle_ID" />
-                <asp:BoundField DataField="Name1" HeaderText="Name1" SortExpression="Name1" />
-                <asp:BoundField DataField="Team_ID" HeaderText="Team_ID" 
-                    SortExpression="Team_ID" />
             </Columns>
         </asp:GridView>
     </p>
@@ -62,8 +51,9 @@ WHERE [Active] = 1">
             SelectCommand="ViewWorkout" 
             
             UpdateCommand="UpdateWorkout" SelectCommandType="StoredProcedure" 
-            UpdateCommandType="StoredProcedure" DeleteCommand="DeleteWorkout" 
-            DeleteCommandType="StoredProcedure" InsertCommand="CreateWorkout" 
+            UpdateCommandType="StoredProcedure" DeleteCommand="UPDATE Workout 
+SET Active = '0'
+WHERE Workout.Workout_ID = @Workout_ID " InsertCommand="CreateWorkout" 
             InsertCommandType="StoredProcedure">
             <DeleteParameters>
                 <asp:Parameter Name="Workout_ID" Type="Int32" />
@@ -81,12 +71,8 @@ WHERE [Active] = 1">
             <UpdateParameters>
                 <asp:Parameter Name="Workout_ID" Type="Int32" />
                 <asp:Parameter Name="Workout_Name" Type="String" />
-                <asp:Parameter Name="Team_ID" Type="Int32" />
-                <asp:Parameter Name="Cycle_ID" Type="Int32" />
                 <asp:Parameter Name="Pre_Training_Notes" Type="String" />
                 <asp:Parameter Name="Post_Training_Notes" Type="String" />
-                <asp:Parameter DbType="Date" Name="Create_Date" />
-                <asp:Parameter DbType="Date" Name="Assign_Date" />
             </UpdateParameters>
         </asp:SqlDataSource>
     </p>
@@ -99,20 +85,20 @@ WHERE [Active] = 1">
             DataSourceID="SqlDataSource4" Height="209px" Width="501px" 
             DataKeyNames="Workout_ID" DefaultMode="Insert" Visible="False">
             <Fields>
-                <asp:BoundField DataField="Workout_Name" HeaderText="Workout_Name" 
+                <asp:BoundField DataField="Workout_Name" HeaderText="Workout Name" 
                     SortExpression="Workout_Name" />
                 <asp:BoundField DataField="Pre_Training_Notes" 
-                    HeaderText="Pre_Training_Notes" SortExpression="Pre_Training_Notes" />
+                    HeaderText="Pre Training Notes" SortExpression="Pre_Training_Notes" />
                 <asp:BoundField DataField="Post_Training_Notes" 
-                    HeaderText="Post_Training_Notes" SortExpression="Post_Training_Notes" />
-                <asp:CommandField ShowInsertButton="True" />
+                    HeaderText="Post Training Notes" SortExpression="Post_Training_Notes" />
+                <asp:CommandField ShowInsertButton="True" ButtonType="Button" />
             </Fields>
         </asp:DetailsView>
 
         <asp:SqlDataSource ID="SqlDataSource4" runat="server" 
             ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
             InsertCommand="CreateWorkout" InsertCommandType="StoredProcedure" 
-            SelectCommand="ViewWorkout" SelectCommandType="StoredProcedure" 
+            SelectCommand="ViewWorkout" SelectCommandType="StoredProcedure">
             <InsertParameters>
                 <asp:Parameter Name="Workout_Name" Type="String" />
                 <asp:Parameter Name="Pre_Training_Notes" Type="String" />
@@ -120,8 +106,7 @@ WHERE [Active] = 1">
                 <asp:ControlParameter Name="Sport_ID" ControlID="Sportsddl" PropertyName="SelectedValue" />
             </InsertParameters>
             <SelectParameters>
-                <asp:ControlParameter ControlID="Sportsddl" Name="Sport_ID" 
-                    PropertyName="SelectedValue" Type="Int32" />
+                <asp:Parameter Name="Sport_ID" Type="Int32" />
             </SelectParameters>
         </asp:SqlDataSource>
     </p>

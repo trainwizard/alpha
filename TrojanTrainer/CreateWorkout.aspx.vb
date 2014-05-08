@@ -30,4 +30,7 @@ Partial Class CreateWorkout
         lblAddWorkout.Visible = False
         dvInsertWorkout.Visible = False
     End Sub
+
+    Protected Sub dvInsertWorkout_PageIndexChanging(sender As Object, e As System.Web.UI.WebControls.DetailsViewPageEventArgs) Handles dvInsertWorkout.PageIndexChanging
+    End Sub
 End Class
