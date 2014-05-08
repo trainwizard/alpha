@@ -12,9 +12,10 @@
         <br />
         Workout Home Page<br />
         <br />
-        <asp:Button ID="btnCreate" runat="server" Text="Create Workout or Exercise" />
-        <asp:Button ID="Button2" runat="server" Text="Button" />
-        <asp:Button ID="Button3" runat="server" Text="Button" />
+        <asp:Button ID="btnCreate" runat="server" Text="Create Workout or Exercise" 
+            CssClass="button tiny" />
+        <asp:Button ID="Button2" runat="server" Text="Button" CssClass="button tiny" />
+        <asp:Button ID="Button3" runat="server" Text="Button" CssClass="button tiny" />
         <br />
         <br />
         <asp:SqlDataSource ID="SqlDataSource4" runat="server" 
@@ -115,7 +116,7 @@ WHERE Planned_Ex_ID =  @Planned_Ex_ID "
             </SelectParameters>
         </asp:SqlDataSource>
         <asp:Button ID="btnAddExercise" runat="server" Text="Add Exercise" 
-            Visible="False" />
+            Visible="False" CssClass="button tiny" />
     </div>
     <br />
     <br />

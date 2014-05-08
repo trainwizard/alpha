@@ -8,7 +8,8 @@
     <style type="text/css">
 
   * {
-    background: transparent !important;
+    background-image:url('foundation/img/backgroundSRS.png');
+    background-repeat:no-repeat;
     color: black !important;
     box-shadow: none !important;
     text-shadow: none !important; }
@@ -103,7 +104,8 @@ table {
 
     </style>
 </head>
-<body background="foundation/img/backgroundSRS.png">
+<body<%-- background="foundation/img/backgroundSRS.png"--%>>
+
     <form id="form1" runat="server">
     <div>
         
@@ -130,11 +132,14 @@ table {
     <asp:Button ID="btnlogin" runat="server" EnableTheming="True" Text="Login" CssClass="button tiny"/>
 
 
+    </div>
+</body>
+
+
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
         ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
         SelectCommand="SELECT * FROM [User]"></asp:SqlDataSource>
 
-    </div>
     </form>
-</body>
+
 </html>

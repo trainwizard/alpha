@@ -14,7 +14,8 @@
         <asp:FileUpload ID="PictureUpload" runat="server" />
 
         
-        <asp:Button ID="ChangePictureButton" runat="server" Text="Change Picture" /><br/>
+        <asp:Button ID="ChangePictureButton" runat="server" Text="Change Picture" 
+            CssClass="button tiny" /><br/>
         <asp:Label ID="PictureLabel" runat="server" Text="Label" Visible="False"></asp:Label>
 
         
@@ -29,7 +30,8 @@
         <asp:TextBox ID="txtConfirmPassword" TextMode="password" runat="server"></asp:TextBox>
         
  
-        <asp:Button ID="btnSubmitPassword" runat="server" Text="Change Password" />
+        <asp:Button ID="btnSubmitPassword" runat="server" Text="Change Password" 
+                CssClass="button tiny" />
 
 
         
@@ -50,7 +52,8 @@
         <asp:TextBox ID="txtConfirmEmail" runat="server"></asp:TextBox>
         
  
-        <asp:Button ID="btnSubmitEmail" runat="server" Text="Change Email" />
+        <asp:Button ID="btnSubmitEmail" runat="server" Text="Change Email" 
+                CssClass="button tiny" />
 
         
         <asp:Label ID="lblEmailSuc" runat="server" 

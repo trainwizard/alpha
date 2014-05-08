@@ -8,7 +8,7 @@
         Add a New Sport:
         <asp:TextBox ID="NewSport" runat="server"></asp:TextBox>
         &nbsp;
-        <asp:Button ID="addNewSport" runat="server" Text="Add" />
+        <asp:Button ID="addNewSport" runat="server" Text="Add" CssClass="button tiny" />
         <asp:Label ID="msgvalidsport" runat="server" Text="Label" Visible="False"></asp:Label>
         <br />
         <br />
@@ -32,7 +32,7 @@
         Add a New Team:
          <asp:TextBox ID="NewTeam" runat="server"></asp:TextBox>
         &nbsp;
-        <asp:Button ID="addNewTeam" runat="server" Text="Add" />
+        <asp:Button ID="addNewTeam" runat="server" Text="Add" CssClass="button tiny" />
         <asp:Label ID="msgvalidteam" runat="server" Text="Label" Visible="False"></asp:Label>
         <br />
         <br />
@@ -63,7 +63,8 @@ WHERE Team.Sport_ID = Sport.Sport_ID">
         SelectCommand="ActiveSports" SelectCommandType="StoredProcedure">
     </asp:SqlDataSource>
     <br />
-    <asp:Button ID="DeactivateSport" runat="server" Text="Deactivate Sport" />
+    <asp:Button ID="DeactivateSport" runat="server" Text="Deactivate Sport" 
+        CssClass="button tiny" />
     <br />
 
 </asp:Content>
