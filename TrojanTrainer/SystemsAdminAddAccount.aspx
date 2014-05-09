@@ -52,7 +52,16 @@
             <asp:ListItem Value="2">Coach</asp:ListItem>
             <asp:ListItem Value="1">Systems Admin</asp:ListItem>
         </asp:DropDownList>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        <br />
+        Sport:<asp:DropDownList ID="SportSelection" runat="server" 
+            DataSourceID="SqlDataSource3" DataTextField="Name" DataValueField="Sport_ID">
+        </asp:DropDownList>
+        <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
+            SelectCommand="SELECT Sport_ID, Name FROM Sport WHERE Active = 1">
+        </asp:SqlDataSource>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
         &nbsp;
         <br />
         <br />
