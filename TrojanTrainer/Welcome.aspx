@@ -109,22 +109,22 @@ table {
             <a href="Welcome.aspx" class="close">&times;</a>
         </div>
     </asp:label>
-		<br/>
+		<%--<br/>
 		<br/>
 		<p>Login Here:</p><br/>
-		<br/>
-		<p>Username:</p>
-	<asp:textbox id="txtusername" runat="server" style="margin-left: 200px; margin-top:200px;">Username</asp:textbox>
-	    <br/>
-	    <br/>
-	    <p>Password:</p><br/>
-	<asp:textbox id="txtpassword" textmode="password" runat="server" style="margin-left: 200px; margin-top:200px;"></asp:textbox>
-	    <br/>
-	    <br/>
-	<asp:checkbox id="ckbloggedin" runat="server" style="margin-left: 200px; margin-top:200px;" text="Keep me logged in."/>
-	    <br/>
-	    <br/>
-	<asp:button id="btnlogin" runat="server" enabletheming="True" text="Login" cssclass="button tiny" style="margin-left: 200px; margin-top:200px;"/>
+		<br/>--%>
+		<p style="margin-top: 330px; margin-left: 100px;">Username:</p>
+	<asp:textbox id="txtusername" runat="server" style="margin-left: 100px; margin-top: 5px;">Username</asp:textbox>
+	    <%--<br/>
+	    <br/>--%>
+	    <p style="margin-left: 100px; margin-top: 5px;">Password:</p><%--<br/>--%>
+	<asp:textbox id="txtpassword" textmode="password" runat="server" style="margin-left: 100px; margin-top:5px;"></asp:textbox>
+	    <%--<br/>
+	    <br/>--%>
+	<asp:checkbox id="ckbloggedin" runat="server" style="margin-left: 100px; margin-top: 5px;" text="Keep me logged in."/>
+	    <%--<br/>
+	    <br/>--%>
+	<asp:button id="btnlogin" runat="server" enabletheming="True" text="Login" cssclass="button tiny" style="margin-left: 100px; margin-top:5px;"/>
 
 	
 	<asp:sqldatasource id="SqlDataSource1" runat="server" connectionstring="<%$ connectionstrings:alphaconnectionstring %>" SelectCommand="SELECT * FROM [User]"></asp:sqldatasource>
