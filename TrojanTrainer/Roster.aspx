@@ -113,7 +113,7 @@
         </asp:DropDownList>
         <asp:SqlDataSource ID="SqlDataSource6" runat="server" 
             ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
-            SelectCommand="PullNonTeamMembers" SelectCommandType="StoredProcedure">
+            SelectCommand="GetNonTeamMembers" SelectCommandType="StoredProcedure">
             <SelectParameters>
                 <asp:ControlParameter ControlID="ddlTeams" Name="Team_ID" 
                     PropertyName="SelectedValue" Type="Int32" />
