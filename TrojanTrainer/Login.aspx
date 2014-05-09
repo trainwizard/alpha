@@ -8,8 +8,12 @@
     <div>
     
         <br />
-        <asp:Label ID="msginvalidlogin" runat="server" ForeColor="Red" 
-            Text="Incorrect login, please try again." Visible="False"></asp:Label>
+        <asp:Label ID="msginvalidlogin" runat="server" ForeColor="Red" Text="Incorrect login, please try again." Visible="False">
+            <div data-alert class="alert-box alert radius">
+                This is a success alert with a radius.
+                <a href="Login.aspx" class="close">&times;</a>
+            </div>
+        </asp:Label>
         <br />
         <br />
     
