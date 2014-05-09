@@ -16,12 +16,19 @@
             AutoGenerateColumns="False" DataKeyNames="Sport_ID" 
             DataSourceID="SqlDataSource1" AllowPaging="True">
             <Columns>
+                <asp:CommandField ShowDeleteButton="True" />
                 <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
             </Columns>
         </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
             ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
-            SelectCommand="SELECT [Sport_ID], [Name], [Active] FROM [Sport] WHERE Active = 1">
+            
+            SelectCommand="SELECT [Sport_ID], [Name], [Active] FROM [Sport] WHERE Active = 1" DeleteCommand="UPDATE Sport
+SET Active = 0
+WHERE Sport_ID = @Sport_ID">
+            <DeleteParameters>
+                <asp:Parameter Name="Sport_ID" />
+            </DeleteParameters>
         </asp:SqlDataSource>
         <br />
         Select a Sport:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -52,19 +59,6 @@ FROM Team, Sport
 WHERE Team.Sport_ID = Sport.Sport_ID">
         </asp:SqlDataSource>
     </div>
-    <br />
-    <br />
-    Make a Sport Inactive:<br />
-    <asp:DropDownList ID="ActiveSports" runat="server" 
-        DataSourceID="SqlDataSource3" DataTextField="Name" DataValueField="Name">
-    </asp:DropDownList>
-    <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
-        SelectCommand="ActiveSports" SelectCommandType="StoredProcedure">
-    </asp:SqlDataSource>
-    <br />
-    <asp:Button ID="DeactivateSport" runat="server" Text="Deactivate Sport" 
-        CssClass="button tiny" />
     <br />
 
 </asp:Content>

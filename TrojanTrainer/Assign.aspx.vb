@@ -66,6 +66,13 @@ Partial Class _Default
             End If
             connection.Close()
         End Using
+        CycleCalendar.Visible = True
+        Workoutddl.Visible = True
+        AssignBtn.Visible = True
+        AssignTeamBtn.Visible = True
+        CurrentLbl.Visible = True
+        TeamDdl.Visible = True
+        CurrentWorkoutsGv.Visible = True
     End Sub
 
     Protected Sub CycleCalendar_SelectionChanged(sender As Object, e As System.EventArgs) Handles CycleCalendar.SelectionChanged
@@ -82,6 +89,21 @@ Partial Class _Default
             AssignWorkoutSport.Parameters.Add(New SqlParameter("@End_Date", CycleCalendar.SelectedDate))
             connection.Open()
             AssignWorkoutSport.ExecuteNonQuery()
+            connection.Close()
+
+        End Using
+    End Sub
+
+    Protected Sub AssignTeamBtn_Click(sender As Object, e As System.EventArgs) Handles AssignTeamBtn.Click
+        Using connection As New SqlConnection(connectionString)
+            Dim AssignTeamWorkout As SqlCommand = New SqlCommand("AssignTeamWorkout", connection)
+            AssignTeamWorkout.CommandType = CommandType.StoredProcedure
+            AssignTeamWorkout.Parameters.Add(New SqlParameter("@Team_ID", TeamDdl.SelectedValue))
+            AssignTeamWorkout.Parameters.Add(New SqlParameter("@Workout_ID", Workoutddl.SelectedValue))
+            AssignTeamWorkout.Parameters.Add(New SqlParameter("@Start_Date", CycleCalendar.SelectedDate))
+            AssignTeamWorkout.Parameters.Add(New SqlParameter("@End_Date", CycleCalendar.SelectedDate))
+            connection.Open()
+            AssignTeamWorkout.ExecuteNonQuery()
             connection.Close()
 
         End Using

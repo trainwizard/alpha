@@ -22,7 +22,7 @@ WHERE Active = 1"></asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
             ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" SelectCommand="SELECT Name, Cycle_ID
 FROM Cycle
-WHERE Sport_ID = @Sport_ID">
+WHERE Sport_ID = @Sport_ID AND End_Date &gt; (SELECT GETDATE())">
             <SelectParameters>
                 <asp:ControlParameter ControlID="SportsDdl" Name="Sport_ID" 
                     PropertyName="SelectedValue" />
@@ -33,7 +33,8 @@ WHERE Sport_ID = @Sport_ID">
     <p>
         &nbsp;</p>
     <p>
-        <asp:Calendar ID="CycleCalendar" runat="server" OnDayRender="CycleDayRender">
+        <asp:Calendar ID="CycleCalendar" runat="server" OnDayRender="CycleDayRender" 
+            Visible="False">
             <SelectorStyle BackColor="#99FFCC" />
         </asp:Calendar>
     </p>
@@ -41,7 +42,7 @@ WHERE Sport_ID = @Sport_ID">
         &nbsp;</p>
     <p>
         <asp:DropDownList ID="Workoutddl" runat="server" DataSourceID="SqlDataSource3" 
-            DataTextField="Workout_Name" DataValueField="Workout_ID">
+            DataTextField="Workout_Name" DataValueField="Workout_ID" Visible="False">
         </asp:DropDownList>
         <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
             ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
@@ -68,16 +69,39 @@ WHERE Cycle_Workout.Start_Date = @Start_Date AND Cycle_Workout.Cycle_ID  = @Cycl
         </asp:SqlDataSource>
     </p>
     <p>
-        <asp:Button ID="AssignBtn" runat="server" Text="Assign for this day." />
+        <asp:Button ID="AssignBtn" runat="server" Text="Assign to sport." 
+            Visible="False" />
     </p>
     <p>
         &nbsp;</p>
     <p>
+        <asp:DropDownList ID="TeamDdl" runat="server" DataSourceID="SqlDataSource5" 
+            DataTextField="Name" DataValueField="Team_ID" Visible="False">
+        </asp:DropDownList>
+        <asp:SqlDataSource ID="SqlDataSource5" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" SelectCommand="SELECT Name, Team_ID
+FROM Team
+WHERE Sport_ID = @Sport_ID">
+            <SelectParameters>
+                <asp:ControlParameter ControlID="SportsDdl" Name="Sport_ID" 
+                    PropertyName="SelectedValue" />
+            </SelectParameters>
+        </asp:SqlDataSource>
+    </p>
+    <p>
+        <asp:Button ID="AssignTeamBtn" runat="server" Text="Assign to team." 
+            Visible="False" />
+    </p>
+    <p>
+        &nbsp;</p>
+    <p>
+        &nbsp;</p>
+    <p>
         <asp:Label ID="CurrentLbl" runat="server" 
-            Text="Currently Assigned for this day:"></asp:Label>
+            Text="Currently Assigned for this day:" Visible="False"></asp:Label>
     </p>
     <asp:GridView ID="CurrentWorkoutsGv" runat="server" AutoGenerateColumns="False" 
-        DataKeyNames="Workout_ID" DataSourceID="SqlDataSource4">
+        DataKeyNames="Workout_ID" DataSourceID="SqlDataSource4" Visible="False">
         <Columns>
             <asp:BoundField DataField="Workout_Name" HeaderText="Workout Name" 
                 SortExpression="Workout_Name" />

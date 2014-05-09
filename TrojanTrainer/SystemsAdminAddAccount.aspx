@@ -115,7 +115,5 @@ WHERE User_ID = @User_ID;">
         SelectCommand="ActiveUsers" SelectCommandType="StoredProcedure">
     </asp:SqlDataSource>
     <br />
-    <asp:Button ID="DeactivateUser" runat="server" Text="Deactivate User" CssClass="button tiny"/>
-    <br />
 
 </asp:Content>
