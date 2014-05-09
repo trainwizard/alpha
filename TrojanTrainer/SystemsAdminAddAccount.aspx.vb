@@ -58,12 +58,16 @@ Partial Class SystemsAdminAddAccount
                     createUser.CommandType = CommandType.StoredProcedure
                     createUser.Parameters.Add(New SqlParameter("@username", NewUsername.Text))
                     createUser.Parameters.Add(New SqlParameter("@password", NewPassword.Text))
-
                     createUser.Parameters.Add(New SqlParameter("@firstname", NewFirstName.Text))
                     createUser.Parameters.Add(New SqlParameter("@lastname", NewLastName.Text))
                     createUser.Parameters.Add(New SqlParameter("@email", NewEmail.Text))
                     createUser.Parameters.Add(New SqlParameter("@roleid", RoleDropDown.SelectedValue))
                     createUser.ExecuteNonQuery()
+                    Dim UserSport As SqlCommand = New SqlCommand("UserSport", connection)
+                    UserSport.CommandType = CommandType.StoredProcedure
+                    UserSport.Parameters.Add(New SqlParameter("@User_ID", NewUsername.Text))
+                    UserSport.Parameters.Add(New SqlParameter("@Sport_ID", SportSelection.SelectedValue))
+                    UserSport.ExecuteNonQuery()
                     Response.Redirect("SystemsAdminAddAccount.aspx")
                 End If
 

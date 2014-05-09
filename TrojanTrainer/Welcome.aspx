@@ -105,18 +105,18 @@ table {
 		<br/>
 		<p>Login Here:</p><br/>
 		<br/>
-		Username:
-	<asp:textbox id="txtusername" runat="server" style="margin-left: 200px; margin-top:200px;"></asp:textbox>
+		<p>Username:</p>
+	<asp:textbox id="txtusername" runat="server" style="margin-left: 200px; margin-top:200px;">Username</asp:textbox>
 	    <br/>
 	    <br/>
-	    Password:<br/>
-	<asp:textbox id="txtpassword" textmode="password" runat="server"></asp:textbox>
+	    <p>Password:</p><br/>
+	<asp:textbox id="txtpassword" textmode="password" runat="server" style="margin-left: 200px; margin-top:200px;"></asp:textbox>
 	    <br/>
 	    <br/>
-	<asp:checkbox id="ckbloggedin" runat="server" text="Keep me logged in."/>
+	<asp:checkbox id="ckbloggedin" runat="server" style="margin-left: 200px; margin-top:200px;" text="Keep me logged in."/>
 	    <br/>
 	    <br/>
-	<asp:button id="btnlogin" runat="server" enabletheming="True" text="Login" cssclass="button tiny"/>
+	<asp:button id="btnlogin" runat="server" enabletheming="True" text="Login" cssclass="button tiny" style="margin-left: 200px; margin-top:200px;"/>
 
 	
 	<asp:sqldatasource id="SqlDataSource1" runat="server" connectionstring="<%$ connectionstrings:alphaconnectionstring %>" SelectCommand="SELECT * FROM [User]"></asp:sqldatasource>
