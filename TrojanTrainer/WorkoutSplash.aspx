@@ -12,10 +12,10 @@
         <br />
         Workout Home Page<br />
         <br />
-        <asp:Button ID="btnCreate" runat="server" Text="Create Workout or Exercise" 
+        <asp:Button ID="btnCreate" runat="server" Text="Manage Workout or Exercise" 
             CssClass="button tiny" />
-        <asp:Button ID="Button2" runat="server" Text="Button" CssClass="button tiny" />
-        <asp:Button ID="Button3" runat="server" Text="Button" CssClass="button tiny" />
+        <asp:Button ID="Button2" runat="server" Text="Assign Workouts" 
+            CssClass="button tiny" />
         <br />
         <br />
         <asp:SqlDataSource ID="SqlDataSource4" runat="server" 
