@@ -2,7 +2,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<title></title>
+<title>Trojan Trainer</title>
+    <link href="foundation/css/foundation.css" rel="stylesheet" type="text/css" />
+    <link href="foundation/css/foundation.min.css" rel="stylesheet" type="text/css" />
+
 <style type="text/css">
 body{
     background-image:url('foundation/img/backgroundSRS.png');
@@ -100,7 +103,12 @@ table {
 <form id="form1" runat="server">
 <body>
 
-	<asp:label id="msginvalidlogin" runat="server" forecolor="Red" text="Incorrect login, please try again." visible="False"></asp:label>
+	<asp:label id="msginvalidlogin" runat="server" forecolor="Red" text="Incorrect login, please try again." visible="False">
+        <div data-alert class="alert-box alert radius">
+            Incorrect Login, please try again
+            <a href="Welcome.aspx" class="close">&times;</a>
+        </div>
+    </asp:label>
 		<br/>
 		<br/>
 		<p>Login Here:</p><br/>

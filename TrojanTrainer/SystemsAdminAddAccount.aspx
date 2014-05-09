@@ -68,8 +68,13 @@
         <asp:Button ID="btncreateuser" runat="server" Text="Create User" 
             CssClass="button tiny" />
         &nbsp;&nbsp;&nbsp;
-        <asp:Label ID="msgvalidusername" runat="server" ForeColor="Red" Text="default" 
-            Visible="False"></asp:Label>
+        <asp:Label ID="msgvalidusername" runat="server" ForeColor="Red" Text=""
+            Visible="False">
+             <div data-alert class="alert-box alert radius">
+                Username is taken
+                <a href="#" class="close">&times;</a>
+             </div>    
+        </asp:Label>
         <br />
         <br />
         <asp:GridView ID="GridView1" runat="server" AllowSorting="True" 

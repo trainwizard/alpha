@@ -44,7 +44,7 @@ Partial Class SystemsAdminAddAccount
 
             Else
                 If NewFirstName.Text = "" Or NewLastName.Text = "" Or NewPassword.Text = "" Or NewUsername.Text = "" Or NewEmail.Text = "" Then
-                    msgvalidusername.Text = "Please complete all fields."
+                    'msgvalidusername.Text = "Please complete all fields."
                     msgvalidusername.ForeColor = Drawing.Color.Red
                     msgvalidusername.Visible = True
                     'ElseIf NewPassword.Text IsNot NewPassword2.Text Then
