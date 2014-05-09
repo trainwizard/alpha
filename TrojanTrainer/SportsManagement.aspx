@@ -5,7 +5,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    
+<%--    
     <script language="VB" runat="server">
 
         Sub DayRender(source As Object, e As DayRenderEventArgs)
@@ -29,7 +29,7 @@
         
 
    </script>
-    
+    --%>
     <p>
         Current Sport:&nbsp;&nbsp;
     <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" 

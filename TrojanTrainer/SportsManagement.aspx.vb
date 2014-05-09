@@ -2,13 +2,10 @@
 Imports System.Data.SqlClient
 Imports System.Diagnostics
 
-Public Class GlobalVariables
-    Public Shared CalCount As Integer = 0
-    Public Shared StopDate As New Date
-    Public Shared StartDate As New Date
-End Class
+
 
 Partial Class _Default
+
     Inherits System.Web.UI.Page
 
     Protected Sub DropDownList1_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles DropDownList1.SelectedIndexChanged
@@ -16,6 +13,32 @@ Partial Class _Default
 
 
     End Sub
+
+    Public Class GlobalVariables
+        Public Shared CalCount As Integer = 0
+        Public Shared StopDate As New Date
+        Public Shared StartDate As New Date
+    End Class
+
+
+    Sub DayRender(source As Object, e As DayRenderEventArgs)
+
+        ' Change the background color of the days in the month
+        ' to yellow.
+        If e.Day.Date < DateTime.Now Then
+            e.Day.IsSelectable = False
+            e.Cell.BackColor = Drawing.Color.DimGray
+        ElseIf GlobalVariables.CalCount > 1 Then
+            If e.Day.Date <= GlobalVariables.StopDate Then
+                If e.Day.Date >= GlobalVariables.StartDate Then
+                    e.Day.IsSelectable = False
+                    e.Cell.BackColor = Drawing.Color.LightGreen
+                End If
+            End If
+            e.Day.IsSelectable = False
+        End If
+
+    End Sub 'DayRender 
 
 
 
@@ -74,5 +97,9 @@ Partial Class _Default
         GlobalVariables.StopDate = Nothing
         GlobalVariables.CalCount = 0
         DateLabel.Text = "Please select a start date."
+    End Sub
+
+    Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
+
     End Sub
 End Class

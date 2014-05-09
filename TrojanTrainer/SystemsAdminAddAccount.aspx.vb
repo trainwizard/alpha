@@ -63,11 +63,13 @@ Partial Class SystemsAdminAddAccount
                     createUser.Parameters.Add(New SqlParameter("@email", NewEmail.Text))
                     createUser.Parameters.Add(New SqlParameter("@roleid", RoleDropDown.SelectedValue))
                     createUser.ExecuteNonQuery()
-                    Dim UserSport As SqlCommand = New SqlCommand("UserSport", connection)
-                    UserSport.CommandType = CommandType.StoredProcedure
-                    UserSport.Parameters.Add(New SqlParameter("@User_ID", NewUsername.Text))
-                    UserSport.Parameters.Add(New SqlParameter("@Sport_ID", SportSelection.SelectedValue))
-                    UserSport.ExecuteNonQuery()
+                    If RoleDropDown.SelectedValue = 4 Or RoleDropDown.SelectedValue = 2 Then
+                        Dim UserSport As SqlCommand = New SqlCommand("UserSport", connection)
+                        UserSport.CommandType = CommandType.StoredProcedure
+                        UserSport.Parameters.Add(New SqlParameter("@User_ID", NewUsername.Text))
+                        UserSport.Parameters.Add(New SqlParameter("@Sport_ID", SportSelection.SelectedValue))
+                        UserSport.ExecuteNonQuery()
+                    End If
                     Response.Redirect("SystemsAdminAddAccount.aspx")
                 End If
 
@@ -76,4 +78,13 @@ Partial Class SystemsAdminAddAccount
 
     End Sub
 
+    Protected Sub RoleDropDown_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles RoleDropDown.SelectedIndexChanged
+        If RoleDropDown.SelectedValue = 2 Or RoleDropDown.SelectedValue = 4 Then
+            SportAddLabel.Visible = True
+            SportSelection.Visible = True
+        Else
+            SportAddLabel.Visible = False
+            SportSelection.Visible = False
+        End If
+    End Sub
 End Class

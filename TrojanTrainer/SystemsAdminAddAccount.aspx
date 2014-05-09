@@ -45,7 +45,8 @@
             ControlToValidate="NewLastName" ErrorMessage="Last Name Required"></asp:RequiredFieldValidator>--%>
         <br />
         <br />
-        Role:&nbsp;<asp:DropDownList ID="RoleDropDown" runat="server">
+        Role:&nbsp;<asp:DropDownList ID="RoleDropDown" runat="server" 
+            AutoPostBack="True">
             <asp:ListItem Value="5">Any User</asp:ListItem>
             <asp:ListItem Selected="True" Value="4">Athlete</asp:ListItem>
             <asp:ListItem Value="3">Athletic Trainer</asp:ListItem>
@@ -54,7 +55,8 @@
         </asp:DropDownList>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
         <br />
-        Sport:<asp:DropDownList ID="SportSelection" runat="server" 
+        <asp:Label ID="SportAddLabel" runat="server" Text="Sport:"></asp:Label>
+&nbsp;<asp:DropDownList ID="SportSelection" runat="server" 
             DataSourceID="SqlDataSource3" DataTextField="Name" DataValueField="Sport_ID">
         </asp:DropDownList>
         <asp:SqlDataSource ID="SqlDataSource3" runat="server" 

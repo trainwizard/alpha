@@ -198,5 +198,8 @@ WHERE [Planned_Ex_ID] = @Planned_Ex_ID" SelectCommandType="StoredProcedure"
             </Fields>
         </asp:DetailsView>
     
+    <br />
+    <asp:Button ID="Button1" runat="server" Text="Workout Home" />
+    
 </asp:Content>
 
