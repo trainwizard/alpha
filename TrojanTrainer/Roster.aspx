@@ -21,15 +21,6 @@
             SelectCommand="SELECT [Name], [Sport_ID] FROM [Sport] WHERE Active = 1">
         </asp:SqlDataSource>
     
-        <asp:SqlDataSource ID="SqlDataSource5" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
-            SelectCommand="GetSportRoster" SelectCommandType="StoredProcedure">
-            <SelectParameters>
-                <asp:ControlParameter ControlID="ddlSports" Name="Sport_ID" 
-                    PropertyName="SelectedValue" Type="String" />
-            </SelectParameters>
-        </asp:SqlDataSource>
-    
     </p>
     <p>
     
@@ -82,15 +73,6 @@
                     SortExpression="First_Name" />
                 <asp:BoundField DataField="Last_Name" HeaderText="Last Name" 
                     SortExpression="Last_Name" />
-            </Columns>
-        </asp:GridView>
-        <asp:GridView ID="DataOutputSport" runat="server" AutoGenerateColumns="False" 
-            DataSourceID="SqlDataSource5" AllowPaging="True" AllowSorting="True">
-            <Columns>
-                <asp:BoundField DataField="First_Name" HeaderText="First Name" 
-                    SortExpression="First_Name" />
-                <asp:BoundField DataField="Last_Name" HeaderText="Last Name" 
-                    SortExpression="Last_Name" />
                 <asp:BoundField DataField="Name" HeaderText="Team Name" SortExpression="Name" />
             </Columns>
         </asp:GridView>
@@ -102,6 +84,26 @@
                     PropertyName="SelectedValue" Type="String" />
             </SelectParameters>
         </asp:SqlDataSource>
+        <asp:GridView ID="DataOutputSport" runat="server" AutoGenerateColumns="False" 
+            DataSourceID="SqlDataSource5" AllowPaging="True" AllowSorting="True">
+            <Columns>
+                <asp:BoundField DataField="First_Name" HeaderText="First Name" 
+                    SortExpression="First_Name" />
+                <asp:BoundField DataField="Last_Name" HeaderText="Last Name" 
+                    SortExpression="Last_Name" />
+                <asp:BoundField DataField="Name" HeaderText="Team Name" SortExpression="Name" />
+            </Columns>
+        </asp:GridView>
+    
+        <asp:SqlDataSource ID="SqlDataSource5" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
+            SelectCommand="GetSportRoster" SelectCommandType="StoredProcedure">
+            <SelectParameters>
+                <asp:ControlParameter ControlID="ddlSports" Name="Sport_ID" 
+                    PropertyName="SelectedValue" Type="String" />
+            </SelectParameters>
+        </asp:SqlDataSource>
+    
     </p>
     <p>
     
