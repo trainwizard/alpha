@@ -118,4 +118,8 @@ Partial Class _Default
         ddlExercises.DataBind()
 
     End Sub
+
+    Protected Sub Button2_Click(sender As Object, e As System.EventArgs) Handles Button2.Click
+        Response.Redirect("assign.aspx")
+    End Sub
 End Class
