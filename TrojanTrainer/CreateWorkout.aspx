@@ -23,8 +23,8 @@ WHERE [Active] = 1">
     <p>
         &nbsp;</p>
     <p>
-        <asp:Button ID="btnWorkout" runat="server" Text="Modify Workouts" />
-        <asp:Button ID="btnExercise" runat="server" Text="Create Exercise" />
+        <asp:Button ID="btnWorkout" runat="server" Text="Manage Workouts" />
+        <asp:Button ID="btnExercise" runat="server" Text="Manage Exercises" />
     </p>
     <p>
         <asp:Label ID="lblWorkouts" runat="server" Text="Current workouts:" 
@@ -111,8 +111,6 @@ WHERE Workout.Workout_ID = @Workout_ID " InsertCommand="CreateWorkout"
         </asp:SqlDataSource>
     </p>
     <p>
-        &nbsp;</p>
-    <p>
         <asp:Label ID="lblExercises" runat="server" Text="Current exercises:" 
             Visible="False"></asp:Label>
     </p>
@@ -121,15 +119,16 @@ WHERE Workout.Workout_ID = @Workout_ID " InsertCommand="CreateWorkout"
             DataSourceID="SqlDataSource2" Visible="False">
             <Columns>
                 <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
-                <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
+                <asp:BoundField DataField="Name" HeaderText="Name" 
+                    SortExpression="Name" />
+                <asp:BoundField DataField="Note" HeaderText="Note" SortExpression="Note" />
                 <asp:BoundField DataField="Reps" HeaderText="Reps" SortExpression="Reps" />
-                <asp:BoundField DataField="Sets" HeaderText="Sets" SortExpression="Sets" />
+                <asp:BoundField DataField="Sets" HeaderText="Sets" 
+                    SortExpression="Sets" />
+                <asp:BoundField DataField="Time" HeaderText="Time" 
+                    SortExpression="Time" />
                 <asp:BoundField DataField="Weight" HeaderText="Weight" 
                     SortExpression="Weight" />
-                <asp:BoundField DataField="Time" HeaderText="Time" SortExpression="Time" />
-                <asp:BoundField DataField="Intensity" HeaderText="Intensity" 
-                    SortExpression="Intensity" />
-                <asp:BoundField DataField="Note" HeaderText="Note" SortExpression="Note" />
                 <asp:BoundField DataField="Planned_Ex_ID" HeaderText="Planned_Ex_ID" 
                     InsertVisible="False" ReadOnly="True" SortExpression="Planned_Ex_ID" />
             </Columns>
@@ -139,19 +138,13 @@ WHERE Workout.Workout_ID = @Workout_ID " InsertCommand="CreateWorkout"
             DeleteCommand="UPDATE [Planned_Exercise] 
 SET Active = 0
 WHERE [Planned_Ex_ID] = @Planned_Ex_ID" 
-            InsertCommand="INSERT INTO [Planned_Exercise] ([Name], [Reps], [Sets], [Weight], [Time], [Intensity], [Note], [Active]) 
-VALUES (@Name, @Reps, @Sets, @Weight, @Time, @Intensity, @Note, 1)
-INSERT INTO Sport_Planned_Exercise (Sport_ID, Planned_Exercise_ID) 
-VALUES (@Sport_ID, (SELECT IDENT_CURRENT( 'Sport_Planned_Exercise' )))" 
-            SelectCommand="SELECT [Name], [Reps], [Sets], [Weight], [Time], [Intensity], [Note], [Planned_Exercise].Planned_Ex_ID
-FROM [Planned_Exercise]
-INNER JOIN Sport_Planned_Exercise 
-ON Planned_Exercise.Planned_Ex_ID = Sport_Planned_Exercise.Planned_Ex_ID 
-WHERE Sport_Planned_Exercise.Sport_ID = @Sport_ID" 
+            InsertCommand="CreateExercise" 
+            SelectCommand="ViewExercise" 
             
         UpdateCommand="UPDATE [Planned_Exercise] 
-SET [Name] = @Name, [Reps] = @Reps, [Sets] = @Sets, [Weight] = @Weight, [Time] = @Time, [Intensity] = @Intensity, [Note] = @Note 
-WHERE [Planned_Ex_ID] = @Planned_Ex_ID">
+SET [Name] = @Name, [Reps] = @Reps, [Sets] = @Sets, [Weight] = @Weight, [Time] = @Time, [Intensity] = @Intensity, [Note] = @Note, [Active]=1
+WHERE [Planned_Ex_ID] = @Planned_Ex_ID" SelectCommandType="StoredProcedure" 
+        InsertCommandType="StoredProcedure">
             <DeleteParameters>
                 <asp:Parameter Name="Planned_Ex_ID" Type="Int32" />
             </DeleteParameters>
@@ -163,7 +156,7 @@ WHERE [Planned_Ex_ID] = @Planned_Ex_ID">
                 <asp:Parameter Name="Time" Type="String" />
                 <asp:Parameter Name="Intensity" Type="Double" />
                 <asp:Parameter Name="Note" Type="String" />
-                <asp:Parameter Name="Sport_ID" />
+                <asp:ControlParameter Name="Sport_ID" ControlID="SportsDdl" PropertyName="SelectedValue" />
             </InsertParameters>
             <SelectParameters>
                 <asp:ControlParameter ControlID="Sportsddl" Name="Sport_ID" 
@@ -184,23 +177,24 @@ WHERE [Planned_Ex_ID] = @Planned_Ex_ID">
     <asp:Label ID="lblAddExercise" runat="server" Text="Add an exercise:" 
         Visible="False"></asp:Label>
     <br />
-    <br />
         <asp:DetailsView ID="dvInsertExercise" runat="server" AutoGenerateRows="False" 
-            DataKeyNames="Planned_Ex_ID" DataSourceID="SqlDataSource2" DefaultMode="Insert" 
+            DataKeyNames="Planned_Ex_ID" 
+        DataSourceID="SqlDataSource2" DefaultMode="Insert" 
             Height="50px" Width="643px" Visible="False">
             <Fields>
-                <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
+                <asp:BoundField DataField="Name" HeaderText="Name" 
+                    SortExpression="Name" />
+                <asp:BoundField DataField="Note" HeaderText="Note" SortExpression="Note" />
                 <asp:BoundField DataField="Reps" HeaderText="Reps" SortExpression="Reps" />
-                <asp:BoundField DataField="Sets" HeaderText="Sets" SortExpression="Sets" />
+                <asp:BoundField DataField="Sets" HeaderText="Sets" 
+                    SortExpression="Sets" />
+                <asp:BoundField DataField="Time" HeaderText="Time" 
+                    SortExpression="Time" />
                 <asp:BoundField DataField="Weight" HeaderText="Weight" 
                     SortExpression="Weight" />
-                <asp:BoundField DataField="Time" HeaderText="Time" SortExpression="Time" />
-                <asp:BoundField DataField="Intensity" HeaderText="Intensity" 
-                    SortExpression="Intensity" />
-                <asp:BoundField DataField="Note" HeaderText="Note" SortExpression="Note" />
                 <asp:BoundField DataField="Planned_Ex_ID" HeaderText="Planned_Ex_ID" 
                     InsertVisible="False" ReadOnly="True" SortExpression="Planned_Ex_ID" />
-                <asp:CommandField ShowInsertButton="True" />
+                <asp:CommandField ButtonType="Button" ShowInsertButton="True" />
             </Fields>
         </asp:DetailsView>
     

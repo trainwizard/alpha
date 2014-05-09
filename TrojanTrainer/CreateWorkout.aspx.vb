@@ -2,12 +2,12 @@
 Partial Class CreateWorkout
     Inherits System.Web.UI.Page
 
-    Sub CustomerDetail_ItemInserted(ByVal sender As Object, _
-  ByVal e As DetailsViewInsertedEventArgs)
-        ' Refresh the GridView control after a new record is inserted in 
-        ' the DetailsView control.
-        gvWorkouts.DataBind()
-    End Sub
+    '  Sub CustomerDetail_ItemInserted(ByVal sender As Object, _
+    'ByVal e As DetailsViewInsertedEventArgs)
+    '      ' Refresh the GridView control after a new record is inserted in 
+    '      ' the DetailsView control.
+    '      gvWorkouts.DataBind()
+    '  End Sub
 
     Protected Sub btnWorkout_Click(sender As Object, e As System.EventArgs) Handles btnWorkout.Click
         lblWorkouts.Visible = True
@@ -31,6 +31,12 @@ Partial Class CreateWorkout
         dvInsertWorkout.Visible = False
     End Sub
 
+
+    Protected Sub dvInsertExercise_PageIndexChanging(sender As Object, e As System.Web.UI.WebControls.DetailsViewPageEventArgs) Handles dvInsertExercise.PageIndexChanging
+        gvExercises.DataBind()
+    End Sub
+
     Protected Sub dvInsertWorkout_PageIndexChanging(sender As Object, e As System.Web.UI.WebControls.DetailsViewPageEventArgs) Handles dvInsertWorkout.PageIndexChanging
+        gvWorkouts.DataBind()
     End Sub
 End Class
