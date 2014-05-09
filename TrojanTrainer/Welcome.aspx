@@ -1,26 +1,25 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="Welcome.aspx.vb" Inherits="Welcome" %>
-
+﻿<%@ page language="VB" autoeventwireup="false" codefile="Welcome.aspx.vb" inherits="Welcome" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
-    <style type="text/css">
-
-  * {
+<title></title>
+<style type="text/css">
+body{
     background-image:url('foundation/img/backgroundSRS.png');
     background-repeat:no-repeat;
+}   
+
+  * {
+
     color: black !important;
     box-shadow: none !important;
     text-shadow: none !important; }
-
   *,
 *:before,
 *:after {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
-
 input[type="text"],
 input[type="password"],
 input[type="date"],
@@ -54,7 +53,6 @@ select {
   margin-left: 108px;
     margin-bottom: 0px;
 }
-
 input[type="checkbox"] + label,
 input[type="radio"] + label {
   display: inline-block;
@@ -62,7 +60,6 @@ input[type="radio"] + label {
   margin-right: 1rem;
   margin-bottom: 0;
   vertical-align: baseline; }
-
 label {
   font-size: 0.875rem;
   color: #4d4d4d;
@@ -72,10 +69,8 @@ label {
   line-height: 1.5;
   margin-bottom: 0;
   /* Styles for required inputs */ }
-  
 input[type="submit"] {
   -webkit-appearance: none; }
-
 table {
   background: white;
   margin-bottom: 1.25rem;
@@ -87,7 +82,6 @@ table {
   table tfoot tr td {
     display: table-cell;
     line-height: 1.125rem; }
-
   table tr th,
   table tr td {
     padding: 0.5625rem 0.625rem;
@@ -100,46 +94,32 @@ table {
             margin-bottom: 0;
             padding: 0;
         }
-
-
-    </style>
+</style>
 </head>
-<body<%-- background="foundation/img/backgroundSRS.png"--%>>
 
-    <form id="form1" runat="server">
-    <div>
-        
-    <div>
-    
-        <asp:Label ID="msginvalidlogin" runat="server" ForeColor="Red" 
-            Text="Incorrect login, please try again." Visible="False"></asp:Label>
-        <br />
-        <br />
-    
-        Login Here:<br />
-        <br />
-        Username:</div>
-    <asp:TextBox ID="txtusername" runat="server"></asp:TextBox>
-    <br />
-    <br />
-    Password:<br />
-    <asp:TextBox ID="txtpassword" TextMode="password" runat="server" ></asp:TextBox>
-    <br />
-    <br />
-    <asp:CheckBox ID="ckbloggedin" runat="server" Text="Keep me logged in." />
-    <br />
-    <br />
-    <asp:Button ID="btnlogin" runat="server" EnableTheming="True" Text="Login" CssClass="button tiny"/>
+<form id="form1" runat="server">
+<body>
 
+	<asp:label id="msginvalidlogin" runat="server" forecolor="Red" text="Incorrect login, please try again." visible="False"></asp:label>
+		<br/>
+		<br/>
+		<p>Login Here:</p><br/>
+		<br/>
+		Username:
+	<asp:textbox id="txtusername" runat="server" style="margin-left: 200px; margin-top:200px;"></asp:textbox>
+	    <br/>
+	    <br/>
+	    Password:<br/>
+	<asp:textbox id="txtpassword" textmode="password" runat="server"></asp:textbox>
+	    <br/>
+	    <br/>
+	<asp:checkbox id="ckbloggedin" runat="server" text="Keep me logged in."/>
+	    <br/>
+	    <br/>
+	<asp:button id="btnlogin" runat="server" enabletheming="True" text="Login" cssclass="button tiny"/>
 
-    </div>
+	
+	<asp:sqldatasource id="SqlDataSource1" runat="server" connectionstring="<%$ connectionstrings:alphaconnectionstring %>" SelectCommand="SELECT * FROM [User]"></asp:sqldatasource>
 </body>
-
-
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
-        SelectCommand="SELECT * FROM [User]"></asp:SqlDataSource>
-
-    </form>
-
+</form>
 </html>
