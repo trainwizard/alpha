@@ -71,7 +71,6 @@ Partial Class Welcome
                     'CREATES SESSION ROLE
                     'Session.Item("UserPicture") = picLocation.Item("User_Photo_ID")
                 End If
-                Debug.Print("Made it")
                 Debug.Print(Session.Item("UserPicture"))
                 readerPic.Close()
                 readerPic = Nothing
@@ -91,11 +90,24 @@ Partial Class Welcome
                     End If
                     readerTMID.Close()
                     readerTMID = Nothing
-                    Debug.Print(Session.Item("TM_ID"))
                     Response.Redirect("AthleteHome.aspx")
                 ElseIf Session.Item("Role") = 3 Then
                     Response.Redirect("AthleticTrainerHome.aspx")
                 ElseIf Session.Item("Role") = 2 Then
+                    'add item to session for coach sport
+                    Dim getSportID As SqlCommand = New SqlCommand("GetUserSport", connection)
+                    getSportID.CommandType = CommandType.StoredProcedure
+                    getSportID.Parameters.Add(New SqlParameter("@User_ID", Session("username")))
+                    Dim readerSport As SqlDataReader = getSportID.ExecuteReader()
+                    If readerSport.HasRows() Then
+                        While readerSport.Read()
+                            Session.Item("Sport_ID") = readerSport("Sport_ID")
+                        End While
+                    End If
+                    readerSport.Close()
+                    readerSport = Nothing
+                    Debug.Print("Sport ID is:")
+                    Debug.Print(Session.Item("Sport_ID"))
                     Response.Redirect("CoachHome.aspx")
                 ElseIf Session.Item("Role") = 1 Then
                     Response.Redirect("LoginHome.aspx")

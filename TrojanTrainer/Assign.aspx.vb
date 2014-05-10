@@ -73,6 +73,7 @@ Partial Class _Default
         CurrentLbl.Visible = True
         TeamDdl.Visible = True
         CurrentWorkoutsGv.Visible = True
+        AssignementLbl.Visible = True
     End Sub
 
     Protected Sub CycleCalendar_SelectionChanged(sender As Object, e As System.EventArgs) Handles CycleCalendar.SelectionChanged
