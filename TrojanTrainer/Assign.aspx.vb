@@ -7,7 +7,11 @@ Partial Class _Default
     Dim connectionString As String = "Data Source=SIMON;Initial Catalog=AlphaSYS39414;Persist Security Info=True;User ID=sbolds;Password=ttpfrzeh"
 
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
-
+        If Session.Item("Role") = 2 Then
+            SportsDdl.SelectedValue = Session.Item("Sport_ID")
+        ElseIf Session.Item("Role") > 3 Then
+            Response.Redirect("Permissions.aspx")
+        End If
     End Sub
 
     Public Class assignVariables
@@ -72,11 +76,12 @@ Partial Class _Default
         AssignTeamBtn.Visible = True
         CurrentLbl.Visible = True
         TeamDdl.Visible = True
-        CurrentWorkoutsGv.Visible = True
+        CurrentWorkoutssGv.Visible = True
         AssignementLbl.Visible = True
     End Sub
 
     Protected Sub CycleCalendar_SelectionChanged(sender As Object, e As System.EventArgs) Handles CycleCalendar.SelectionChanged
+        CurrentWorkoutssGv.DataBind()
         CurrentWorkoutsGv.DataBind()
     End Sub
 
@@ -93,6 +98,8 @@ Partial Class _Default
             connection.Close()
 
         End Using
+        CurrentWorkoutssGv.DataBind()
+        CurrentWorkoutsGv.DataBind()
     End Sub
 
     Protected Sub AssignTeamBtn_Click(sender As Object, e As System.EventArgs) Handles AssignTeamBtn.Click
@@ -108,5 +115,7 @@ Partial Class _Default
             connection.Close()
 
         End Using
+        CurrentWorkoutssGv.DataBind()
+        CurrentWorkoutsGv.DataBind()
     End Sub
 End Class

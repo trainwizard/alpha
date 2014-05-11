@@ -9,7 +9,9 @@ Partial Class _Default
 
 
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
-        If Session.Item("Role") > 3 Then
+        If Session.Item("Role") = 2 Then
+            Sportsddl.SelectedValue = Session.Item("Sport_ID")
+        ElseIf Session.Item("Role") > 3 Then
             Response.Redirect("Permissions.aspx")
         End If
 

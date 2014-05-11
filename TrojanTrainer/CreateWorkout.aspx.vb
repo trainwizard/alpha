@@ -43,4 +43,12 @@ Partial Class CreateWorkout
     Protected Sub Button1_Click(sender As Object, e As System.EventArgs) Handles Button1.Click
         Response.Redirect("WorkoutSplash.aspx")
     End Sub
+
+    Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
+        If Session.Item("Role") = 2 Then
+            Sportsddl.SelectedValue = Session.Item("Sport_ID")
+        ElseIf Session.Item("Role") > 3 Then
+            Response.Redirect("Permissions.aspx")
+        End If
+    End Sub
 End Class

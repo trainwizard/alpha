@@ -151,6 +151,28 @@ Partial Class _Default
     End Sub
 
     Protected Sub SelectDate_SelectionChanged(sender As Object, e As System.EventArgs) Handles SelectDate.SelectionChanged
+        DateValidator.Text = "Please select an option below."
+        DateValidator.Visible = True
+        SubmitInfo.Visible = False
+        SleepLabel.Visible = False
+        NutritionLabel.Visible = False
+        WeightLabel.Visible = False
+        BedTimeH.Visible = False
+        BedTimeM.Visible = False
+        AMPMButtons.Visible = False
+        NumHours.Visible = False
+        Calories.Visible = False
+        NutritionNote.Visible = False
+        PreWeight.Visible = False
+        BedtimeOutput.Visible = False
+        HoursOutput.Visible = False
+        MealsOutput.Visible = False
+        NutritionLabel.Visible = False
+        NotesOutput.Visible = False
+        WeightOutput.Visible = False
+    End Sub
+
+    Protected Sub Nutrition_Click(sender As Object, e As System.EventArgs) Handles Nutrition.Click
         Dim DateInput As String = ""
         DateInput = SelectDate.SelectedDate
         Using connection As New SqlConnection(connectionString)
@@ -170,7 +192,7 @@ Partial Class _Default
                 'Error: date already completed
 
                 DateValidator.ForeColor = Drawing.Color.Black
-                DateValidator.Text = "Selected date has already been entered." + "<br/><br/>" + "Here is your information: <br/>"
+                DateValidator.Text = "Selected date has already been entered."
 
                 DateValidator.Visible = True
                 SubmitInfo.Visible = False
@@ -203,7 +225,7 @@ Partial Class _Default
                 Next
 
                 'Shows the results
-                BedtimeOutput.Text = "Bedtime: " + previousData(0)
+                BedtimeOutput.Text = "Here is your information: <br/><br/>" + "Bedtime: " + previousData(0)
                 BedtimeOutput.Visible = True
                 HoursOutput.Text = "<br/>Number of hours slept:" + Str(previousData(1))
                 HoursOutput.Visible = True
@@ -261,9 +283,17 @@ Partial Class _Default
                 NotesOutput.Visible = False
                 WeightOutput.Visible = False
             End If
-
         End Using
-
-
     End Sub
+
+    'Protected Sub WorkoutBtn_Click(sender As Object, e As System.EventArgs) Handles WorkoutBtn.Click
+    '    Dim TeamCount As Integer = TeamGv.Controls.Count
+    '    If TeamCount > 0 Then
+    '        SportGv.Visible = False
+    '        TeamGv.Visible = True
+    '    Else
+    '        TeamGv.Visible = False
+    '        SportGv.Visible = True
+    '    End If
+    'End Sub
 End Class

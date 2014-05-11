@@ -101,7 +101,7 @@ WHERE Sport_ID = @Sport_ID">
         <asp:Label ID="CurrentLbl" runat="server" 
             Text="Currently Assigned for this day:" Visible="False"></asp:Label>
     </p>
-    <asp:GridView ID="CurrentWorkoutsGv" runat="server" AutoGenerateColumns="False" 
+    <asp:GridView ID="CurrentWorkoutssGv" runat="server" AutoGenerateColumns="False" 
         DataKeyNames="Workout_ID" DataSourceID="SqlDataSource4" Visible="False">
         <Columns>
             <asp:CommandField ShowDeleteButton="True" />
@@ -110,7 +110,7 @@ WHERE Sport_ID = @Sport_ID">
             <asp:BoundField DataField="Name" HeaderText="Sport" SortExpression="Name" />
         </Columns>
     </asp:GridView>
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
+    <asp:GridView ID="CurrentWorkoutsGv" runat="server" AutoGenerateColumns="False" 
         DataKeyNames="Workout_ID" DataSourceID="SqlDataSource6">
         <Columns>
             <asp:CommandField ShowDeleteButton="True" />

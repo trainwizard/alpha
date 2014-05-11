@@ -119,8 +119,5 @@ WHERE Planned_Ex_ID =  @Planned_Ex_ID "
             Visible="False" CssClass="button tiny" />
     </div>
     <br />
-    <br />
-        <br />
-        Assigned Athletes:<br />
 </asp:Content>
 
