@@ -48,9 +48,9 @@
         AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Cycle_ID" 
         DataSourceID="SqlDataSource2">
         <Columns>
-            <asp:BoundField DataField="Name" HeaderText="Cycle Name" 
+            <asp:BoundField DataField="Name" HeaderText="Name" 
                 SortExpression="Name" />
-            <asp:BoundField DataField="Start_Date" HeaderText="Start Date" 
+            <asp:BoundField DataField="Start Date" HeaderText="Start Date" 
                 SortExpression="Start_Date" />
             <asp:BoundField DataField="End_Date" HeaderText="End Date" 
                 SortExpression="End_Date" />
@@ -58,7 +58,9 @@
     </asp:GridView>
     <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
         ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
-        SelectCommand="SELECT * FROM [Cycle] WHERE ([Sport_ID] = @Sport_ID)">
+        SelectCommand="SELECT * 
+FROM [Cycle] 
+WHERE ([Sport_ID] = @Sport_ID) AND Cycle.End_Date &gt; (SELECT Getdate())">
         <SelectParameters>
             <asp:ControlParameter ControlID="DropDownList1" Name="Sport_ID" 
                 PropertyName="SelectedValue" Type="Int32" />

@@ -11,6 +11,7 @@
         <asp:Button ID="addNewSport" runat="server" Text="Add" CssClass="button tiny" />
         <asp:Label ID="msgvalidsport" runat="server" Text="Label" Visible="False"></asp:Label>
         <br />
+        <asp:CheckBox ID="HasTeamsChbx" runat="server" Text="This sport has no teams" />
         <br />
         <asp:GridView ID="GridView2" runat="server" AllowSorting="True" 
             AutoGenerateColumns="False" DataKeyNames="Sport_ID" 
@@ -33,30 +34,34 @@ WHERE Sport_ID = @Sport_ID">
         <br />
         Select a Sport:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:DropDownList ID="ddlSportID" runat="server" DataSourceID="SqlDataSource1" 
-            DataTextField="Name" DataValueField="Sport_ID">
+            DataTextField="Name" DataValueField="Sport_ID" AutoPostBack="True">
         </asp:DropDownList>
         <br />
-        Add a New Team:
+       
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" 
+            AllowSorting="True" AllowPaging="True">
+            <Columns>
+                <asp:BoundField DataField="Name" HeaderText="Sport" SortExpression="Name" />
+                <asp:BoundField DataField="Name1" HeaderText="Team" SortExpression="Name1" />
+            </Columns>
+        </asp:GridView>
+         Add a New Team:
          <asp:TextBox ID="NewTeam" runat="server"></asp:TextBox>
         &nbsp;
         <asp:Button ID="addNewTeam" runat="server" Text="Add" CssClass="button tiny" />
         <asp:Label ID="msgvalidteam" runat="server" Text="Label" Visible="False"></asp:Label>
         <br />
-        <br />
-        <br />
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
-            DataKeyNames="Team_ID,Sport_ID1" DataSourceID="SqlDataSource2" 
-            AllowSorting="True" AllowPaging="True">
-            <Columns>
-                <asp:BoundField DataField="Name" HeaderText="Team" SortExpression="Name" />
-                <asp:BoundField DataField="Name1" HeaderText="Sport" SortExpression="Name1" />
-            </Columns>
-        </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
             ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
-            SelectCommand="SELECT *
-FROM Team, Sport
-WHERE Team.Sport_ID = Sport.Sport_ID">
+            SelectCommand="SELECT Sport.Name, Team.Name
+FROM Sport
+INNER JOIN Team
+ON Sport.Sport_ID = Team.Sport_ID
+WHERE Team.Sport_ID = @Sport_ID">
+            <SelectParameters>
+                <asp:ControlParameter ControlID="ddlSportID" Name="Sport_ID" 
+                    PropertyName="SelectedValue" />
+            </SelectParameters>
         </asp:SqlDataSource>
     </div>
     <br />

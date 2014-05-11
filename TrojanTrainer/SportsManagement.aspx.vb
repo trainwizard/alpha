@@ -100,6 +100,10 @@ Partial Class _Default
     End Sub
 
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
-
+        If Session.Item("Role") = 2 Then
+            DropDownList1.SelectedValue = Session.Item("Sport_ID")
+        ElseIf Session.Item("Role") > 3 Then
+            Response.Redirect("Permissions.aspx")
+        End If
     End Sub
 End Class

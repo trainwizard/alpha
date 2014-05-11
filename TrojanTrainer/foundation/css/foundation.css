@@ -1226,7 +1226,10 @@ button, .button {
     padding-right: 1.25rem;
     padding-bottom: 0.6875rem;
     padding-left: 1.25rem;
-    font-size: 0.6875rem; }
+    font-size: 0.6875rem;
+    top: -32px;
+    left: 159px;
+}
   button.expand, .button.expand {
     padding-right: 0;
     padding-left: 0;

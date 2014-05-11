@@ -26,14 +26,31 @@ Partial Class SystemsAdminCreateSport
             Else
                 'else user is added and information saved
                 reader.Close()
-                Dim createSport As SqlCommand = New SqlCommand("CreateSport", connection)
-                createSport.CommandType = CommandType.StoredProcedure
-                createSport.Parameters.Add(New SqlParameter("@Name", NewSport.Text))
-                createSport.ExecuteNonQuery()
-                msgvalidsport.Text = "Sport has been added."
-                msgvalidsport.ForeColor = Drawing.Color.DarkGreen
-                msgvalidsport.Visible = True
-                Response.Redirect("SystemsAdminCreateSport.aspx")
+                If HasTeamsChbx.Checked = False Then
+                    Dim createSport As SqlCommand = New SqlCommand("CreateSport", connection)
+                    createSport.CommandType = CommandType.StoredProcedure
+                    createSport.Parameters.Add(New SqlParameter("@Name", NewSport.Text))
+                    createSport.ExecuteNonQuery()
+                    msgvalidsport.Text = "Sport has been added."
+                    msgvalidsport.ForeColor = Drawing.Color.DarkGreen
+                    msgvalidsport.Visible = True
+                    Response.Redirect("SystemsAdminCreateSport.aspx")
+                Else
+                    'sport
+                    Dim createSport As SqlCommand = New SqlCommand("CreateSport", connection)
+                    createSport.CommandType = CommandType.StoredProcedure
+                    createSport.Parameters.Add(New SqlParameter("@Name", NewSport.Text))
+                    createSport.ExecuteNonQuery()
+                    'team
+                    Dim createAllTeam As SqlCommand = New SqlCommand("CreateAllTeam", connection)
+                    createAllTeam.CommandType = CommandType.StoredProcedure
+                    createAllTeam.Parameters.Add(New SqlParameter("@Name", NewSport.Text))
+                    createAllTeam.ExecuteNonQuery()
+                    msgvalidsport.Text = "Sport has been added."
+                    msgvalidsport.ForeColor = Drawing.Color.DarkGreen
+                    msgvalidsport.Visible = True
+                    Response.Redirect("SystemsAdminCreateSport.aspx")
+                End If
             End If
 
         End Using
@@ -42,7 +59,6 @@ Partial Class SystemsAdminCreateSport
 
 
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
-
     End Sub
 
     Protected Sub addNewTeam_Click(sender As Object, e As System.EventArgs) Handles addNewTeam.Click
@@ -77,6 +93,10 @@ Partial Class SystemsAdminCreateSport
             End If
 
         End Using
+    End Sub
+
+    Protected Sub ddlSportID_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles ddlSportID.SelectedIndexChanged
+        GridView1.DataBind()
     End Sub
 
 End Class

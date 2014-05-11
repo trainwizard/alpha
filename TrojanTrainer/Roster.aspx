@@ -111,7 +111,8 @@
     <p>
     
         <asp:DropDownList ID="ddlAddTeamMember" runat="server" 
-            DataSourceID="SqlDataSource6" DataTextField="User_ID" DataValueField="User_ID">
+            DataSourceID="SqlDataSource6" DataTextField="Column1" 
+            DataValueField="User_ID">
         </asp:DropDownList>
         <asp:SqlDataSource ID="SqlDataSource6" runat="server" 
             ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
