@@ -170,6 +170,8 @@ Partial Class _Default
         NutritionLabel.Visible = False
         NotesOutput.Visible = False
         WeightOutput.Visible = False
+        TeamGv.Visible = False
+        SportsGv.Visible = False
     End Sub
 
     Protected Sub Nutrition_Click(sender As Object, e As System.EventArgs) Handles Nutrition.Click
@@ -286,14 +288,18 @@ Partial Class _Default
         End Using
     End Sub
 
-    'Protected Sub WorkoutBtn_Click(sender As Object, e As System.EventArgs) Handles WorkoutBtn.Click
-    '    Dim TeamCount As Integer = TeamGv.Controls.Count
-    '    If TeamCount > 0 Then
-    '        SportGv.Visible = False
-    '        TeamGv.Visible = True
-    '    Else
-    '        TeamGv.Visible = False
-    '        SportGv.Visible = True
-    '    End If
-    'End Sub
+    Protected Sub WorkoutBtn_Click(sender As Object, e As System.EventArgs) Handles WorkoutBtn.Click
+        Dim TeamCount As Integer = TeamGv.Controls.Count
+        If TeamCount > 0 Then
+            SportsGv.Visible = False
+            TeamGv.Visible = True
+        Else
+            TeamGv.Visible = False
+            SportsGv.Visible = True
+        End If
+    End Sub
+
+    Protected Sub TeamGv_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles TeamGv.SelectedIndexChanged
+        Debug.Print("Selected")
+    End Sub
 End Class

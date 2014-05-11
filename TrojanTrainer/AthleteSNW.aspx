@@ -94,8 +94,11 @@
     <asp:TextBox ID="PreWeight" runat="server"></asp:TextBox>
     <asp:Button ID="SubmitInfo" runat="server" Text="Submit" />
     <br />
-    <asp:GridView ID="SportGv" runat="server" AutoGenerateColumns="False" 
-        DataKeyNames="Workout_ID" DataSourceID="SqlDataSource1">
+    <asp:GridView ID="SportsGv" runat="server" AutoGenerateColumns="False" 
+        BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" 
+        CellPadding="3" DataKeyNames="Workout_ID" DataSourceID="SqlDataSource1" 
+        GridLines="Horizontal" Visible="False">
+        <AlternatingRowStyle BackColor="#F7F7F7" />
         <Columns>
             <asp:BoundField DataField="Workout_Name" HeaderText="Workout Name" 
                 SortExpression="Workout_Name" />
@@ -104,9 +107,21 @@
             <asp:BoundField DataField="Post_Training_Notes" 
                 HeaderText="Post Training Notes" SortExpression="Post_Training_Notes" />
         </Columns>
+        <FooterStyle BackColor="#B5C7DE" ForeColor="#4A3C8C" />
+        <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#F7F7F7" />
+        <PagerStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" HorizontalAlign="Right" />
+        <RowStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" />
+        <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="#F7F7F7" />
+        <SortedAscendingCellStyle BackColor="#F4F4FD" />
+        <SortedAscendingHeaderStyle BackColor="#5A4C9D" />
+        <SortedDescendingCellStyle BackColor="#D8D8F0" />
+        <SortedDescendingHeaderStyle BackColor="#3E3277" />
     </asp:GridView>
     <asp:GridView ID="TeamGv" runat="server" AutoGenerateColumns="False" 
-        DataKeyNames="Workout_ID" DataSourceID="SqlDataSource2">
+        BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" 
+        CellPadding="3" DataKeyNames="Workout_ID" DataSourceID="SqlDataSource2" 
+        GridLines="Horizontal" Visible="False">
+        <AlternatingRowStyle BackColor="#F7F7F7" />
         <Columns>
             <asp:BoundField DataField="Workout_Name" HeaderText="Workout Name" 
                 SortExpression="Workout_Name" />
@@ -115,18 +130,23 @@
             <asp:BoundField DataField="Post_Training_Notes" 
                 HeaderText="Post Training Notes" SortExpression="Post_Training_Notes" />
         </Columns>
+        <FooterStyle BackColor="#B5C7DE" ForeColor="#4A3C8C" />
+        <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#F7F7F7" />
+        <PagerStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" HorizontalAlign="Right" />
+        <RowStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" />
+        <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="#F7F7F7" />
+        <SortedAscendingCellStyle BackColor="#F4F4FD" />
+        <SortedAscendingHeaderStyle BackColor="#5A4C9D" />
+        <SortedDescendingCellStyle BackColor="#D8D8F0" />
+        <SortedDescendingHeaderStyle BackColor="#3E3277" />
     </asp:GridView>
-    <br />
-    <br />
-    <br />
-    <br />
     <br />
     <br />
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
         ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
         SelectCommand="GetSportWorkoutID" SelectCommandType="StoredProcedure">
         <SelectParameters>
-            <asp:SessionParameter Name="User_ID" SessionField="User_ID" Type="String" />
+            <asp:SessionParameter Name="User_ID" SessionField="username" Type="String" />
             <asp:ControlParameter ControlID="SelectDate" DbType="Date" Name="Start_Date" 
                 PropertyName="SelectedDate" />
         </SelectParameters>
@@ -135,7 +155,7 @@
         ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
         SelectCommand="GetTeamWorkoutID" SelectCommandType="StoredProcedure">
         <SelectParameters>
-            <asp:SessionParameter Name="User_ID" SessionField="User_ID" Type="String" />
+            <asp:SessionParameter Name="User_ID" SessionField="username" Type="String" />
             <asp:ControlParameter ControlID="SelectDate" DbType="Date" Name="Start_Date" 
                 PropertyName="SelectedDate" />
         </SelectParameters>
