@@ -22,7 +22,8 @@
         </asp:SqlDataSource>
     </p>
     <p>
-        <asp:Button ID="btnGetExercises" runat="server" Text="Get Exercises" />
+        <asp:Button ID="btnGetExercises" runat="server" Text="Get Exercises" 
+            CssClass="button tiny" />
     </p>
     <p>
         <asp:GridView ID="gvExercises" runat="server" AllowPaging="True" 
@@ -66,7 +67,8 @@
         </asp:SqlDataSource>
     </p>
     <p>
-        <asp:Button ID="btnAddExercise" runat="server" Text="Add Exercise" />
+        <asp:Button ID="btnAddExercise" runat="server" Text="Add Exercise" 
+            CssClass="button tiny" />
     </p>
 
 </asp:Content>

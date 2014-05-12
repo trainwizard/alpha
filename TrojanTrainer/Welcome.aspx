@@ -109,21 +109,14 @@ table {
             <a href="Welcome.aspx" class="close">&times;</a>
         </div>
     </asp:label>
-		<%--<br/>
-		<br/>
-		<p>Login Here:</p><br/>
-		<br/>--%>
-		<%--<p style="margin-top: 330px; margin-left: 100px;">Username:</p>--%>
+
 	<asp:textbox id="txtusername" runat="server" style="margin-left: 100px; margin-top: 340px; width: 175px;" placeholder="Username" ></asp:textbox>
-	    <%--<br/>
-	    <br/>--%>
-	    <%--<p style="margin-left: 100px; margin-top: 5px;">Password:</p><br/>--%>
+
 	<asp:textbox id="txtpassword" textmode="password" runat="server" style="margin-left: 100px; margin-top:5px; width: 175px;" placeholder="Password"></asp:textbox>
-	    <%--<br/>
-	    <br/>--%>
-	<asp:checkbox id="ckbloggedin" runat="server" style="margin-top: 5px;" text="Keep me logged in."/>
+
+	<asp:checkbox id="ckbloggedin" runat="server" style="margin-top: 5px;" 
+        text="Keep me logged in." ForeColor="White"/>
 	    <br/>
-	    <%--<br/>--%>
 	<asp:button id="btnlogin" runat="server" enabletheming="True" text="Login" cssclass="button tiny" style="margin-left: 100px; margin-top: 5px;"/>
 
 	

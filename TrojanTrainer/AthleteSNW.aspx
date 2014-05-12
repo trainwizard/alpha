@@ -96,16 +96,31 @@
     <br />
     <asp:GridView ID="SportsGv" runat="server" AutoGenerateColumns="False" 
         BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" 
-        CellPadding="3" DataKeyNames="Workout_ID" DataSourceID="SqlDataSource1" 
+        CellPadding="3" DataSourceID="SqlDataSource1" 
         GridLines="Horizontal" Visible="False">
         <AlternatingRowStyle BackColor="#F7F7F7" />
         <Columns>
-            <asp:BoundField DataField="Workout_Name" HeaderText="Workout Name" 
+            <asp:CommandField ShowSelectButton="True" />
+            <asp:BoundField DataField="Workout_ID" HeaderText="Workout_ID" 
+                SortExpression="Workout_ID" InsertVisible="False" ReadOnly="True" />
+            <asp:BoundField DataField="Workout_Name" HeaderText="Workout_Name" 
                 SortExpression="Workout_Name" />
-            <asp:BoundField DataField="Pre_Training_Notes" HeaderText="Pre Training Notes" 
+            <asp:BoundField DataField="Team_ID" 
+                HeaderText="Team_ID" SortExpression="Team_ID" />
+            <asp:BoundField DataField="Cycle_ID" HeaderText="Cycle_ID" 
+                SortExpression="Cycle_ID" />
+            <asp:BoundField DataField="Pre_Training_Notes" HeaderText="Pre_Training_Notes" 
                 SortExpression="Pre_Training_Notes" />
             <asp:BoundField DataField="Post_Training_Notes" 
-                HeaderText="Post Training Notes" SortExpression="Post_Training_Notes" />
+                HeaderText="Post_Training_Notes" SortExpression="Post_Training_Notes" />
+            <asp:BoundField DataField="Create_Date" HeaderText="Create_Date" 
+                SortExpression="Create_Date" />
+            <asp:BoundField DataField="Assign_Date" HeaderText="Assign_Date" 
+                SortExpression="Assign_Date" />
+            <asp:BoundField DataField="Active" HeaderText="Active" 
+                SortExpression="Active" />
+            <asp:BoundField DataField="Sport_ID" HeaderText="Sport_ID" 
+                InsertVisible="False" ReadOnly="True" SortExpression="Sport_ID" />
         </Columns>
         <FooterStyle BackColor="#B5C7DE" ForeColor="#4A3C8C" />
         <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#F7F7F7" />
@@ -119,16 +134,31 @@
     </asp:GridView>
     <asp:GridView ID="TeamGv" runat="server" AutoGenerateColumns="False" 
         BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" 
-        CellPadding="3" DataKeyNames="Workout_ID" DataSourceID="SqlDataSource2" 
+        CellPadding="3" DataSourceID="SqlDataSource2" 
         GridLines="Horizontal" Visible="False">
         <AlternatingRowStyle BackColor="#F7F7F7" />
         <Columns>
-            <asp:BoundField DataField="Workout_Name" HeaderText="Workout Name" 
+            <asp:CommandField ShowSelectButton="True" />
+            <asp:BoundField DataField="Workout_ID" HeaderText="Workout_ID" 
+                SortExpression="Workout_ID" InsertVisible="False" ReadOnly="True" />
+            <asp:BoundField DataField="Workout_Name" HeaderText="Workout_Name" 
                 SortExpression="Workout_Name" />
-            <asp:BoundField DataField="Pre_Training_Notes" HeaderText="Pre Training Notes" 
+            <asp:BoundField DataField="Team_ID" 
+                HeaderText="Team_ID" SortExpression="Team_ID" />
+            <asp:BoundField DataField="Cycle_ID" HeaderText="Cycle_ID" 
+                SortExpression="Cycle_ID" />
+            <asp:BoundField DataField="Pre_Training_Notes" HeaderText="Pre_Training_Notes" 
                 SortExpression="Pre_Training_Notes" />
             <asp:BoundField DataField="Post_Training_Notes" 
-                HeaderText="Post Training Notes" SortExpression="Post_Training_Notes" />
+                HeaderText="Post_Training_Notes" SortExpression="Post_Training_Notes" />
+            <asp:BoundField DataField="Create_Date" HeaderText="Create_Date" 
+                SortExpression="Create_Date" />
+            <asp:BoundField DataField="Assign_Date" HeaderText="Assign_Date" 
+                SortExpression="Assign_Date" />
+            <asp:BoundField DataField="Active" HeaderText="Active" 
+                SortExpression="Active" />
+            <asp:BoundField DataField="Sport_ID" HeaderText="Sport_ID" 
+                InsertVisible="False" ReadOnly="True" SortExpression="Sport_ID" />
         </Columns>
         <FooterStyle BackColor="#B5C7DE" ForeColor="#4A3C8C" />
         <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#F7F7F7" />
@@ -141,6 +171,33 @@
         <SortedDescendingHeaderStyle BackColor="#3E3277" />
     </asp:GridView>
     <br />
+    <asp:DetailsView ID="Team" runat="server" AutoGenerateRows="False" 
+        DataKeyNames="Planned_Ex_ID" DataSourceID="SqlDataSource3" Height="50px" 
+        Width="125px">
+        <Fields>
+            <asp:BoundField DataField="Planned_Ex_ID" HeaderText="Planned_Ex_ID" 
+                InsertVisible="False" ReadOnly="True" SortExpression="Planned_Ex_ID" />
+            <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
+            <asp:BoundField DataField="Sets" HeaderText="Sets" SortExpression="Sets" />
+            <asp:BoundField DataField="Reps" HeaderText="Reps" SortExpression="Reps" />
+            <asp:BoundField DataField="Weight" HeaderText="Weight" 
+                SortExpression="Weight" />
+            <asp:BoundField DataField="Time" HeaderText="Time" SortExpression="Time" />
+            <asp:BoundField DataField="Intensity" HeaderText="Intensity" 
+                SortExpression="Intensity" />
+            <asp:BoundField DataField="Note" HeaderText="Note" SortExpression="Note" />
+        </Fields>
+    </asp:DetailsView>
+    <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
+        ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
+        SelectCommand="GetExerciseInformation" SelectCommandType="StoredProcedure">
+        <SelectParameters>
+            <asp:ControlParameter ControlID="TeamGv" Name="Workout_ID" 
+                PropertyName="SelectedValue" Type="Int32" />
+            <asp:ControlParameter ControlID="TeamGv" Name="Sport_ID" 
+                PropertyName="SelectedValue" Type="Int32" />
+        </SelectParameters>
+    </asp:SqlDataSource>
     <br />
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
         ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
