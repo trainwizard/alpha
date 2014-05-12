@@ -28,7 +28,8 @@ WHERE Sport_ID = @Sport_ID AND End_Date &gt; (SELECT GETDATE())">
                     PropertyName="SelectedValue" />
             </SelectParameters>
         </asp:SqlDataSource>
-        <asp:Button ID="RetrieveCycleBtn" runat="server" Text="Get Cycle Dates" />
+        <asp:Button ID="RetrieveCycleBtn" runat="server" Text="Get Cycle Dates" 
+            CssClass="button tiny" />
     </p>
     <p>
         <asp:Calendar ID="CycleCalendar" runat="server" OnDayRender="CycleDayRender" 
@@ -92,10 +93,10 @@ WHERE Sport_ID = @Sport_ID">
     </p>
     <p>
         <asp:Button ID="AssignTeamBtn" runat="server" Text="Team" 
-            Visible="False" Width="85px" />
+            Visible="False" Width="85px" CssClass="button tiny" />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button ID="AssignBtn" runat="server" Text="Sport" 
-            Visible="False" Width="85px" />
+            Visible="False" Width="85px" CssClass="button tiny" />
     </p>
     <p>
         <asp:Label ID="CurrentLbl" runat="server" 

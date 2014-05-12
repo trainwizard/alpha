@@ -23,8 +23,10 @@ WHERE [Active] = 1">
     <p>
         &nbsp;</p>
     <p>
-        <asp:Button ID="btnWorkout" runat="server" Text="Manage Workouts" />
-        <asp:Button ID="btnExercise" runat="server" Text="Manage Exercises" />
+        <asp:Button ID="btnWorkout" runat="server" Text="Manage Workouts" 
+            CssClass="button tiny" />
+        <asp:Button ID="btnExercise" runat="server" Text="Manage Exercises" 
+            CssClass="button tiny" />
     </p>
     <p>
         <asp:Label ID="lblWorkouts" runat="server" Text="Current workouts:" 
@@ -199,7 +201,8 @@ WHERE [Planned_Ex_ID] = @Planned_Ex_ID" SelectCommandType="StoredProcedure"
         </asp:DetailsView>
     
     <br />
-    <asp:Button ID="Button1" runat="server" Text="Workout Home" />
+    <asp:Button ID="Button1" runat="server" Text="Workout Home" 
+        CssClass="button tiny" />
     
 </asp:Content>
 
