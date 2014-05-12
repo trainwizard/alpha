@@ -198,6 +198,9 @@ WHERE [Planned_Ex_ID] = @Planned_Ex_ID" SelectCommandType="StoredProcedure"
             </Fields>
         </asp:DetailsView>
     
+    <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+        ErrorMessage="RequiredFieldValidator"></asp:RequiredFieldValidator>--%>
+    
     <br />
     <asp:Button ID="Button1" runat="server" Text="Workout Home" />
     
