@@ -71,6 +71,13 @@ WHERE Workout_ID = @Workout_ID">
         </asp:SqlDataSource>
     </p>
     <p>
+        <asp:DropDownList ID="Workoutddl" runat="server" DataSourceID="SqlDataSource3" 
+            DataTextField="Workout_Name" DataValueField="Workout_ID" Visible="False">
+        </asp:DropDownList>
+    </p>
+    <p>
+        &nbsp;</p>
+    <p>
         <asp:Label ID="AssignementLbl" runat="server" Text="Assign to:" Visible="False"></asp:Label>
     </p>
     <p>
@@ -78,9 +85,6 @@ WHERE Workout_ID = @Workout_ID">
             DataTextField="Name" DataValueField="Team_ID" Visible="False">
         </asp:DropDownList>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:DropDownList ID="Workoutddl" runat="server" DataSourceID="SqlDataSource3" 
-            DataTextField="Workout_Name" DataValueField="Workout_ID" Visible="False">
-        </asp:DropDownList>
         <asp:SqlDataSource ID="SqlDataSource5" runat="server" 
             ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" SelectCommand="SELECT Name, Team_ID
 FROM Team
