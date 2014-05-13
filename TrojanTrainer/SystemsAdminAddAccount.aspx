@@ -69,7 +69,7 @@
         <br />
         <br />
         <asp:Button ID="btncreateuser" runat="server" Text="Create User" 
-            CssClass="button small" />
+            CssClass="button radius" />
         &nbsp;&nbsp;&nbsp;
         <asp:Label ID="msgvalidusername" runat="server" ForeColor="Red" Text=""
             Visible="False">

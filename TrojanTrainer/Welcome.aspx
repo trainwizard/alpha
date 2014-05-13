@@ -117,7 +117,7 @@ table {
 	<asp:checkbox id="ckbloggedin" runat="server" style="margin-top: 30px; color:White !important;" 
         text="Keep me logged in." ForeColor="White"/>
 	    <br/>
-	<asp:button id="btnlogin" runat="server" enabletheming="True" text="Login" cssclass="button small" style="margin-left: 100px; margin-top: 5px;"/>
+	<asp:button id="btnlogin" runat="server" enabletheming="True" text="Login" cssclass="button radius" style="margin-left: 100px; margin-top: 5px;"/>
 
 	
 	<asp:sqldatasource id="SqlDataSource1" runat="server" connectionstring="<%$ connectionstrings:alphaconnectionstring %>" SelectCommand="SELECT * FROM [User]"></asp:sqldatasource>
