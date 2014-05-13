@@ -15,7 +15,7 @@
 
         
         <asp:Button ID="ChangePictureButton" runat="server" Text="Change Picture" 
-            CssClass="button radius" /><br/>
+            CssClass="button small" /><br/>
         <asp:Label ID="PictureLabel" runat="server" Text="Label" Visible="False"></asp:Label>
 
         
@@ -31,7 +31,7 @@
         
  
         <asp:Button ID="btnSubmitPassword" runat="server" Text="Change Password" 
-                CssClass="button radius" />
+                CssClass="button small" />
 
 
         
@@ -53,7 +53,7 @@
         
  
         <asp:Button ID="btnSubmitEmail" runat="server" Text="Change Email" 
-                CssClass="button radius" />
+                CssClass="button small" />
 
         
         <asp:Label ID="lblEmailSuc" runat="server" 

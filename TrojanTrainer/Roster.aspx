@@ -35,7 +35,7 @@
     
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button ID="btnSubmit" runat="server" Text="Get Team Members" 
-            CssClass="button radius"/>
+            CssClass="button small"/>
     
         <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
             ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
@@ -127,7 +127,7 @@
     </p>
     <p>
     
-        <asp:Button ID="btnAddTeamMember" runat="server" Text="Add Team Member" CssClass="button radius" />
+        <asp:Button ID="btnAddTeamMember" runat="server" Text="Add Team Member" CssClass="button small" />
     </p>
     <p>
     

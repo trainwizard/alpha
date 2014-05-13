@@ -8,7 +8,7 @@
         Add a New Sport:
         <asp:TextBox ID="NewSport" runat="server"></asp:TextBox>
         &nbsp;
-        <asp:Button ID="addNewSport" runat="server" Text="Add" CssClass="button radius" />
+        <asp:Button ID="addNewSport" runat="server" Text="Add" CssClass="button small" />
         <asp:Label ID="msgvalidsport" runat="server" Text="Label" Visible="False"></asp:Label>
         <br />
         <asp:CheckBox ID="HasTeamsChbx" runat="server" Text="This sport has no teams" />
@@ -48,7 +48,7 @@ WHERE Sport_ID = @Sport_ID">
          Add a New Team:
          <asp:TextBox ID="NewTeam" runat="server"></asp:TextBox>
         &nbsp;
-        <asp:Button ID="addNewTeam" runat="server" Text="Add" CssClass="button radius" />
+        <asp:Button ID="addNewTeam" runat="server" Text="Add" CssClass="button small" />
         <asp:Label ID="msgvalidteam" runat="server" Text="Label" Visible="False"></asp:Label>
         <br />
         <asp:SqlDataSource ID="SqlDataSource2" runat="server" 

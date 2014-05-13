@@ -23,9 +23,9 @@
     <br />
     <br />
     <asp:Button ID="Nutrition" runat="server" Text="View or Enter Nutrition" 
-        Width="173px" CssClass="button radius" />
+        Width="173px" CssClass="button small" />
     <asp:Button ID="WorkoutBtn" runat="server" Text="View or Enter Workout" 
-        Width="173px" CssClass="button radius" />
+        Width="173px" CssClass="button small" />
     <br />
     <br />
     <asp:Label ID="BedtimeOutput" runat="server" Text="Label" Visible="False"></asp:Label>
@@ -93,7 +93,7 @@
     <br />
     <asp:TextBox ID="PreWeight" runat="server"></asp:TextBox>
     <asp:Button ID="SubmitInfo" runat="server" Text="Submit" 
-        CausesValidation="False" CssClass="button radius" />
+        CausesValidation="False" CssClass="button small" />
     <br />
     <asp:GridView ID="SportsGv" runat="server" AutoGenerateColumns="False" 
         BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" 
