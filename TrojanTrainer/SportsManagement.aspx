@@ -50,7 +50,7 @@
         <Columns>
             <asp:BoundField DataField="Name" HeaderText="Name" 
                 SortExpression="Name" />
-            <asp:BoundField DataField="Start Date" HeaderText="Start Date" 
+            <asp:BoundField DataField="Start_Date" HeaderText="Start Date" 
                 SortExpression="Start_Date" />
             <asp:BoundField DataField="End_Date" HeaderText="End Date" 
                 SortExpression="End_Date" />

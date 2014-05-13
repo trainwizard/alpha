@@ -300,6 +300,6 @@ Partial Class _Default
     End Sub
 
     Protected Sub TeamGv_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles TeamGv.SelectedIndexChanged
-        Debug.Print("Selected")
+
     End Sub
 End Class
