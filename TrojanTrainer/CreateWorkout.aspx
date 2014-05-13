@@ -20,8 +20,7 @@ WHERE [Active] = 1">
     </p>
     <p>
         Create Workout or Exercise</p>
-    <p>
-        &nbsp;</p>
+    <br />
     <p>
         <asp:Button ID="btnWorkout" runat="server" Text="Manage Workouts" 
             CssClass="button tiny" />
