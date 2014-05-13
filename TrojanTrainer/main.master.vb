@@ -26,6 +26,7 @@ Partial Class main
                 btnLogout.Visible = False
             End If
             'Makes buttons not visible is user is not logged in
+            UserImage.Visible = False
             btnAccounts.Visible = False
             btnAccountsOffCanvas.Visible = False
             btnRoster.Visible = False
@@ -44,6 +45,7 @@ Partial Class main
         Else
             'Greeting name is set to be the username
             'CurrentUserTxt.ForeColor = Drawing.Color.White
+            UserImage.Visible = True
             CurrentUserTxt.Text = "Welcome, " + Session("username") + "."
             btnLogout.Visible = True
             btnLogoutOffCanvas.Visible = True
