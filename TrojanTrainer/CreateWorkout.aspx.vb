@@ -1,4 +1,5 @@
-﻿
+﻿Imports System.Diagnostics
+
 Partial Class CreateWorkout
     Inherits System.Web.UI.Page
 
@@ -33,11 +34,11 @@ Partial Class CreateWorkout
 
 
     Protected Sub dvInsertExercise_PageIndexChanging(sender As Object, e As System.Web.UI.WebControls.DetailsViewPageEventArgs) Handles dvInsertExercise.PageIndexChanging
-        gvExercises.DataBind()
+        'gvExercises.DataBind()
     End Sub
 
     Protected Sub dvInsertWorkout_PageIndexChanging(sender As Object, e As System.Web.UI.WebControls.DetailsViewPageEventArgs) Handles dvInsertWorkout.PageIndexChanging
-        gvWorkouts.DataBind()
+        'gvWorkouts.DataBind()
     End Sub
 
     Protected Sub Button1_Click(sender As Object, e As System.EventArgs) Handles Button1.Click
