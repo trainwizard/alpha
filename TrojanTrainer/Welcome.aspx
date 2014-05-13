@@ -114,7 +114,7 @@ table {
 
 	<asp:textbox id="txtpassword" textmode="password" runat="server" style="margin-left: 100px; margin-top:5px; width: 175px;" placeholder="Password"></asp:textbox>
 
-	<asp:checkbox id="ckbloggedin" runat="server" style="margin-top: 5px;" 
+	<asp:checkbox id="ckbloggedin" runat="server" style="margin-top: 30px;" 
         text="Keep me logged in." ForeColor="White"/>
 	    <br/>
 	<asp:button id="btnlogin" runat="server" enabletheming="True" text="Login" cssclass="button tiny" style="margin-left: 100px; margin-top: 5px;"/>
