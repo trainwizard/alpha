@@ -23,7 +23,7 @@
     </p>
     <p>
         <asp:Button ID="btnGetExercises" runat="server" Text="Get Exercises" 
-            CssClass="button tiny" />
+            CssClass="button small" />
     </p>
     <p>
         <asp:GridView ID="gvExercises" runat="server" AllowPaging="True" 
@@ -68,7 +68,7 @@
     </p>
     <p>
         <asp:Button ID="btnAddExercise" runat="server" Text="Add Exercise" 
-            CssClass="button tiny" />
+            CssClass="button small" />
     </p>
 
 </asp:Content>

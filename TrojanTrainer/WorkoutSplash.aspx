@@ -13,9 +13,9 @@
         Workout Home Page<br />
         <br />
         <asp:Button ID="btnCreate" runat="server" Text="Manage Workout or Exercise" 
-            CssClass="button tiny" />
+            CssClass="button small" />
         <asp:Button ID="Button2" runat="server" Text="Assign Workouts" 
-            CssClass="button tiny" />
+            CssClass="button small" />
         <br />
         <br />
         <asp:SqlDataSource ID="SqlDataSource4" runat="server" 
@@ -116,7 +116,7 @@ WHERE Planned_Ex_ID =  @Planned_Ex_ID "
             </SelectParameters>
         </asp:SqlDataSource>
         <asp:Button ID="btnAddExercise" runat="server" Text="Add Exercise" 
-            Visible="False" CssClass="button tiny" />
+            Visible="False" CssClass="button small" />
     </div>
     <br />
 </asp:Content>
