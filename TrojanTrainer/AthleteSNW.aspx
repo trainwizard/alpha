@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <asp:Calendar ID="SelectDate" runat="server" Font-Names="Verdana" 
         Font-Size="9pt" Height="190px" 
-        NextPrevFormat="FullMonth" Width="350px" BackColor="White" 
+        NextPrevFormat="FullMonth" Width="273px" BackColor="White" 
         BorderColor="White" BorderWidth="1px" ForeColor="Black" 
         SelectedDate="2014-05-10">
         <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
