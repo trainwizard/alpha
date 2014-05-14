@@ -28,6 +28,25 @@ WHERE [Active] = 1">
             CssClass="button small" />
     </p>
     <p>
+        <asp:Label ID="lblAddWorkout" runat="server" Text="Add a workout:" 
+            Visible="False"></asp:Label>
+        <asp:DetailsView ID="dvInsertWorkout" runat="server" AutoGenerateRows="False" 
+            DataSourceID="SqlDataSource4" Height="209px" Width="501px" 
+            DataKeyNames="Workout_ID" DefaultMode="Insert" Visible="False">
+            <Fields>
+<asp:BoundField DataField="Workout_ID" HeaderText="Workout_ID" SortExpression="Workout_ID" 
+                    InsertVisible="False" ReadOnly="True"></asp:BoundField>
+                <asp:BoundField DataField="Workout_Name" HeaderText="Workout_Name" 
+                    SortExpression="Workout_Name" />
+                <asp:BoundField DataField="Pre_Training_Notes" 
+                    HeaderText="Pre_Training_Notes" SortExpression="Pre_Training_Notes" />
+                <asp:BoundField DataField="Post_Training_Notes" 
+                    HeaderText="Post_Training_Notes" SortExpression="Post_Training_Notes" />
+            </Fields>
+        </asp:DetailsView>
+
+    </p>
+    <p>
         <asp:Label ID="lblWorkouts" runat="server" Text="Current workouts:" 
             Visible="False"></asp:Label>
     </p>
@@ -78,23 +97,10 @@ WHERE Workout.Workout_ID = @Workout_ID " InsertCommand="CreateWorkout"
         </asp:SqlDataSource>
     </p>
     <p>
-        <asp:Label ID="lblAddWorkout" runat="server" Text="Add a workout:" 
-            Visible="False"></asp:Label>
+    <asp:Label ID="lblAddExercise" runat="server" Text="Add an exercise:" 
+        Visible="False"></asp:Label>
     </p>
     <p>
-        <asp:DetailsView ID="dvInsertWorkout" runat="server" AutoGenerateRows="False" 
-            DataSourceID="SqlDataSource4" Height="209px" Width="501px" 
-            DataKeyNames="Workout_ID" DefaultMode="Insert" Visible="False">
-            <Fields>
-                <asp:BoundField DataField="Workout_Name" HeaderText="Workout Name" 
-                    SortExpression="Workout_Name" />
-                <asp:BoundField DataField="Pre_Training_Notes" 
-                    HeaderText="Pre Training Notes" SortExpression="Pre_Training_Notes" />
-                <asp:BoundField DataField="Post_Training_Notes" 
-                    HeaderText="Post Training Notes" SortExpression="Post_Training_Notes" />
-                <asp:CommandField ShowInsertButton="True" ButtonType="Button" />
-            </Fields>
-        </asp:DetailsView>
 
         <asp:SqlDataSource ID="SqlDataSource4" runat="server" 
             ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
@@ -107,19 +113,16 @@ WHERE Workout.Workout_ID = @Workout_ID " InsertCommand="CreateWorkout"
                 <asp:ControlParameter Name="Sport_ID" ControlID="Sportsddl" PropertyName="SelectedValue" />
             </InsertParameters>
             <SelectParameters>
-                <asp:Parameter Name="Sport_ID" Type="Int32" />
+                <asp:ControlParameter ControlID="Sportsddl" Name="Sport_ID" 
+                    PropertyName="SelectedValue" Type="Int32" />
             </SelectParameters>
         </asp:SqlDataSource>
     </p>
-    <p>
-        <asp:Label ID="lblExercises" runat="server" Text="Current exercises:" 
-            Visible="False"></asp:Label>
-    </p>
-        <asp:GridView ID="gvExercises" runat="server" AllowPaging="True" 
-            AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Planned_Ex_ID" 
-            DataSourceID="SqlDataSource2" Visible="False">
-            <Columns>
-                <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
+        <asp:DetailsView ID="dvInsertExercise" runat="server" AutoGenerateRows="False" 
+            DataKeyNames="Planned_Ex_ID" 
+        DataSourceID="SqlDataSource2" DefaultMode="Insert" 
+            Height="50px" Width="643px" Visible="False">
+            <Fields>
                 <asp:BoundField DataField="Name" HeaderText="Name" 
                     SortExpression="Name" />
                 <asp:BoundField DataField="Note" HeaderText="Note" SortExpression="Note" />
@@ -132,8 +135,10 @@ WHERE Workout.Workout_ID = @Workout_ID " InsertCommand="CreateWorkout"
                     SortExpression="Weight" />
                 <asp:BoundField DataField="Planned_Ex_ID" HeaderText="Planned_Ex_ID" 
                     InsertVisible="False" ReadOnly="True" SortExpression="Planned_Ex_ID" />
-            </Columns>
-        </asp:GridView>
+                <asp:CommandField ShowInsertButton="True" />
+            </Fields>
+        </asp:DetailsView>
+    
         <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
             ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
             DeleteCommand="UPDATE [Planned_Exercise] 
@@ -174,15 +179,18 @@ WHERE [Planned_Ex_ID] = @Planned_Ex_ID" SelectCommandType="StoredProcedure"
                 <asp:Parameter Name="Planned_Ex_ID" Type="Int32" />
             </UpdateParameters>
         </asp:SqlDataSource>
-        <br />
-    <asp:Label ID="lblAddExercise" runat="server" Text="Add an exercise:" 
-        Visible="False"></asp:Label>
     <br />
-        <asp:DetailsView ID="dvInsertExercise" runat="server" AutoGenerateRows="False" 
-            DataKeyNames="Planned_Ex_ID" 
-        DataSourceID="SqlDataSource2" DefaultMode="Insert" 
-            Height="50px" Width="643px" Visible="False">
-            <Fields>
+        <asp:Label ID="lblExercises" runat="server" Text="Current exercises:" 
+            Visible="False"></asp:Label>
+    
+    <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+        ErrorMessage="RequiredFieldValidator"></asp:RequiredFieldValidator>--%>
+    
+        <asp:GridView ID="gvExercises" runat="server" AllowPaging="True" 
+            AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Planned_Ex_ID" 
+            DataSourceID="SqlDataSource2" Visible="False">
+            <Columns>
+                <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
                 <asp:BoundField DataField="Name" HeaderText="Name" 
                     SortExpression="Name" />
                 <asp:BoundField DataField="Note" HeaderText="Note" SortExpression="Note" />
@@ -195,12 +203,8 @@ WHERE [Planned_Ex_ID] = @Planned_Ex_ID" SelectCommandType="StoredProcedure"
                     SortExpression="Weight" />
                 <asp:BoundField DataField="Planned_Ex_ID" HeaderText="Planned_Ex_ID" 
                     InsertVisible="False" ReadOnly="True" SortExpression="Planned_Ex_ID" />
-                <asp:CommandField ButtonType="Button" ShowInsertButton="True" />
-            </Fields>
-        </asp:DetailsView>
-    
-    <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
-        ErrorMessage="RequiredFieldValidator"></asp:RequiredFieldValidator>--%>
+            </Columns>
+        </asp:GridView>
     
     <br />
     <asp:Button ID="Button1" runat="server" Text="Workout Home" 
