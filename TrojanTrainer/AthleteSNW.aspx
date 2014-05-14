@@ -27,6 +27,92 @@
     <asp:Button ID="WorkoutBtn" runat="server" Text="View or Enter Workout" 
         Width="173px" CssClass="button small" />
     <br />
+    <%--<asp:GridView ID="SportsGv" runat="server" AutoGenerateColumns="False" 
+        BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" 
+        CellPadding="3" DataSourceID="SqlDataSource1" 
+        GridLines="Horizontal" Visible="False">
+        <AlternatingRowStyle BackColor="#F7F7F7" />
+        <Columns>
+            <asp:CommandField ShowSelectButton="True" />
+            <asp:BoundField DataField="Workout_Name" HeaderText="Workout Name" 
+                SortExpression="Workout_Name" />
+            <asp:BoundField DataField="Pre_Training_Notes" HeaderText="Pre Training Notes" 
+                SortExpression="Pre_Training_Notes" />
+            <asp:BoundField DataField="Post_Training_Notes" 
+                HeaderText="Post Training Notes" SortExpression="Post_Training_Notes" />
+        </Columns>
+        <FooterStyle BackColor="#B5C7DE" ForeColor="#4A3C8C" />
+        <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#F7F7F7" />
+        <PagerStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" HorizontalAlign="Right" />
+        <RowStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" />
+        <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="#F7F7F7" />
+        <SortedAscendingCellStyle BackColor="#F4F4FD" />
+        <SortedAscendingHeaderStyle BackColor="#5A4C9D" />
+        <SortedDescendingCellStyle BackColor="#D8D8F0" />
+        <SortedDescendingHeaderStyle BackColor="#3E3277" />
+    </asp:GridView>--%>
+    <%--<asp:GridView ID="TeamGv" runat="server" AutoGenerateColumns="False" 
+        BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" 
+        CellPadding="3" DataSourceID="SqlDataSource2" 
+        GridLines="Horizontal" Visible="False">
+        <AlternatingRowStyle BackColor="#F7F7F7" />
+        <Columns>
+            <asp:BoundField DataField="Workout_ID" HeaderText="Workout_ID" 
+                SortExpression="Workout_ID" InsertVisible="False" ReadOnly="True" />
+            <asp:BoundField DataField="Workout_Name" 
+                HeaderText="Workout_Name" SortExpression="Workout_Name" />
+            <asp:BoundField DataField="Team_ID" HeaderText="Team_ID" 
+                SortExpression="Team_ID" />
+            <asp:BoundField DataField="Cycle_ID" HeaderText="Cycle_ID" 
+                SortExpression="Cycle_ID" />
+            <asp:BoundField DataField="Pre_Training_Notes" HeaderText="Pre_Training_Notes" 
+                SortExpression="Pre_Training_Notes" />
+            <asp:BoundField DataField="Post_Training_Notes" 
+                HeaderText="Post_Training_Notes" SortExpression="Post_Training_Notes" />
+            <asp:BoundField DataField="Create_Date" HeaderText="Create_Date" 
+                SortExpression="Create_Date" />
+            <asp:BoundField DataField="Assign_Date" HeaderText="Assign_Date" 
+                SortExpression="Assign_Date" />
+            <asp:BoundField DataField="Active" HeaderText="Active" 
+                SortExpression="Active" />
+            <asp:BoundField DataField="Sport_ID" HeaderText="Sport_ID" 
+                InsertVisible="False" ReadOnly="True" SortExpression="Sport_ID" />
+        </Columns>
+        <FooterStyle BackColor="#B5C7DE" ForeColor="#4A3C8C" />
+        <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#F7F7F7" />
+        <PagerStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" HorizontalAlign="Right" />
+        <RowStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" />
+        <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="#F7F7F7" />
+        <SortedAscendingCellStyle BackColor="#F4F4FD" />
+        <SortedAscendingHeaderStyle BackColor="#5A4C9D" />
+        <SortedDescendingCellStyle BackColor="#D8D8F0" />
+        <SortedDescendingHeaderStyle BackColor="#3E3277" />
+    </asp:GridView>--%>
+    <asp:DetailsView ID="dvTeams" runat="server" AutoGenerateRows="False" 
+        DataSourceID="SqlDataSource2" Height="50px" Width="125px" Visible="False">
+        <Fields>
+            <asp:BoundField DataField="Workout_Name" HeaderText="Workout" 
+                SortExpression="Workout_Name" />
+            <asp:BoundField DataField="Pre_Training_Notes" HeaderText="Pre Training Notes" 
+                SortExpression="Pre_Training_Notes" />
+            <asp:BoundField DataField="Post_Training_Notes" 
+                HeaderText="Post Training Notes" SortExpression="Post_Training_Notes" />
+        </Fields>
+    </asp:DetailsView>
+    <asp:DetailsView ID="dvSports" runat="server" AutoGenerateRows="False" 
+        DataSourceID="SqlDataSource1" Height="50px" Visible="False" Width="125px">
+        <Fields>
+            <asp:BoundField DataField="Workout_Name" HeaderText="Workout" 
+                SortExpression="Workout_Name" />
+            <asp:BoundField DataField="Pre_Training_Notes" HeaderText="Pre Training Notes" 
+                SortExpression="Pre_Training_Notes" />
+            <asp:BoundField DataField="Post_Training_Notes" 
+                HeaderText="Post Training Notes" SortExpression="Post_Training_Notes" />
+        </Fields>
+    </asp:DetailsView>
+    <asp:Button ID="btnBeginWorkout" runat="server" Text="Begin" 
+        CssClass="button small" Visible="False" />
+    <br />
     <br />
     <asp:Label ID="BedtimeOutput" runat="server" Text="Label" Visible="False"></asp:Label>
     <asp:Label ID="HoursOutput" runat="server" Text="Label" Visible="False"></asp:Label>
@@ -95,54 +181,6 @@
     <asp:Button ID="SubmitInfo" runat="server" Text="Submit" 
         CausesValidation="False" CssClass="button small" />
     <br />
-    <asp:GridView ID="SportsGv" runat="server" AutoGenerateColumns="False" 
-        BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" 
-        CellPadding="3" DataSourceID="SqlDataSource1" 
-        GridLines="Horizontal" Visible="False">
-        <AlternatingRowStyle BackColor="#F7F7F7" />
-        <Columns>
-            <asp:CommandField ShowSelectButton="True" />
-            <asp:BoundField DataField="Workout_Name" HeaderText="Workout Name" 
-                SortExpression="Workout_Name" />
-            <asp:BoundField DataField="Pre_Training_Notes" HeaderText="Pre Training Notes" 
-                SortExpression="Pre_Training_Notes" />
-            <asp:BoundField DataField="Post_Training_Notes" 
-                HeaderText="Post Training Notes" SortExpression="Post_Training_Notes" />
-        </Columns>
-        <FooterStyle BackColor="#B5C7DE" ForeColor="#4A3C8C" />
-        <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#F7F7F7" />
-        <PagerStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" HorizontalAlign="Right" />
-        <RowStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" />
-        <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="#F7F7F7" />
-        <SortedAscendingCellStyle BackColor="#F4F4FD" />
-        <SortedAscendingHeaderStyle BackColor="#5A4C9D" />
-        <SortedDescendingCellStyle BackColor="#D8D8F0" />
-        <SortedDescendingHeaderStyle BackColor="#3E3277" />
-    </asp:GridView>
-    <asp:GridView ID="TeamGv" runat="server" AutoGenerateColumns="False" 
-        BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" 
-        CellPadding="3" DataSourceID="SqlDataSource2" 
-        GridLines="Horizontal" Visible="False">
-        <AlternatingRowStyle BackColor="#F7F7F7" />
-        <Columns>
-            <asp:CommandField ShowSelectButton="True" />
-            <asp:BoundField DataField="Workout_Name" HeaderText="Workout_Name" 
-                SortExpression="Workout_Name" />
-            <asp:BoundField DataField="Pre_Training_Notes" 
-                HeaderText="Pre Training Notes" SortExpression="Pre_Training_Notes" />
-            <asp:BoundField DataField="Post_Training_Notes" HeaderText="Post Training Notes" 
-                SortExpression="Post_Training_Notes" />
-        </Columns>
-        <FooterStyle BackColor="#B5C7DE" ForeColor="#4A3C8C" />
-        <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#F7F7F7" />
-        <PagerStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" HorizontalAlign="Right" />
-        <RowStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" />
-        <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="#F7F7F7" />
-        <SortedAscendingCellStyle BackColor="#F4F4FD" />
-        <SortedAscendingHeaderStyle BackColor="#5A4C9D" />
-        <SortedDescendingCellStyle BackColor="#D8D8F0" />
-        <SortedDescendingHeaderStyle BackColor="#3E3277" />
-    </asp:GridView>
     <br />
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
         ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 

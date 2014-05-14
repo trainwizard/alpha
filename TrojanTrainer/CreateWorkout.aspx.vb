@@ -38,7 +38,8 @@ Partial Class CreateWorkout
     End Sub
 
     Protected Sub dvInsertWorkout_PageIndexChanging(sender As Object, e As System.Web.UI.WebControls.DetailsViewPageEventArgs) Handles dvInsertWorkout.PageIndexChanging
-        'gvWorkouts.DataBind()
+        gvWorkouts.DataBind()
+        Response.Redirect("CreateWorkout.aspx")
     End Sub
 
     Protected Sub Button1_Click(sender As Object, e As System.EventArgs) Handles Button1.Click

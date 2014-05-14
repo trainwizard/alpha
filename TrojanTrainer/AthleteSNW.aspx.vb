@@ -170,11 +170,22 @@ Partial Class _Default
         NutritionLabel.Visible = False
         NotesOutput.Visible = False
         WeightOutput.Visible = False
-        TeamGv.Visible = False
-        SportsGv.Visible = False
+        dvTeams.Visible = False
+        dvSports.Visible = False
+        btnBeginWorkout.Visible = False
+        'TeamGv.Visible = False
+        'SportsGv.Visible = False
     End Sub
 
     Protected Sub Nutrition_Click(sender As Object, e As System.EventArgs) Handles Nutrition.Click
+
+
+        dvTeams.Visible = False
+        dvSports.Visible = False
+        btnBeginWorkout.Visible = False
+        'TeamGv.Visible = False
+        'SportsGv.Visible = False
+
         Dim DateInput As String = ""
         DateInput = SelectDate.SelectedDate
         Using connection As New SqlConnection(connectionString)
@@ -289,17 +300,41 @@ Partial Class _Default
     End Sub
 
     Protected Sub WorkoutBtn_Click(sender As Object, e As System.EventArgs) Handles WorkoutBtn.Click
-        Dim TeamCount As Integer = TeamGv.Controls.Count
+
+        SubmitInfo.Visible = False
+        SleepLabel.Visible = False
+        NutritionLabel.Visible = False
+        WeightLabel.Visible = False
+        BedTimeH.Visible = False
+        BedTimeM.Visible = False
+        AMPMButtons.Visible = False
+        NumHours.Visible = False
+        Calories.Visible = False
+        NutritionNote.Visible = False
+        PreWeight.Visible = False
+        BedtimeOutput.Visible = False
+        HoursOutput.Visible = False
+        MealsOutput.Visible = False
+        NutritionLabel.Visible = False
+        NotesOutput.Visible = False
+        WeightOutput.Visible = False
+
+        dvTeams.Visible = True
+        dvSports.Visible = True
+        btnBeginWorkout.Visible = True
+
+        Dim TeamCount As Integer = dvTeams.Controls.Count
         If TeamCount > 0 Then
-            SportsGv.Visible = False
-            TeamGv.Visible = True
+            dvSports.Visible = False
+            dvTeams.Visible = True
         Else
-            TeamGv.Visible = False
-            SportsGv.Visible = True
+            dvTeams.Visible = False
+            dvSports.Visible = True
         End If
     End Sub
 
-    Protected Sub TeamGv_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles TeamGv.SelectedIndexChanged
 
+    Protected Sub btnBeginWorkout_Click(sender As Object, e As System.EventArgs) Handles btnBeginWorkout.Click
+        Response.Redirect("AthInp.aspx")
     End Sub
 End Class
