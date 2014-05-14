@@ -356,6 +356,7 @@ Partial Class _Default
                 Loop
                 connection.Close()
             End Using
+            Debug.Print("Why this no work?")
             Debug.Print(currentID)
         ElseIf dvSports.Visible = True Then
             '    Dim WorkID As Label = dvTeams.FindControl("Workout_ID")
