@@ -124,6 +124,7 @@ Partial Class _Default
 
             End Using
 
+
         End If
 
 
@@ -335,6 +336,49 @@ Partial Class _Default
 
 
     Protected Sub btnBeginWorkout_Click(sender As Object, e As System.EventArgs) Handles btnBeginWorkout.Click
+        If dvTeams.Visible = True Then
+            '    Dim WorkID As Label = dvTeams.FindControl("Workout_ID")
+            '    Dim StringWorkID As String = WorkID.Text
+            '    Debug.Print(StringWorkID).
+            Dim currentID As String
+            Using connection As New SqlConnection(connectionString)
+                connection.Open()
+                Dim getWorkoutID As SqlCommand = New SqlCommand("GetTeamWorkoutID", connection)
+                Dim IDReader As SqlDataReader
+                'calls stored procedure to check user existance
+                getWorkoutID.CommandType = CommandType.StoredProcedure
+                'Input -- TM_ID, date
+                getWorkoutID.Parameters.Add(New SqlParameter("@User_ID", Session.Item("username")))
+                getWorkoutID.Parameters.Add(New SqlParameter("@Start_Date", SelectDate.SelectedDate))
+                IDReader = getWorkoutID.ExecuteReader()
+                Do While IDReader.Read()
+                    currentID = IDReader("Workout_ID")
+                Loop
+                connection.Close()
+            End Using
+            Debug.Print(currentID)
+        ElseIf dvSports.Visible = True Then
+            '    Dim WorkID As Label = dvTeams.FindControl("Workout_ID")
+            '    Dim StringWorkID As String = WorkID.Text
+            '    Debug.Print(StringWorkID)
+            Dim currentID As String
+            Using connection As New SqlConnection(connectionString)
+                connection.Open()
+                Dim getWorkoutID As SqlCommand = New SqlCommand("GetSportWorkoutID", connection)
+                Dim IDReader As SqlDataReader
+                'calls stored procedure to check user existance
+                getWorkoutID.CommandType = CommandType.StoredProcedure
+                'Input -- TM_ID, date
+                getWorkoutID.Parameters.Add(New SqlParameter("@User_ID", Session.Item("username")))
+                getWorkoutID.Parameters.Add(New SqlParameter("@Start_Date", SelectDate.SelectedDate))
+                IDReader = getWorkoutID.ExecuteReader()
+                Do While IDReader.Read()
+                    currentID = IDReader("Workout_ID")
+                Loop
+                connection.Close()
+            End Using
+            Debug.Print(currentID)
+        End If
         Response.Redirect("AthInp.aspx")
     End Sub
 End Class
