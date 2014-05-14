@@ -73,10 +73,10 @@
         &nbsp;&nbsp;&nbsp;
         <asp:Label ID="msgvalidusername" runat="server" ForeColor="Red" Text=""
             Visible="False">
-             <div data-alert class="alert-box alert radius">
+<%--             <div data-alert class="alert-box alert radius">
                 Username is taken
                 <a href="#" class="close">&times;</a>
-             </div>    
+             </div>    --%>
         </asp:Label>
         <br />
         <br />

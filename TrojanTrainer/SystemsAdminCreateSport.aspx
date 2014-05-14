@@ -4,8 +4,7 @@
 	
 	<br/>
     <p>Current Sports</p>
-    Select a Sport:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:dropdownlist id="ddlSportID" runat="server" datasourceid="SqlDataSource1" datatextfield="Name" datavaluefield="Sport_ID" autopostback="True">
-	</asp:dropdownlist>
+    
 	<asp:gridview id="GridView2" runat="server" allowsorting="True" autogeneratecolumns="False" datakeynames="Sport_ID" datasourceid="SqlDataSource1" allowpaging="True">
 	<columns>
 	<asp:commandfield showdeletebutton="True"/>
@@ -21,7 +20,10 @@
 	<asp:label id="msgvalidsport" runat="server" text="Label" visible="False"></asp:label>
 	<br/>
 	<asp:checkbox id="HasTeamsChbx" runat="server" text="This sport has no teams"/>
-	<p>Current Teams</p>
+	
+    <br />
+    Select a Sport to Add Teams:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:dropdownlist id="ddlSportID" runat="server" datasourceid="SqlDataSource1" datatextfield="Name" datavaluefield="Sport_ID" autopostback="True">
+	</asp:dropdownlist>
 	<asp:gridview id="GridView1" runat="server" autogeneratecolumns="False" datasourceid="SqlDataSource2" allowsorting="True" allowpaging="True">
 	<columns>
 	<asp:boundfield datafield="Name" headertext="Sport" sortexpression="Name"/>
