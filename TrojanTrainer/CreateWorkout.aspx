@@ -34,14 +34,13 @@ WHERE [Active] = 1">
             DataSourceID="SqlDataSource4" Height="209px" Width="501px" 
             DataKeyNames="Workout_ID" DefaultMode="Insert" Visible="False">
             <Fields>
-<asp:BoundField DataField="Workout_ID" HeaderText="Workout_ID" SortExpression="Workout_ID" 
-                    InsertVisible="False" ReadOnly="True"></asp:BoundField>
-                <asp:BoundField DataField="Workout_Name" HeaderText="Workout_Name" 
+                <asp:BoundField DataField="Workout_Name" HeaderText="Workout Name" 
                     SortExpression="Workout_Name" />
                 <asp:BoundField DataField="Pre_Training_Notes" 
-                    HeaderText="Pre_Training_Notes" SortExpression="Pre_Training_Notes" />
+                    HeaderText="Pre Training Notes" SortExpression="Pre_Training_Notes" />
                 <asp:BoundField DataField="Post_Training_Notes" 
-                    HeaderText="Post_Training_Notes" SortExpression="Post_Training_Notes" />
+                    HeaderText="Post Training Notes" SortExpression="Post_Training_Notes" />
+                <asp:CommandField ShowInsertButton="True" ButtonType="Button" />
             </Fields>
         </asp:DetailsView>
 
@@ -113,8 +112,7 @@ WHERE Workout.Workout_ID = @Workout_ID " InsertCommand="CreateWorkout"
                 <asp:ControlParameter Name="Sport_ID" ControlID="Sportsddl" PropertyName="SelectedValue" />
             </InsertParameters>
             <SelectParameters>
-                <asp:ControlParameter ControlID="Sportsddl" Name="Sport_ID" 
-                    PropertyName="SelectedValue" Type="Int32" />
+                <asp:Parameter Name="Sport_ID" Type="Int32" />
             </SelectParameters>
         </asp:SqlDataSource>
     </p>
