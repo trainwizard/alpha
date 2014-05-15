@@ -4,14 +4,37 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <p>
-        <asp:Label ID="lblWorkoutName" runat="server" 
-            Text="This should be the workout name"></asp:Label>
+        <asp:DataList ID="DataList1" runat="server" DataSourceID="SqlDataSource2">
+            <ItemTemplate>
+                Workout_Name:
+                <asp:Label ID="Workout_NameLabel" runat="server" 
+                    Text='<%# Eval("Workout_Name") %>' />
+                <br />
+                <br />
+            </ItemTemplate>
+        </asp:DataList>
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
+            SelectCommand="GetWorkoutName" SelectCommandType="StoredProcedure">
+            <SelectParameters>
+                <asp:QueryStringParameter Name="Workout_ID" QueryStringField="ID" 
+                    Type="Int32" />
+            </SelectParameters>
+        </asp:SqlDataSource>
     </p>
     <p>
-        &nbsp;</p>
-    <p>
-        <asp:DropDownList ID="DropDownList1" runat="server">
+        <asp:DropDownList ID="DropDownList1" runat="server" 
+            DataSourceID="SqlDataSource1" DataTextField="Name" 
+            DataValueField="Planned_Ex_ID">
         </asp:DropDownList>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
+            SelectCommand="GetExercisesForAthlete" SelectCommandType="StoredProcedure">
+            <SelectParameters>
+                <asp:QueryStringParameter Name="Workout_ID" QueryStringField="ID" 
+                    Type="Int32" />
+            </SelectParameters>
+        </asp:SqlDataSource>
     </p>
     <p>
         &nbsp;</p>
