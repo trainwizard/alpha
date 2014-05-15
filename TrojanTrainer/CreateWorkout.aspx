@@ -149,13 +149,57 @@ WHERE Workout.Workout_ID = @Workout_ID " InsertCommand="CreateWorkout"
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:BoundField DataField="Note" HeaderText="Note" SortExpression="Note" />
-                <asp:BoundField DataField="Reps" HeaderText="Reps" SortExpression="Reps" />
-                <asp:BoundField DataField="Sets" HeaderText="Sets" 
-                    SortExpression="Sets" />
+                <asp:TemplateField HeaderText="Reps" SortExpression="Reps">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Reps") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <InsertItemTemplate>
+                        <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Reps") %>'></asp:TextBox>
+                        <div>
+                        <asp:CompareValidator ID="cv" runat="server" ControlToValidate="TextBox2" Type="Integer"
+                        Operator="DataTypeCheck" ErrorMessage="Value must be an integer!" ValidationGroup="InsertExerciseValid"/>
+                            </div>
+                    </InsertItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("Reps") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Sets" SortExpression="Sets">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Sets") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <InsertItemTemplate>
+                        <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Sets") %>'></asp:TextBox>
+
+                        <div>
+                        <asp:CompareValidator ID="cv2" runat="server" ControlToValidate="TextBox3" Type="Integer"
+                        Operator="DataTypeCheck" ErrorMessage="Value must be an integer!" ValidationGroup="InsertExerciseValid"/>
+                            </div>
+
+                    </InsertItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label3" runat="server" Text='<%# Bind("Sets") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:BoundField DataField="Time" HeaderText="Time" 
                     SortExpression="Time" />
-                <asp:BoundField DataField="Weight" HeaderText="Weight" 
-                    SortExpression="Weight" />
+                <asp:TemplateField HeaderText="Weight" SortExpression="Weight">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("Weight") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <InsertItemTemplate>
+                        <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("Weight") %>'></asp:TextBox>
+
+                        <div>
+                        <asp:CompareValidator ID="cv3" runat="server" ControlToValidate="TextBox4" Type="Integer"
+                        Operator="DataTypeCheck" ErrorMessage="Value must be an integer!" ValidationGroup="InsertExerciseValid"/>
+                            </div>
+
+                    </InsertItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label4" runat="server" Text='<%# Bind("Weight") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:BoundField DataField="Planned_Ex_ID" HeaderText="Planned_Ex_ID" 
                     InsertVisible="False" ReadOnly="True" SortExpression="Planned_Ex_ID" />
                 <asp:CommandField ShowInsertButton="True" 
@@ -214,17 +258,71 @@ WHERE [Planned_Ex_ID] = @Planned_Ex_ID" SelectCommandType="StoredProcedure"
             AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Planned_Ex_ID" 
             DataSourceID="SqlDataSource2" Visible="False">
             <Columns>
-                <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
-                <asp:BoundField DataField="Name" HeaderText="Name" 
-                    SortExpression="Name" />
-                <asp:BoundField DataField="Note" HeaderText="Note" SortExpression="Note" />
-                <asp:BoundField DataField="Reps" HeaderText="Reps" SortExpression="Reps" />
-                <asp:BoundField DataField="Sets" HeaderText="Sets" 
-                    SortExpression="Sets" />
-                <asp:BoundField DataField="Time" HeaderText="Time" 
-                    SortExpression="Time" />
-                <asp:BoundField DataField="Weight" HeaderText="Weight" 
-                    SortExpression="Weight" />
+                <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" 
+                    ValidationGroup="UpdateExerciseValid" />
+                <asp:TemplateField HeaderText="Name" SortExpression="Name">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("Name") %>'></asp:TextBox>
+                         <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="TextBox4"
+                            Display="Dynamic" ErrorMessage="Please enter a name" ValidationGroup="UpdateExerciseValid"></asp:RequiredFieldValidator>
+                        <p><p/>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label4" runat="server" Text='<%# Bind("Name") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Note" SortExpression="Note">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("Note") %>'></asp:TextBox>
+
+                        <p><p/>
+
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label5" runat="server" Text='<%# Bind("Note") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Reps" SortExpression="Reps">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Reps") %>'></asp:TextBox>
+                        <asp:CompareValidator ID="cval" runat="server" ControlToValidate="TextBox1" Type="Integer"
+                        Operator="DataTypeCheck" ErrorMessage="Must be integer!" ValidationGroup="UpdateExerciseValid"/>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("Reps") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Sets" SortExpression="Sets">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Sets") %>'></asp:TextBox>
+                        <asp:CompareValidator ID="cval2" runat="server" ControlToValidate="TextBox2" Type="Integer"
+                        Operator="DataTypeCheck" ErrorMessage="Must be integer!" ValidationGroup="UpdateExerciseValid"/>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("Sets") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Time" SortExpression="Time">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("Time") %>'></asp:TextBox>
+
+                        <p><p/>
+
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label6" runat="server" Text='<%# Bind("Time") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Weight" SortExpression="Weight">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Weight") %>'></asp:TextBox>
+                        <asp:CompareValidator ID="cval3" runat="server" ControlToValidate="TextBox3" Type="Integer"
+                        Operator="DataTypeCheck" ErrorMessage="Must be integer!" ValidationGroup="UpdateExerciseValid"/>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label3" runat="server" Text='<%# Bind("Weight") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
             </Columns>
         </asp:GridView>
     

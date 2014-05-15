@@ -38,8 +38,7 @@ Partial Class CreateWorkout
     End Sub
 
     Protected Sub dvInsertWorkout_PageIndexChanging(sender As Object, e As System.Web.UI.WebControls.DetailsViewPageEventArgs) Handles dvInsertWorkout.PageIndexChanging
-        gvWorkouts.DataBind()
-        Response.Redirect("CreateWorkout.aspx")
+
     End Sub
 
     Protected Sub Button1_Click(sender As Object, e As System.EventArgs) Handles Button1.Click
@@ -51,6 +50,9 @@ Partial Class CreateWorkout
             Sportsddl.SelectedValue = Session.Item("Sport_ID")
         ElseIf Session.Item("Role") > 3 Then
             Response.Redirect("Permissions.aspx")
+        End If
+        If IsPostBack = True Then
+            gvWorkouts.DataBind()
         End If
     End Sub
 End Class
