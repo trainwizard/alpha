@@ -48,6 +48,9 @@ Partial Class EditProfileInfo
     End Sub
 
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
+        If Session("username") = Nothing Then
+            Response.Redirect("Welcome.aspx")
+        End If
         imgProfilePicture.ImageUrl = Session.Item("UserPicture")
         Using connection As New SqlConnection(connectionString)
             connection.Open()
@@ -111,6 +114,8 @@ Partial Class EditProfileInfo
                     PictureLabel.Text = "Cannot accept files of this type."
                 End If
             End If
+        Else
+            ChangePicture.Text = "Change your picture: <br/>Please choose a file..."
         End If
 
     End Sub
@@ -119,7 +124,6 @@ Partial Class EditProfileInfo
         'compare value sets a variable so the while loop knows its ok to execute 
         Dim compareEmailValue As Boolean = True
         Dim email As String = txtNewEmail.Text
-        Debug.Print(email.Substring(email.Length - 4))
         If txtNewEmail.Text = "" Or txtConfirmEmail.Text = "" Then
             lblEmailSuc.Visible = False
             lblAngryEmail.Text = "Please enter a valid Email into both fields."

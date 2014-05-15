@@ -34,13 +34,26 @@ WHERE [Active] = 1">
             DataSourceID="SqlDataSource4" Height="209px" Width="501px" 
             DataKeyNames="Workout_ID" DefaultMode="Insert" Visible="False">
             <Fields>
-                <asp:BoundField DataField="Workout_Name" HeaderText="Workout Name" 
-                    SortExpression="Workout_Name" />
+                <asp:TemplateField HeaderText="Workout Name" SortExpression="Workout_Name">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Workout_Name") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <InsertItemTemplate>
+                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Workout_Name") %>' ValidationGroup="EditFieldDetails"></asp:TextBox>
+                        <div>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox1"
+                            Display="Dynamic" ErrorMessage="Please enter the workout name" ValidationGroup="EditFieldDetails"></asp:RequiredFieldValidator></div>
+                    </InsertItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("Workout_Name") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:BoundField DataField="Pre_Training_Notes" 
                     HeaderText="Pre Training Notes" SortExpression="Pre_Training_Notes" />
                 <asp:BoundField DataField="Post_Training_Notes" 
                     HeaderText="Post Training Notes" SortExpression="Post_Training_Notes" />
-                <asp:CommandField ShowInsertButton="True" ButtonType="Button" />
+                <asp:CommandField ShowInsertButton="True" ButtonType="Button" 
+                    ValidationGroup="EditFieldDetails" />
             </Fields>
         </asp:DetailsView>
 
@@ -121,8 +134,20 @@ WHERE Workout.Workout_ID = @Workout_ID " InsertCommand="CreateWorkout"
         DataSourceID="SqlDataSource2" DefaultMode="Insert" 
             Height="50px" Width="643px" Visible="False">
             <Fields>
-                <asp:BoundField DataField="Name" HeaderText="Name" 
-                    SortExpression="Name" />
+                <asp:TemplateField HeaderText="Name" SortExpression="Name">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Name") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <InsertItemTemplate>
+                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Name") %>'></asp:TextBox>
+                        <div>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TextBox1"
+                            Display="Dynamic" ErrorMessage="Please enter the exercise name" ValidationGroup="InsertExerciseValid"></asp:RequiredFieldValidator></div>
+                    </InsertItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("Name") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:BoundField DataField="Note" HeaderText="Note" SortExpression="Note" />
                 <asp:BoundField DataField="Reps" HeaderText="Reps" SortExpression="Reps" />
                 <asp:BoundField DataField="Sets" HeaderText="Sets" 
@@ -133,7 +158,8 @@ WHERE Workout.Workout_ID = @Workout_ID " InsertCommand="CreateWorkout"
                     SortExpression="Weight" />
                 <asp:BoundField DataField="Planned_Ex_ID" HeaderText="Planned_Ex_ID" 
                     InsertVisible="False" ReadOnly="True" SortExpression="Planned_Ex_ID" />
-                <asp:CommandField ShowInsertButton="True" />
+                <asp:CommandField ShowInsertButton="True" 
+                    ValidationGroup="InsertExerciseValid" ButtonType="Button" />
             </Fields>
         </asp:DetailsView>
     
@@ -199,8 +225,6 @@ WHERE [Planned_Ex_ID] = @Planned_Ex_ID" SelectCommandType="StoredProcedure"
                     SortExpression="Time" />
                 <asp:BoundField DataField="Weight" HeaderText="Weight" 
                     SortExpression="Weight" />
-                <asp:BoundField DataField="Planned_Ex_ID" HeaderText="Planned_Ex_ID" 
-                    InsertVisible="False" ReadOnly="True" SortExpression="Planned_Ex_ID" />
             </Columns>
         </asp:GridView>
     

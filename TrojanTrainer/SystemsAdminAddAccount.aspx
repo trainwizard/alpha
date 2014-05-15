@@ -7,6 +7,14 @@
     
         Create New User.<br />
         <br />
+        Role:&nbsp; <asp:DropDownList ID="RoleDropDown" runat="server" 
+            AutoPostBack="True">
+            <asp:ListItem Selected="True" Value="4">Athlete</asp:ListItem>
+            <asp:ListItem Value="2">Coach</asp:ListItem>
+            <asp:ListItem Value="1">Systems Admin</asp:ListItem>
+        </asp:DropDownList>
+        <br />
+        <br />
         Username:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="NewUsername" runat="server"></asp:TextBox>
 &nbsp;
@@ -40,21 +48,7 @@
         <br />
         Email Address:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="NewEmail" runat="server"></asp:TextBox>
-&nbsp;
-       <%-- <asp:RequiredFieldValidator ID="lastnamevalidator" runat="server" 
-            ControlToValidate="NewLastName" ErrorMessage="Last Name Required"></asp:RequiredFieldValidator>--%>
-        <br />
-        <br />
-        Role:&nbsp;<asp:DropDownList ID="RoleDropDown" runat="server" 
-            AutoPostBack="True">
-            <asp:ListItem Value="5">Any User</asp:ListItem>
-            <asp:ListItem Selected="True" Value="4">Athlete</asp:ListItem>
-            <asp:ListItem Value="3">Athletic Trainer</asp:ListItem>
-            <asp:ListItem Value="2">Coach</asp:ListItem>
-            <asp:ListItem Value="1">Systems Admin</asp:ListItem>
-        </asp:DropDownList>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
-        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
         <asp:Label ID="SportAddLabel" runat="server" Text="Sport:"></asp:Label>
 &nbsp;<asp:DropDownList ID="SportSelection" runat="server" 
             DataSourceID="SqlDataSource3" DataTextField="Name" DataValueField="Sport_ID">

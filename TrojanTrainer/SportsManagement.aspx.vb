@@ -46,6 +46,7 @@ Partial Class _Default
                 End If
             End If
             e.Day.IsSelectable = False
+            'ElseIf GlobalVariables.CalCount = 0 Then
         End If
 
     End Sub 'DayRender 
@@ -66,6 +67,7 @@ Partial Class _Default
                 createCycle.ExecuteNonQuery()
                 connection.Close()
             End Using
+            DateLabel.ForeColor = Drawing.Color.Red
             DateLabel.Text = "Please select a start date."
             GlobalVariables.StartDate = Nothing
             GlobalVariables.StopDate = Nothing
@@ -74,11 +76,14 @@ Partial Class _Default
             CycleName.Text = ""
 
         ElseIf GlobalVariables.StartDate = Nothing Or GlobalVariables.StopDate = Nothing Then
+            DateLabel.ForeColor = Drawing.Color.Red
             DateLabel.Text = "Please select a start date."
             GlobalVariables.StartDate = Nothing
             GlobalVariables.StopDate = Nothing
             GlobalVariables.CalCount = 0
+            StartDateCal.SelectedDates.Clear()
         ElseIf CycleName.Text = "" Then
+            DateLabel.ForeColor = Drawing.Color.Red
             DateLabel.Text = "Please enter a name."
         End If
     End Sub
@@ -96,6 +101,7 @@ Partial Class _Default
                 Debug.Print(GlobalVariables.StopDate)
                 DateLabel.Text = "Please submit information."
             Else
+                DateLabel.ForeColor = Drawing.Color.Red
                 DateLabel.Text = "Your stop date wasn't after your start date, please select another start date."
                 GlobalVariables.CalCount = 0
             End If
@@ -106,6 +112,7 @@ Partial Class _Default
         GlobalVariables.StartDate = Nothing
         GlobalVariables.StopDate = Nothing
         GlobalVariables.CalCount = 0
+        DateLabel.ForeColor = Drawing.Color.Black
         DateLabel.Text = "Please select a start date."
     End Sub
 

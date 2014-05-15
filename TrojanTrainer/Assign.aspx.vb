@@ -86,36 +86,39 @@ Partial Class _Default
     End Sub
 
     Protected Sub AssignBtn_Click(sender As Object, e As System.EventArgs) Handles AssignBtn.Click
-        Using connection As New SqlConnection(connectionString)
-            Dim AssignWorkoutSport As SqlCommand = New SqlCommand("AssignWorkoutSport", connection)
-            AssignWorkoutSport.CommandType = CommandType.StoredProcedure
-            AssignWorkoutSport.Parameters.Add(New SqlParameter("@Cycle_ID", CycleDdl.SelectedValue))
-            AssignWorkoutSport.Parameters.Add(New SqlParameter("@Workout_ID", Workoutddl.SelectedValue))
-            AssignWorkoutSport.Parameters.Add(New SqlParameter("@Start_Date", CycleCalendar.SelectedDate))
-            AssignWorkoutSport.Parameters.Add(New SqlParameter("@End_Date", CycleCalendar.SelectedDate))
-            connection.Open()
-            AssignWorkoutSport.ExecuteNonQuery()
-            connection.Close()
+        If CycleCalendar.SelectedDate <> Nothing Then
+            Using connection As New SqlConnection(connectionString)
+                Dim AssignWorkoutSport As SqlCommand = New SqlCommand("AssignWorkoutSport", connection)
+                AssignWorkoutSport.CommandType = CommandType.StoredProcedure
+                AssignWorkoutSport.Parameters.Add(New SqlParameter("@Cycle_ID", CycleDdl.SelectedValue))
+                AssignWorkoutSport.Parameters.Add(New SqlParameter("@Workout_ID", Workoutddl.SelectedValue))
+                AssignWorkoutSport.Parameters.Add(New SqlParameter("@Start_Date", CycleCalendar.SelectedDate))
+                AssignWorkoutSport.Parameters.Add(New SqlParameter("@End_Date", CycleCalendar.SelectedDate))
+                connection.Open()
+                AssignWorkoutSport.ExecuteNonQuery()
+                connection.Close()
 
-        End Using
-        CurrentWorkoutssGv.DataBind()
-        CurrentWorkoutsGv.DataBind()
+            End Using
+            CurrentWorkoutssGv.DataBind()
+            CurrentWorkoutsGv.DataBind()
+        End If
     End Sub
 
     Protected Sub AssignTeamBtn_Click(sender As Object, e As System.EventArgs) Handles AssignTeamBtn.Click
-        Using connection As New SqlConnection(connectionString)
-            Dim AssignTeamWorkout As SqlCommand = New SqlCommand("AssignTeamWorkout", connection)
-            AssignTeamWorkout.CommandType = CommandType.StoredProcedure
-            AssignTeamWorkout.Parameters.Add(New SqlParameter("@Team_ID", TeamDdl.SelectedValue))
-            AssignTeamWorkout.Parameters.Add(New SqlParameter("@Workout_ID", Workoutddl.SelectedValue))
-            AssignTeamWorkout.Parameters.Add(New SqlParameter("@Start_Date", CycleCalendar.SelectedDate))
-            AssignTeamWorkout.Parameters.Add(New SqlParameter("@End_Date", CycleCalendar.SelectedDate))
-            connection.Open()
-            AssignTeamWorkout.ExecuteNonQuery()
-            connection.Close()
-
-        End Using
-        CurrentWorkoutssGv.DataBind()
-        CurrentWorkoutsGv.DataBind()
+        If CycleCalendar.SelectedDate <> Nothing Then
+            Using connection As New SqlConnection(connectionString)
+                Dim AssignTeamWorkout As SqlCommand = New SqlCommand("AssignTeamWorkout", connection)
+                AssignTeamWorkout.CommandType = CommandType.StoredProcedure
+                AssignTeamWorkout.Parameters.Add(New SqlParameter("@Team_ID", TeamDdl.SelectedValue))
+                AssignTeamWorkout.Parameters.Add(New SqlParameter("@Workout_ID", Workoutddl.SelectedValue))
+                AssignTeamWorkout.Parameters.Add(New SqlParameter("@Start_Date", CycleCalendar.SelectedDate))
+                AssignTeamWorkout.Parameters.Add(New SqlParameter("@End_Date", CycleCalendar.SelectedDate))
+                connection.Open()
+                AssignTeamWorkout.ExecuteNonQuery()
+                connection.Close()
+            End Using
+            CurrentWorkoutssGv.DataBind()
+            CurrentWorkoutsGv.DataBind()
+        End If
     End Sub
 End Class

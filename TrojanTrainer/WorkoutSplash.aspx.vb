@@ -8,6 +8,8 @@ Partial Class _Default
     Dim connectionString As String = "Data Source=SIMON;Initial Catalog=AlphaSYS39414;Persist Security Info=True;User ID=sbolds;Password=ttpfrzeh"
 
 
+
+
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
         If Session.Item("Role") = 2 Then
             Sportsddl.SelectedValue = Session.Item("Sport_ID")
@@ -15,7 +17,9 @@ Partial Class _Default
         ElseIf Session.Item("Role") > 3 Then
             Response.Redirect("Permissions.aspx")
         End If
-
+        If IsPostBack = True Then
+            ddlExercises.DataBind()
+        End If
         ''Gets workouts in a dictionary of dictionaries
         'Using connection As New SqlConnection(connectionString)
         '    Dim HasDone As Boolean = False
@@ -119,8 +123,11 @@ Partial Class _Default
 
     Protected Sub gvExercises_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles gvExercises.SelectedIndexChanged
         ddlExercises.DataBind()
-
+        Debug.Print("it happened")
     End Sub
+
+
+    
 
     Protected Sub Button2_Click(sender As Object, e As System.EventArgs) Handles Button2.Click
         Response.Redirect("assign.aspx")
