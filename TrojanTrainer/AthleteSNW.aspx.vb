@@ -340,7 +340,7 @@ Partial Class _Default
             '    Dim WorkID As Label = dvTeams.FindControl("Workout_ID")
             '    Dim StringWorkID As String = WorkID.Text
             '    Debug.Print(StringWorkID).
-            Dim currentID As String
+            Dim currentID As String = ""
             Using connection As New SqlConnection(connectionString)
                 connection.Open()
                 Dim getWorkoutID As SqlCommand = New SqlCommand("GetTeamWorkoutID", connection)
@@ -358,11 +358,12 @@ Partial Class _Default
             End Using
             Debug.Print("Why this no work?")
             Debug.Print(currentID)
+            Response.Redirect("AthInp.aspx" + "?ID=" + currentID)
         ElseIf dvSports.Visible = True Then
             '    Dim WorkID As Label = dvTeams.FindControl("Workout_ID")
             '    Dim StringWorkID As String = WorkID.Text
             '    Debug.Print(StringWorkID)
-            Dim currentID As String
+            Dim currentID As String = ""
             Using connection As New SqlConnection(connectionString)
                 connection.Open()
                 Dim getWorkoutID As SqlCommand = New SqlCommand("GetSportWorkoutID", connection)
@@ -379,7 +380,8 @@ Partial Class _Default
                 connection.Close()
             End Using
             Debug.Print(currentID)
+            Response.Redirect("AthInp.aspx" + "?ID=" + currentID)
         End If
-        Response.Redirect("AthInp.aspx")
+
     End Sub
 End Class
