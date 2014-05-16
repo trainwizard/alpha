@@ -37,6 +37,7 @@ Partial Class SystemsAdminAddAccount
             cmd.Parameters.Add(New SqlParameter("@username", NewUsername.Text))
             reader = cmd.ExecuteReader()
             'checks for returned user if true prints error message
+            Dim email As String = NewEmail.Text
             If reader.HasRows() Then
                 msgvalidusername.Text = "Username is taken."
                 msgvalidusername.ForeColor = Drawing.Color.Red
@@ -51,6 +52,18 @@ Partial Class SystemsAdminAddAccount
                     'msgvalidusername.Text = "Passwords do not match."
                     'msgvalidusername.ForeColor = Drawing.Color.Red
                     'msgvalidusername.Visible = True
+                ElseIf NewEmail.Text = "" Then
+                    msgvalidusername.Text = "Please enter a valid Email."
+                    msgvalidusername.ForeColor = Drawing.Color.Red
+                    msgvalidusername.Visible = True
+                ElseIf email.Substring(email.Length - 4) <> ".com" And email.Substring(email.Length - 4) <> ".net" And email.Substring(email.Length - 4) <> ".edu" And email.Substring(email.Length - 4) <> ".org" And email.Substring(email.Length - 4) <> ".gov" Then
+                    msgvalidusername.Text = "Please enter a valid Email."
+                    msgvalidusername.ForeColor = Drawing.Color.Red
+                    msgvalidusername.Visible = True
+                ElseIf Not email.Contains("@") Then
+                    msgvalidusername.Text = "Please enter a valid Email."
+                    msgvalidusername.ForeColor = Drawing.Color.Red
+                    msgvalidusername.Visible = True
                 Else
                     'else user is added and information saved
                     reader.Close()

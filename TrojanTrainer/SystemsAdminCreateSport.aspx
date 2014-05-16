@@ -34,7 +34,14 @@
 	&nbsp; <asp:button id="addNewTeam" runat="server" text="Add" cssclass="button small"/>
 	<asp:label id="msgvalidteam" runat="server" text="Label" visible="False"></asp:label>
 	<br/>
-	<asp:sqldatasource id="SqlDataSource2" runat="server" connectionstring="<%$ connectionstrings:alphaconnectionstring %>" SelectCommand="SELECT Sport.Name, Team.Name FROM Sport INNER JOIN Team ON Sport.Sport_ID = Team.Sport_ID WHERE Team.Sport_ID = @Sport_ID"> <selectparameters>
+	<asp:sqldatasource id="SqlDataSource2" runat="server" 
+        connectionstring="<%$ ConnectionStrings:AlphaConnectionString %>" 
+        SelectCommand="SELECT Sport.Name, Team.Name FROM Sport INNER JOIN Team ON Sport.Sport_ID = Team.Sport_ID WHERE Team.Sport_ID = @Sport_ID" DeleteCommand="DELETE FROM Team_Workout
+WHERE Team_ID = @Team_ID"> 
+        <DeleteParameters>
+            <asp:Parameter Name="Team_ID" />
+        </DeleteParameters>
+        <selectparameters>
 	<asp:controlparameter controlid="ddlSportID" name="Sport_ID" propertyname="SelectedValue"/>
 	</selectparameters>
 	</asp:sqldatasource>

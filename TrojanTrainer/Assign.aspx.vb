@@ -101,6 +101,11 @@ Partial Class _Default
             End Using
             CurrentWorkoutssGv.DataBind()
             CurrentWorkoutsGv.DataBind()
+        Else
+            DateValidator.Text = "Please select a date."
+            DateValidator.ForeColor = Drawing.Color.Red
+            DateValidator.Visible = True
+
         End If
     End Sub
 
@@ -119,6 +124,10 @@ Partial Class _Default
             End Using
             CurrentWorkoutssGv.DataBind()
             CurrentWorkoutsGv.DataBind()
+        Else
+            DateValidator.Text = "Please select a date."
+            DateValidator.ForeColor = Drawing.Color.Red
+            DateValidator.Visible = True
         End If
     End Sub
 End Class

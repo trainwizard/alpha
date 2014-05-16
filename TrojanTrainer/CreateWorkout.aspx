@@ -32,7 +32,7 @@ WHERE [Active] = 1">
             Visible="False"></asp:Label>
         <asp:DetailsView ID="dvInsertWorkout" runat="server" AutoGenerateRows="False" 
             DataSourceID="SqlDataSource4" Height="209px" Width="501px" 
-            DataKeyNames="Workout_ID" DefaultMode="Insert" Visible="False">
+            DataKeyNames="Workout_ID" DefaultMode="Insert" Visible="False" OnItemInserted="WorkoutInsert_ItemInserted">
             <Fields>
                 <asp:TemplateField HeaderText="Workout Name" SortExpression="Workout_Name">
                     <EditItemTemplate>

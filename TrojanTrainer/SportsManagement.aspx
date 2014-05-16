@@ -51,9 +51,9 @@
             <asp:BoundField DataField="Name" HeaderText="Name" 
                 SortExpression="Name" />
             <asp:BoundField DataField="Start_Date" HeaderText="Start Date" 
-                SortExpression="Start_Date" />
+                SortExpression="Start_Date" ReadOnly="True" />
             <asp:BoundField DataField="End_Date" HeaderText="End Date" 
-                SortExpression="End_Date" />
+                SortExpression="End_Date" ReadOnly="True" />
         </Columns>
     </asp:GridView>
     <asp:SqlDataSource ID="SqlDataSource2" runat="server" 

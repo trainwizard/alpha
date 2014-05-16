@@ -38,7 +38,7 @@ Partial Class CreateWorkout
     End Sub
 
     Protected Sub dvInsertWorkout_PageIndexChanging(sender As Object, e As System.Web.UI.WebControls.DetailsViewPageEventArgs) Handles dvInsertWorkout.PageIndexChanging
-
+        Debug.Print("this works")
     End Sub
 
     Protected Sub Button1_Click(sender As Object, e As System.EventArgs) Handles Button1.Click
@@ -51,8 +51,14 @@ Partial Class CreateWorkout
         ElseIf Session.Item("Role") > 3 Then
             Response.Redirect("Permissions.aspx")
         End If
-        If IsPostBack = True Then
-            gvWorkouts.DataBind()
-        End If
     End Sub
+
+    Sub WorkoutInsert_ItemInserted(ByVal sender As Object, _
+    ByVal e As DetailsViewInsertedEventArgs)
+        ' Refresh the GridView control after a new record is inserted in 
+        ' the DetailsView control.
+        gvWorkouts.DataBind()
+    End Sub
+
+
 End Class

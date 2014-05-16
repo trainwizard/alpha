@@ -101,6 +101,8 @@ WHERE Sport_ID = @Sport_ID">
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button ID="AssignBtn" runat="server" Text="Sport" 
             Visible="False" Width="85px" CssClass="button small" />
+    &nbsp;&nbsp;&nbsp;
+        <asp:Label ID="DateValidator" runat="server" Text="Label" Visible="False"></asp:Label>
     </p>
     <p>
         <asp:Label ID="CurrentLbl" runat="server" 
