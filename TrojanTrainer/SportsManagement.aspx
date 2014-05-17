@@ -90,9 +90,11 @@ WHERE Cycle_ID = @Cycle_ID">
     <br />
     <asp:Calendar ID="StartDateCal" runat="server" OnDayRender="DayRender"></asp:Calendar>
     <br />
-    <asp:Button ID="ClearCalBtn" runat="server" Text="Cancel" />
+    <asp:Button ID="ClearCalBtn" runat="server" Text="Cancel" 
+        CssClass="button small" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <asp:Button ID="Button1" runat="server" Text="Add Cycle" />
+    <asp:Button ID="Button1" runat="server" Text="Add Cycle" 
+        CssClass="button small" />
     <br />
 </asp:Content>
 
