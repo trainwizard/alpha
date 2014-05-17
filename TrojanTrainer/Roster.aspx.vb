@@ -38,18 +38,18 @@ Partial Class Roster
 
 
     Protected Sub btnAddTeamMember_Click(sender As Object, e As System.EventArgs) Handles btnAddTeamMember.Click
-        If ddlAddTeamMember.Attributes.Count <> 0 Then
-            Using connection As New SqlConnection("Data Source=SIMON;Initial Catalog=AlphaSYS39414;Persist Security Info=True;User ID=sbolds;Password=ttpfrzeh")
-                Dim AddTeamMember As New SqlCommand("AddToTeam", connection)
-                AddTeamMember.CommandType = CommandType.StoredProcedure
-                AddTeamMember.Parameters.AddWithValue("@User_ID", ddlAddTeamMember.SelectedValue)
-                AddTeamMember.Parameters.AddWithValue("@Team_ID", ddlTeams.SelectedValue)
-                connection.Open()
-                Dim rowsAffected As Integer = AddTeamMember.ExecuteNonQuery()
-                Debug.Print(String.Format("Affected {0}row(s)", rowsAffected))
-                connection.Close()
-            End Using
-            lblConfirm.Visible = True
-        End If
+        'If ddlAddTeamMember.Attributes.Count <> 0 Then
+        Using connection As New SqlConnection("Data Source=SIMON;Initial Catalog=AlphaSYS39414;Persist Security Info=True;User ID=sbolds;Password=ttpfrzeh")
+            Dim AddTeamMember As New SqlCommand("AddToTeam", connection)
+            AddTeamMember.CommandType = CommandType.StoredProcedure
+            AddTeamMember.Parameters.AddWithValue("@User_ID", ddlAddTeamMember.SelectedValue)
+            AddTeamMember.Parameters.AddWithValue("@Team_ID", ddlTeams.SelectedValue)
+            connection.Open()
+            Dim rowsAffected As Integer = AddTeamMember.ExecuteNonQuery()
+            Debug.Print(String.Format("Affected {0}row(s)", rowsAffected))
+            connection.Close()
+        End Using
+        lblConfirm.Visible = True
+        'End If
     End Sub
 End Class
