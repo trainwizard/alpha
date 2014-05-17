@@ -116,7 +116,7 @@ Partial Class main
 
     'Home button click
     Protected Sub btnMyHome_Click(sender As Object, e As System.EventArgs) Handles btnMyHome.Click
-        Response.Redirect("LoginHome.aspx")
+        'Response.Redirect("LoginHome.aspx")
         If Session.Item("Role") = 5 Then
             'any user
             Response.Redirect("LoginHome.aspx")

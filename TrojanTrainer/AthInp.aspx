@@ -6,8 +6,7 @@
     <p>
         <asp:DataList ID="DataList1" runat="server" DataSourceID="SqlDataSource2">
             <ItemTemplate>
-                Workout_Name:
-                <asp:Label ID="Workout_NameLabel" runat="server" 
+                &nbsp;<asp:Label ID="Workout_NameLabel" runat="server" 
                     Text='<%# Eval("Workout_Name") %>' />
                 <br />
                 <br />
