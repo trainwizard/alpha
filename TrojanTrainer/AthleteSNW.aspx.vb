@@ -301,7 +301,8 @@ Partial Class _Default
     End Sub
 
     Protected Sub WorkoutBtn_Click(sender As Object, e As System.EventArgs) Handles WorkoutBtn.Click
-
+        dvTeams.DataBind()
+        dvSports.DataBind()
         SubmitInfo.Visible = False
         SleepLabel.Visible = False
         NutritionLabel.Visible = False
@@ -324,13 +325,20 @@ Partial Class _Default
         dvSports.Visible = True
         btnBeginWorkout.Visible = True
 
-        Dim TeamCount As Integer = dvTeams.Controls.Count
+        Dim TeamCount As Integer = dvTeams.Rows.Count
+        Dim SportCount As Integer = dvSports.Rows.Count
         If TeamCount > 0 Then
             dvSports.Visible = False
             dvTeams.Visible = True
-        Else
+        ElseIf SportCount > 0 Then
             dvTeams.Visible = False
             dvSports.Visible = True
+        ElseIf SportCount = 0 And TeamCount = 0 Then
+            Debug.Print("there aint nothin today")
+            dvSports.Visible = False
+            dvTeams.Visible = False
+            btnBeginWorkout.Visible = False
+            DateValidator.Text = "There is no workout for this day."
         End If
     End Sub
 
