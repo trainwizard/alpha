@@ -36,6 +36,8 @@
         DataSourceID="SqlDataSource1" DataTextField="Name" DataValueField="Sport_ID">
     </asp:DropDownList>
     </p>
+    <p>
+        Cycle Home Page</p>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
         ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
         SelectCommand="SELECT * FROM [Sport] WHERE ([Active] = @Active)">
@@ -43,7 +45,9 @@
             <asp:Parameter DefaultValue="1" Name="Active" Type="Int32" />
         </SelectParameters>
     </asp:SqlDataSource>
-    Current Cycles:<asp:GridView ID="cycleGridview" runat="server" 
+    Current Cycles:<br />
+    <br />
+    <asp:GridView ID="cycleGridview" runat="server" 
         AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Cycle_ID" 
         DataSourceID="SqlDataSource2">
         <Columns>

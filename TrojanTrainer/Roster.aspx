@@ -3,8 +3,7 @@
 <asp:Content ID="RosterPage" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <p>
-    Roster page.
-    </p>
+    Roster Home Page</p>
     <p>
     
         Select a Sport:</p>

@@ -21,11 +21,8 @@
         <asp:SqlDataSource ID="SqlDataSource4" runat="server" 
             ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
             SelectCommand="SELECT * FROM [Sport]"></asp:SqlDataSource>
+        Existing Workout Information:<br />
         <br />
-        <br />
-        Existing Workout Information<br />
-        <br />
-        Active Workouts:<br />
         <asp:ListBox ID="Exercise_Name_Listbox" runat="server" AutoPostBack="True" 
             DataSourceID="SqlDataSource2" DataTextField="Workout_Name" 
             DataValueField="Workout_ID" Height="150px" Width="350px">
@@ -46,7 +43,8 @@
             AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Planned_Ex_ID" 
             DataSourceID="SqlDataSource1" Visible="False">
             <Columns>
-                <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
+                <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" 
+                    ButtonType="Button" />
                 <asp:BoundField DataField="Name" HeaderText="Exercise Name" 
                     SortExpression="Name" />
                 <asp:BoundField DataField="Sets" HeaderText="Sets" SortExpression="Sets" />
@@ -99,6 +97,7 @@ WHERE Planned_Ex_ID =  @Planned_Ex_ID "
         <br />
         <asp:Label ID="AddExercisesLbl" runat="server" Text="Add Exercises:" 
             Visible="False"></asp:Label>
+        <br />
         <br />
         <asp:DropDownList ID="ddlExercises" runat="server" 
             DataSourceID="SqlDataSource3" DataTextField="Name" 

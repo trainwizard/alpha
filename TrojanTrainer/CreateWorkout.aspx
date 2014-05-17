@@ -19,7 +19,7 @@ WHERE [Active] = 1">
         </asp:SqlDataSource>
     </p>
     <p>
-        Create Workout or Exercise</p>
+        Manage Workouts or Exercises</p>
     <br />
     <p>
         <asp:Button ID="btnWorkout" runat="server" Text="Manage Workouts" 
@@ -59,7 +59,7 @@ WHERE [Active] = 1">
 
     </p>
     <p>
-        <asp:Label ID="lblWorkouts" runat="server" Text="Current workouts:" 
+        <asp:Label ID="lblWorkouts" runat="server" Text="Edit or Delete Workouts:" 
             Visible="False"></asp:Label>
     </p>
     <p>
@@ -67,7 +67,8 @@ WHERE [Active] = 1">
             AllowSorting="True" AutoGenerateColumns="False" 
             DataSourceID="SqlDataSource1" DataKeyNames="Workout_ID" Visible="False">
             <Columns>
-                <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
+                <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" 
+                    ButtonType="Button" />
                 <asp:BoundField DataField="Workout_Name" HeaderText="Workout Name" 
                     SortExpression="Workout_Name" />
                 <asp:BoundField DataField="Pre_Training_Notes" 
@@ -248,18 +249,21 @@ WHERE [Planned_Ex_ID] = @Planned_Ex_ID" SelectCommandType="StoredProcedure"
             </UpdateParameters>
         </asp:SqlDataSource>
     <br />
-        <asp:Label ID="lblExercises" runat="server" Text="Current exercises:" 
+        <asp:Label ID="lblExercises" runat="server" Text="Edit or Delete Exercises:" 
             Visible="False"></asp:Label>
     
     <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
         ErrorMessage="RequiredFieldValidator"></asp:RequiredFieldValidator>--%>
+    
+        <br />
+    <br />
     
         <asp:GridView ID="gvExercises" runat="server" AllowPaging="True" 
             AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Planned_Ex_ID" 
             DataSourceID="SqlDataSource2" Visible="False">
             <Columns>
                 <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" 
-                    ValidationGroup="UpdateExerciseValid" />
+                    ValidationGroup="UpdateExerciseValid" ButtonType="Button" />
                 <asp:TemplateField HeaderText="Name" SortExpression="Name">
                     <EditItemTemplate>
                         <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("Name") %>'></asp:TextBox>
