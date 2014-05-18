@@ -67,8 +67,8 @@ Partial Class _Default
                 createCycle.ExecuteNonQuery()
                 connection.Close()
             End Using
-            'DateLabel.ForeColor = Drawing.Color.Red
-            'DateLabel.Text = "Please select a start date."
+            DateLabel.ForeColor = Drawing.Color.Red
+            DateLabel.Text = "Please select a start date."
             GlobalVariables.StartDate = Nothing
             GlobalVariables.StopDate = Nothing
             GlobalVariables.CalCount = 0
@@ -92,6 +92,7 @@ Partial Class _Default
         If GlobalVariables.CalCount = 0 Then
             GlobalVariables.CalCount += 1
             GlobalVariables.StartDate = StartDateCal.SelectedDate
+            DateLabel.ForeColor = Drawing.Color.Black
             DateLabel.Text = "Please select a cycle end date."
             Debug.Print(GlobalVariables.StartDate)
         ElseIf GlobalVariables.CalCount = 1 Then
@@ -99,6 +100,7 @@ Partial Class _Default
                 GlobalVariables.CalCount += 1
                 GlobalVariables.StopDate = StartDateCal.SelectedDate
                 Debug.Print(GlobalVariables.StopDate)
+                DateLabel.ForeColor = Drawing.Color.Black
                 DateLabel.Text = "Please submit information."
             Else
                 DateLabel.ForeColor = Drawing.Color.Red

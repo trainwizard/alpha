@@ -18,7 +18,6 @@ Partial Class _Default
             Response.Redirect("Permissions.aspx")
         End If
         If IsPostBack = True Then
-            ddlExercises.DataBind()
         End If
         ''Gets workouts in a dictionary of dictionaries
         'Using connection As New SqlConnection(connectionString)
@@ -90,9 +89,8 @@ Partial Class _Default
             Dim rowsAffected As Integer = AddExercise.ExecuteNonQuery()
             Debug.Print(String.Format("Affected {0}row(s)", rowsAffected))
         End Using
-        gvExercises.DataBind()
         ddlExercises.DataBind()
-
+        gvExercises.DataBind()
 
     End Sub
 
@@ -101,10 +99,8 @@ Partial Class _Default
     End Sub
 
     Protected Sub Sportsddl_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles Sportsddl.SelectedIndexChanged
-        Exercise_Name_Listbox.DataBind()
         gvExercises.DataBind()
         ddlExercises.DataBind()
-        ddlExercises.ClearSelection()
         CurrentExercisesLbl.Visible = False
         gvExercises.Visible = False
         AddExercisesLbl.Visible = False
@@ -121,10 +117,6 @@ Partial Class _Default
         btnAddExercise.Visible = True
     End Sub
 
-    Protected Sub gvExercises_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles gvExercises.SelectedIndexChanged
-        ddlExercises.DataBind()
-        Debug.Print("it happened")
-    End Sub
 
 
     
