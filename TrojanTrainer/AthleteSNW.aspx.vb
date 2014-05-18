@@ -7,8 +7,11 @@ Partial Class _Default
     Inherits System.Web.UI.Page
     Dim connectionString As String = "Data Source=SIMON;Initial Catalog=AlphaSYS39414;Persist Security Info=True;User ID=sbolds;Password=ttpfrzeh"
 
-    Protected Sub SubmitInfo_Click(sender As Object, e As System.EventArgs) Handles SubmitInfo.Click
+    Public Class AthleteCurrentDate
+        Public Shared AthDate As New Date
+    End Class
 
+    Protected Sub SubmitInfo_Click(sender As Object, e As System.EventArgs) Handles SubmitInfo.Click
         'gets checkbox information for meals
         Dim breakfast As Integer = 0
         Dim lunch As Integer = 0
@@ -301,6 +304,9 @@ Partial Class _Default
     End Sub
 
     Protected Sub WorkoutBtn_Click(sender As Object, e As System.EventArgs) Handles WorkoutBtn.Click
+        Session.Item("CurDate") = SelectDate.SelectedDate
+        Debug.Print(Session.Item("CurDate"))
+        Debug.Print("Devin is as cool as Rassi")
         dvTeams.DataBind()
         dvSports.DataBind()
         SubmitInfo.Visible = False
@@ -344,6 +350,7 @@ Partial Class _Default
 
 
     Protected Sub btnBeginWorkout_Click(sender As Object, e As System.EventArgs) Handles btnBeginWorkout.Click
+
         If dvTeams.Visible = True Then
             '    Dim WorkID As Label = dvTeams.FindControl("Workout_ID")
             '    Dim StringWorkID As String = WorkID.Text
