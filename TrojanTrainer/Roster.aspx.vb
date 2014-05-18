@@ -50,6 +50,9 @@ Partial Class Roster
             connection.Close()
         End Using
         lblConfirm.Visible = True
+        DataOutputSport.DataBind()
+        gvRoster.DataBind()
+
         'End If
     End Sub
 End Class
