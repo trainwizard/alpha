@@ -36,20 +36,6 @@
         </asp:SqlDataSource>
     </p>
     <p>
-        <asp:DetailsView ID="CurrentExDv" runat="server" Height="50px" Width="125px" 
-            AutoGenerateRows="False" DataSourceID="SqlDataSource3">
-            <Fields>
-                <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
-                <asp:BoundField DataField="Intensity" HeaderText="Intensity" 
-                    SortExpression="Intensity" />
-                <asp:BoundField DataField="Note" HeaderText="Note" SortExpression="Note" />
-                <asp:BoundField DataField="Reps" HeaderText="Reps" SortExpression="Reps" />
-                <asp:BoundField DataField="Sets" HeaderText="Sets" SortExpression="Sets" />
-                <asp:BoundField DataField="Time" HeaderText="Time" SortExpression="Time" />
-                <asp:BoundField DataField="Weight" HeaderText="Weight" 
-                    SortExpression="Weight" />
-            </Fields>
-        </asp:DetailsView>
         <asp:FormView ID="FormView1" runat="server" DataSourceID="SqlDataSource3">
             <EditItemTemplate>
                 Name:
@@ -137,11 +123,8 @@
             DataKeyNames="Actual_Ex_ID" DataSourceID="SqlDataSource4" Height="50px" 
             Width="125px">
             <Fields>
-                <asp:BoundField DataField="Actual_Ex_ID" HeaderText="Actual_Ex_ID" 
-                    InsertVisible="False" ReadOnly="True" SortExpression="Actual_Ex_ID" />
-                <asp:BoundField DataField="TM_ID" HeaderText="TM_ID" SortExpression="TM_ID" />
-                <asp:BoundField DataField="Date" HeaderText="Date" SortExpression="Date" />
-                <asp:BoundField DataField="Reps" HeaderText="Reps" SortExpression="Reps" />
+                <asp:BoundField DataField="Reps" HeaderText="Reps" 
+                    SortExpression="Reps" />
                 <asp:BoundField DataField="Sets" HeaderText="Sets" SortExpression="Sets" />
                 <asp:BoundField DataField="Weight" HeaderText="Weight" 
                     SortExpression="Weight" />
@@ -149,9 +132,64 @@
                 <asp:BoundField DataField="Intensity" HeaderText="Intensity" 
                     SortExpression="Intensity" />
                 <asp:BoundField DataField="Note" HeaderText="Note" SortExpression="Note" />
-                <asp:CommandField ButtonType="Button" ShowInsertButton="True" />
             </Fields>
+            <EmptyDataTemplate>
+                <asp:Button ID="InsertButton" runat="server" CommandName="New" Text="Complete Exercise" />
+            </EmptyDataTemplate>
         </asp:DetailsView>
+
+    </p>
+    <p>
+        <asp:Label ID="RepsLbl" runat="server" Text="Reps:"></asp:Label>
+   
+<asp:TextBox ID="RepsTxt" runat="server"></asp:TextBox>
+
+        </p>
+
+    <p>
+        <asp:Label ID="SetsLbl" runat="server" Text="Sets:"></asp:Label>
+    </p>
+    <p>
+   
+<asp:TextBox ID="SetsTxt" runat="server"></asp:TextBox>
+
+        <asp:Label ID="WeightLbl" runat="server" Text="Weight:"></asp:Label>
+    </p>
+    <p>
+   
+<asp:TextBox ID="WeightTxt" runat="server"></asp:TextBox>
+
+        <asp:Label ID="TimeLbl" runat="server" Text="Time:"></asp:Label>
+    </p>
+    <p>
+   
+<asp:TextBox ID="TimeTxt" runat="server"></asp:TextBox>
+
+    </p>
+    <p>
+        <asp:Label ID="IntensityLbl" runat="server" Text="Intensity:"></asp:Label>
+    </p>
+    <p>
+   
+<asp:TextBox ID="IntensityTxt" runat="server"></asp:TextBox>
+
+    </p>
+    <p>
+        <asp:Label ID="NoteLbl" runat="server" Text="Note:"></asp:Label>
+    </p>
+    <p>
+   
+<asp:TextBox ID="NoteTxt" runat="server"></asp:TextBox>
+
+    </p>
+    <p>
+        <asp:Button ID="AddExerciseDataBtn" runat="server" 
+            Text="Add Exercise Results" />
+    </p>
+    <p>
+        &nbsp;</p>
+    <p>
+
         <asp:SqlDataSource ID="SqlDataSource4" runat="server" 
             ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
             InsertCommand="AthleteInputWorkoutData" InsertCommandType="StoredProcedure" SelectCommand="SELECT *
@@ -174,8 +212,6 @@ WHERE TM_ID = @TM_ID AND Date = @Date">
         </asp:SqlDataSource>
     </p>
     <p>
-        &nbsp;</p>
-    <p>
         <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
             ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
             SelectCommand="ViewCurrentExercise" SelectCommandType="StoredProcedure">
@@ -186,7 +222,6 @@ WHERE TM_ID = @TM_ID AND Date = @Date">
                     PropertyName="SelectedValue" Type="Int32" />
             </SelectParameters>
         </asp:SqlDataSource>
-        <br />
     </p>
 </asp:Content>
 
