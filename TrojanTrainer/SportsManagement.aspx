@@ -51,7 +51,8 @@
         AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Cycle_ID" 
         DataSourceID="SqlDataSource2">
         <Columns>
-            <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
+            <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" 
+                ButtonType="Button" />
             <asp:BoundField DataField="Name" HeaderText="Name" 
                 SortExpression="Name" />
             <asp:BoundField DataField="Start_Date" HeaderText="Start Date" 
