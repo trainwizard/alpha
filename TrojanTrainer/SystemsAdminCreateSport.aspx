@@ -2,24 +2,33 @@
 <asp:content id="SystemsAdminCreateSportPage" contentplaceholderid="ContentPlaceHolder1" runat="server">
 <div>
 	
-	<br/>
-    <p>Current Sports</p>
+    <p>
+        <asp:Label ID="lblCurrentSports" runat="server" Text="Sports Home Page" 
+            Visible="False"></asp:Label>
+    </p>
     
-	<asp:gridview id="GridView2" runat="server" allowsorting="True" autogeneratecolumns="False" datakeynames="Sport_ID" datasourceid="SqlDataSource1" allowpaging="True">
+	<asp:gridview id="gvSports" runat="server" allowsorting="True" 
+        autogeneratecolumns="False" datakeynames="Sport_ID" 
+        datasourceid="SqlDataSource1" allowpaging="True" Visible="False">
 	<columns>
-	<asp:commandfield showdeletebutton="True"/>
+	<asp:commandfield showdeletebutton="True" ButtonType="Button"/>
 	<asp:boundfield datafield="Name" headertext="Name" sortexpression="Name"/>
 	</columns>
 	</asp:gridview>
-	<asp:sqldatasource id="SqlDataSource1" runat="server" connectionstring="<%$ connectionstrings:alphaconnectionstring %>" SelectCommand="SELECT [Sport_ID], [Name], [Active] FROM [Sport] WHERE Active = 1" DeleteCommand="UPDATE Sport SET Active = 0 WHERE Sport_ID = @Sport_ID"> <deleteparameters>
-	<asp:parameter name="Sport_ID"/>
-	</deleteparameters>
-	</asp:sqldatasource>
-	Add a New Sport: <asp:textbox id="NewSport" runat="server"></asp:textbox>
-	<asp:button id="addNewSport" runat="server" text="Add" cssclass="button small"/>
+	<asp:Label ID="lblNewSport" runat="server" Text="Add a New Sport:" 
+        Visible="False"></asp:Label>
+&nbsp;<asp:textbox id="NewSport" runat="server" Visible="False"></asp:textbox>
+	<asp:checkbox id="HasTeamsChbx" runat="server" text="This sport has no teams" 
+        Visible="False"/>
+	
+    <br />
+	<asp:button id="addNewSport" runat="server" text="Add" cssclass="button small" 
+        Visible="False"/>
 	<asp:label id="msgvalidsport" runat="server" text="Label" visible="False"></asp:label>
 	<br/>
-	<asp:checkbox id="HasTeamsChbx" runat="server" text="This sport has no teams"/>
+	<asp:Label ID="lblTeamsHomePage" runat="server" Text="Teams Home Page" 
+        Visible="False"></asp:Label>
+    <br />
 	
     <br />
     Select a Sport to Add Teams:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:dropdownlist id="ddlSportID" runat="server" datasourceid="SqlDataSource1" datatextfield="Name" datavaluefield="Sport_ID" autopostback="True">
@@ -46,5 +55,9 @@ WHERE Team_ID = @Team_ID">
 	</selectparameters>
 	</asp:sqldatasource>
 </div>
+	<asp:sqldatasource id="SqlDataSource1" runat="server" connectionstring="<%$ connectionstrings:alphaconnectionstring %>" SelectCommand="SELECT [Sport_ID], [Name], [Active] FROM [Sport] WHERE Active = 1" DeleteCommand="UPDATE Sport SET Active = 0 WHERE Sport_ID = @Sport_ID"> <deleteparameters>
+	<asp:parameter name="Sport_ID"/>
+	</deleteparameters>
+	</asp:sqldatasource>
 <br/>
 </asp:content>

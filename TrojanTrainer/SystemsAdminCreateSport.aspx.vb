@@ -63,6 +63,18 @@ Partial Class SystemsAdminCreateSport
 
 
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
+        If Session.Item("Role") = 1 Then
+            'systems admin
+            lblCurrentSports.Visible = True
+            gvSports.Visible = True
+            lblNewSport.Visible = True
+            NewSport.Visible = True
+            HasTeamsChbx.Visible = True
+            addNewSport.Visible = True
+        ElseIf Session.Item("Role") = 2 Then
+            lblTeamsHomePage.Visible = True
+            ddlSportID.SelectedValue = Session.Item("Sport_ID")
+        End If
     End Sub
 
     Protected Sub addNewTeam_Click(sender As Object, e As System.EventArgs) Handles addNewTeam.Click
@@ -108,4 +120,7 @@ Partial Class SystemsAdminCreateSport
         GridView1.DataBind()
     End Sub
 
+    Protected Sub gvSports_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles gvSports.SelectedIndexChanged
+
+    End Sub
 End Class
