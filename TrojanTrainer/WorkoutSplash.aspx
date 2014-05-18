@@ -52,8 +52,6 @@
                 <asp:BoundField DataField="Weight" HeaderText="Weight" 
                     SortExpression="Weight" />
                 <asp:BoundField DataField="Time" HeaderText="Time" SortExpression="Time" />
-                <asp:BoundField DataField="Intensity" HeaderText="Intensity" 
-                    SortExpression="Intensity" />
                 <asp:BoundField DataField="Note" HeaderText="Note" SortExpression="Note" />
             </Columns>
         </asp:GridView>
