@@ -121,7 +121,15 @@
         </asp:FormView>
     </p>
     <p>
-        <strong>Results:</strong></p>
+        &nbsp;</p>
+    <p>
+        <asp:Button ID="ViewBtn" runat="server" Text="Begin or View" />
+    </p>
+    <p>
+        <asp:Label ID="RepsLbl0" runat="server" Text="Results:" Visible="False" 
+            Font-Bold="True"></asp:Label>
+   
+    </p>
     <p>
         <asp:Label ID="RepsLbl" runat="server" Text="Reps:" Visible="False"></asp:Label>
    
@@ -167,7 +175,7 @@
     </p>
     <p>
         <asp:Button ID="AddExerciseDataBtn" runat="server" 
-            Text="Add Exercise Results" />
+            Text="Add Exercise Results" Visible="False" />
     </p>
     <p>
         <asp:Label ID="VerificationLbl" runat="server" Text="Label" Visible="False"></asp:Label>
