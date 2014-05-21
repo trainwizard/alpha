@@ -67,7 +67,7 @@ Partial Class _Default
                 createCycle.ExecuteNonQuery()
                 connection.Close()
             End Using
-            DateLabel.ForeColor = Drawing.Color.Red
+            DateLabel.ForeColor = Drawing.Color.Black
             DateLabel.Text = "Please select a start date."
             GlobalVariables.StartDate = Nothing
             GlobalVariables.StopDate = Nothing
