@@ -49,7 +49,7 @@ WHERE Sport_ID = @Sport_ID AND End_Date &gt; (SELECT GETDATE())">
     </p>
     <p>
         <asp:SqlDataSource ID="SqlDataSource4" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" SelectCommand="SELECT Workout_Name, [Workout].Workout_ID, Sport.Name
+            ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" SelectCommand="SELECT Workout_Name, [Workout].Workout_ID, Sport.Name, Cycle_Workout.Cycle_Workout_ID
 FROM Workout
 INNER JOIN Cycle_Workout 
 ON Cycle_Workout.Workout_ID = Workout.Workout_ID
@@ -57,10 +57,10 @@ INNER JOIN Cycle
 ON Cycle.Cycle_ID = Cycle_Workout.Cycle_ID 
 INNER Join Sport
 ON Sport.Sport_ID = Cycle.Sport_ID
-WHERE Cycle_Workout.Start_Date = @Start_Date AND Cycle_Workout.Cycle_ID  = @Cycle_ID" DeleteCommand="DELETE FROM Cycle_Workout
-WHERE Workout_ID = @Workout_ID">
+WHERE Cycle_Workout.Start_Date = @Start_Date AND Cycle_Workout.Cycle_ID  = @Cycle_ID" 
+            DeleteCommand="DeleteActiveSportWorkout" DeleteCommandType="StoredProcedure">
             <DeleteParameters>
-                <asp:Parameter Name="Workout_ID" />
+                <asp:Parameter Name="Cycle_Workout_ID" />
             </DeleteParameters>
             <SelectParameters>
                 <asp:ControlParameter ControlID="CycleCalendar" Name="Start_Date" 
@@ -109,7 +109,8 @@ WHERE Sport_ID = @Sport_ID">
             Text="Currently Assigned for this day:" Visible="False"></asp:Label>
     </p>
     <asp:GridView ID="CurrentWorkoutssGv" runat="server" AutoGenerateColumns="False" 
-        DataKeyNames="Workout_ID" DataSourceID="SqlDataSource4" Visible="False">
+        DataKeyNames="Cycle_Workout_ID" DataSourceID="SqlDataSource4" 
+        Visible="False">
         <Columns>
             <asp:CommandField ShowDeleteButton="True" />
             <asp:BoundField DataField="Workout_Name" HeaderText="Workout Name" 
@@ -118,30 +119,31 @@ WHERE Sport_ID = @Sport_ID">
         </Columns>
     </asp:GridView>
     <asp:GridView ID="CurrentWorkoutsGv" runat="server" AutoGenerateColumns="False" 
-        DataKeyNames="Workout_ID" DataSourceID="SqlDataSource6">
+        DataKeyNames="Team_Workout_ID" DataSourceID="SqlDataSource6">
         <Columns>
             <asp:CommandField ShowDeleteButton="True" />
             <asp:BoundField DataField="Workout_Name" HeaderText="Workout Name" 
                 SortExpression="Workout_Name" />
-            <asp:BoundField DataField="Name" HeaderText="Team" SortExpression="Name" />
+<asp:BoundField DataField="Name" HeaderText="Team" SortExpression="Name"></asp:BoundField>
         </Columns>
     </asp:GridView>
     <asp:SqlDataSource ID="SqlDataSource6" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" DeleteCommand="DELETE Team_Workout
-WHERE Team_Workout.Workout_ID = @Workout_ID" SelectCommand="SELECT Workout_Name, [Workout].Workout_ID, [Team].Name
+        ConnectionString="<%$ ConnectionStrings:AlphaConnectionString %>" 
+        DeleteCommand="DeleteActiveTeamWorkout" SelectCommand="SELECT Workout_Name, [Workout].Workout_ID, [Team].Name, Team_Workout.Team_Workout_ID
 FROM Workout
 INNER JOIN Team_Workout
 ON Team_Workout.Workout_ID = Workout.Workout_ID
 INNER JOIN Team
 ON Team.Team_ID = Team_Workout.Team_ID
-WHERE Team_Workout.Start_Date = @Start_Date AND Team_Workout.Team_ID  = @Team_ID">
+WHERE Team_Workout.Start_Date = @Start_Date AND Team.Sport_ID = @Sport_ID" 
+        DeleteCommandType="StoredProcedure">
         <DeleteParameters>
-            <asp:Parameter Name="Workout_ID" />
+            <asp:Parameter Name="Team_Workout_ID" />
         </DeleteParameters>
         <SelectParameters>
             <asp:ControlParameter ControlID="CycleCalendar" Name="Start_Date" 
                 PropertyName="SelectedDate" />
-            <asp:ControlParameter ControlID="TeamDdl" Name="Team_ID" 
+            <asp:ControlParameter ControlID="SportsDdl" Name="Sport_ID" 
                 PropertyName="SelectedValue" />
         </SelectParameters>
     </asp:SqlDataSource>
