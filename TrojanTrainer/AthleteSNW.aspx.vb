@@ -350,7 +350,7 @@ Partial Class _Default
 
 
     Protected Sub btnBeginWorkout_Click(sender As Object, e As System.EventArgs) Handles btnBeginWorkout.Click
-
+        Session.Item("CurDate") = SelectDate.SelectedDate
         If dvTeams.Visible = True Then
             '    Dim WorkID As Label = dvTeams.FindControl("Workout_ID")
             '    Dim StringWorkID As String = WorkID.Text
