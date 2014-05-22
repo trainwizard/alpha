@@ -31,37 +31,49 @@ Partial Class _Default
     End Sub
 
     Protected Sub AddExerciseDataBtn_Click(sender As Object, e As System.EventArgs) Handles AddExerciseDataBtn.Click
-        If RepsTxt.Text <> "" And SetsTxt.Text <> "" And WeightTxt.Text <> "" And TimeTxt.Text <> "" And Notetxt.text <> "" Then
-            Using connection As New SqlConnection(connectionString)
-                connection.Open()
-                Dim insrtcmd As SqlCommand = New SqlCommand("AthleteInputWorkoutData", connection)
-                insrtcmd.CommandType = CommandType.StoredProcedure
-                insrtcmd.Parameters.Add(New SqlParameter("@TM_ID", Session.Item("TM_ID")))
-                insrtcmd.Parameters.Add(New SqlParameter("@Date", Session.Item("CurDate")))
-                insrtcmd.Parameters.Add(New SqlParameter("@Reps", RepsTxt.Text))
-                insrtcmd.Parameters.Add(New SqlParameter("@Sets", SetsTxt.Text))
-                insrtcmd.Parameters.Add(New SqlParameter("@Weight", WeightTxt.Text))
-                insrtcmd.Parameters.Add(New SqlParameter("@Time", TimeTxt.Text))
-                insrtcmd.Parameters.Add(New SqlParameter("@Note", NoteTxt.Text))
-                insrtcmd.Parameters.Add(New SqlParameter("@Intensity", ""))
-                insrtcmd.Parameters.Add(New SqlParameter("@Planned_Ex_ID", ExDdl.SelectedValue))
-                insrtcmd.ExecuteNonQuery()
-                connection.Close()
-                VerificationLbl.Text = "Exercise has been submitted"
-                VerificationLbl.ForeColor = Drawing.Color.Green
+        If RepsTxt.Text.Length > 0 Or SetsTxt.Text.Length > 0 Or WeightTxt.Text.Length > 0 Or TimeTxt.Text.Length > 0 Or NoteTxt.Text.Length > 0 Then
+            If RepsTxt.Text IsNot "" And Integer.TryParse(RepsTxt.Text, Nothing) = False Then
+                VerificationLbl.Text = "Please correct datatype errors (Numbers are needed)."
                 VerificationLbl.Visible = True
-                RepsLbl.Visible = False
-                RepsTxt.Visible = False
-                SetsLbl.Visible = False
-                SetsTxt.Visible = False
-                WeightLbl.Visible = False
-                WeightTxt.Visible = False
-                TimeLbl.Visible = False
-                TimeTxt.Visible = False
-                NoteLbl.Visible = False
-                NoteTxt.Visible = False
-                AddExerciseDataBtn.Visible = False
-            End Using
+            ElseIf SetsTxt.Text IsNot "" And Integer.TryParse(SetsTxt.Text, Nothing) = False Then
+                VerificationLbl.Text = "Please correct datatype errors (Numbers are needed)."
+                VerificationLbl.Visible = True
+            ElseIf WeightTxt.Text IsNot "" And Integer.TryParse(WeightTxt.Text, Nothing) = False Then
+                VerificationLbl.Text = "Please correct datatype errors (Numbers are needed)."
+                VerificationLbl.Visible = True
+            Else
+                Using connection As New SqlConnection(connectionString)
+                    connection.Open()
+                    Dim insrtcmd As SqlCommand = New SqlCommand("AthleteInputWorkoutData", connection)
+                    insrtcmd.CommandType = CommandType.StoredProcedure
+                    insrtcmd.Parameters.Add(New SqlParameter("@TM_ID", Session.Item("TM_ID")))
+                    insrtcmd.Parameters.Add(New SqlParameter("@Date", Session.Item("CurDate")))
+                    insrtcmd.Parameters.Add(New SqlParameter("@Reps", RepsTxt.Text))
+                    insrtcmd.Parameters.Add(New SqlParameter("@Sets", SetsTxt.Text))
+                    insrtcmd.Parameters.Add(New SqlParameter("@Weight", WeightTxt.Text))
+                    insrtcmd.Parameters.Add(New SqlParameter("@Time", TimeTxt.Text))
+                    insrtcmd.Parameters.Add(New SqlParameter("@Note", NoteTxt.Text))
+                    insrtcmd.Parameters.Add(New SqlParameter("@Intensity", ""))
+                    insrtcmd.Parameters.Add(New SqlParameter("@Planned_Ex_ID", ExDdl.SelectedValue))
+                    insrtcmd.ExecuteNonQuery()
+                    connection.Close()
+                    VerificationLbl.Text = "Exercise has been submitted"
+                    VerificationLbl.ForeColor = Drawing.Color.Green
+                    VerificationLbl.Visible = True
+                    RepsLbl.Visible = False
+                    RepsTxt.Visible = False
+                    SetsLbl.Visible = False
+                    SetsTxt.Visible = False
+                    WeightLbl.Visible = False
+                    WeightTxt.Visible = False
+                    TimeLbl.Visible = False
+                    TimeTxt.Visible = False
+                    NoteLbl.Visible = False
+                    NoteTxt.Visible = False
+                    AddExerciseDataBtn.Visible = False
+                End Using
+            End If
+
         Else
             VerificationLbl.Text = "Please input some data."
             VerificationLbl.Visible = True
